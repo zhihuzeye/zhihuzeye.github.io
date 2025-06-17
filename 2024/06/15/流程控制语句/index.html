@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhihuzeye.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="条件语句 if 语句的基本使用  如果…..就…..否则   if elseif 多条件分支 else if() 条件分支“暗含”不符合之前的所有条件，要深刻理解什么叫“否则如果”   if 语句算法题 switch 语句 用途：当一个变量被分类讨论的情形   三元运算符 条件表达式 ? 表达式1 : 表达式2 三元运算的用途：根据某个条件是否成立，在两个不同值中选择变量的值    循环语句 fo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流程控制语句">
+<meta property="og:url" content="https://zhihuzeye.github.io/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:site_name" content="泽野之乡">
+<meta property="og:description" content="条件语句 if 语句的基本使用  如果…..就…..否则   if elseif 多条件分支 else if() 条件分支“暗含”不符合之前的所有条件，要深刻理解什么叫“否则如果”   if 语句算法题 switch 语句 用途：当一个变量被分类讨论的情形   三元运算符 条件表达式 ? 表达式1 : 表达式2 三元运算的用途：根据某个条件是否成立，在两个不同值中选择变量的值    循环语句 fo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-15T14:44:38.000Z">
+<meta property="article:modified_time" content="2024-09-26T12:25:30.201Z">
+<meta property="article:author" content="之乎泽野">
+<meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhihuzeye.github.io/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhihuzeye.github.io/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/","path":"2024/06/15/流程控制语句/","title":"流程控制语句"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>流程控制语句 | 泽野之乡</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="泽野之乡" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽野之乡</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.</span> <span class="nav-text">循环语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E8%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">初识算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%8B%86%E4%BD%8D"><span class="nav-number">4.</span> <span class="nav-text">如何拆位</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="之乎泽野"
+      src="/images/face1.png">
+  <p class="site-author-name" itemprop="name">之乎泽野</p>
+  <div class="site-description" itemprop="description">积跬步，至千里</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhihuzeye" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhihuzeye" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kydlyj@gmail.com" title="E-Mail → mailto:kydlyj@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="流程控制语句 | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          流程控制语句
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-15 22:44:38" itemprop="dateCreated datePublished" datetime="2024-06-15T22:44:38+08:00">2024-06-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><ol>
+<li>if 语句的基本使用 <ul>
+<li>如果…..就…..否则</li>
+</ul>
+</li>
+<li>if elseif 多条件分支<ul>
+<li>else if() 条件分支“暗含”不符合之前的所有条件，要深刻理解什么叫“否则如果”</li>
+</ul>
+</li>
+<li>if 语句算法题</li>
+<li>switch 语句<ul>
+<li>用途：当一个变量被分类讨论的情形</li>
+</ul>
+</li>
+<li>三元运算符<ul>
+<li>条件表达式 ? 表达式1 : 表达式2</li>
+<li>三元运算的用途：根据某个条件是否成立，在两个不同值中选择变量的值</li>
+</ul>
+</li>
+</ol>
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><ol>
+<li>for 循环语句<ul>
+<li>循环通常需要三个参数：起始值、结束值和步长。这些参数可以用for循环来指定。</li>
+</ul>
+</li>
+<li>for 循环算法题<ul>
+<li><em><strong>for循环有明确的范围，while循环没有明确的范围</strong></em></li>
+</ul>
+</li>
+<li>while 循环语句<ul>
+<li>while 语句 也是一种循环结构，是一种“不定范围”循环，和for循环各有不同的勇武之地</li>
+<li>几乎所有编程语言，都提供了for和while语句</li>
+<li><em><strong>while 语句事先不指定循环开始、结束范围，只要测试条件满足，就一直执行循环体</strong></em></li>
+<li>while 循环没有显式定义循环变量，必须自己在while循环外先定义好循环变量，有时甚至可以没有循环变量</li>
+<li>循环体内的语句，必须使循环测试条件趋向不成立，否侧会死循环。</li>
+<li>while 循环，while 是 “当”的意思。</li>
+<li>更适合while循环的场景<ul>
+<li>寻找最小满足n²&gt;456789的整数n</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>break 和 continue <ul>
+<li>break 表示立即终止循环，它只能用在循环语句中，在for循环和while循环中都可以使用</li>
+<li>continue 用于 跳过循环中的一个迭代，并继续执行循环中的下一个迭代。for循环更经常使用continue</li>
+</ul>
+</li>
+<li>do while 语句<ul>
+<li>是一种“后测试循环语句”，它不同于for循环和while循环每次都是“先测试条件是否满足，然后执行循环体”，do-while循环是“先执行循环体，再测试条件是否满足”</li>
+<li>do { 循环体 } while (循环执行条件)</li>
+</ul>
+</li>
+<li>while 语句算法题</li>
+</ol>
+<h2 id="初识算法"><a href="#初识算法" class="headerlink" title="初识算法"></a>初识算法</h2><ol>
+<li>什么是算法<ul>
+<li>指的是解题方案的准确而完整的描述。是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制，也就是说，能够对一定规范的输入，在有限的实际内获得所要求的的输出。</li>
+<li>算法就是把一个问题，拆解成计算机能够一步一步执行的步骤。</li>
+<li>计算机的流程控制语句：顺序执行，选择语句，循环语句。</li>
+<li>优秀算法的要求<ul>
+<li>正确性</li>
+<li>健壮性</li>
+<li>可读性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>累加器和累乘器</li>
+<li>穷举法</li>
+<li>综合算法题目</li>
+<li>随机数函数<ul>
+<li>得到[a,b]区间的整数，公式：</li>
+<li><code>parseInt(Math.random()* (b-a + 1)) + a</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="如何拆位"><a href="#如何拆位" class="headerlink" title="如何拆位"></a>如何拆位</h2><ol>
+<li>数学方法<ul>
+<li><code>百位是原数字除以100取整  Math.floor(n/100)</code></li>
+<li><code>十位是原数字除以10取整，再与10求模  Math.floor(n/10) % 10</code></li>
+<li><code>个位是原数字与10求模  n % 10</code></li>
+</ul>
+</li>
+<li>字符串方法<ul>
+<li>直接将原数字 变为字符串，然后再用charAt()方法得到每个数位的值</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>之乎泽野
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zhihuzeye.github.io/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/" title="流程控制语句">https://zhihuzeye.github.io/2024/06/15/流程控制语句/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/15/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%BB%B6%E6%97%B6%E5%99%A8/" rel="prev" title="定时器和延时器">
+                  <i class="fa fa-angle-left"></i> 定时器和延时器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="next" title="面向对象">
+                  面向对象 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">之乎泽野</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zhihuzeye","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

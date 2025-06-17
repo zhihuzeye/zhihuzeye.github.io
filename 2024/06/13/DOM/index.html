@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhihuzeye.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="DOM 基本概念 DOM 是操控 HTML和CSS的桥梁 DOM (Doucument Object Model) 文档对象类型，是Javascript操作HTML文档的接口，使文档操作变得非常优雅简便 DOM最大的特点是将文档表示为节点树  节点访问和位置关系 访问元素节点 访问元素节点的常用方法 document.getElementById() 通过id得到元素 如果页面上有相同id的元素，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM">
+<meta property="og:url" content="https://zhihuzeye.github.io/2024/06/13/DOM/index.html">
+<meta property="og:site_name" content="泽野之乡">
+<meta property="og:description" content="DOM 基本概念 DOM 是操控 HTML和CSS的桥梁 DOM (Doucument Object Model) 文档对象类型，是Javascript操作HTML文档的接口，使文档操作变得非常优雅简便 DOM最大的特点是将文档表示为节点树  节点访问和位置关系 访问元素节点 访问元素节点的常用方法 document.getElementById() 通过id得到元素 如果页面上有相同id的元素，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-13T15:24:33.000Z">
+<meta property="article:modified_time" content="2024-09-26T12:25:30.197Z">
+<meta property="article:author" content="之乎泽野">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhihuzeye.github.io/2024/06/13/DOM/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhihuzeye.github.io/2024/06/13/DOM/","path":"2024/06/13/DOM/","title":"DOM"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>DOM | 泽野之乡</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="泽野之乡" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽野之乡</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">DOM 基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E8%AE%BF%E9%97%AE%E5%92%8C%E4%BD%8D%E7%BD%AE%E5%85%B3%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">节点访问和位置关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">节点操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nodeType%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">nodeType常用属性值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E7%9A%84%E5%88%9B%E5%BB%BA%E3%80%81%E7%A7%BB%E9%99%A4%E5%92%8C%E5%85%8B%E9%9A%86"><span class="nav-number">5.</span> <span class="nav-text">节点的创建、移除和克隆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM%E4%BA%8B%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">DOM事件</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="之乎泽野"
+      src="/images/face1.png">
+  <p class="site-author-name" itemprop="name">之乎泽野</p>
+  <div class="site-description" itemprop="description">积跬步，至千里</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhihuzeye" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhihuzeye" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kydlyj@gmail.com" title="E-Mail → mailto:kydlyj@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/13/DOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="DOM | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DOM
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-13 23:24:33" itemprop="dateCreated datePublished" datetime="2024-06-13T23:24:33+08:00">2024-06-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="DOM-基本概念"><a href="#DOM-基本概念" class="headerlink" title="DOM 基本概念"></a>DOM 基本概念</h2><ol>
+<li>DOM 是操控 HTML和CSS的桥梁</li>
+<li>DOM (Doucument Object Model) 文档对象类型，是Javascript操作HTML文档的接口，使文档操作变得非常优雅简便</li>
+<li>DOM最大的特点是将文档表示为节点树</li>
+</ol>
+<h2 id="节点访问和位置关系"><a href="#节点访问和位置关系" class="headerlink" title="节点访问和位置关系"></a>节点访问和位置关系</h2><ol>
+<li>访问元素节点<ul>
+<li>访问元素节点的常用方法<ul>
+<li><code>document.getElementById()</code><ul>
+<li>通过id得到元素<ul>
+<li>如果页面上有相同id的元素，则只能得到一个</li>
+<li>不管元素藏得多深，都能把它找到</li>
+<li>延迟运行<ul>
+<li>通常JS 一定要写到HTML的节点后面，否则JS无法找到相应的HTML节点</li>
+<li>可以使用 window.onload &#x3D; function(){} 事件 ,使页面加载完后再执行指定代码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>document.getElementsByTagName()</code><ul>
+<li>通过标签名称得到元素数组</li>
+</ul>
+</li>
+<li><code>document.getElementsByClassName()</code><ul>
+<li>通过类名得到元素数组</li>
+</ul>
+</li>
+<li><code>document.querySelector()</code><ul>
+<li>通过选择器得到元素</li>
+</ul>
+</li>
+<li><code>document.querySelectorAll()</code><ul>
+<li>通过选择器得到元素数组</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>节点的关系<ul>
+<li>相对于父节点<ul>
+<li>可以使用 farstChild  得到第一个子节点</li>
+<li>可以使用 lastChild 得到最后一个子节点</li>
+</ul>
+</li>
+<li>相对于子节点<ul>
+<li>父节点可以通过使用 childNodes 得到所有的子节点信息</li>
+<li>子节点可以通过 parentNode 来访问父节点</li>
+<li>对于后面一个 兄弟节点 可以使用 nextSibling 获取</li>
+<li>对于前面一个兄弟节点 可以使用 perviousSibling 获取前面一个</li>
+</ul>
+</li>
+<li><strong>注意：文本节点也属于节点</strong><ul>
+<li>文本节点也属于节点，使用节点关系时，一定要注意</li>
+</ul>
+</li>
+<li>只考虑元素节点<ul>
+<li>children</li>
+<li>firstElementChild</li>
+<li>lastElementChild</li>
+<li>perviousElementSibling</li>
+<li>nextElementSiling</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h2><ol>
+<li>insertBefore<ul>
+<li>父节点.insertBefore(孤儿节点,标杆节点);</li>
+</ul>
+</li>
+<li>appendChild<ul>
+<li>父节点.appendChild(内容)</li>
+<li>在尾部追加</li>
+</ul>
+</li>
+<li>改变元素节点的CSS样式<ul>
+<li><code>oBox.style.fontSize  = &#39;32px&#39;</code></li>
+</ul>
+</li>
+<li>改变元素的HTML的属性<ul>
+<li>W3C 属性 直接，元素.属性 &#x3D; 属性值</li>
+<li>非标准 W3C 属性 <ul>
+<li>元素.setAttribute(key,value)</li>
+<li>元素.getAttribute(key)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="nodeType常用属性值"><a href="#nodeType常用属性值" class="headerlink" title="nodeType常用属性值"></a>nodeType常用属性值</h2><ul>
+<li>1  <code>元素节点，例如&lt;p&gt; 和 &lt;div&gt;</code></li>
+<li>3  <code>文字节点</code></li>
+<li>8  <code>注释节点</code></li>
+<li>9  <code>document节点</code></li>
+<li>10  <code>DTD节点</code></li>
+</ul>
+<h2 id="节点的创建、移除和克隆"><a href="#节点的创建、移除和克隆" class="headerlink" title="节点的创建、移除和克隆"></a>节点的创建、移除和克隆</h2><ol>
+<li>createElement<ul>
+<li>创建一个指定tagname的HTML元素</li>
+</ul>
+</li>
+<li>获取body节点<ul>
+<li>document.body</li>
+</ul>
+</li>
+<li>获取html节点<ul>
+<li>document.documentElement</li>
+</ul>
+</li>
+<li>移动节点<ul>
+<li>新父节点.appendChild(已经有父亲的节点)</li>
+<li>新父节点.insterBefore(已经有父亲的节点,标杆子节点)</li>
+</ul>
+</li>
+<li>删除节点<ul>
+<li>父节点.removeChild(要删除的子节点)</li>
+<li><strong>节点不能主动删除自己，必须由父节点删除它</strong></li>
+</ul>
+</li>
+<li>克隆节点<ul>
+<li>cloneNode() 方法可以克隆节点，克隆出的节点是“孤儿节点”</li>
+<li>var 孤儿节点 &#x3D; 老节点.cloneNode(true|false);</li>
+<li>cloneNode 参数是一个布尔值，表示是否采用深度克隆；如果为true该节点的所有后代节点也都会被克隆，如果为false，则只克隆该节点本身</li>
+</ul>
+</li>
+<li>访问元素节点<ul>
+<li>所谓 ”访问“元素节点，就是指”得到“、”获取“页面上的元素节点。</li>
+<li>访问元素节点 主要依赖于 document</li>
+</ul>
+</li>
+</ol>
+<h2 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h2><ol>
+<li>事件监听<ul>
+<li>什么是“事件监听”<ul>
+<li>DOM允许我们书写Javascript代码以让HTML元素对事件做出反应</li>
+<li>什么是”事件”：用户与网页的交互动作<ul>
+<li>点用户点击元素的时候</li>
+<li>点鼠标移动到元素的时候</li>
+<li>当网页加载完成的时候…</li>
+</ul>
+</li>
+<li>“监听”,顾名思义就是让计算机随时能够发现这个事件发生了，从而执行程序员预先编写的一些程序</li>
+<li>设置事件监听的方法主要有 onxxx 和 addEventListener()</li>
+</ul>
+</li>
+<li>常见鼠标事件监听<ul>
+<li><code>onclick 当鼠标点击某个对象</code></li>
+<li><code>ondblclick 当鼠标双击某个对象</code></li>
+<li><code>onmousedown 当某个鼠标按键在某个对象上被按下</code></li>
+<li><code>onmouseup 当某个鼠标按键在某个对象上被松开</code></li>
+<li><code>onmousemove 当某个鼠标按键在某个对象上被移动</code></li>
+<li><code>onmouseenter 当鼠标进入某个对象</code></li>
+<li><code>onmouseleave 当鼠标离开某个对象</code></li>
+</ul>
+</li>
+<li>常见的键盘事件监听<ul>
+<li><code>onkeyperss 当某个键盘的键被按下（系统按钮如箭头键和功能键无法得到识别）</code></li>
+<li><code>onkeydown 当某个键盘的键被按下（系统按钮可以识别，并且会优先onkeypress发生）</code></li>
+<li><code>onkeyup 当某个键盘的键被松开</code></li>
+</ul>
+</li>
+<li>常见的表单事件监听<ul>
+<li><code>onchange 当用户改变域的内容</code></li>
+<li><code>onfocus 当某个元素获得焦点（比如tab或鼠标点击）</code></li>
+<li><code>onblur 当元素失去焦点</code></li>
+<li><code>onsubmit 当表单被提交</code></li>
+<li><code>onreset 当表单被重置 </code></li>
+<li><code>oninput 当用户输入</code></li>
+</ul>
+</li>
+<li>常见的页面事件监听<ul>
+<li><code>onload 当页面或图像被完成加载</code></li>
+<li><code>onunload  当用户退出页面</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件传播<ul>
+<li>事件的传播是：先从外到内，然后再从内到外<ul>
+<li>从外到内、捕获阶段（capturing phase）</li>
+<li>从内到外、冒泡阶段（Bubbling phase）</li>
+<li>onxxx 这样的写法只能监听冒泡阶段</li>
+</ul>
+</li>
+<li>addEventListener() 方法<ul>
+<li>DOM 0级：只能监听冒泡阶段<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">box2.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;我是box2&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>DOM 2级事件监听<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">box1.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><em><strong>true 监听捕获的阶段</strong></em></li>
+<li><em><strong>false 监听冒泡阶段【默认】</strong></em></li>
+</ul>
+</li>
+<li><strong>注意事项：最内部的元素不再区分捕获和冒泡阶段，会先执行写在前面的监听，然后执行后写的监听</strong></li>
+<li><strong>注意事项：如果给元素设置相同的两个或多个同名事件，则DOM0级写法后面写的会覆盖先写的；而DOM2级会按照顺序执行</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件对象<ul>
+<li>什么是事件对象<ul>
+<li>事件处理函数提供一个形式参数，它是一个对象，封装了本次事件的细节</li>
+</ul>
+</li>
+<li>e.charCode 和 e.keyCode 属性<ul>
+<li>e.charCode 属性通常用于 onkeypress 事件中，表示用户输入的字符的 “字符码”<ul>
+<li><code>数字0 ~ 数字9  48 ~ 57</code></li>
+<li><code>大写字母A ~ Z  65 ~ 90</code></li>
+<li><code>小写字母 a ~ z  97 ~ 122</code></li>
+</ul>
+</li>
+<li>e.keyCode 属性通常用于 onkeydown 事件和onkeyup中，表示用户按下按键的 “键码”<ul>
+<li><code>数字0 ~ 数字9  48 ~ 57</code></li>
+<li><code>字母部分大小写 a ~ z  65 ~ 90 （不区分大小写）</code></li>
+<li><code>四个方向键（左、上、右、下）  37、38、39、40</code></li>
+<li><code>回车键  13</code></li>
+<li><code>空格键  32</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><em><strong>e.preventDefault() 方法</strong></em><ul>
+<li>阻止事件产生的“默认动作”</li>
+</ul>
+</li>
+<li><em><strong>e.stopPropagation() 方法</strong></em><ul>
+<li>阻止事件继续传播</li>
+<li>在一些场合，非常有必要切断事件继续传播，否则会造成页面特效显示出bug</li>
+</ul>
+</li>
+<li>鼠标滚轮事件<ul>
+<li>鼠标滚轮事件是 onmousewheel ，它的事件对象e提供deltaY 属性 表示鼠标滚动方向，向下滚动时返回正值，向上滚动时，返回负值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>事件委托</strong><ul>
+<li>批量添加事件监听的性能问题<ul>
+<li>每一个事件监听注册都会消耗一定的系统内存，而批量添加事件会导致监听数量太多，内存消耗会非常大</li>
+</ul>
+</li>
+<li>定义<ul>
+<li>利用事件冒泡机制，将后台元素事件委托给祖先元素</li>
+</ul>
+</li>
+<li>e.target 和 e.currentTarget 属性<ul>
+<li>target<ul>
+<li><em><strong>触发此事件的最早元素，即“事件源元素”</strong></em></li>
+</ul>
+</li>
+<li>currentTarget<ul>
+<li>事件处理程序附加到的元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用场景<ul>
+<li>当有大量类似元素需要批量添加事件监听时，使用事件委托可以减少内存开销</li>
+<li>当有动态元素节点上树时，使用事件委托可以让新上树的元素具有事件监听</li>
+</ul>
+</li>
+<li>使用时注意事项<ul>
+<li>onmouseenter 和 onmouseover 都表示“鼠标进入”，它们有什么区别呢？<ul>
+<li>onmouseenter 不冒泡</li>
+<li>onmouseover 冒泡</li>
+</ul>
+</li>
+<li><em><strong>不能委托不冒泡的事件给祖先元素</strong></em></li>
+<li>最内层的元素不能再有额外的内层元素了，比如<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span>&gt;</span>我是span<span class="tag">&lt;/<span class="name">span</span>&gt;</span>列表项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>之乎泽野
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zhihuzeye.github.io/2024/06/13/DOM/" title="DOM">https://zhihuzeye.github.io/2024/06/13/DOM/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/12/BOM%E5%9F%BA%E7%A1%80/" rel="prev" title="BOM基础">
+                  <i class="fa fa-angle-left"></i> BOM基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/14/JS%E5%87%BD%E6%95%B0%E4%B8%8EDOM/" rel="next" title="JS函数与DOM">
+                  JS函数与DOM <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">之乎泽野</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zhihuzeye","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

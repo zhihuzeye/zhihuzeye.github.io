@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhihuzeye.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="什么是异常 异常本质上是程序上的错误。 错误在我们编写程序的过程中会经常发生，包括编译期间和运行期间的错误。 在程序运行过程中，意外发生的情况，背离我们程序本身的意图的表现，都可以理解为异常。  Throwable（异常的根类） Error（Java 虚拟机出现问题） Error 是程序无法处理的错误，表示运行应用程序中比较严重的问题。 它们在应用程序的控制和处理能力之外，而且绝大多数是程序运行时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 异常">
+<meta property="og:url" content="https://zhihuzeye.github.io/2024/06/03/Java-%E5%BC%82%E5%B8%B8/index.html">
+<meta property="og:site_name" content="泽野之乡">
+<meta property="og:description" content="什么是异常 异常本质上是程序上的错误。 错误在我们编写程序的过程中会经常发生，包括编译期间和运行期间的错误。 在程序运行过程中，意外发生的情况，背离我们程序本身的意图的表现，都可以理解为异常。  Throwable（异常的根类） Error（Java 虚拟机出现问题） Error 是程序无法处理的错误，表示运行应用程序中比较严重的问题。 它们在应用程序的控制和处理能力之外，而且绝大多数是程序运行时">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-03T14:31:55.000Z">
+<meta property="article:modified_time" content="2024-09-26T12:25:30.198Z">
+<meta property="article:author" content="之乎泽野">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhihuzeye.github.io/2024/06/03/Java-%E5%BC%82%E5%B8%B8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhihuzeye.github.io/2024/06/03/Java-%E5%BC%82%E5%B8%B8/","path":"2024/06/03/Java-异常/","title":"Java 异常"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java 异常 | 泽野之乡</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="泽野之乡" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽野之乡</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BC%82%E5%B8%B8"><span class="nav-number">1.</span> <span class="nav-text">什么是异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Throwable%EF%BC%88%E5%BC%82%E5%B8%B8%E7%9A%84%E6%A0%B9%E7%B1%BB%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">Throwable（异常的根类）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throw-throws"><span class="nav-number">3.</span> <span class="nav-text">throw &amp; throws</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8"><span class="nav-number">4.</span> <span class="nav-text">自定义异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E9%93%BE"><span class="nav-number">5.</span> <span class="nav-text">异常链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8"><span class="nav-number">6.</span> <span class="nav-text">如何处理异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">实际应用总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="之乎泽野"
+      src="/images/face1.png">
+  <p class="site-author-name" itemprop="name">之乎泽野</p>
+  <div class="site-description" itemprop="description">积跬步，至千里</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhihuzeye" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhihuzeye" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kydlyj@gmail.com" title="E-Mail → mailto:kydlyj@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/03/Java-%E5%BC%82%E5%B8%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java 异常 | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 异常
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-03 22:31:55" itemprop="dateCreated datePublished" datetime="2024-06-03T22:31:55+08:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="什么是异常"><a href="#什么是异常" class="headerlink" title="什么是异常"></a>什么是异常</h2><ol>
+<li>异常本质上是程序上的错误。</li>
+<li>错误在我们编写程序的过程中会经常发生，包括编译期间和运行期间的错误。</li>
+<li>在程序运行过程中，意外发生的情况，背离我们程序本身的意图的表现，都可以理解为异常。</li>
+</ol>
+<h2 id="Throwable（异常的根类）"><a href="#Throwable（异常的根类）" class="headerlink" title="Throwable（异常的根类）"></a>Throwable（异常的根类）</h2><ol>
+<li>Error（Java 虚拟机出现问题）<ul>
+<li>Error 是程序无法处理的错误，表示运行应用程序中比较严重的问题。</li>
+<li>它们在应用程序的控制和处理能力之外，而且绝大多数是程序运行时不允许出现的状况。</li>
+<li>对于设计的合理的应用程序来说，即使确实发生了错误，本质上也不应该试图去处理它所引起的异常状况。</li>
+<li>常见错误<ul>
+<li>虚拟机错误 VirtualMachineError</li>
+<li>内存溢出 OutOfMemoryError</li>
+<li>线程死锁 ThreadDeath</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Exception<ul>
+<li>Exception 是程序本身可以处理的异常。异常处理通常指针对这种类型异常的处理。</li>
+<li>检查异常 Checked Exception<ul>
+<li>编译器要求必须处置的异常。（编码阶段）</li>
+<li>除了 RuntimeException 及相关子类，其它异常都属于 Checked Exception<ul>
+<li>IO 异常 IOException</li>
+<li>SQL 异常 SQLException</li>
+<li>等等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>非检查异常 Unchecked Exception<ul>
+<li>编译器不要求强制处置的异常（运行阶段）</li>
+<li>包含 RuntimeException 及相关子类<ul>
+<li>空指针异常 NullPointerException</li>
+<li>数组下标越界异常 ArrayIndexOutOfBoundsException</li>
+<li>算数异常 ArithmeticException</li>
+<li>类型转换异常 ClassCastException</li>
+<li>等等…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>System.exit(1); 终止程序运行</li>
+</ul>
+</li>
+</ol>
+<h2 id="throw-throws"><a href="#throw-throws" class="headerlink" title="throw &amp; throws"></a>throw &amp; throws</h2><ol>
+<li>throws<ul>
+<li>可以通过 throws 声明将要抛出何种类型的异常，通过 throw 将产生的异常抛出。</li>
+<li>如果一个方法可能出现异常，但没有能力处理这种异常，可以在方法声明处用 throws 子句来声明抛出异常。</li>
+<li>throws 语句用在方法定义时声明该方法要抛出的异常类型。</li>
+<li>当方法抛出异常列表中的异常时，方法将不对这些类型及其子类类型的异常做处理，而抛向调用该方法的方法，由他去处理。</li>
+</ul>
+</li>
+<li>throw<ul>
+<li>throw 用来抛出一个异常。<ul>
+<li>例如：throw new IOException():</li>
+</ul>
+</li>
+<li>thorw 抛出的只能够是可抛出类 Throwable 或者其子类的实例对象。<ul>
+<li>例如：throw new String(“出错了”); 是错误的<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">     <span class="comment">// 代码段1</span></span><br><span class="line">     <span class="keyword">throw</span> <span class="keyword">new</span> 异常类型();</span><br><span class="line">   &#125;<span class="keyword">catch</span>(异常类型 ex)&#123;</span><br><span class="line">      <span class="comment">// 对异常处理的代码段2</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span>  <span class="keyword">throws</span> 异常类型&#123;</span><br><span class="line">   <span class="comment">// 代码段1</span></span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> 异常类型();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>作用<ul>
+<li><em><strong>规避可能出现的风险</strong></em></li>
+<li><em><strong>完成一些程序的逻辑</strong></em></li>
+</ul>
+</li>
+<li>throw 抛出异常对象的处理方案<ul>
+<li>通过 try…catch 包含 throw 语句 —— 自己抛出自己处理</li>
+<li>通过 throws 在方法声明抛出异常类型 —— 谁调用谁处理 —— 调用者可以自己处理，也可以继续上抛。此时可以抛出与 throw 对象相同类型或者其父类</li>
+<li><strong>当子类重写父类抛出异常方法时，声明的异常必须是父类方法所声明异常的同类或子类。</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><ol>
+<li>基本概念<ul>
+<li>使用 Java 内置的异常类可以描述在编程时出现的大部分异常情况。</li>
+<li>也可以通过自定义异常描述特定业务产生的异常类型。</li>
+<li>所谓自定义异常，就是定义一个类，去继承 Throwable 类或者它的子类<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestException</span> <span class="keyword">extends</span> <span class="title class_">Exception</span>&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="title function_">TestException</span><span class="params">()</span>&#123;</span><br><span class="line">         <span class="built_in">super</span>(<span class="string">&quot;向父类抛的异常消息&quot;</span>);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> <span class="keyword">throw</span> TestException&#123;</span><br><span class="line">       &lt;代码块&gt;</span><br><span class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TestException</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h2 id="异常链"><a href="#异常链" class="headerlink" title="异常链"></a>异常链</h2><ol>
+<li>基本概念<ul>
+<li>有时候我们会捕获一个异常后在抛出另一个异常</li>
+<li>顾名思义就是：将异常发生的原因一个传一个串起来，即把底层的异常信息传个上层，这样逐层抛出。</li>
+</ul>
+</li>
+<li>Exception e1 &#x3D; new Exception(“异常消息”); e1.initCause(e);</li>
+</ol>
+<h2 id="如何处理异常"><a href="#如何处理异常" class="headerlink" title="如何处理异常"></a>如何处理异常</h2><ol>
+<li>在 Java 应用程序中，异常处理机制为<ul>
+<li>抛出异常（先抛出，才能被捕获）</li>
+<li>捕获异常</li>
+</ul>
+</li>
+<li>对于运行时异常，错误或可检查异常，Java 技术所要求的异常处理方式有所不同。<ul>
+<li>1、对于可查异常必须捕捉、或者声明抛出</li>
+<li>2、允许忽略不可查的 RuntimeException（含子类）和 Error（含子类）</li>
+</ul>
+</li>
+<li>通过 5 个关键字来实现<ul>
+<li>捕获异常<ul>
+<li>try（执行可能产生异常的代码）</li>
+<li>catch（捕获异常）</li>
+<li>finally（无论是否发生异常 代码总能执行）</li>
+</ul>
+</li>
+<li>声明异常<ul>
+<li>throws（声明可能要抛出的异常）</li>
+</ul>
+</li>
+<li>抛出异常<ul>
+<li>throw （手动抛出异常）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>规则说明<ul>
+<li>try-catch-finally <ul>
+<li>try 块后可接零个或多个catch块，如果没有 catch 块，则必须跟一个finally块。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自定义异常</li>
+<li>异常链</li>
+</ol>
+<h2 id="实际应用总结"><a href="#实际应用总结" class="headerlink" title="实际应用总结"></a>实际应用总结</h2><ol>
+<li>处理运行异常时，采用逻辑去合理规避同时辅助 try-catch 处理</li>
+<li>在多重 catch 块后面，可以加一个 catch（Exception） 来处理可能被遗漏的异常</li>
+<li>对于不确定的代码，也可以加上 try-catch，处理潜在的异常</li>
+<li>尽量去处理异常，切忌知识简单的调用 printStackTrace() 去打印输出</li>
+<li>具体如何处理异常，要根据不同的业务需求和异常类型去决定</li>
+<li>尽量添加 finally 语句块去释放占用的资源（关闭文件、关闭 sql 链接）等</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>之乎泽野
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zhihuzeye.github.io/2024/06/03/Java-%E5%BC%82%E5%B8%B8/" title="Java 异常">https://zhihuzeye.github.io/2024/06/03/Java-异常/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13/" rel="prev" title="Java 面向对象3">
+                  <i class="fa fa-angle-left"></i> Java 面向对象3
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/04/2D%E5%92%8C3D%E7%9A%84%E8%BD%AC%E6%8D%A2/" rel="next" title="2D和3D的转换">
+                  2D和3D的转换 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">之乎泽野</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zhihuzeye","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

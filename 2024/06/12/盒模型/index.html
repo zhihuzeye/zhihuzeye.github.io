@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhihuzeye.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="认识盒模型 行内元素 块级元素 所有HTML标签都可以看成矩形盒子，由width、height、padding、border构成，称为“盒模型”  width和height属性详解 width 盒子内容的宽度 width属性通常是px，移动端开发会涉及百分数，rem等单位 当块级元素（div、h系列、li等）没有设置width属性是，它将自动撑满，但这并不意味着width可以继承   height">
+<meta property="og:type" content="article">
+<meta property="og:title" content="盒模型">
+<meta property="og:url" content="https://zhihuzeye.github.io/2024/06/12/%E7%9B%92%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="泽野之乡">
+<meta property="og:description" content="认识盒模型 行内元素 块级元素 所有HTML标签都可以看成矩形盒子，由width、height、padding、border构成，称为“盒模型”  width和height属性详解 width 盒子内容的宽度 width属性通常是px，移动端开发会涉及百分数，rem等单位 当块级元素（div、h系列、li等）没有设置width属性是，它将自动撑满，但这并不意味着width可以继承   height">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-12T14:11:47.000Z">
+<meta property="article:modified_time" content="2024-09-26T12:25:30.201Z">
+<meta property="article:author" content="之乎泽野">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhihuzeye.github.io/2024/06/12/%E7%9B%92%E6%A8%A1%E5%9E%8B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhihuzeye.github.io/2024/06/12/%E7%9B%92%E6%A8%A1%E5%9E%8B/","path":"2024/06/12/盒模型/","title":"盒模型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>盒模型 | 泽野之乡</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="泽野之乡" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽野之乡</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">认识盒模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#width%E5%92%8Cheight%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">width和height属性详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">padding属性详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">margin属性详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%92%E6%A8%A1%E5%9E%8B%E8%AE%A1%E7%AE%97"><span class="nav-number">5.</span> <span class="nav-text">盒模型计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#box-sizing%E5%B1%9E%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">box-sizing属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#display"><span class="nav-number">7.</span> <span class="nav-text">display</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="之乎泽野"
+      src="/images/face1.png">
+  <p class="site-author-name" itemprop="name">之乎泽野</p>
+  <div class="site-description" itemprop="description">积跬步，至千里</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhihuzeye" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhihuzeye" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kydlyj@gmail.com" title="E-Mail → mailto:kydlyj@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/12/%E7%9B%92%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="盒模型 | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          盒模型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-12 22:11:47" itemprop="dateCreated datePublished" datetime="2024-06-12T22:11:47+08:00">2024-06-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="认识盒模型"><a href="#认识盒模型" class="headerlink" title="认识盒模型"></a>认识盒模型</h2><ol>
+<li>行内元素</li>
+<li>块级元素</li>
+<li>所有HTML标签都可以看成矩形盒子，由width、height、padding、border构成，称为“盒模型”</li>
+</ol>
+<h2 id="width和height属性详解"><a href="#width和height属性详解" class="headerlink" title="width和height属性详解"></a>width和height属性详解</h2><ol>
+<li>width<ul>
+<li>盒子内容的宽度</li>
+<li>width属性通常是px，移动端开发会涉及百分数，rem等单位</li>
+<li>当块级元素（div、h系列、li等）没有设置width属性是，它将自动撑满，但这并不意味着width可以继承</li>
+</ul>
+</li>
+<li>height<ul>
+<li>表示内容的高度</li>
+<li>width属性通常是px，移动端开发会涉及百分数，rem等单位</li>
+<li>盒子的height属性如果不设置，它将被内容被自动撑开，如果没有内容，则height默认是0</li>
+<li>高度省略掉，内容能被自动撑开</li>
+</ul>
+</li>
+</ol>
+<h2 id="padding属性详解"><a href="#padding属性详解" class="headerlink" title="padding属性详解"></a>padding属性详解</h2><ol>
+<li>padding 是盒子的内边距，即盒子边框内壁到文字的距离</li>
+<li>padding 是四个方向的<ul>
+<li>padding-top</li>
+<li>padding-left</li>
+<li>padding-right</li>
+<li>padding-bottom</li>
+</ul>
+</li>
+<li>padding 四数值写法<ul>
+<li>padding:10px 20px 10px 20px 上右下左</li>
+</ul>
+</li>
+<li>padding 三数值写法 <ul>
+<li><em><strong>padding:10px 20px 30px  上 左右 下</strong></em></li>
+</ul>
+</li>
+<li>padding 二数值写法<ul>
+<li>padding:10px 20px 上下，左右</li>
+</ul>
+</li>
+<li>padding 一数值写法<ul>
+<li>padding:10px  四个方向都是10px</li>
+</ul>
+</li>
+</ol>
+<h2 id="margin属性详解"><a href="#margin属性详解" class="headerlink" title="margin属性详解"></a>margin属性详解</h2><ol>
+<li>margin是盒子的外边距，盒子和其它盒子之间的距离</li>
+<li>margin 是四个方向的<ul>
+<li>margin-top</li>
+<li>margin-left</li>
+<li>margin-right</li>
+<li>margin-bottom</li>
+</ul>
+</li>
+<li>margin 四个方向<ul>
+<li>margin:10px 20px 10px 20px 上右下左</li>
+</ul>
+</li>
+<li>margin 三数值写法 <ul>
+<li><em><strong>margin:10px 20px 30px  上 左右 下</strong></em></li>
+</ul>
+</li>
+<li>margin 二数值写法<ul>
+<li>margin:10px 20px 上下，左右</li>
+</ul>
+</li>
+<li>margin 一数值写法<ul>
+<li>margin:10px  四个方向都是10px</li>
+</ul>
+</li>
+<li>margin 的塌陷<ul>
+<li>垂直方向的margin有塌陷现象：小的margin 会塌陷到大的margin 中，从而margin不叠加，只以大的值为准<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-class">.box5</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: aqua;</span><br><span class="line">        <span class="attribute">margin-bottom</span>: <span class="number">24px</span>;</span><br><span class="line">    &#125;   </span><br><span class="line"> <span class="selector-class">.box6</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">28</span>, <span class="number">206</span>, <span class="number">108</span>);</span><br><span class="line">        <span class="attribute">margin-top</span>: <span class="number">32px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">以<span class="attribute">margin-top</span> <span class="number">32px</span> 为准</span><br></pre></td></tr></table></figure></li>
+<li>左右方向不会发生塌陷现象</li>
+</ul>
+</li>
+<li>一些元素有默认的margin<ul>
+<li>比如（body、ul、p) 等，在开始制作网页的时候，要将它们清除<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> *&#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">body</span>,</span><br><span class="line">    <span class="selector-tag">ul</span>,</span><br><span class="line">    <span class="selector-tag">p</span> &#123;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">* 通配符有效率问题</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>盒子的水平居中<ul>
+<li>将盒子左右两边的margin都设置为auto，盒水平居中 </li>
+<li>margin:0 auto</li>
+<li>文本居中 text-align:center 和盒子水平居中是两个概念</li>
+</ul>
+</li>
+</ol>
+<h2 id="盒模型计算"><a href="#盒模型计算" class="headerlink" title="盒模型计算"></a>盒模型计算</h2><ol>
+<li>盒子的总宽度 &#x3D; width + 左右border + 左右padding</li>
+<li>盒子的总高度 &#x3D; height + 上下border + 上下padding</li>
+</ol>
+<h2 id="box-sizing属性"><a href="#box-sizing属性" class="headerlink" title="box-sizing属性"></a>box-sizing属性</h2><ol>
+<li>将盒子添加 box-sizing:border-box 之后，padding、border 变为内缩，不再外扩</li>
+</ol>
+<h2 id="display"><a href="#display" class="headerlink" title="display"></a>display</h2><ol>
+<li>行内元素<ul>
+<li>能并排显示</li>
+<li>不能设置宽高</li>
+<li>width自动收缩</li>
+<li>a、span、em、b、u、i 等</li>
+</ul>
+</li>
+<li>块级元素<ul>
+<li>不能并排显示</li>
+<li>能设置宽高</li>
+<li>width自动撑满</li>
+<li>div、section、header、h系列、li、ul等</li>
+</ul>
+</li>
+<li>行内块元素<ul>
+<li>img、input等</li>
+<li>既能并排显示、又能设置宽高</li>
+</ul>
+</li>
+<li>行内元素和块级元素的互相转换<ul>
+<li>display:block<ul>
+<li>转换为块级元素</li>
+</ul>
+</li>
+<li>display:inline <ul>
+<li>转为行内元素</li>
+</ul>
+</li>
+<li>disaplay:inline-block <ul>
+<li>即将元素转为行内块</li>
+</ul>
+</li>
+<li>display:none<ul>
+<li>可以将元素隐藏，元素将彻底放弃位置，如同没有写标签一样</li>
+</ul>
+</li>
+<li>visibility:hidden<ul>
+<li>也可以将元素隐藏，但是元素不放弃自己的位置</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>之乎泽野
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zhihuzeye.github.io/2024/06/12/%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="盒模型">https://zhihuzeye.github.io/2024/06/12/盒模型/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/HTML/" rel="tag"># HTML</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/12/%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/" rel="prev" title="过渡与动画">
+                  <i class="fa fa-angle-left"></i> 过渡与动画
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/12/%E6%96%87%E6%9C%AC%E4%B8%8E%E5%AD%97%E4%BD%93%E5%B1%9E%E6%80%A7/" rel="next" title="文本与字体属性">
+                  文本与字体属性 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">之乎泽野</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zhihuzeye","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

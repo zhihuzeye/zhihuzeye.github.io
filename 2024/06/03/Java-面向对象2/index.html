@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhihuzeye.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="继承 概念 一种类与类之间的关系 使用已存在的类定义作为基础建立新类 新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但 不能选择性地继承父类 满足 “A is a B”的关系就可以形成继承关系 子类可以访问父类非私有成员 父类不可以访问子类特有成员   方法重写 语法规则 在子类中定义，去重写父类的方法 方法名相同，参数列表相同（参数顺序、个数、类型） 方法名、参数列表都要与父类继承的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 面向对象2">
+<meta property="og:url" content="https://zhihuzeye.github.io/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12/index.html">
+<meta property="og:site_name" content="泽野之乡">
+<meta property="og:description" content="继承 概念 一种类与类之间的关系 使用已存在的类定义作为基础建立新类 新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但 不能选择性地继承父类 满足 “A is a B”的关系就可以形成继承关系 子类可以访问父类非私有成员 父类不可以访问子类特有成员   方法重写 语法规则 在子类中定义，去重写父类的方法 方法名相同，参数列表相同（参数顺序、个数、类型） 方法名、参数列表都要与父类继承的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-03T13:51:29.000Z">
+<meta property="article:modified_time" content="2024-09-26T12:25:30.199Z">
+<meta property="article:author" content="之乎泽野">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhihuzeye.github.io/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhihuzeye.github.io/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12/","path":"2024/06/03/Java-面向对象2/","title":"Java 面向对象2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java 面向对象2 | 泽野之乡</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="泽野之乡" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽野之乡</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">1.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">2.</span> <span class="nav-text">访问修饰符</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="之乎泽野"
+      src="/images/face1.png">
+  <p class="site-author-name" itemprop="name">之乎泽野</p>
+  <div class="site-description" itemprop="description">积跬步，至千里</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhihuzeye" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhihuzeye" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kydlyj@gmail.com" title="E-Mail → mailto:kydlyj@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java 面向对象2 | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 面向对象2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-03 21:51:29" itemprop="dateCreated datePublished" datetime="2024-06-03T21:51:29+08:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ol>
+<li>概念<ul>
+<li>一种类与类之间的关系</li>
+<li>使用已存在的类定义作为基础建立新类</li>
+<li>新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但 <em><strong>不能选择性地继承父类</strong></em></li>
+<li><strong>满足 “A is a B”的关系就可以形成继承关系</strong></li>
+<li>子类可以访问父类非私有成员</li>
+<li>父类不可以访问子类特有成员</li>
+</ul>
+</li>
+<li>方法重写<ul>
+<li>语法规则<ul>
+<li>在子类中定义，去重写父类的方法</li>
+<li>方法名相同，参数列表相同（参数顺序、个数、类型）<ul>
+<li><strong>方法名、参数列表都要与父类继承的方法相同</strong></li>
+</ul>
+</li>
+<li>访问修饰符<ul>
+<li>允许改变，但是访问范围需要大于等于父类的访问范围</li>
+</ul>
+</li>
+<li><strong>与方法的参数名无关</strong></li>
+<li>方法返回值<ul>
+<li>当方法返回值是void 或基本数据类型时，必须相同；当返回值是引用类型时，可以是父类或其子类</li>
+</ul>
+</li>
+<li><em><strong>方法的返回值和访问修饰符是可以允许有变化的（有条件的）</strong></em></li>
+</ul>
+</li>
+<li>当子类重写父类方法后，子类对象调用的是重写后的方法。</li>
+<li>super：父类对象的引用  super.父类方法名()</li>
+<li>父类的构造不允许被继承；不允许被重写，但是会影响子类的实例化过程</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>利于代码复用</li>
+<li>缩短开发周期</li>
+</ul>
+</li>
+<li>语法<ul>
+<li>使用 extends 实现封装</li>
+<li>单一继承，只能有一个父类</li>
+<li>名词解释<ul>
+<li>父类（基类）</li>
+<li>子类（派生类）</li>
+</ul>
+</li>
+<li>继承后的初始化顺序<ul>
+<li><em><strong>父类静态成员 -&gt; 子类静态成员 -&gt; 父类对象构造 -&gt; 子类对象构造</strong></em></li>
+<li>访问修饰符不影响成员加载顺序，跟书写位置有关</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>super</strong><ul>
+<li>代表父类引用<ul>
+<li>访问父类成员方法<ul>
+<li>super.print();</li>
+</ul>
+</li>
+<li>访问父类属性<ul>
+<li>super.name;</li>
+</ul>
+</li>
+<li>访问父类构造方法<ul>
+<li>super()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子类的构造的过程中必须调用其父类的构造方法</li>
+<li>如果子类的构造方法中没有显式标注，则系统默认调用父类无参的构造方法</li>
+<li>如果子类构造方法中既没有显式标注，且父类中没有无参的构造方法，则编译错误。</li>
+<li>子类构造默认调用父类无参构造方法，可以通过 super() 调用父类的允许被访问的其他构造方法，super() 必须放在子类构造函数有效代码的第一行。</li>
+<li>构造方法调用时，super 和 this 不能同时出现</li>
+</ul>
+</li>
+<li>Object 类<ul>
+<li>概念<ul>
+<li>Object 类是所有类的父类</li>
+<li>一个类没有使用 extends 关键字明确标识继承关系，则默认继承 Object 类（包括数组）</li>
+<li>Java 中的每个类都可以使用 Object 中定义的方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>final 关键字<ul>
+<li>final class<ul>
+<li>该类没有子类</li>
+<li>public final class | final public class 写法都行</li>
+</ul>
+</li>
+<li>final 方法<ul>
+<li>该方法不允许被子类重写，但是可以正常被子类继承使用</li>
+</ul>
+</li>
+<li>final 变量<ul>
+<li>方法内局部变量<ul>
+<li>只要在具体使用之前进行赋值即可，一旦赋值不允许修改</li>
+</ul>
+</li>
+<li>类中成员属性<ul>
+<li>赋值过程<ul>
+<li>定义的时候直接初始化</li>
+<li>构造方法中</li>
+<li>构造代码块</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基本数据类型的变量<ul>
+<li>初始赋值之后不能更改</li>
+</ul>
+</li>
+<li>引用类型的变量<ul>
+<li>初始化之后不能再指向另一个对象，但对象的内容是可变的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>final +  static 定义后，在程序运行中不允许二次修改。<ul>
+<li>可以修饰方法和变量</li>
+<li>修饰配置信息 public static final String URL &#x3D; “<a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a>“</li>
+</ul>
+</li>
+<li>final 不允许加载构造方法前面</li>
+<li>使用 final 修饰可以提高性能，但会降低可扩展性</li>
+</ul>
+</li>
+<li>注解<ul>
+<li>JDK1.5 版本引入的一个特性</li>
+<li>可以声明在包、类、属性、方法、局部变量、方法参数等的前面，用来对这些元素进行说明、注释</li>
+<li>一种特殊的标记</li>
+<li>常用注解<ul>
+<li>@Override 针对父类方法进行重写的形式</li>
+</ul>
+</li>
+<li>分类<ul>
+<li>按照运行机制分<ul>
+<li>源码注解<ul>
+<li>注解只在源码阶段保留，在编译阶段会被丢弃。例如：@Overide</li>
+</ul>
+</li>
+<li>编译时注解<ul>
+<li>注解会在编译时期保留，在加载 class 文件时会被丢弃。例如：@NotNull</li>
+</ul>
+</li>
+<li>运行时注解<ul>
+<li>在运行阶段还起作用，甚至会影响运行逻辑的注解。@Autowired</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>按照来源分<ul>
+<li>来自 JDK 的注解<ul>
+<li>@Override</li>
+</ul>
+</li>
+<li>来自第三方的注解<ul>
+<li>框架的注解</li>
+</ul>
+</li>
+<li>我们自定义的注解</li>
+</ul>
+</li>
+<li>元注解<ul>
+<li>对注解进行注解<ul>
+<li>对注解进行标注</li>
+</ul>
+</li>
+<li>@Target 限定注解可以用在什么地方</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><ol>
+<li>公有的 ：public<ul>
+<li>允许在任意位置访问</li>
+</ul>
+</li>
+<li>私有的：private<ul>
+<li>只允许在本类中进行访问</li>
+</ul>
+</li>
+<li>受保护的：protected<ul>
+<li>允许在当前类、同包子类&#x2F;非子类、跨包子类调用、跨包非子类不允许</li>
+</ul>
+</li>
+<li>默认<ul>
+<li>允许在当前类、同包子类&#x2F;非子类调用；跨包子类&#x2F;非子类不允许调用</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>之乎泽野
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zhihuzeye.github.io/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12/" title="Java 面向对象2">https://zhihuzeye.github.io/2024/06/03/Java-面向对象2/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/02/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A11/" rel="prev" title="Java 面向对象1">
+                  <i class="fa fa-angle-left"></i> Java 面向对象1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13/" rel="next" title="Java 面向对象3">
+                  Java 面向对象3 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">之乎泽野</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zhihuzeye","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

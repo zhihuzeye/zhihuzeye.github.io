@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhihuzeye.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="释义 （caseading style sheet、层叠式样式表）  前端三层 结构层 HTML 搭建结构、放置部件、描述语义   样式层 CSS 美化页面、实现布局   行为层 Javascript 实现交互效果、数据收发、表单验证等    选择器（CSS2.1） 类选择器 .类名称   id选择器 #id名称 命名：只能有字母、数字、下划线、短横构成、且不能以数字开字母区分大小写，但习惯小写字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3选择器">
+<meta property="og:url" content="https://zhihuzeye.github.io/2024/06/04/CSS3%E9%80%89%E6%8B%A9%E5%99%A8/index.html">
+<meta property="og:site_name" content="泽野之乡">
+<meta property="og:description" content="释义 （caseading style sheet、层叠式样式表）  前端三层 结构层 HTML 搭建结构、放置部件、描述语义   样式层 CSS 美化页面、实现布局   行为层 Javascript 实现交互效果、数据收发、表单验证等    选择器（CSS2.1） 类选择器 .类名称   id选择器 #id名称 命名：只能有字母、数字、下划线、短横构成、且不能以数字开字母区分大小写，但习惯小写字">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-04T12:54:27.000Z">
+<meta property="article:modified_time" content="2024-09-26T12:25:30.197Z">
+<meta property="article:author" content="之乎泽野">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhihuzeye.github.io/2024/06/04/CSS3%E9%80%89%E6%8B%A9%E5%99%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhihuzeye.github.io/2024/06/04/CSS3%E9%80%89%E6%8B%A9%E5%99%A8/","path":"2024/06/04/CSS3选择器/","title":"CSS3选择器"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CSS3选择器 | 泽野之乡</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="泽野之乡" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽野之乡</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">释义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E4%B8%89%E5%B1%82"><span class="nav-number">2.</span> <span class="nav-text">前端三层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88CSS2-1%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">选择器（CSS2.1）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%90%88%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88CSS2-1%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">复合选择器（CSS2.1）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88CSS3%EF%BC%89-IE9"><span class="nav-number">5.</span> <span class="nav-text">属性选择器（CSS3） &gt;&#x3D; IE9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%85%B3%E7%B3%BB%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88CSS3%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">元素关系选择器（CSS3）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E5%8F%B7%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88CSS3%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">序号选择器（CSS3）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%AD%90%E7%B1%BB"><span class="nav-number">8.</span> <span class="nav-text">原子类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%AA%E7%B1%BB"><span class="nav-number">9.</span> <span class="nav-text">伪类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%AA%E5%85%83%E7%B4%A0%EF%BC%88CSS3%EF%BC%89"><span class="nav-number">10.</span> <span class="nav-text">伪元素（CSS3）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E5%8F%A0%E6%80%A7%E5%92%8C%E9%80%89%E6%8B%A9%E5%99%A8%E6%9D%83%E9%87%8D%E8%AE%A1%E7%AE%97"><span class="nav-number">11.</span> <span class="nav-text">*层叠性和选择器权重计算</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="之乎泽野"
+      src="/images/face1.png">
+  <p class="site-author-name" itemprop="name">之乎泽野</p>
+  <div class="site-description" itemprop="description">积跬步，至千里</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhihuzeye" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhihuzeye" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kydlyj@gmail.com" title="E-Mail → mailto:kydlyj@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/04/CSS3%E9%80%89%E6%8B%A9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CSS3选择器 | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS3选择器
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-04 20:54:27" itemprop="dateCreated datePublished" datetime="2024-06-04T20:54:27+08:00">2024-06-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="释义"><a href="#释义" class="headerlink" title="释义"></a>释义</h2><ul>
+<li>（caseading style sheet、层叠式样式表）</li>
+</ul>
+<h2 id="前端三层"><a href="#前端三层" class="headerlink" title="前端三层"></a>前端三层</h2><ol>
+<li>结构层 HTML<ul>
+<li>搭建结构、放置部件、描述语义</li>
+</ul>
+</li>
+<li>样式层 CSS<ul>
+<li>美化页面、实现布局</li>
+</ul>
+</li>
+<li>行为层 Javascript<ul>
+<li>实现交互效果、数据收发、表单验证等</li>
+</ul>
+</li>
+</ol>
+<h2 id="选择器（CSS2-1）"><a href="#选择器（CSS2-1）" class="headerlink" title="选择器（CSS2.1）"></a>选择器（CSS2.1）</h2><ol>
+<li>类选择器<ul>
+<li>.类名称</li>
+</ul>
+</li>
+<li>id选择器<ul>
+<li>#id名称</li>
+<li>命名：只能有字母、数字、下划线、短横构成、且不能以数字开字母区分大小写，但习惯小写字母开头</li>
+</ul>
+</li>
+<li>元素选择器（标签选择器)<ul>
+<li>元素名称</li>
+<li>通常用于标签样式的初始化</li>
+</ul>
+</li>
+<li>说明<ul>
+<li><em><strong>选择器的优先级：内联样式&gt;id选择器&gt;类选择器&gt;元素选择器</strong></em></li>
+</ul>
+</li>
+</ol>
+<h2 id="复合选择器（CSS2-1）"><a href="#复合选择器（CSS2-1）" class="headerlink" title="复合选择器（CSS2.1）"></a>复合选择器（CSS2.1）</h2><ol>
+<li>后代选择器<ul>
+<li>.box .spec 选择.box 内部类名为.spec的标签</li>
+</ul>
+</li>
+<li>交集选择器<ul>
+<li>li.spec 选择既是li标签，名字也叫spec类的标签</li>
+</ul>
+</li>
+<li>并集选择器<ul>
+<li>ul,ol 选择所有ul和ol的标签</li>
+</ul>
+</li>
+<li>题目：请根据样式属性，写出文档结构<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    div.box li p.spec em&#123;</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;spec&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>哈哈哈哈<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="属性选择器（CSS3）-IE9"><a href="#属性选择器（CSS3）-IE9" class="headerlink" title="属性选择器（CSS3） &gt;&#x3D; IE9"></a>属性选择器（CSS3） &gt;&#x3D; IE9</h2><ol>
+<li>img[alt]<ul>
+<li>选择有alt属性的img标签</li>
+</ul>
+</li>
+<li>img[alt&#x3D;”故宫”]<ul>
+<li>选择alt 属性是故宫的img标签</li>
+</ul>
+</li>
+<li>img[alt^&#x3D;”故宫”]<ul>
+<li>选择alt属性以北京开头的img标签</li>
+</ul>
+</li>
+<li>img[alt$&#x3D;”夜景”]<ul>
+<li>选择alt属性以夜景结尾的img标签</li>
+</ul>
+</li>
+<li>img[alt*&#x3D;”美”]<ul>
+<li>选择alt属性包含美字的img标签</li>
+</ul>
+</li>
+<li>img[alt~&#x3D;”手机拍摄”]<ul>
+<li>选择有alt属性有空格隔开的手机拍摄字样的img标签</li>
+</ul>
+</li>
+<li>img[alt|&#x3D;”参赛作品”]<ul>
+<li>选择有alt属性以“参赛作品-”开头的img标签</li>
+</ul>
+</li>
+</ol>
+<h2 id="元素关系选择器（CSS3）"><a href="#元素关系选择器（CSS3）" class="headerlink" title="元素关系选择器（CSS3）"></a>元素关系选择器（CSS3）</h2><ol>
+<li>子选择器&gt;&#x3D;IE7<ul>
+<li>div&gt;p  div的子标签p</li>
+</ul>
+</li>
+<li>相邻兄弟选择器<ul>
+<li>img+p 图片后面紧跟着的段落将被选中</li>
+</ul>
+</li>
+<li>通用兄弟选择器<ul>
+<li>p~span  <em><strong>p元素之后的所有同层级span元素</strong></em></li>
+</ul>
+</li>
+</ol>
+<h2 id="序号选择器（CSS3）"><a href="#序号选择器（CSS3）" class="headerlink" title="序号选择器（CSS3）"></a>序号选择器（CSS3）</h2><ol>
+<li>:first-child &gt;&#x3D;IE7<ul>
+<li>第一个子元素</li>
+</ul>
+</li>
+<li>:last-child<ul>
+<li>最后一个子元素</li>
+</ul>
+</li>
+<li>:nth-child(3)<ul>
+<li>第三个子元素</li>
+<li>:nth-child(3n+2)  从第二个开始，每三个选一个</li>
+<li>2n+1 等价于 odd ，表示奇数</li>
+<li>2n 等价于 even ，b表示偶数</li>
+</ul>
+</li>
+<li>:nth-of-type(3)<ul>
+<li>第三个某类型的子元素，将选择同种标签指定序号的子元素</li>
+</ul>
+</li>
+<li>:nth-last-child(3)<ul>
+<li>倒数第三个子元素</li>
+</ul>
+</li>
+<li>:nth-last-of-type(3)<ul>
+<li>倒数第三个某类型的子元素</li>
+</ul>
+</li>
+</ol>
+<h2 id="原子类"><a href="#原子类" class="headerlink" title="原子类"></a>原子类</h2><ol>
+<li>在做网页项目前，可以将所有的常用字号、文字颜色、行高、外边距、内边距等设置为单独的类<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 例如:</span><br><span class="line">.fs12&#123; font-size:12px &#125;</span><br><span class="line">.color-red &#123; color:red &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><ol>
+<li>伪类是添加到选择器的描述性词语，指定要选择的元素的特殊状态，超级链接有4个特殊状态<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span>  没有被访问过的超级链接</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> 已经被访问过的超级链接</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> 正被鼠标悬停的超级链接</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> 正被激活的超级链接（按下按键但是还没有松开按键）</span><br></pre></td></tr></table></figure></li>
+<li>“爱恨准则” LOVE HATE<ul>
+<li>:link -&gt; :visited -&gt; :hover -&gt; :active </li>
+<li><em><strong>a 标签伪类必须按照这个写法，否则伪类不生效</strong></em></li>
+</ul>
+</li>
+</ol>
+<h2 id="伪元素（CSS3）"><a href="#伪元素（CSS3）" class="headerlink" title="伪元素（CSS3）"></a>伪元素（CSS3）</h2><ol>
+<li>::before<ul>
+<li>在元素之前创建</li>
+</ul>
+</li>
+<li>::after<ul>
+<li>在元素之后创建</li>
+</ul>
+</li>
+<li>::selection<ul>
+<li>用于文档中被用户高亮的部分（使用鼠标圈选的部分）</li>
+</ul>
+</li>
+<li>::first-letter <ul>
+<li>选中某元素中（必须是块级元素）第一行的第一个字母</li>
+</ul>
+</li>
+<li>::first-line<ul>
+<li>选中某元素中（必须是块级元素）第一行的全部文字</li>
+</ul>
+</li>
+</ol>
+<h2 id="层叠性和选择器权重计算"><a href="#层叠性和选择器权重计算" class="headerlink" title="*层叠性和选择器权重计算"></a>*<em><strong>层叠性和选择器权重计算</strong></em></h2><ol>
+<li><em><strong>选择器的优先级：内联样式&gt;id选择器&gt;类选择器&gt;元素选择器</strong></em></li>
+<li><em><strong>复杂选择器可以通过（id的个数，class的个数，标签的个数）的形式，计算权重</strong></em><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;box1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;box2&quot;</span> <span class="attr">class</span>=<span class="string">&quot;box2&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;box3&quot;</span> <span class="attr">class</span>=<span class="string">&quot;box3&quot;</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> #box1 #box2 p &#123;</span><br><span class="line">     color: red;</span><br><span class="line"> &#125;</span><br><span class="line"> #box1 div.box2 #box3 p &#123;</span><br><span class="line">     color: green;</span><br><span class="line"> &#125;</span><br><span class="line"> .box1 .box2 .box3 p &#123;</span><br><span class="line">     color: blue;</span><br><span class="line"> &#125;</span><br><span class="line"> 2,0,1</span><br><span class="line"> 2,1,2</span><br><span class="line"> 0,3,1</span><br><span class="line"></span><br><span class="line"> <span class="comment">&lt;!-- id选择器个数，类选择器个数，元素选择器个数 --&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>!important 权重提升   <ul>
+<li>很多公司不允许使用 important ，因为这会带来不经意的样式冲突</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>之乎泽野
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zhihuzeye.github.io/2024/06/04/CSS3%E9%80%89%E6%8B%A9%E5%99%A8/" title="CSS3选择器">https://zhihuzeye.github.io/2024/06/04/CSS3选择器/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/HTML/" rel="tag"># HTML</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/04/CSS3%E6%B5%AE%E5%8A%A8%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%83%8C%E6%99%AF%E6%A0%B7%E5%BC%8F/" rel="prev" title="CSS3浮动定位与背景样式">
+                  <i class="fa fa-angle-left"></i> CSS3浮动定位与背景样式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/06/Java-%E5%8C%85%E8%A3%85%E7%B1%BB/" rel="next" title="Java 包装类">
+                  Java 包装类 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">之乎泽野</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zhihuzeye","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
