@@ -151,7 +151,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -187,6 +187,367 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/13/DOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/13/DOM/" class="post-title-link" itemprop="url">DOM</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-13 23:24:33" itemprop="dateCreated datePublished" datetime="2024-06-13T23:24:33+08:00">2024-06-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="DOM-基本概念"><a href="#DOM-基本概念" class="headerlink" title="DOM 基本概念"></a>DOM 基本概念</h2><ol>
+<li>DOM 是操控 HTML和CSS的桥梁</li>
+<li>DOM (Doucument Object Model) 文档对象类型，是Javascript操作HTML文档的接口，使文档操作变得非常优雅简便</li>
+<li>DOM最大的特点是将文档表示为节点树</li>
+</ol>
+<h2 id="节点访问和位置关系"><a href="#节点访问和位置关系" class="headerlink" title="节点访问和位置关系"></a>节点访问和位置关系</h2><ol>
+<li>访问元素节点<ul>
+<li>访问元素节点的常用方法<ul>
+<li><code>document.getElementById()</code><ul>
+<li>通过id得到元素<ul>
+<li>如果页面上有相同id的元素，则只能得到一个</li>
+<li>不管元素藏得多深，都能把它找到</li>
+<li>延迟运行<ul>
+<li>通常JS 一定要写到HTML的节点后面，否则JS无法找到相应的HTML节点</li>
+<li>可以使用 window.onload &#x3D; function(){} 事件 ,使页面加载完后再执行指定代码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>document.getElementsByTagName()</code><ul>
+<li>通过标签名称得到元素数组</li>
+</ul>
+</li>
+<li><code>document.getElementsByClassName()</code><ul>
+<li>通过类名得到元素数组</li>
+</ul>
+</li>
+<li><code>document.querySelector()</code><ul>
+<li>通过选择器得到元素</li>
+</ul>
+</li>
+<li><code>document.querySelectorAll()</code><ul>
+<li>通过选择器得到元素数组</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>节点的关系<ul>
+<li>相对于父节点<ul>
+<li>可以使用 farstChild  得到第一个子节点</li>
+<li>可以使用 lastChild 得到最后一个子节点</li>
+</ul>
+</li>
+<li>相对于子节点<ul>
+<li>父节点可以通过使用 childNodes 得到所有的子节点信息</li>
+<li>子节点可以通过 parentNode 来访问父节点</li>
+<li>对于后面一个 兄弟节点 可以使用 nextSibling 获取</li>
+<li>对于前面一个兄弟节点 可以使用 perviousSibling 获取前面一个</li>
+</ul>
+</li>
+<li><strong>注意：文本节点也属于节点</strong><ul>
+<li>文本节点也属于节点，使用节点关系时，一定要注意</li>
+</ul>
+</li>
+<li>只考虑元素节点<ul>
+<li>children</li>
+<li>firstElementChild</li>
+<li>lastElementChild</li>
+<li>perviousElementSibling</li>
+<li>nextElementSiling</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h2><ol>
+<li>insertBefore<ul>
+<li>父节点.insertBefore(孤儿节点,标杆节点);</li>
+</ul>
+</li>
+<li>appendChild<ul>
+<li>父节点.appendChild(内容)</li>
+<li>在尾部追加</li>
+</ul>
+</li>
+<li>改变元素节点的CSS样式<ul>
+<li><code>oBox.style.fontSize  = &#39;32px&#39;</code></li>
+</ul>
+</li>
+<li>改变元素的HTML的属性<ul>
+<li>W3C 属性 直接，元素.属性 &#x3D; 属性值</li>
+<li>非标准 W3C 属性 <ul>
+<li>元素.setAttribute(key,value)</li>
+<li>元素.getAttribute(key)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="nodeType常用属性值"><a href="#nodeType常用属性值" class="headerlink" title="nodeType常用属性值"></a>nodeType常用属性值</h2><ul>
+<li>1  <code>元素节点，例如&lt;p&gt; 和 &lt;div&gt;</code></li>
+<li>3  <code>文字节点</code></li>
+<li>8  <code>注释节点</code></li>
+<li>9  <code>document节点</code></li>
+<li>10  <code>DTD节点</code></li>
+</ul>
+<h2 id="节点的创建、移除和克隆"><a href="#节点的创建、移除和克隆" class="headerlink" title="节点的创建、移除和克隆"></a>节点的创建、移除和克隆</h2><ol>
+<li>createElement<ul>
+<li>创建一个指定tagname的HTML元素</li>
+</ul>
+</li>
+<li>获取body节点<ul>
+<li>document.body</li>
+</ul>
+</li>
+<li>获取html节点<ul>
+<li>document.documentElement</li>
+</ul>
+</li>
+<li>移动节点<ul>
+<li>新父节点.appendChild(已经有父亲的节点)</li>
+<li>新父节点.insterBefore(已经有父亲的节点,标杆子节点)</li>
+</ul>
+</li>
+<li>删除节点<ul>
+<li>父节点.removeChild(要删除的子节点)</li>
+<li><strong>节点不能主动删除自己，必须由父节点删除它</strong></li>
+</ul>
+</li>
+<li>克隆节点<ul>
+<li>cloneNode() 方法可以克隆节点，克隆出的节点是“孤儿节点”</li>
+<li>var 孤儿节点 &#x3D; 老节点.cloneNode(true|false);</li>
+<li>cloneNode 参数是一个布尔值，表示是否采用深度克隆；如果为true该节点的所有后代节点也都会被克隆，如果为false，则只克隆该节点本身</li>
+</ul>
+</li>
+<li>访问元素节点<ul>
+<li>所谓 ”访问“元素节点，就是指”得到“、”获取“页面上的元素节点。</li>
+<li>访问元素节点 主要依赖于 document</li>
+</ul>
+</li>
+</ol>
+<h2 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h2><ol>
+<li>事件监听<ul>
+<li>什么是“事件监听”<ul>
+<li>DOM允许我们书写Javascript代码以让HTML元素对事件做出反应</li>
+<li>什么是”事件”：用户与网页的交互动作<ul>
+<li>点用户点击元素的时候</li>
+<li>点鼠标移动到元素的时候</li>
+<li>当网页加载完成的时候…</li>
+</ul>
+</li>
+<li>“监听”,顾名思义就是让计算机随时能够发现这个事件发生了，从而执行程序员预先编写的一些程序</li>
+<li>设置事件监听的方法主要有 onxxx 和 addEventListener()</li>
+</ul>
+</li>
+<li>常见鼠标事件监听<ul>
+<li><code>onclick 当鼠标点击某个对象</code></li>
+<li><code>ondblclick 当鼠标双击某个对象</code></li>
+<li><code>onmousedown 当某个鼠标按键在某个对象上被按下</code></li>
+<li><code>onmouseup 当某个鼠标按键在某个对象上被松开</code></li>
+<li><code>onmousemove 当某个鼠标按键在某个对象上被移动</code></li>
+<li><code>onmouseenter 当鼠标进入某个对象</code></li>
+<li><code>onmouseleave 当鼠标离开某个对象</code></li>
+</ul>
+</li>
+<li>常见的键盘事件监听<ul>
+<li><code>onkeyperss 当某个键盘的键被按下（系统按钮如箭头键和功能键无法得到识别）</code></li>
+<li><code>onkeydown 当某个键盘的键被按下（系统按钮可以识别，并且会优先onkeypress发生）</code></li>
+<li><code>onkeyup 当某个键盘的键被松开</code></li>
+</ul>
+</li>
+<li>常见的表单事件监听<ul>
+<li><code>onchange 当用户改变域的内容</code></li>
+<li><code>onfocus 当某个元素获得焦点（比如tab或鼠标点击）</code></li>
+<li><code>onblur 当元素失去焦点</code></li>
+<li><code>onsubmit 当表单被提交</code></li>
+<li><code>onreset 当表单被重置 </code></li>
+<li><code>oninput 当用户输入</code></li>
+</ul>
+</li>
+<li>常见的页面事件监听<ul>
+<li><code>onload 当页面或图像被完成加载</code></li>
+<li><code>onunload  当用户退出页面</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件传播<ul>
+<li>事件的传播是：先从外到内，然后再从内到外<ul>
+<li>从外到内、捕获阶段（capturing phase）</li>
+<li>从内到外、冒泡阶段（Bubbling phase）</li>
+<li>onxxx 这样的写法只能监听冒泡阶段</li>
+</ul>
+</li>
+<li>addEventListener() 方法<ul>
+<li>DOM 0级：只能监听冒泡阶段<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">box2.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;我是box2&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>DOM 2级事件监听<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">box1.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><em><strong>true 监听捕获的阶段</strong></em></li>
+<li><em><strong>false 监听冒泡阶段【默认】</strong></em></li>
+</ul>
+</li>
+<li><strong>注意事项：最内部的元素不再区分捕获和冒泡阶段，会先执行写在前面的监听，然后执行后写的监听</strong></li>
+<li><strong>注意事项：如果给元素设置相同的两个或多个同名事件，则DOM0级写法后面写的会覆盖先写的；而DOM2级会按照顺序执行</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件对象<ul>
+<li>什么是事件对象<ul>
+<li>事件处理函数提供一个形式参数，它是一个对象，封装了本次事件的细节</li>
+</ul>
+</li>
+<li>e.charCode 和 e.keyCode 属性<ul>
+<li>e.charCode 属性通常用于 onkeypress 事件中，表示用户输入的字符的 “字符码”<ul>
+<li><code>数字0 ~ 数字9  48 ~ 57</code></li>
+<li><code>大写字母A ~ Z  65 ~ 90</code></li>
+<li><code>小写字母 a ~ z  97 ~ 122</code></li>
+</ul>
+</li>
+<li>e.keyCode 属性通常用于 onkeydown 事件和onkeyup中，表示用户按下按键的 “键码”<ul>
+<li><code>数字0 ~ 数字9  48 ~ 57</code></li>
+<li><code>字母部分大小写 a ~ z  65 ~ 90 （不区分大小写）</code></li>
+<li><code>四个方向键（左、上、右、下）  37、38、39、40</code></li>
+<li><code>回车键  13</code></li>
+<li><code>空格键  32</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><em><strong>e.preventDefault() 方法</strong></em><ul>
+<li>阻止事件产生的“默认动作”</li>
+</ul>
+</li>
+<li><em><strong>e.stopPropagation() 方法</strong></em><ul>
+<li>阻止事件继续传播</li>
+<li>在一些场合，非常有必要切断事件继续传播，否则会造成页面特效显示出bug</li>
+</ul>
+</li>
+<li>鼠标滚轮事件<ul>
+<li>鼠标滚轮事件是 onmousewheel ，它的事件对象e提供deltaY 属性 表示鼠标滚动方向，向下滚动时返回正值，向上滚动时，返回负值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>事件委托</strong><ul>
+<li>批量添加事件监听的性能问题<ul>
+<li>每一个事件监听注册都会消耗一定的系统内存，而批量添加事件会导致监听数量太多，内存消耗会非常大</li>
+</ul>
+</li>
+<li>定义<ul>
+<li>利用事件冒泡机制，将后台元素事件委托给祖先元素</li>
+</ul>
+</li>
+<li>e.target 和 e.currentTarget 属性<ul>
+<li>target<ul>
+<li><em><strong>触发此事件的最早元素，即“事件源元素”</strong></em></li>
+</ul>
+</li>
+<li>currentTarget<ul>
+<li>事件处理程序附加到的元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用场景<ul>
+<li>当有大量类似元素需要批量添加事件监听时，使用事件委托可以减少内存开销</li>
+<li>当有动态元素节点上树时，使用事件委托可以让新上树的元素具有事件监听</li>
+</ul>
+</li>
+<li>使用时注意事项<ul>
+<li>onmouseenter 和 onmouseover 都表示“鼠标进入”，它们有什么区别呢？<ul>
+<li>onmouseenter 不冒泡</li>
+<li>onmouseover 冒泡</li>
+</ul>
+</li>
+<li><em><strong>不能委托不冒泡的事件给祖先元素</strong></em></li>
+<li>最内层的元素不能再有额外的内层元素了，比如<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span>&gt;</span>我是span<span class="tag">&lt;/<span class="name">span</span>&gt;</span>列表项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1573,247 +1934,6 @@
 <h2 id="CSS精灵（雪碧图，前端优化方案之一）"><a href="#CSS精灵（雪碧图，前端优化方案之一）" class="headerlink" title="CSS精灵（雪碧图，前端优化方案之一）"></a>CSS精灵（雪碧图，前端优化方案之一）</h2><ol>
 <li>CSS精灵：将多个小图标合并制作到一张图片上，使用background-position属性单独展示其中一个，这样的技术叫做CSS精灵技术，也叫做CSS雪碧图</li>
 <li>减少HTTP请求数，加快网页速度，缺点：不方便测量，后期修改不方便</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/06/Java-%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/face1.png">
-      <meta itemprop="name" content="之乎泽野">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽野之乡">
-      <meta itemprop="description" content="积跬步，至千里">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 泽野之乡">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/06/Java-%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-title-link" itemprop="url">Java 字符串</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-06 11:30:30" itemprop="dateCreated datePublished" datetime="2024-06-06T11:30:30+08:00">2024-06-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="String-和-StringBuilder"><a href="#String-和-StringBuilder" class="headerlink" title="String 和 StringBuilder"></a>String 和 StringBuilder</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><ol>
-<li>如何创建 String 对象<ul>
-<li>String s1  &#x3D; “test”</li>
-<li>String s2 &#x3D; new String();</li>
-<li>String s3 &#x3D; new String(“test”)</li>
-</ul>
-</li>
-<li>String 对象的常用方法</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>[<code>charAt(int index)</code>]</td>
-<td>返回指定索引位置的字符</td>
-</tr>
-<tr>
-<td>[<code>concat(String str)</code>]</td>
-<td>将指定字符串连接到该字符串的结尾</td>
-</tr>
-<tr>
-<td>[<code>contains(CharSequence s)</code>]</td>
-<td>判断是否包含指定的字符序列</td>
-</tr>
-<tr>
-<td>[<code>endsWith(String suffix)</code>]</td>
-<td>判断字符串是否以指定的后缀结束</td>
-</tr>
-<tr>
-<td>[<code>equals(Object obj)</code>]</td>
-<td>比较字符串是否相等</td>
-</tr>
-<tr>
-<td>[<code>equalsIgnoreCase(String str)</code>]</td>
-<td>比较字符串是否相等,忽略大小写</td>
-</tr>
-<tr>
-<td>[<code>indexOf(int ch)</code>]</td>
-<td>返回指定字符在该字符串中首次出现处的索引</td>
-</tr>
-<tr>
-<td>[<code>indexOf(String str)</code>]</td>
-<td>返回指定子字符串在该字符串中首次出现处的索引</td>
-</tr>
-<tr>
-<td>[<code>isEmpty()</code>]</td>
-<td>判断字符串是否为空</td>
-</tr>
-<tr>
-<td>[<code>length()</code>]</td>
-<td>返回字符串的长度</td>
-</tr>
-<tr>
-<td>[<code>replace(char oldChar, char newChar)</code>]</td>
-<td>使用新值替换字符串中出现的所有旧值</td>
-</tr>
-<tr>
-<td>[<code>split(String regex)</code>]</td>
-<td>根据给定正则表达式的匹配拆分此字符串</td>
-</tr>
-<tr>
-<td>[<code>startsWith(String prefix)</code>]</td>
-<td>判断字符串是否以指定的前缀开始</td>
-</tr>
-<tr>
-<td>[<code>substring(int beginIndex)</code>]</td>
-<td>返回一个新的字符串,它是此字符串的一个子字符串</td>
-</tr>
-<tr>
-<td>[<code>toCharArray()</code>]</td>
-<td>将此字符串转换为一个新的字符数组</td>
-</tr>
-<tr>
-<td>[<code>toLowerCase()</code>]</td>
-<td>使用默认语言环境的规则将此 String 所有字符都转换为小写</td>
-</tr>
-<tr>
-<td>[<code>toUpperCase()</code>]</td>
-<td>使用默认语言环境的规则将此 String 所有字符都转换为大写</td>
-</tr>
-<tr>
-<td>[<code>trim()</code>]</td>
-<td>返回字符串的副本,删除前导空白和尾部空白</td>
-</tr>
-</tbody></table>
-<ol>
-<li>&#x3D;&#x3D; 和 equals 方法的区别</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>比较项</th>
-<th><code>==</code> 运算符</th>
-<th><code>equals()</code> 方法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>比较对象</td>
-<td>比较两个对象的引用是否指向同一个对象(内存地址是否相同)</td>
-<td>比较两个对象的内容是否相同</td>
-</tr>
-<tr>
-<td>适用类型</td>
-<td>基本数据类型(如 int、double 等)和引用数据类型(如 String、Integer 等)</td>
-<td>引用数据类型(如 String、Integer 等)</td>
-</tr>
-<tr>
-<td>默认行为</td>
-<td>基本数据类型比较值是否相同,引用数据类型比较引用是否相同</td>
-<td>对于引用数据类型,默认比较对象的内容是否相同</td>
-</tr>
-<tr>
-<td>重写</td>
-<td>不能重写</td>
-<td>可以被子类重写以实现自定义的比较逻辑</td>
-</tr>
-</tbody></table>
-<p>总的来说:</p>
-<ul>
-<li><strong><code>==</code> 比较的是对象的内存地址，<code>equals()</code> 比较的是对象的内容。</strong></li>
-<li>对于基本数据类型，<code>==</code> 比较的是值是否相同。</li>
-<li>对于引用数据类型，如果没有重写 <code>equals()</code> 方法，那么 <code>equals()</code> 方法等价于 <code>==</code>。</li>
-<li>通常比较引用数据类型的相等性时，应该使用 <code>equals()</code> 方法，因为这样可以比较对象的内容。</li>
-</ul>
-<ol start="2">
-<li>String 的不可变性<ul>
-<li>String 对象一旦被创建，则不能修改，是不可变的。</li>
-<li>所谓的修改其实是创建了新的对象，所指向的内存空间不变，</li>
-</ul>
-</li>
-</ol>
-<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><ol>
-<li>与 String 区别<ul>
-<li>String 具有不可变性，而 StringBuilder 不具备</li>
-</ul>
-</li>
-<li>使用建议<ul>
-<li>当频繁操作字符串时，使用 StringBuilder</li>
-</ul>
-</li>
-<li>StringBuilder 和 StringBuffer<ul>
-<li>二者基本相似</li>
-<li>StringBuffer 是线程安全的，StringBuilder 则没有，所以性能略高。</li>
-</ul>
-</li>
-<li>常用方法<ul>
-<li>StringBuilder append(String str)</li>
-<li>StringBuilder delete(int start,int end)</li>
-<li>StringBuilder insert(int offset,String str)</li>
-<li>StringBuilder replace(int start,int end,String str)</li>
-</ul>
-</li>
 </ol>
 
       

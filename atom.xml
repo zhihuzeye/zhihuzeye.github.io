@@ -6,7 +6,7 @@
   <link href="https://zhihuzeye.github.io/atom.xml" rel="self"/>
   
   <link href="https://zhihuzeye.github.io/"/>
-  <updated>2025-06-17T02:21:48.538Z</updated>
+  <updated>2025-07-02T03:44:34.236Z</updated>
   <id>https://zhihuzeye.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信消息推送的几种方式</title>
+    <link href="https://zhihuzeye.github.io/2025/07/02/%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>https://zhihuzeye.github.io/2025/07/02/%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</id>
+    <published>2025-07-02T02:36:47.000Z</published>
+    <updated>2025-07-02T03:44:34.236Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="微信消息推送的几种方式"><a href="#微信消息推送的几种方式" class="headerlink" title="微信消息推送的几种方式"></a>微信消息推送的几种方式</h1><h2 id="一、推送方式及对比"><a href="#一、推送方式及对比" class="headerlink" title="一、推送方式及对比"></a>一、推送方式及对比</h2><p>微信平台支持多种消息推送方式，主要包括以下三种：</p><table><thead><tr><th>推送方式</th><th>使用平台</th><th>消息类型</th><th>用户接受程度</th></tr></thead><tbody><tr><td>小程序推送</td><td>微信小程序</td><td>模板消息 &#x2F; 服务通知</td><td>★★★★★（强提醒）</td></tr><tr><td>服务号推送</td><td>微信服务号</td><td>模板消息</td><td>★★★★☆</td></tr><tr><td>公众号推送</td><td>微信订阅号</td><td>图文消息 &#x2F; 通知</td><td>★★★☆☆</td></tr></tbody></table><blockquote><p>✅ <strong>通知强提醒等级排序：服务通知 &gt; 服务号 &gt; 公众号</strong></p></blockquote><hr><h2 id="二、推送效果截图"><a href="#二、推送效果截图" class="headerlink" title="二、推送效果截图"></a>二、推送效果截图</h2><h3 id="1-服务通知截图"><a href="#1-服务通知截图" class="headerlink" title="1. 服务通知截图"></a>1. 服务通知截图</h3><p><img src="/images/WechatIMG406.jpg" alt="服务通知示例"></p><hr><h3 id="2-服务号通知截图"><a href="#2-服务号通知截图" class="headerlink" title="2. 服务号通知截图"></a>2. 服务号通知截图</h3><p><img src="/images/WechatIMG407.jpg" alt="服务号示例"></p><hr><h3 id="3-公众号通知截图"><a href="#3-公众号通知截图" class="headerlink" title="3. 公众号通知截图"></a>3. 公众号通知截图</h3><p><img src="/images/WechatIMG408.jpg" alt="公众号示例"></p><hr><h2 id="三、小程序消息推送说明"><a href="#三、小程序消息推送说明" class="headerlink" title="三、小程序消息推送说明"></a>三、小程序消息推送说明</h2><p>小程序支持不同类型的消息模板推送，其模板分类与使用要求如下：</p><h3 id="小程序模板分类说明"><a href="#小程序模板分类说明" class="headerlink" title="小程序模板分类说明"></a>小程序模板分类说明</h3><table><thead><tr><th>类型</th><th>类目要求</th><th>使用限制</th></tr></thead><tbody><tr><td>新版一次性订阅消息</td><td>仅支持电商等特定类目</td><td>用户订阅后可发送 1 条消息，<strong>无时间限制</strong></td></tr><tr><td>一次性订阅消息</td><td>一般类目均可使用</td><td>同上</td></tr><tr><td>长期订阅消息</td><td>仅限政务民生、医疗、教育等公共服务类目</td><td>当前使用方式未公开</td></tr><tr><td>设备订阅消息</td><td>公共服务类目，需接入硬件设备支持</td><td>每日对单一用户可发送 1 条消息</td></tr></tbody></table><blockquote><p>📌 <strong>说明</strong>：新版模板会优先出现在符合类目要求的小程序的公共模板库中。</p></blockquote><h3 id="模板管理界面示意图"><a href="#模板管理界面示意图" class="headerlink" title="模板管理界面示意图"></a>模板管理界面示意图</h3><p><img src="/images/subscrib.png" alt="小程序订阅模板示意"></p><hr><h3 id="小程序推送使用场景说明"><a href="#小程序推送使用场景说明" class="headerlink" title="小程序推送使用场景说明"></a>小程序推送使用场景说明</h3><ul><li><p><strong>基础订阅场景</strong><br>用户每完成一次订阅授权，开发者即可下发一条消息，<strong>没有时间限制</strong>。即使订阅与实际推送之间间隔很久，也不会失效。</p></li><li><p><strong>支付关联场景</strong><br>用户在小程序内完成微信支付后，开发者可基于支付订单触发<strong>服务通知</strong>，每笔订单最多可下发 <strong>3 条消息</strong>，该额度与普通订阅消息互不冲突。</p></li></ul><hr><h2 id="四、公众号消息推送说明"><a href="#四、公众号消息推送说明" class="headerlink" title="四、公众号消息推送说明"></a>四、公众号消息推送说明</h2><h3 id="公众号消息类型对比"><a href="#公众号消息类型对比" class="headerlink" title="公众号消息类型对比"></a>公众号消息类型对比</h3><table><thead><tr><th>公众号类型</th><th>模板消息支持</th><th>限制条件</th></tr></thead><tbody><tr><td>订阅号</td><td>❌ 不支持模板消息</td><td>仅支持图文或图文卡片消息</td></tr><tr><td>服务号</td><td>✅ 支持模板消息</td><td>需企业或组织认证</td></tr></tbody></table><blockquote><p>💡 服务号每月可主动向用户推送 <strong>4 条模板消息</strong>，适合企业级服务与重要通知场景。</p></blockquote><hr><h2 id="五、核心流程图"><a href="#五、核心流程图" class="headerlink" title="五、核心流程图"></a>五、核心流程图</h2><p>以下为小程序&#x2F;服务号消息推送核心流程示意图：</p><p><img src="/images/xxts.drawio.png" alt="核心流程图"></p><hr><h2 id="六、总结对比"><a href="#六、总结对比" class="headerlink" title="六、总结对比"></a>六、总结对比</h2><table><thead><tr><th>项目</th><th>小程序订阅消息</th><th>服务号模板消息</th><th>公众号图文推送</th></tr></thead><tbody><tr><td>接收强度</td><td>★★★★★</td><td>★★★★☆</td><td>★★★☆☆</td></tr><tr><td>适用场景</td><td>支付提醒、任务提醒、系统通知等</td><td>用户服务通知</td><td>日常图文传播</td></tr><tr><td>限制</td><td>需用户主动订阅</td><td>企业认证</td><td>用户关注即可</td></tr><tr><td>模板多样性</td><td>模板需符合类目限制</td><td>模板较自由</td><td>图文内容为主</td></tr></tbody></table><hr><p>如需集成微信消息推送，请结合业务所属类目、目标用户行为和提醒紧急程度，选择最合适的推送方式，以实现更高的用户触达率和业务转化效果。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;微信消息推送的几种方式&quot;&gt;&lt;a href=&quot;#微信消息推送的几种方式&quot; class=&quot;headerlink&quot; title=&quot;微信消息推送的几种方式&quot;&gt;&lt;/a&gt;微信消息推送的几种方式&lt;/h1&gt;&lt;h2 id=&quot;一、推送方式及对比&quot;&gt;&lt;a href=&quot;#一、推送方式及对</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>安装 vscode SCSS IntelliSense 插件后，$$符号问题</title>
@@ -515,30 +535,6 @@
     <category term="HTML" scheme="https://zhihuzeye.github.io/tags/HTML/"/>
     
     <category term="CSS3" scheme="https://zhihuzeye.github.io/tags/CSS3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 字符串</title>
-    <link href="https://zhihuzeye.github.io/2024/06/06/Java-%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    <id>https://zhihuzeye.github.io/2024/06/06/Java-%E5%AD%97%E7%AC%A6%E4%B8%B2/</id>
-    <published>2024-06-06T03:30:30.000Z</published>
-    <updated>2024-09-26T12:25:30.198Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="String-和-StringBuilder"><a href="#String-和-StringBuilder" class="headerlink" title="String 和 StringBuilder"></a>String 和 StringBuilder</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><ol><li>如何创建 String 对象<ul><li>String s1  &#x3D; “test”</li><li>String s2 &#x3D; new String();</li><li>String s3 &#x3D; new String(“test”)</li></ul></li><li>String 对象的常用方法</li></ol><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td>[<code>charAt(int index)</code>]</td><td>返回指定索引位置的字符</td></tr><tr><td>[<code>concat(String str)</code>]</td><td>将指定字符串连接到该字符串的结尾</td></tr><tr><td>[<code>contains(CharSequence s)</code>]</td><td>判断是否包含指定的字符序列</td></tr><tr><td>[<code>endsWith(String suffix)</code>]</td><td>判断字符串是否以指定的后缀结束</td></tr><tr><td>[<code>equals(Object obj)</code>]</td><td>比较字符串是否相等</td></tr><tr><td>[<code>equalsIgnoreCase(String str)</code>]</td><td>比较字符串是否相等,忽略大小写</td></tr><tr><td>[<code>indexOf(int ch)</code>]</td><td>返回指定字符在该字符串中首次出现处的索引</td></tr><tr><td>[<code>indexOf(String str)</code>]</td><td>返回指定子字符串在该字符串中首次出现处的索引</td></tr><tr><td>[<code>isEmpty()</code>]</td><td>判断字符串是否为空</td></tr><tr><td>[<code>length()</code>]</td><td>返回字符串的长度</td></tr><tr><td>[<code>replace(char oldChar, char newChar)</code>]</td><td>使用新值替换字符串中出现的所有旧值</td></tr><tr><td>[<code>split(String regex)</code>]</td><td>根据给定正则表达式的匹配拆分此字符串</td></tr><tr><td>[<code>startsWith(String prefix)</code>]</td><td>判断字符串是否以指定的前缀开始</td></tr><tr><td>[<code>substring(int beginIndex)</code>]</td><td>返回一个新的字符串,它是此字符串的一个子字符串</td></tr><tr><td>[<code>toCharArray()</code>]</td><td>将此字符串转换为一个新的字符数组</td></tr><tr><td>[<code>toLowerCase()</code>]</td><td>使用默认语言环境的规则将此 String 所有字符都转换为小写</td></tr><tr><td>[<code>toUpperCase()</code>]</td><td>使用默认语言环境的规则将此 String 所有字符都转换为大写</td></tr><tr><td>[<code>trim()</code>]</td><td>返回字符串的副本,删除前导空白和尾部空白</td></tr></tbody></table><ol><li>&#x3D;&#x3D; 和 equals 方法的区别</li></ol><table><thead><tr><th>比较项</th><th><code>==</code> 运算符</th><th><code>equals()</code> 方法</th></tr></thead><tbody><tr><td>比较对象</td><td>比较两个对象的引用是否指向同一个对象(内存地址是否相同)</td><td>比较两个对象的内容是否相同</td></tr><tr><td>适用类型</td><td>基本数据类型(如 int、double 等)和引用数据类型(如 String、Integer 等)</td><td>引用数据类型(如 String、Integer 等)</td></tr><tr><td>默认行为</td><td>基本数据类型比较值是否相同,引用数据类型比较引用是否相同</td><td>对于引用数据类型,默认比较对象的内容是否相同</td></tr><tr><td>重写</td><td>不能重写</td><td>可以被子类重写以实现自定义的比较逻辑</td></tr></tbody></table><p>总的来说:</p><ul><li><strong><code>==</code> 比较的是对象的内存地址，<code>equals()</code> 比较的是对象的内容。</strong></li><li>对于基本数据类型，<code>==</code> 比较的是值是否相同。</li><li>对于引用数据类型，如果没有重写 <code>equals()</code> 方法，那么 <code>equals()</code> 方法等价于 <code>==</code>。</li><li>通常比较引用数据类型的相等性时，应该使用 <code>equals()</code> 方法，因为这样可以比较对象的内容。</li></ul><ol start="2"><li>String 的不可变性<ul><li>String 对象一旦被创建，则不能修改，是不可变的。</li><li>所谓的修改其实是创建了新的对象，所指向的内存空间不变，</li></ul></li></ol><h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><ol><li>与 String 区别<ul><li>String 具有不可变性，而 StringBuilder 不具备</li></ul></li><li>使用建议<ul><li>当频繁操作字符串时，使用 StringBuilder</li></ul></li><li>StringBuilder 和 StringBuffer<ul><li>二者基本相似</li><li>StringBuffer 是线程安全的，StringBuilder 则没有，所以性能略高。</li></ul></li><li>常用方法<ul><li>StringBuilder append(String str)</li><li>StringBuilder delete(int start,int end)</li><li>StringBuilder insert(int offset,String str)</li><li>StringBuilder replace(int start,int end,String str)</li></ul></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;String-和-StringBuilder&quot;&gt;&lt;a href=&quot;#String-和-StringBuilder&quot; class=&quot;headerlink&quot; title=&quot;String 和 StringBuilder&quot;&gt;&lt;/a&gt;String 和 StringBuild</summary>
-      
-    
-    
-    
-    <category term="学习笔记" scheme="https://zhihuzeye.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="Java" scheme="https://zhihuzeye.github.io/tags/Java/"/>
     
   </entry>
   

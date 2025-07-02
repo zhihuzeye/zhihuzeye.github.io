@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2D和3D的转换</title>
+    <url>/2024/06/04/2D%E5%92%8C3D%E7%9A%84%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<h2 id="3D变形"><a href="#3D变形" class="headerlink" title="3D变形"></a>3D变形</h2><ol>
+<li>3D旋转<ul>
+<li>将transform的属性设置为rotateX()或者rotateY()，即可实现绕横轴、纵轴旋转</li>
+</ul>
+</li>
+<li>空间移动<ul>
+<li>当元素进行3D旋转后，即可继续添加translateX()、translateY()、translateZ()属性让元素在空间进行移动</li>
+</ul>
+</li>
+<li>perspective（景深）<ul>
+<li>该属性用来定义透视强度，可以理解为“人眼到舞台的距离”，单位是px<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- div 是舞台，必须设置perperctive属性，p是演员，设置transform属性 --&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>transform-style（指定嵌套元素是怎样在三维空间中呈现。）<ul>
+<li>preserve-3d 表示所有子元素在3D空间中呈现。</li>
+<li>flat 表示所有子元素在2D平面呈现。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">   <span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        * &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">       <span class="selector-tag">section</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">100px</span> auto;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">perspective</span>: <span class="number">10000px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">perspective</span>: <span class="number">10000px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>: relative;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 设置变形类型，保留它内部的3D效果 */</span></span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 这个盒子又是舞台，又是演员，这个box整体带着里面的p旋转 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transition</span>:all <span class="number">10s</span> ease <span class="number">0s</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">section</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">360deg</span>) <span class="built_in">rotateY</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">top</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">left</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">1</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">219</span>, <span class="number">56</span>, <span class="number">211</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 前面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">42</span>, <span class="number">128</span>, <span class="number">199</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 顶面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">90deg</span>) <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">3</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">56</span>, <span class="number">219</span>, <span class="number">83</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 背面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">180deg</span>) <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">4</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">213</span>, <span class="number">216</span>, <span class="number">32</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 底面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(-<span class="number">90deg</span>) <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">5</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">236</span>, <span class="number">82</span>, <span class="number">102</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 侧面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(<span class="number">90deg</span>) <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">6</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">119</span>, <span class="number">17</span>, <span class="number">236</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 侧面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(-<span class="number">90deg</span>) <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h2 id="2D变形"><a href="#2D变形" class="headerlink" title="2D变形"></a>2D变形</h2><ol>
+<li>旋转变形<ul>
+<li>transform: rotate(45deg);</li>
+<li>若角度为正，就是顺时针，否则就是逆时针</li>
+<li>transform-origin 属性设置自己的自定义变换原点<ul>
+<li>transform-origin: 50px 40px;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>缩放变形<ul>
+<li>transform: scale(3);</li>
+<li>以中心点为原点缩放</li>
+</ul>
+</li>
+<li>斜切变形<ul>
+<li>transform: skew(10deg,20deg); 即可实现斜切变形</li>
+<li>x的斜切角度，y的斜切角度</li>
+</ul>
+</li>
+<li>位移变形IE9<ul>
+<li>将 transform 属性设置为 translate ，即可实现位移变形<ul>
+<li>transform: translate(200px,400px);</li>
+</ul>
+</li>
+<li>和相对定位非常像，位移变形也会“老家留坑”，形影分离。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>5月最后一天，我开源了一个数据可视化大屏项目</title>
     <url>/2024/05/31/5%E6%9C%88%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%A4%A9%EF%BC%8C%E5%BC%80%E6%BA%90%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%B0/</url>
     <content><![CDATA[<p>设计原型：<br><img src="/images/design.png" alt="大屏设计"><br>项目成果：<br><img src="/images/20240531110200.png" alt="项目成果"></p>
@@ -11,7 +70,7 @@
 </li>
 <li><p>项目全屏展示点击右上角全屏按钮或（按 F11）。</p>
 </li>
-<li><p>项目环境：<a href="mailto:&#x72;&#101;&#x61;&#x63;&#x74;&#64;&#x31;&#56;&#x2e;&#50;&#x2e;&#x30;">&#x72;&#101;&#x61;&#x63;&#x74;&#64;&#x31;&#56;&#x2e;&#50;&#x2e;&#x30;</a>、<a href="mailto:&#116;&#x79;&#x70;&#101;&#x73;&#x63;&#x72;&#105;&#x70;&#116;&#x40;&#53;&#46;&#50;&#46;&#x32;">&#116;&#x79;&#x70;&#101;&#x73;&#x63;&#x72;&#105;&#x70;&#116;&#x40;&#53;&#46;&#50;&#46;&#x32;</a>、<a href="mailto:&#118;&#x69;&#x74;&#x65;&#x40;&#53;&#46;&#50;&#46;&#x30;">&#118;&#x69;&#x74;&#x65;&#x40;&#53;&#46;&#50;&#46;&#x30;</a>、<a href="mailto:&#x65;&#99;&#x68;&#97;&#x72;&#116;&#115;&#x40;&#x35;&#46;&#x35;&#x2e;&#48;">&#x65;&#99;&#x68;&#97;&#x72;&#116;&#115;&#x40;&#x35;&#46;&#x35;&#x2e;&#48;</a>、<a href="mailto:&#x70;&#x6e;&#112;&#109;&#64;&#55;&#x2e;&#x32;&#55;&#x2e;&#x30;">&#x70;&#x6e;&#112;&#109;&#64;&#55;&#x2e;&#x32;&#55;&#x2e;&#x30;</a>、<a href="mailto:&#110;&#x6f;&#x64;&#x65;&#64;&#118;&#49;&#x36;&#46;&#x31;&#56;&#46;&#x31;">&#110;&#x6f;&#x64;&#x65;&#64;&#118;&#49;&#x36;&#46;&#x31;&#56;&#46;&#x31;</a>。</p>
+<li><p>项目环境：<a href="mailto:&#114;&#x65;&#x61;&#99;&#x74;&#64;&#49;&#x38;&#x2e;&#50;&#x2e;&#x30;">&#114;&#x65;&#x61;&#99;&#x74;&#64;&#49;&#x38;&#x2e;&#50;&#x2e;&#x30;</a>、<a href="mailto:&#116;&#121;&#x70;&#101;&#x73;&#x63;&#114;&#x69;&#x70;&#x74;&#x40;&#53;&#46;&#50;&#46;&#x32;">&#116;&#121;&#x70;&#101;&#x73;&#x63;&#114;&#x69;&#x70;&#x74;&#x40;&#53;&#46;&#50;&#46;&#x32;</a>、<a href="mailto:&#118;&#105;&#x74;&#x65;&#x40;&#x35;&#46;&#x32;&#x2e;&#x30;">&#118;&#105;&#x74;&#x65;&#x40;&#x35;&#46;&#x32;&#x2e;&#x30;</a>、<a href="mailto:&#101;&#99;&#x68;&#97;&#x72;&#116;&#115;&#64;&#53;&#46;&#x35;&#46;&#48;">&#101;&#99;&#x68;&#97;&#x72;&#116;&#115;&#64;&#53;&#46;&#x35;&#46;&#48;</a>、<a href="mailto:&#112;&#x6e;&#x70;&#109;&#x40;&#x37;&#x2e;&#x32;&#55;&#46;&#48;">&#112;&#x6e;&#x70;&#109;&#x40;&#x37;&#x2e;&#x32;&#55;&#46;&#48;</a>、<a href="mailto:&#x6e;&#x6f;&#x64;&#101;&#x40;&#118;&#49;&#54;&#46;&#x31;&#56;&#x2e;&#x31;">&#x6e;&#x6f;&#x64;&#101;&#x40;&#118;&#49;&#54;&#46;&#x31;&#56;&#x2e;&#x31;</a>。</p>
 </li>
 </ul>
 <p>友情链接：</p>
@@ -155,53 +214,98 @@
       </tags>
   </entry>
   <entry>
-    <title>2D和3D的转换</title>
-    <url>/2024/06/04/2D%E5%92%8C3D%E7%9A%84%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<h2 id="3D变形"><a href="#3D变形" class="headerlink" title="3D变形"></a>3D变形</h2><ol>
-<li>3D旋转<ul>
-<li>将transform的属性设置为rotateX()或者rotateY()，即可实现绕横轴、纵轴旋转</li>
+    <title>CSS3浮动定位与背景样式</title>
+    <url>/2024/06/04/CSS3%E6%B5%AE%E5%8A%A8%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%83%8C%E6%99%AF%E6%A0%B7%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><ol>
+<li>浮动的基本概念<ul>
+<li><em><strong>垂直显示的浮动，不要设置浮动，只有并排显示的盒子才要设置浮动！</strong></em></li>
+<li>“大盒子带着小盒子跑”，一个大盒子中，又是一个小天地，内部可以继续使用浮动</li>
+<li>超市售卖的塑料袋0.3元一个，div是免费的！不要节约盒子</li>
+<li><strong>本质</strong><ul>
+<li>浮动的最本质的功能：实现并排</li>
+<li>浮动的要点：要浮动，并排的盒子都要设置浮动</li>
+<li>父盒子要有足够的宽度，否则子盒子会掉下去</li>
+<li>浮动的顺序贴靠特性<ul>
+<li><strong>子盒子会按顺序贴靠，如果没有足够的空间，则会寻找再前一个兄弟元素</strong></li>
 </ul>
 </li>
-<li>空间移动<ul>
-<li>当元素进行3D旋转后，即可继续添加translateX()、translateY()、translateZ()属性让元素在空间进行移动</li>
+<li>浮动的元素一定能设置宽高<ul>
+<li>浮动元素不在区分块级元素、行内元素，已经脱离了标准的文档流，一律能够设置宽度和高度，即使它是span标签或者标签等</li>
 </ul>
 </li>
-<li>perspective（景深）<ul>
-<li>该属性用来定义透视强度，可以理解为“人眼到舞台的距离”，单位是px<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- div 是舞台，必须设置perperctive属性，p是演员，设置transform属性 --&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>transform-style（指定嵌套元素是怎样在三维空间中呈现。）<ul>
-<li>preserve-3d 表示所有子元素在3D空间中呈现。</li>
-<li>flat 表示所有子元素在2D平面呈现。<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">   <span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        * &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">       <span class="selector-tag">section</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">100px</span> auto;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">perspective</span>: <span class="number">10000px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">perspective</span>: <span class="number">10000px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>: relative;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 设置变形类型，保留它内部的3D效果 */</span></span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 这个盒子又是舞台，又是演员，这个box整体带着里面的p旋转 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transition</span>:all <span class="number">10s</span> ease <span class="number">0s</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">section</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">360deg</span>) <span class="built_in">rotateY</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">top</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">left</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">1</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">219</span>, <span class="number">56</span>, <span class="number">211</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 前面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">42</span>, <span class="number">128</span>, <span class="number">199</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 顶面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">90deg</span>) <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">3</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">56</span>, <span class="number">219</span>, <span class="number">83</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 背面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">180deg</span>) <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">4</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">213</span>, <span class="number">216</span>, <span class="number">32</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 底面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(-<span class="number">90deg</span>) <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">5</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">236</span>, <span class="number">82</span>, <span class="number">102</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 侧面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(<span class="number">90deg</span>) <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box</span> <span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">6</span>) &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">119</span>, <span class="number">17</span>, <span class="number">236</span>, <span class="number">0.486</span>);</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 侧面 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(-<span class="number">90deg</span>) <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>使用浮动实现网页布局</li>
+<li>BFC规范和浏览器差异<ul>
+<li>BFC（ Box formatting Context）块级格式化上下文 是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦然</li>
+<li>从一个现象开始说起<ul>
+<li><strong>一个盒子不设置height，当内容的子元素都浮动时，无法撑起自身</strong></li>
+<li>这个盒子没有形成BFC</li>
+<li><em><strong>如何形成BFC</strong></em><ul>
+<li>1、float的值不是none</li>
+<li>2、position的值不是static或者relative</li>
+<li>3、display的值是inline-block、flex或者inline-flex</li>
+<li>4、overflow:hidden<ul>
+<li>溢出隐藏，溢出盒子边框会隐藏</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BFC的其他作用<ul>
+<li>BFC可以取消盒子的margin塌陷</li>
+<li>BFC可以阻止元素被浮动的元素覆盖</li>
+</ul>
+</li>
+<li>浏览器差异<ul>
+<li>IE6、IE7浏览器使用haslayout机制，和BFC规范略有差异，比如IE浏览器可以使用zoom:1属性，“让壳子拥有layout”</li>
+<li>如果要兼容IE6、IE7网页时，尽量让网页设计的简单。内部有浮动的盒子要设置height属性，规范编程，不要“玩杂技”</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>清除浮动<ul>
+<li>clear: both;</li>
+<li>overflow:hidden</li>
 </ul>
 </li>
 </ol>
-<h2 id="2D变形"><a href="#2D变形" class="headerlink" title="2D变形"></a>2D变形</h2><ol>
-<li>旋转变形<ul>
-<li>transform: rotate(45deg);</li>
-<li>若角度为正，就是顺时针，否则就是逆时针</li>
-<li>transform-origin 属性设置自己的自定义变换原点<ul>
-<li>transform-origin: 50px 40px;</li>
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><ol>
+<li>相对定位<ul>
+<li>相对定位：盒子可以相对自己原来的位置进行调整，称为”相对定位“</li>
+<li><strong>position: relative;</strong></li>
+<li>值可以是负数，即往相反的位置移动</li>
+<li>相对定位的元素，会在“老家留坑”，本质上任然是在原来的位置，只不过渲染在新的地方而已，渲染的图形可以比如成“影子”，不会对其他元素产生任何影响</li>
+<li>相对定位的用途：用来微调元素位置。可以当做绝对定位的参考盒子。</li>
 </ul>
 </li>
+<li>绝对定位<ul>
+<li>盒子可以在浏览器中，以坐标进行位置精准描述，拥有自己的绝对位置</li>
+<li><strong>position: absolute;</strong></li>
+<li>left 到左边的距离，right 到右边的距离，top 到上边的距离，bottom到下边的距离</li>
+<li>绝对定位元素脱离标准文档流，将释放自己的位置，对其他元素不会产生任何干扰，而是对它进行压盖</li>
+<li><em><strong>脱离标准文档流的方法：浮动、绝对定位、固定定位</strong></em></li>
+<li>绝对定位的参考盒子：绝对定位的盒子会以自己祖先元素中，离自己最近的拥有定位属性的盒子，当做基准点，这个盒子通常是相对定位的，所以这个性质也叫作 <strong>“子绝父相”</strong></li>
+<li>绝对定位的盒子并不是永远以浏览器作为基点</li>
+<li><strong>绝对定位的盒子垂直居中</strong><ul>
+<li>position:absolute; top:50%; margin-top:-自己高度的一半</li>
 </ul>
 </li>
-<li>缩放变形<ul>
-<li>transform: scale(3);</li>
-<li>以中心点为原点缩放</li>
+<li>堆叠顺序 z-index<ul>
+<li>没有单位，数值大的就能压盖住小的</li>
 </ul>
 </li>
-<li>斜切变形<ul>
-<li>transform: skew(10deg,20deg); 即可实现斜切变形</li>
-<li>x的斜切角度，y的斜切角度</li>
+<li>绝对定位用途：“压盖”、“遮罩”效果，结合JS实现动画效果，“雪碧图”</li>
 </ul>
 </li>
-<li>位移变形IE9<ul>
-<li>将 transform 属性设置为 translate ，即可实现位移变形<ul>
-<li>transform: translate(200px,400px);</li>
-</ul>
-</li>
-<li>和相对定位非常像，位移变形也会“老家留坑”，形影分离。</li>
+<li>固定定位<ul>
+<li>position: fixed;</li>
+<li>固定定位只能以页面为参考点，没有“子固父相”这个性质</li>
+<li>固定定位脱离标准文档流</li>
+<li>用途：返回顶部，楼层导航等</li>
 </ul>
 </li>
 </ol>
@@ -391,423 +495,66 @@
       </tags>
   </entry>
   <entry>
-    <title>DOM</title>
-    <url>/2024/06/13/DOM/</url>
-    <content><![CDATA[<h2 id="DOM-基本概念"><a href="#DOM-基本概念" class="headerlink" title="DOM 基本概念"></a>DOM 基本概念</h2><ol>
-<li>DOM 是操控 HTML和CSS的桥梁</li>
-<li>DOM (Doucument Object Model) 文档对象类型，是Javascript操作HTML文档的接口，使文档操作变得非常优雅简便</li>
-<li>DOM最大的特点是将文档表示为节点树</li>
+    <title>JS语法与变量</title>
+    <url>/2024/06/14/JS%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h2 id="输出语句"><a href="#输出语句" class="headerlink" title="输出语句"></a>输出语句</h2><ol>
+<li>alert</li>
+<li>console</li>
 </ol>
-<h2 id="节点访问和位置关系"><a href="#节点访问和位置关系" class="headerlink" title="节点访问和位置关系"></a>节点访问和位置关系</h2><ol>
-<li>访问元素节点<ul>
-<li>访问元素节点的常用方法<ul>
-<li><code>document.getElementById()</code><ul>
-<li>通过id得到元素<ul>
-<li>如果页面上有相同id的元素，则只能得到一个</li>
-<li>不管元素藏得多深，都能把它找到</li>
-<li>延迟运行<ul>
-<li>通常JS 一定要写到HTML的节点后面，否则JS无法找到相应的HTML节点</li>
-<li>可以使用 window.onload &#x3D; function(){} 事件 ,使页面加载完后再执行指定代码</li>
+<h2 id="前端开发主要有哪些层，语言和功能是什么？"><a href="#前端开发主要有哪些层，语言和功能是什么？" class="headerlink" title="前端开发主要有哪些层，语言和功能是什么？"></a>前端开发主要有哪些层，语言和功能是什么？</h2><ol>
+<li>HTML<ul>
+<li>结构层  搭建骨架、描述页面语义</li>
 </ul>
 </li>
+<li>CSS<ul>
+<li>样式层</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><code>document.getElementsByTagName()</code><ul>
-<li>通过标签名称得到元素数组</li>
-</ul>
-</li>
-<li><code>document.getElementsByClassName()</code><ul>
-<li>通过类名得到元素数组</li>
-</ul>
-</li>
-<li><code>document.querySelector()</code><ul>
-<li>通过选择器得到元素</li>
-</ul>
-</li>
-<li><code>document.querySelectorAll()</code><ul>
-<li>通过选择器得到元素数组</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>节点的关系<ul>
-<li>相对于父节点<ul>
-<li>可以使用 farstChild  得到第一个子节点</li>
-<li>可以使用 lastChild 得到最后一个子节点</li>
-</ul>
-</li>
-<li>相对于子节点<ul>
-<li>父节点可以通过使用 childNodes 得到所有的子节点信息</li>
-<li>子节点可以通过 parentNode 来访问父节点</li>
-<li>对于后面一个 兄弟节点 可以使用 nextSibling 获取</li>
-<li>对于前面一个兄弟节点 可以使用 perviousSibling 获取前面一个</li>
-</ul>
-</li>
-<li><strong>注意：文本节点也属于节点</strong><ul>
-<li>文本节点也属于节点，使用节点关系时，一定要注意</li>
-</ul>
-</li>
-<li>只考虑元素节点<ul>
-<li>children</li>
-<li>firstElementChild</li>
-<li>lastElementChild</li>
-<li>perviousElementSibling</li>
-<li>nextElementSiling</li>
-</ul>
-</li>
+<li>Javascript<ul>
+<li>行为层  表单验证、数据交互、数据收发等</li>
 </ul>
 </li>
 </ol>
-<h2 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h2><ol>
-<li>insertBefore<ul>
-<li>父节点.insertBefore(孤儿节点,标杆节点);</li>
-</ul>
-</li>
-<li>appendChild<ul>
-<li>父节点.appendChild(内容)</li>
-<li>在尾部追加</li>
-</ul>
-</li>
-<li>改变元素节点的CSS样式<ul>
-<li><code>oBox.style.fontSize  = &#39;32px&#39;</code></li>
-</ul>
-</li>
-<li>改变元素的HTML的属性<ul>
-<li>W3C 属性 直接，元素.属性 &#x3D; 属性值</li>
-<li>非标准 W3C 属性 <ul>
-<li>元素.setAttribute(key,value)</li>
-<li>元素.getAttribute(key)</li>
-</ul>
-</li>
-</ul>
-</li>
+<h2 id="变量声明提升（面试题）"><a href="#变量声明提升（面试题）" class="headerlink" title="变量声明提升（面试题）"></a><strong>变量声明提升（面试题）</strong></h2><ol>
+<li>你可以提前使用一个稍后才声明的变量，而不会引发异常</li>
+<li>在执行所有代码前，JS有预解析阶段，会预读所有变量的定义</li>
+<li>只提升定义，并不提升值</li>
+<li>var 关键词可以变量提升， let 并不能</li>
+<li>在实际开发中，一定要先定义变量赋值，再使用。</li>
 </ol>
-<h2 id="nodeType常用属性值"><a href="#nodeType常用属性值" class="headerlink" title="nodeType常用属性值"></a>nodeType常用属性值</h2><ul>
-<li>1  <code>元素节点，例如&lt;p&gt; 和 &lt;div&gt;</code></li>
-<li>3  <code>文字节点</code></li>
-<li>8  <code>注释节点</code></li>
-<li>9  <code>document节点</code></li>
-<li>10  <code>DTD节点</code></li>
-</ul>
-<h2 id="节点的创建、移除和克隆"><a href="#节点的创建、移除和克隆" class="headerlink" title="节点的创建、移除和克隆"></a>节点的创建、移除和克隆</h2><ol>
-<li>createElement<ul>
-<li>创建一个指定tagname的HTML元素</li>
+<h2 id="变量是什么"><a href="#变量是什么" class="headerlink" title="变量是什么"></a>变量是什么</h2><ol>
+<li>要定义变量，第一步就是声明它，并给它赋值</li>
+<li>变量是计算机语言中能存储计算结果或能表示值抽象概念</li>
+<li>变量不是数值本身，它们仅仅是一个用于存储数值的容器</li>
+<li>标识符的命名规则（函数、类名、对象的属性也要遵守这个规则）<ul>
+<li><strong>变量名大小写敏感，a和A两个不同的变量</strong></li>
+<li><strong>不能是关键词或保留词</strong></li>
+<li><strong>只能由字母、数字、下划线、$组成，但不能以数字开头</strong></li>
 </ul>
 </li>
-<li>获取body节点<ul>
-<li>document.body</li>
+<li>优秀的变量命名法<ul>
+<li>驼峰命名法 例如：mathTestScore</li>
+<li>c风格 例如：math_test_score</li>
+<li>匈牙利命名法 例如：iMathTestScore ，第一个字母 i，提示变量类型</li>
 </ul>
 </li>
-<li>获取html节点<ul>
-<li>document.documentElement</li>
+<li>变量的默认值<ul>
+<li>一个变量只定义，但没有赋值，默认是undefined</li>
 </ul>
 </li>
-<li>移动节点<ul>
-<li>新父节点.appendChild(已经有父亲的节点)</li>
-<li>新父节点.insterBefore(已经有父亲的节点,标杆子节点)</li>
+<li>等号表示赋值</li>
+<li>同时声明多个变量<ul>
+<li>var a&#x3D;0,b&#x3D;0;</li>
 </ul>
 </li>
-<li>删除节点<ul>
-<li>父节点.removeChild(要删除的子节点)</li>
-<li><strong>节点不能主动删除自己，必须由父节点删除它</strong></li>
-</ul>
-</li>
-<li>克隆节点<ul>
-<li>cloneNode() 方法可以克隆节点，克隆出的节点是“孤儿节点”</li>
-<li>var 孤儿节点 &#x3D; 老节点.cloneNode(true|false);</li>
-<li>cloneNode 参数是一个布尔值，表示是否采用深度克隆；如果为true该节点的所有后代节点也都会被克隆，如果为false，则只克隆该节点本身</li>
-</ul>
-</li>
-<li>访问元素节点<ul>
-<li>所谓 ”访问“元素节点，就是指”得到“、”获取“页面上的元素节点。</li>
-<li>访问元素节点 主要依赖于 document</li>
-</ul>
-</li>
-</ol>
-<h2 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h2><ol>
-<li>事件监听<ul>
-<li>什么是“事件监听”<ul>
-<li>DOM允许我们书写Javascript代码以让HTML元素对事件做出反应</li>
-<li>什么是”事件”：用户与网页的交互动作<ul>
-<li>点用户点击元素的时候</li>
-<li>点鼠标移动到元素的时候</li>
-<li>当网页加载完成的时候…</li>
-</ul>
-</li>
-<li>“监听”,顾名思义就是让计算机随时能够发现这个事件发生了，从而执行程序员预先编写的一些程序</li>
-<li>设置事件监听的方法主要有 onxxx 和 addEventListener()</li>
-</ul>
-</li>
-<li>常见鼠标事件监听<ul>
-<li><code>onclick 当鼠标点击某个对象</code></li>
-<li><code>ondblclick 当鼠标双击某个对象</code></li>
-<li><code>onmousedown 当某个鼠标按键在某个对象上被按下</code></li>
-<li><code>onmouseup 当某个鼠标按键在某个对象上被松开</code></li>
-<li><code>onmousemove 当某个鼠标按键在某个对象上被移动</code></li>
-<li><code>onmouseenter 当鼠标进入某个对象</code></li>
-<li><code>onmouseleave 当鼠标离开某个对象</code></li>
-</ul>
-</li>
-<li>常见的键盘事件监听<ul>
-<li><code>onkeyperss 当某个键盘的键被按下（系统按钮如箭头键和功能键无法得到识别）</code></li>
-<li><code>onkeydown 当某个键盘的键被按下（系统按钮可以识别，并且会优先onkeypress发生）</code></li>
-<li><code>onkeyup 当某个键盘的键被松开</code></li>
-</ul>
-</li>
-<li>常见的表单事件监听<ul>
-<li><code>onchange 当用户改变域的内容</code></li>
-<li><code>onfocus 当某个元素获得焦点（比如tab或鼠标点击）</code></li>
-<li><code>onblur 当元素失去焦点</code></li>
-<li><code>onsubmit 当表单被提交</code></li>
-<li><code>onreset 当表单被重置 </code></li>
-<li><code>oninput 当用户输入</code></li>
-</ul>
-</li>
-<li>常见的页面事件监听<ul>
-<li><code>onload 当页面或图像被完成加载</code></li>
-<li><code>onunload  当用户退出页面</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>事件传播<ul>
-<li>事件的传播是：先从外到内，然后再从内到外<ul>
-<li>从外到内、捕获阶段（capturing phase）</li>
-<li>从内到外、冒泡阶段（Bubbling phase）</li>
-<li>onxxx 这样的写法只能监听冒泡阶段</li>
-</ul>
-</li>
-<li>addEventListener() 方法<ul>
-<li>DOM 0级：只能监听冒泡阶段<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">box2.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;我是box2&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>DOM 2级事件监听<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">box1.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><em><strong>true 监听捕获的阶段</strong></em></li>
-<li><em><strong>false 监听冒泡阶段【默认】</strong></em></li>
-</ul>
-</li>
-<li><strong>注意事项：最内部的元素不再区分捕获和冒泡阶段，会先执行写在前面的监听，然后执行后写的监听</strong></li>
-<li><strong>注意事项：如果给元素设置相同的两个或多个同名事件，则DOM0级写法后面写的会覆盖先写的；而DOM2级会按照顺序执行</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>事件对象<ul>
-<li>什么是事件对象<ul>
-<li>事件处理函数提供一个形式参数，它是一个对象，封装了本次事件的细节</li>
-</ul>
-</li>
-<li>e.charCode 和 e.keyCode 属性<ul>
-<li>e.charCode 属性通常用于 onkeypress 事件中，表示用户输入的字符的 “字符码”<ul>
-<li><code>数字0 ~ 数字9  48 ~ 57</code></li>
-<li><code>大写字母A ~ Z  65 ~ 90</code></li>
-<li><code>小写字母 a ~ z  97 ~ 122</code></li>
-</ul>
-</li>
-<li>e.keyCode 属性通常用于 onkeydown 事件和onkeyup中，表示用户按下按键的 “键码”<ul>
-<li><code>数字0 ~ 数字9  48 ~ 57</code></li>
-<li><code>字母部分大小写 a ~ z  65 ~ 90 （不区分大小写）</code></li>
-<li><code>四个方向键（左、上、右、下）  37、38、39、40</code></li>
-<li><code>回车键  13</code></li>
-<li><code>空格键  32</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><em><strong>e.preventDefault() 方法</strong></em><ul>
-<li>阻止事件产生的“默认动作”</li>
-</ul>
-</li>
-<li><em><strong>e.stopPropagation() 方法</strong></em><ul>
-<li>阻止事件继续传播</li>
-<li>在一些场合，非常有必要切断事件继续传播，否则会造成页面特效显示出bug</li>
-</ul>
-</li>
-<li>鼠标滚轮事件<ul>
-<li>鼠标滚轮事件是 onmousewheel ，它的事件对象e提供deltaY 属性 表示鼠标滚动方向，向下滚动时返回正值，向上滚动时，返回负值。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>事件委托</strong><ul>
-<li>批量添加事件监听的性能问题<ul>
-<li>每一个事件监听注册都会消耗一定的系统内存，而批量添加事件会导致监听数量太多，内存消耗会非常大</li>
-</ul>
-</li>
-<li>定义<ul>
-<li>利用事件冒泡机制，将后台元素事件委托给祖先元素</li>
-</ul>
-</li>
-<li>e.target 和 e.currentTarget 属性<ul>
-<li>target<ul>
-<li><em><strong>触发此事件的最早元素，即“事件源元素”</strong></em></li>
-</ul>
-</li>
-<li>currentTarget<ul>
-<li>事件处理程序附加到的元素</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>使用场景<ul>
-<li>当有大量类似元素需要批量添加事件监听时，使用事件委托可以减少内存开销</li>
-<li>当有动态元素节点上树时，使用事件委托可以让新上树的元素具有事件监听</li>
-</ul>
-</li>
-<li>使用时注意事项<ul>
-<li>onmouseenter 和 onmouseover 都表示“鼠标进入”，它们有什么区别呢？<ul>
-<li>onmouseenter 不冒泡</li>
-<li>onmouseover 冒泡</li>
-</ul>
-</li>
-<li><em><strong>不能委托不冒泡的事件给祖先元素</strong></em></li>
-<li>最内层的元素不能再有额外的内层元素了，比如<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span>&gt;</span>我是span<span class="tag">&lt;/<span class="name">span</span>&gt;</span>列表项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
+<li>var 定义的变量会被挂载在 window 上，let 不会</li>
 </ol>
 ]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 包装类</title>
-    <url>/2024/06/06/Java-%E5%8C%85%E8%A3%85%E7%B1%BB/</url>
-    <content><![CDATA[<h2 id="什么是包装类"><a href="#什么是包装类" class="headerlink" title="什么是包装类"></a>什么是包装类</h2><ol>
-<li><em><strong>基本数据类型不具有对象特征，没有属性和方法，无法对象化交互，包装类的产生就是为了解决这样的问题，通过包装类，让基本数据类型拥有属性、方法，可以对象化交互</strong></em></li>
-<li>包装类不允许被继承，没有子类</li>
-</ol>
-<h2 id="包装类与基本数据类型之间的对应关系"><a href="#包装类与基本数据类型之间的对应关系" class="headerlink" title="包装类与基本数据类型之间的对应关系"></a>包装类与基本数据类型之间的对应关系</h2><p>包装类与基本数据类型</p>
-<ul>
-<li>byte -&gt; Byte</li>
-<li>short -&gt; Short</li>
-<li><strong>int -&gt; Integer</strong></li>
-<li>long -&gt; Long</li>
-<li>float -&gt; Float</li>
-<li>double -&gt; Double</li>
-<li><strong>char -&gt; Character</strong></li>
-<li>boolean -&gt; Boolean</li>
-<li>除了 double、float 都可以应用对象常量池的概念</li>
-</ul>
-<h2 id="包装类的常用方法"><a href="#包装类的常用方法" class="headerlink" title="包装类的常用方法"></a>包装类的常用方法</h2><p> <a href="https://docs.oracle.com/javase/8/docs/api/">Java 文档手册</a></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS3浮动定位与背景样式</title>
-    <url>/2024/06/04/CSS3%E6%B5%AE%E5%8A%A8%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%83%8C%E6%99%AF%E6%A0%B7%E5%BC%8F/</url>
-    <content><![CDATA[<h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><ol>
-<li>浮动的基本概念<ul>
-<li><em><strong>垂直显示的浮动，不要设置浮动，只有并排显示的盒子才要设置浮动！</strong></em></li>
-<li>“大盒子带着小盒子跑”，一个大盒子中，又是一个小天地，内部可以继续使用浮动</li>
-<li>超市售卖的塑料袋0.3元一个，div是免费的！不要节约盒子</li>
-<li><strong>本质</strong><ul>
-<li>浮动的最本质的功能：实现并排</li>
-<li>浮动的要点：要浮动，并排的盒子都要设置浮动</li>
-<li>父盒子要有足够的宽度，否则子盒子会掉下去</li>
-<li>浮动的顺序贴靠特性<ul>
-<li><strong>子盒子会按顺序贴靠，如果没有足够的空间，则会寻找再前一个兄弟元素</strong></li>
-</ul>
-</li>
-<li>浮动的元素一定能设置宽高<ul>
-<li>浮动元素不在区分块级元素、行内元素，已经脱离了标准的文档流，一律能够设置宽度和高度，即使它是span标签或者标签等</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>使用浮动实现网页布局</li>
-<li>BFC规范和浏览器差异<ul>
-<li>BFC（ Box formatting Context）块级格式化上下文 是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦然</li>
-<li>从一个现象开始说起<ul>
-<li><strong>一个盒子不设置height，当内容的子元素都浮动时，无法撑起自身</strong></li>
-<li>这个盒子没有形成BFC</li>
-<li><em><strong>如何形成BFC</strong></em><ul>
-<li>1、float的值不是none</li>
-<li>2、position的值不是static或者relative</li>
-<li>3、display的值是inline-block、flex或者inline-flex</li>
-<li>4、overflow:hidden<ul>
-<li>溢出隐藏，溢出盒子边框会隐藏</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>BFC的其他作用<ul>
-<li>BFC可以取消盒子的margin塌陷</li>
-<li>BFC可以阻止元素被浮动的元素覆盖</li>
-</ul>
-</li>
-<li>浏览器差异<ul>
-<li>IE6、IE7浏览器使用haslayout机制，和BFC规范略有差异，比如IE浏览器可以使用zoom:1属性，“让壳子拥有layout”</li>
-<li>如果要兼容IE6、IE7网页时，尽量让网页设计的简单。内部有浮动的盒子要设置height属性，规范编程，不要“玩杂技”</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>清除浮动<ul>
-<li>clear: both;</li>
-<li>overflow:hidden</li>
-</ul>
-</li>
-</ol>
-<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><ol>
-<li>相对定位<ul>
-<li>相对定位：盒子可以相对自己原来的位置进行调整，称为”相对定位“</li>
-<li><strong>position: relative;</strong></li>
-<li>值可以是负数，即往相反的位置移动</li>
-<li>相对定位的元素，会在“老家留坑”，本质上任然是在原来的位置，只不过渲染在新的地方而已，渲染的图形可以比如成“影子”，不会对其他元素产生任何影响</li>
-<li>相对定位的用途：用来微调元素位置。可以当做绝对定位的参考盒子。</li>
-</ul>
-</li>
-<li>绝对定位<ul>
-<li>盒子可以在浏览器中，以坐标进行位置精准描述，拥有自己的绝对位置</li>
-<li><strong>position: absolute;</strong></li>
-<li>left 到左边的距离，right 到右边的距离，top 到上边的距离，bottom到下边的距离</li>
-<li>绝对定位元素脱离标准文档流，将释放自己的位置，对其他元素不会产生任何干扰，而是对它进行压盖</li>
-<li><em><strong>脱离标准文档流的方法：浮动、绝对定位、固定定位</strong></em></li>
-<li>绝对定位的参考盒子：绝对定位的盒子会以自己祖先元素中，离自己最近的拥有定位属性的盒子，当做基准点，这个盒子通常是相对定位的，所以这个性质也叫作 <strong>“子绝父相”</strong></li>
-<li>绝对定位的盒子并不是永远以浏览器作为基点</li>
-<li><strong>绝对定位的盒子垂直居中</strong><ul>
-<li>position:absolute; top:50%; margin-top:-自己高度的一半</li>
-</ul>
-</li>
-<li>堆叠顺序 z-index<ul>
-<li>没有单位，数值大的就能压盖住小的</li>
-</ul>
-</li>
-<li>绝对定位用途：“压盖”、“遮罩”效果，结合JS实现动画效果，“雪碧图”</li>
-</ul>
-</li>
-<li>固定定位<ul>
-<li>position: fixed;</li>
-<li>固定定位只能以页面为参考点，没有“子固父相”这个性质</li>
-<li>固定定位脱离标准文档流</li>
-<li>用途：返回顶部，楼层导航等</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -1109,66 +856,319 @@
       </tags>
   </entry>
   <entry>
-    <title>JS语法与变量</title>
-    <url>/2024/06/14/JS%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/</url>
-    <content><![CDATA[<h2 id="输出语句"><a href="#输出语句" class="headerlink" title="输出语句"></a>输出语句</h2><ol>
-<li>alert</li>
-<li>console</li>
+    <title>Java 包装类</title>
+    <url>/2024/06/06/Java-%E5%8C%85%E8%A3%85%E7%B1%BB/</url>
+    <content><![CDATA[<h2 id="什么是包装类"><a href="#什么是包装类" class="headerlink" title="什么是包装类"></a>什么是包装类</h2><ol>
+<li><em><strong>基本数据类型不具有对象特征，没有属性和方法，无法对象化交互，包装类的产生就是为了解决这样的问题，通过包装类，让基本数据类型拥有属性、方法，可以对象化交互</strong></em></li>
+<li>包装类不允许被继承，没有子类</li>
 </ol>
-<h2 id="前端开发主要有哪些层，语言和功能是什么？"><a href="#前端开发主要有哪些层，语言和功能是什么？" class="headerlink" title="前端开发主要有哪些层，语言和功能是什么？"></a>前端开发主要有哪些层，语言和功能是什么？</h2><ol>
-<li>HTML<ul>
-<li>结构层  搭建骨架、描述页面语义</li>
+<h2 id="包装类与基本数据类型之间的对应关系"><a href="#包装类与基本数据类型之间的对应关系" class="headerlink" title="包装类与基本数据类型之间的对应关系"></a>包装类与基本数据类型之间的对应关系</h2><p>包装类与基本数据类型</p>
+<ul>
+<li>byte -&gt; Byte</li>
+<li>short -&gt; Short</li>
+<li><strong>int -&gt; Integer</strong></li>
+<li>long -&gt; Long</li>
+<li>float -&gt; Float</li>
+<li>double -&gt; Double</li>
+<li><strong>char -&gt; Character</strong></li>
+<li>boolean -&gt; Boolean</li>
+<li>除了 double、float 都可以应用对象常量池的概念</li>
+</ul>
+<h2 id="包装类的常用方法"><a href="#包装类的常用方法" class="headerlink" title="包装类的常用方法"></a>包装类的常用方法</h2><p> <a href="https://docs.oracle.com/javase/8/docs/api/">Java 文档手册</a></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DOM</title>
+    <url>/2024/06/13/DOM/</url>
+    <content><![CDATA[<h2 id="DOM-基本概念"><a href="#DOM-基本概念" class="headerlink" title="DOM 基本概念"></a>DOM 基本概念</h2><ol>
+<li>DOM 是操控 HTML和CSS的桥梁</li>
+<li>DOM (Doucument Object Model) 文档对象类型，是Javascript操作HTML文档的接口，使文档操作变得非常优雅简便</li>
+<li>DOM最大的特点是将文档表示为节点树</li>
+</ol>
+<h2 id="节点访问和位置关系"><a href="#节点访问和位置关系" class="headerlink" title="节点访问和位置关系"></a>节点访问和位置关系</h2><ol>
+<li>访问元素节点<ul>
+<li>访问元素节点的常用方法<ul>
+<li><code>document.getElementById()</code><ul>
+<li>通过id得到元素<ul>
+<li>如果页面上有相同id的元素，则只能得到一个</li>
+<li>不管元素藏得多深，都能把它找到</li>
+<li>延迟运行<ul>
+<li>通常JS 一定要写到HTML的节点后面，否则JS无法找到相应的HTML节点</li>
+<li>可以使用 window.onload &#x3D; function(){} 事件 ,使页面加载完后再执行指定代码</li>
 </ul>
 </li>
-<li>CSS<ul>
-<li>样式层</li>
 </ul>
 </li>
-<li>Javascript<ul>
-<li>行为层  表单验证、数据交互、数据收发等</li>
+</ul>
+</li>
+<li><code>document.getElementsByTagName()</code><ul>
+<li>通过标签名称得到元素数组</li>
+</ul>
+</li>
+<li><code>document.getElementsByClassName()</code><ul>
+<li>通过类名得到元素数组</li>
+</ul>
+</li>
+<li><code>document.querySelector()</code><ul>
+<li>通过选择器得到元素</li>
+</ul>
+</li>
+<li><code>document.querySelectorAll()</code><ul>
+<li>通过选择器得到元素数组</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>节点的关系<ul>
+<li>相对于父节点<ul>
+<li>可以使用 farstChild  得到第一个子节点</li>
+<li>可以使用 lastChild 得到最后一个子节点</li>
+</ul>
+</li>
+<li>相对于子节点<ul>
+<li>父节点可以通过使用 childNodes 得到所有的子节点信息</li>
+<li>子节点可以通过 parentNode 来访问父节点</li>
+<li>对于后面一个 兄弟节点 可以使用 nextSibling 获取</li>
+<li>对于前面一个兄弟节点 可以使用 perviousSibling 获取前面一个</li>
+</ul>
+</li>
+<li><strong>注意：文本节点也属于节点</strong><ul>
+<li>文本节点也属于节点，使用节点关系时，一定要注意</li>
+</ul>
+</li>
+<li>只考虑元素节点<ul>
+<li>children</li>
+<li>firstElementChild</li>
+<li>lastElementChild</li>
+<li>perviousElementSibling</li>
+<li>nextElementSiling</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
-<h2 id="变量声明提升（面试题）"><a href="#变量声明提升（面试题）" class="headerlink" title="变量声明提升（面试题）"></a><strong>变量声明提升（面试题）</strong></h2><ol>
-<li>你可以提前使用一个稍后才声明的变量，而不会引发异常</li>
-<li>在执行所有代码前，JS有预解析阶段，会预读所有变量的定义</li>
-<li>只提升定义，并不提升值</li>
-<li>var 关键词可以变量提升， let 并不能</li>
-<li>在实际开发中，一定要先定义变量赋值，再使用。</li>
+<h2 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h2><ol>
+<li>insertBefore<ul>
+<li>父节点.insertBefore(孤儿节点,标杆节点);</li>
+</ul>
+</li>
+<li>appendChild<ul>
+<li>父节点.appendChild(内容)</li>
+<li>在尾部追加</li>
+</ul>
+</li>
+<li>改变元素节点的CSS样式<ul>
+<li><code>oBox.style.fontSize  = &#39;32px&#39;</code></li>
+</ul>
+</li>
+<li>改变元素的HTML的属性<ul>
+<li>W3C 属性 直接，元素.属性 &#x3D; 属性值</li>
+<li>非标准 W3C 属性 <ul>
+<li>元素.setAttribute(key,value)</li>
+<li>元素.getAttribute(key)</li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
-<h2 id="变量是什么"><a href="#变量是什么" class="headerlink" title="变量是什么"></a>变量是什么</h2><ol>
-<li>要定义变量，第一步就是声明它，并给它赋值</li>
-<li>变量是计算机语言中能存储计算结果或能表示值抽象概念</li>
-<li>变量不是数值本身，它们仅仅是一个用于存储数值的容器</li>
-<li>标识符的命名规则（函数、类名、对象的属性也要遵守这个规则）<ul>
-<li><strong>变量名大小写敏感，a和A两个不同的变量</strong></li>
-<li><strong>不能是关键词或保留词</strong></li>
-<li><strong>只能由字母、数字、下划线、$组成，但不能以数字开头</strong></li>
+<h2 id="nodeType常用属性值"><a href="#nodeType常用属性值" class="headerlink" title="nodeType常用属性值"></a>nodeType常用属性值</h2><ul>
+<li>1  <code>元素节点，例如&lt;p&gt; 和 &lt;div&gt;</code></li>
+<li>3  <code>文字节点</code></li>
+<li>8  <code>注释节点</code></li>
+<li>9  <code>document节点</code></li>
+<li>10  <code>DTD节点</code></li>
+</ul>
+<h2 id="节点的创建、移除和克隆"><a href="#节点的创建、移除和克隆" class="headerlink" title="节点的创建、移除和克隆"></a>节点的创建、移除和克隆</h2><ol>
+<li>createElement<ul>
+<li>创建一个指定tagname的HTML元素</li>
 </ul>
 </li>
-<li>优秀的变量命名法<ul>
-<li>驼峰命名法 例如：mathTestScore</li>
-<li>c风格 例如：math_test_score</li>
-<li>匈牙利命名法 例如：iMathTestScore ，第一个字母 i，提示变量类型</li>
+<li>获取body节点<ul>
+<li>document.body</li>
 </ul>
 </li>
-<li>变量的默认值<ul>
-<li>一个变量只定义，但没有赋值，默认是undefined</li>
+<li>获取html节点<ul>
+<li>document.documentElement</li>
 </ul>
 </li>
-<li>等号表示赋值</li>
-<li>同时声明多个变量<ul>
-<li>var a&#x3D;0,b&#x3D;0;</li>
+<li>移动节点<ul>
+<li>新父节点.appendChild(已经有父亲的节点)</li>
+<li>新父节点.insterBefore(已经有父亲的节点,标杆子节点)</li>
 </ul>
 </li>
-<li>var 定义的变量会被挂载在 window 上，let 不会</li>
+<li>删除节点<ul>
+<li>父节点.removeChild(要删除的子节点)</li>
+<li><strong>节点不能主动删除自己，必须由父节点删除它</strong></li>
+</ul>
+</li>
+<li>克隆节点<ul>
+<li>cloneNode() 方法可以克隆节点，克隆出的节点是“孤儿节点”</li>
+<li>var 孤儿节点 &#x3D; 老节点.cloneNode(true|false);</li>
+<li>cloneNode 参数是一个布尔值，表示是否采用深度克隆；如果为true该节点的所有后代节点也都会被克隆，如果为false，则只克隆该节点本身</li>
+</ul>
+</li>
+<li>访问元素节点<ul>
+<li>所谓 ”访问“元素节点，就是指”得到“、”获取“页面上的元素节点。</li>
+<li>访问元素节点 主要依赖于 document</li>
+</ul>
+</li>
+</ol>
+<h2 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h2><ol>
+<li>事件监听<ul>
+<li>什么是“事件监听”<ul>
+<li>DOM允许我们书写Javascript代码以让HTML元素对事件做出反应</li>
+<li>什么是”事件”：用户与网页的交互动作<ul>
+<li>点用户点击元素的时候</li>
+<li>点鼠标移动到元素的时候</li>
+<li>当网页加载完成的时候…</li>
+</ul>
+</li>
+<li>“监听”,顾名思义就是让计算机随时能够发现这个事件发生了，从而执行程序员预先编写的一些程序</li>
+<li>设置事件监听的方法主要有 onxxx 和 addEventListener()</li>
+</ul>
+</li>
+<li>常见鼠标事件监听<ul>
+<li><code>onclick 当鼠标点击某个对象</code></li>
+<li><code>ondblclick 当鼠标双击某个对象</code></li>
+<li><code>onmousedown 当某个鼠标按键在某个对象上被按下</code></li>
+<li><code>onmouseup 当某个鼠标按键在某个对象上被松开</code></li>
+<li><code>onmousemove 当某个鼠标按键在某个对象上被移动</code></li>
+<li><code>onmouseenter 当鼠标进入某个对象</code></li>
+<li><code>onmouseleave 当鼠标离开某个对象</code></li>
+</ul>
+</li>
+<li>常见的键盘事件监听<ul>
+<li><code>onkeyperss 当某个键盘的键被按下（系统按钮如箭头键和功能键无法得到识别）</code></li>
+<li><code>onkeydown 当某个键盘的键被按下（系统按钮可以识别，并且会优先onkeypress发生）</code></li>
+<li><code>onkeyup 当某个键盘的键被松开</code></li>
+</ul>
+</li>
+<li>常见的表单事件监听<ul>
+<li><code>onchange 当用户改变域的内容</code></li>
+<li><code>onfocus 当某个元素获得焦点（比如tab或鼠标点击）</code></li>
+<li><code>onblur 当元素失去焦点</code></li>
+<li><code>onsubmit 当表单被提交</code></li>
+<li><code>onreset 当表单被重置 </code></li>
+<li><code>oninput 当用户输入</code></li>
+</ul>
+</li>
+<li>常见的页面事件监听<ul>
+<li><code>onload 当页面或图像被完成加载</code></li>
+<li><code>onunload  当用户退出页面</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件传播<ul>
+<li>事件的传播是：先从外到内，然后再从内到外<ul>
+<li>从外到内、捕获阶段（capturing phase）</li>
+<li>从内到外、冒泡阶段（Bubbling phase）</li>
+<li>onxxx 这样的写法只能监听冒泡阶段</li>
+</ul>
+</li>
+<li>addEventListener() 方法<ul>
+<li>DOM 0级：只能监听冒泡阶段<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">box2.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;我是box2&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>DOM 2级事件监听<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">box1.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><em><strong>true 监听捕获的阶段</strong></em></li>
+<li><em><strong>false 监听冒泡阶段【默认】</strong></em></li>
+</ul>
+</li>
+<li><strong>注意事项：最内部的元素不再区分捕获和冒泡阶段，会先执行写在前面的监听，然后执行后写的监听</strong></li>
+<li><strong>注意事项：如果给元素设置相同的两个或多个同名事件，则DOM0级写法后面写的会覆盖先写的；而DOM2级会按照顺序执行</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件对象<ul>
+<li>什么是事件对象<ul>
+<li>事件处理函数提供一个形式参数，它是一个对象，封装了本次事件的细节</li>
+</ul>
+</li>
+<li>e.charCode 和 e.keyCode 属性<ul>
+<li>e.charCode 属性通常用于 onkeypress 事件中，表示用户输入的字符的 “字符码”<ul>
+<li><code>数字0 ~ 数字9  48 ~ 57</code></li>
+<li><code>大写字母A ~ Z  65 ~ 90</code></li>
+<li><code>小写字母 a ~ z  97 ~ 122</code></li>
+</ul>
+</li>
+<li>e.keyCode 属性通常用于 onkeydown 事件和onkeyup中，表示用户按下按键的 “键码”<ul>
+<li><code>数字0 ~ 数字9  48 ~ 57</code></li>
+<li><code>字母部分大小写 a ~ z  65 ~ 90 （不区分大小写）</code></li>
+<li><code>四个方向键（左、上、右、下）  37、38、39、40</code></li>
+<li><code>回车键  13</code></li>
+<li><code>空格键  32</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><em><strong>e.preventDefault() 方法</strong></em><ul>
+<li>阻止事件产生的“默认动作”</li>
+</ul>
+</li>
+<li><em><strong>e.stopPropagation() 方法</strong></em><ul>
+<li>阻止事件继续传播</li>
+<li>在一些场合，非常有必要切断事件继续传播，否则会造成页面特效显示出bug</li>
+</ul>
+</li>
+<li>鼠标滚轮事件<ul>
+<li>鼠标滚轮事件是 onmousewheel ，它的事件对象e提供deltaY 属性 表示鼠标滚动方向，向下滚动时返回正值，向上滚动时，返回负值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>事件委托</strong><ul>
+<li>批量添加事件监听的性能问题<ul>
+<li>每一个事件监听注册都会消耗一定的系统内存，而批量添加事件会导致监听数量太多，内存消耗会非常大</li>
+</ul>
+</li>
+<li>定义<ul>
+<li>利用事件冒泡机制，将后台元素事件委托给祖先元素</li>
+</ul>
+</li>
+<li>e.target 和 e.currentTarget 属性<ul>
+<li>target<ul>
+<li><em><strong>触发此事件的最早元素，即“事件源元素”</strong></em></li>
+</ul>
+</li>
+<li>currentTarget<ul>
+<li>事件处理程序附加到的元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用场景<ul>
+<li>当有大量类似元素需要批量添加事件监听时，使用事件委托可以减少内存开销</li>
+<li>当有动态元素节点上树时，使用事件委托可以让新上树的元素具有事件监听</li>
+</ul>
+</li>
+<li>使用时注意事项<ul>
+<li>onmouseenter 和 onmouseover 都表示“鼠标进入”，它们有什么区别呢？<ul>
+<li>onmouseenter 不冒泡</li>
+<li>onmouseover 冒泡</li>
+</ul>
+</li>
+<li><em><strong>不能委托不冒泡的事件给祖先元素</strong></em></li>
+<li>最内层的元素不能再有额外的内层元素了，比如<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span>&gt;</span>我是span<span class="tag">&lt;/<span class="name">span</span>&gt;</span>列表项<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
 ]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1505,111 +1505,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java 方法</title>
-    <url>/2024/06/02/Java-%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="什么是方法？"><a href="#什么是方法？" class="headerlink" title="什么是方法？"></a>什么是方法？</h2><p>所谓方法，就是用来解决一类问题的代码的有序组合，是一个功能模块。</p>
-<h2 id="方法的声明和调用"><a href="#方法的声明和调用" class="headerlink" title="方法的声明和调用"></a>方法的声明和调用</h2><ol>
-<li>方法声明<ul>
-<li>语法格式<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">访问修饰符 返回类型 方法名(参数列表)&#123;</span><br><span class="line">  方法体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>访问修饰符<ul>
-<li>public</li>
-<li>privete</li>
-<li>protected</li>
-<li>默认</li>
-</ul>
-</li>
-<li><strong>方法是在类的内部中定义</strong></li>
-</ul>
-</li>
-<li>方法调用<ul>
-<li>语法格式 <ul>
-<li>类名 实例名 &#x3D; new 类名(); 实例名.方法名();</li>
-<li>对于静态方法 static , 直接调用 方法名();</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>方法分类<ul>
-<li>根据方法是否带参数、是否返回值，可以分为四类：</li>
-<li>无参无返回值方法</li>
-<li>无参带返回值方法</li>
-<li>带参带返回值方法</li>
-<li>带参无返回值方法</li>
-</ul>
-</li>
-</ol>
-<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><ol>
-<li>同一个类中</li>
-<li><strong>方法名相同，参数列表不同</strong></li>
-<li>方法返回值、访问修饰符任意</li>
-<li>与方法参数名无关</li>
-</ol>
-<h2 id="可变参数列表"><a href="#可变参数列表" class="headerlink" title="可变参数列表"></a>可变参数列表</h2><ol>
-<li>public void sum(int… n) { &lt;语句块&gt; }<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span>... n)</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span><span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i:n) </span><br><span class="line">		sum+=i;</span><br><span class="line">	</span><br><span class="line">	System.out.println(<span class="string">&quot;sum=&quot;</span>+sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><em><strong>参数列表中如果有两个以上的参数，可变参数一定是在最后的！</strong></em></li>
-<li><em><strong>可以将数组传递给可变参数列表，反之不行</strong></em></li>
-<li>数组作为参数时，是不能将多个值传递给数组的！</li>
-<li><strong>一个方法中，只能有一个可变参数</strong></li>
-<li>可变参数列表所在的方法是最后被访问的。</li>
-</ol>
-<h2 id="方法的传值问题"><a href="#方法的传值问题" class="headerlink" title="方法的传值问题"></a>方法的传值问题</h2><ol>
-<li>基本数据类型传值<ul>
-<li>方法中对参数的修改，不会对主方法传来的变量值产生影响</li>
-</ul>
-</li>
-<li>引用数据类型传值<ul>
-<li>方法中对数组的改变，会印象主方法中传来的数组</li>
-</ul>
-</li>
-</ol>
-<h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><table>
-<thead>
-<tr>
-<th>访问修饰符</th>
-<th>本类</th>
-<th>同包</th>
-<th>子类</th>
-<th>其他</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>private</td>
-<td>√</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>默认（不写）</td>
-<td>√</td>
-<td>√</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>protected</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td></td>
-</tr>
-<tr>
-<td>private</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java 异常</title>
     <url>/2024/06/03/Java-%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[<h2 id="什么是异常"><a href="#什么是异常" class="headerlink" title="什么是异常"></a>什么是异常</h2><ol>
@@ -1760,103 +1655,102 @@
       </tags>
   </entry>
   <entry>
-    <title>Java 数组</title>
-    <url>/2024/06/02/Java-%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<h2 id="什么是数组"><a href="#什么是数组" class="headerlink" title="什么是数组"></a>什么是数组</h2><ol>
-<li><strong>数组是相同类型的数据按顺序组成的一种引用类型</strong></li>
-<li>数据类型</li>
-</ol>
-<ul>
-<li>基本数据类型</li>
-<li>引用数据类型<ul>
-<li>类</li>
-<li>接口</li>
-<li>数组</li>
-<li>等等</li>
+    <title>Java 方法</title>
+    <url>/2024/06/02/Java-%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="什么是方法？"><a href="#什么是方法？" class="headerlink" title="什么是方法？"></a>什么是方法？</h2><p>所谓方法，就是用来解决一类问题的代码的有序组合，是一个功能模块。</p>
+<h2 id="方法的声明和调用"><a href="#方法的声明和调用" class="headerlink" title="方法的声明和调用"></a>方法的声明和调用</h2><ol>
+<li>方法声明<ul>
+<li>语法格式<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">访问修饰符 返回类型 方法名(参数列表)&#123;</span><br><span class="line">  方法体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>访问修饰符<ul>
+<li>public</li>
+<li>privete</li>
+<li>protected</li>
+<li>默认</li>
 </ul>
 </li>
-</ul>
-<ol start="3">
-<li>注意的问题</li>
-</ol>
-<ul>
-<li>数组是引用数据类型</li>
-<li>创建数组时，会开辟连续的内存空间</li>
-<li>数据长度使用 length 属性获取</li>
-<li>数组元素的下标从0开始</li>
-<li>数组下标越界问题</li>
-</ul>
-<h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><ol>
-<li>声明</li>
-</ol>
-<ul>
-<li>语法格式<ul>
-<li><strong>数据类型[] 数组名;</strong></li>
-<li><strong>数据类型 数组名[];</strong></li>
+<li><strong>方法是在类的内部中定义</strong></li>
 </ul>
 </li>
-<li>变量声明的语法格式<ul>
-<li>数据类型 变量名;</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>创建<ul>
-<li><strong>语法格式一：先声明后创建</strong><ul>
-<li>数据类型[] 数组名;</li>
-<li>数组名 &#x3D; new 数据类型[数组长度];</li>
-<li>int [] arr;arr &#x3D; new int[10]; 创建一个长度为10的整型数组</li>
-</ul>
-</li>
-<li><strong>语法格式二：声明的同时创建数组</strong><ul>
-<li>数据类型[] 数组名 &#x3D; new 数据类型[数组长度];</li>
-<li>int [] arr &#x3D; new int[10]; 创建长度为10的整型数组 arr</li>
-<li>注意：数组长度必须指定</li>
-</ul>
-</li>
-<li><strong>数组在内存中的存储</strong><ul>
-<li><strong>数组会被分配连续的内存空间</strong></li>
-<li>局部变量和数组的默认值问题<ul>
-<li>局部变量没有默认值、数组有默认值（数组的本身是对象）</li>
+<li>方法调用<ul>
+<li>语法格式 <ul>
+<li>类名 实例名 &#x3D; new 类名(); 实例名.方法名();</li>
+<li>对于静态方法 static , 直接调用 方法名();</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li>初始化<ul>
-<li>声明数组的同时给数组赋值，叫做数组的初始化</li>
-<li><strong>int[] arr &#x3D; {1,2,3,4,5}; 数组的长度就是初始化时所给数组元素的个数</strong> (花括号)</li>
-</ul>
-</li>
-<li>元素的引用<ul>
-<li>语法格式：数组名[下标]</li>
-<li>注意：下标从 0 开始</li>
-</ul>
-</li>
-<li>长度<ul>
-<li>arr.length 表示数组的长度</li>
+<li>方法分类<ul>
+<li>根据方法是否带参数、是否返回值，可以分为四类：</li>
+<li>无参无返回值方法</li>
+<li>无参带返回值方法</li>
+<li>带参带返回值方法</li>
+<li>带参无返回值方法</li>
 </ul>
 </li>
 </ol>
-<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><ul>
-<li>二维数组的声明和创建<ul>
-<li>声明<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] intArray;</span><br><span class="line"><span class="type">float</span> floatArray[][];</span><br><span class="line"><span class="type">double</span>[] doubleArray[];</span><br></pre></td></tr></table></figure></li>
-<li>创建 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">intArray = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>][<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>列可以省略，行不能省略 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">floatArray = <span class="keyword">new</span> <span class="title class_">float</span>[<span class="number">3</span>][]; floatArray[<span class="number">1</span>] = <span class="keyword">new</span> <span class="title class_">float</span>[<span class="number">3</span>];</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>二维数组的初始化  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] num = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;,&#123;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;&#125;;</span><br></pre></td></tr></table></figure></li>
-<li>二维数组的引用</li>
-<li>多个一维数组组成的内容</li>
-</ul>
-<h2 id="增强型-for-循环"><a href="#增强型-for-循环" class="headerlink" title="增强型 for 循环"></a>增强型 for 循环</h2><ol>
-<li>又叫 foreach 循环</li>
-<li>foreach 循环引用<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> n;arr)</span><br><span class="line">System.out.println(n);</span><br></pre></td></tr></table></figure></li>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><ol>
+<li>同一个类中</li>
+<li><strong>方法名相同，参数列表不同</strong></li>
+<li>方法返回值、访问修饰符任意</li>
+<li>与方法参数名无关</li>
 </ol>
+<h2 id="可变参数列表"><a href="#可变参数列表" class="headerlink" title="可变参数列表"></a>可变参数列表</h2><ol>
+<li>public void sum(int… n) { &lt;语句块&gt; }<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span>... n)</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span><span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i:n) </span><br><span class="line">		sum+=i;</span><br><span class="line">	</span><br><span class="line">	System.out.println(<span class="string">&quot;sum=&quot;</span>+sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><em><strong>参数列表中如果有两个以上的参数，可变参数一定是在最后的！</strong></em></li>
+<li><em><strong>可以将数组传递给可变参数列表，反之不行</strong></em></li>
+<li>数组作为参数时，是不能将多个值传递给数组的！</li>
+<li><strong>一个方法中，只能有一个可变参数</strong></li>
+<li>可变参数列表所在的方法是最后被访问的。</li>
+</ol>
+<h2 id="方法的传值问题"><a href="#方法的传值问题" class="headerlink" title="方法的传值问题"></a>方法的传值问题</h2><ol>
+<li>基本数据类型传值<ul>
+<li>方法中对参数的修改，不会对主方法传来的变量值产生影响</li>
+</ul>
+</li>
+<li>引用数据类型传值<ul>
+<li>方法中对数组的改变，会印象主方法中传来的数组</li>
+</ul>
+</li>
+</ol>
+<h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><table>
+<thead>
+<tr>
+<th>访问修饰符</th>
+<th>本类</th>
+<th>同包</th>
+<th>子类</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>默认（不写）</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td>private</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -2104,6 +1998,112 @@
 <li>continue 语句可以结束当前循环的执行，但是要继续执行下一次循环的执行</li>
 </ul>
 </li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 数组</title>
+    <url>/2024/06/02/Java-%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h2 id="什么是数组"><a href="#什么是数组" class="headerlink" title="什么是数组"></a>什么是数组</h2><ol>
+<li><strong>数组是相同类型的数据按顺序组成的一种引用类型</strong></li>
+<li>数据类型</li>
+</ol>
+<ul>
+<li>基本数据类型</li>
+<li>引用数据类型<ul>
+<li>类</li>
+<li>接口</li>
+<li>数组</li>
+<li>等等</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>注意的问题</li>
+</ol>
+<ul>
+<li>数组是引用数据类型</li>
+<li>创建数组时，会开辟连续的内存空间</li>
+<li>数据长度使用 length 属性获取</li>
+<li>数组元素的下标从0开始</li>
+<li>数组下标越界问题</li>
+</ul>
+<h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><ol>
+<li>声明</li>
+</ol>
+<ul>
+<li>语法格式<ul>
+<li><strong>数据类型[] 数组名;</strong></li>
+<li><strong>数据类型 数组名[];</strong></li>
+</ul>
+</li>
+<li>变量声明的语法格式<ul>
+<li>数据类型 变量名;</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>创建<ul>
+<li><strong>语法格式一：先声明后创建</strong><ul>
+<li>数据类型[] 数组名;</li>
+<li>数组名 &#x3D; new 数据类型[数组长度];</li>
+<li>int [] arr;arr &#x3D; new int[10]; 创建一个长度为10的整型数组</li>
+</ul>
+</li>
+<li><strong>语法格式二：声明的同时创建数组</strong><ul>
+<li>数据类型[] 数组名 &#x3D; new 数据类型[数组长度];</li>
+<li>int [] arr &#x3D; new int[10]; 创建长度为10的整型数组 arr</li>
+<li>注意：数组长度必须指定</li>
+</ul>
+</li>
+<li><strong>数组在内存中的存储</strong><ul>
+<li><strong>数组会被分配连续的内存空间</strong></li>
+<li>局部变量和数组的默认值问题<ul>
+<li>局部变量没有默认值、数组有默认值（数组的本身是对象）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>初始化<ul>
+<li>声明数组的同时给数组赋值，叫做数组的初始化</li>
+<li><strong>int[] arr &#x3D; {1,2,3,4,5}; 数组的长度就是初始化时所给数组元素的个数</strong> (花括号)</li>
+</ul>
+</li>
+<li>元素的引用<ul>
+<li>语法格式：数组名[下标]</li>
+<li>注意：下标从 0 开始</li>
+</ul>
+</li>
+<li>长度<ul>
+<li>arr.length 表示数组的长度</li>
+</ul>
+</li>
+</ol>
+<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><ul>
+<li>二维数组的声明和创建<ul>
+<li>声明<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] intArray;</span><br><span class="line"><span class="type">float</span> floatArray[][];</span><br><span class="line"><span class="type">double</span>[] doubleArray[];</span><br></pre></td></tr></table></figure></li>
+<li>创建 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">intArray = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>][<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>列可以省略，行不能省略 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">floatArray = <span class="keyword">new</span> <span class="title class_">float</span>[<span class="number">3</span>][]; floatArray[<span class="number">1</span>] = <span class="keyword">new</span> <span class="title class_">float</span>[<span class="number">3</span>];</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>二维数组的初始化  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] num = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;,&#123;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>二维数组的引用</li>
+<li>多个一维数组组成的内容</li>
+</ul>
+<h2 id="增强型-for-循环"><a href="#增强型-for-循环" class="headerlink" title="增强型 for 循环"></a>增强型 for 循环</h2><ol>
+<li>又叫 foreach 循环</li>
+<li>foreach 循环引用<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> n;arr)</span><br><span class="line">System.out.println(n);</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
       <categories>
@@ -2374,206 +2374,6 @@ default void defaultMethod() &#123;
       </tags>
   </entry>
   <entry>
-    <title>Java 面向对象3</title>
-    <url>/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13/</url>
-    <content><![CDATA[<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><ol>
-<li>基本概念<ul>
-<li>同一种行为，在不同的对象上，会产生不同的显示结果。</li>
-<li>允许不同类的对象对同一消息做出不同的响应</li>
-<li><strong>编译时多态</strong><ul>
-<li>设计时多态 方法重载</li>
-</ul>
-</li>
-<li><em><strong>运行时多态（通常说的这个）</strong></em><ul>
-<li>程序运行时动态决定调用哪个方法</li>
-</ul>
-</li>
-<li>必要条件<ul>
-<li>满足继承关系</li>
-<li>父类引用指向子类对象</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>使用<ul>
-<li>父类引用子类实例 <ul>
-<li>向上转型、隐式转型、自动转型</li>
-<li>父类引用指向子类实例，可以调用子类重写父类的方法以及父类派生的方法，无法调用子类独有方法。</li>
-<li>小类转型大类</li>
-<li>父类 static 方法，不允许子类重写</li>
-<li>向上转型后，只能调用到父类原有的静态方法</li>
-</ul>
-</li>
-<li>子类引用指向父类实例<ul>
-<li>向下转型、强制类型转换</li>
-<li>子类引用指向父类对象，此时必须进行强转，可以调用子类独有方法</li>
-<li>必须满足转换条件才能进行强转<ul>
-<li><em><strong>对象 instanceof 类</strong></em></li>
-<li>判断对象是否是类的实例<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Animal</span>  <span class="variable">one</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line"><span class="type">Cat</span> <span class="variable">temp</span> <span class="operator">=</span> (Cat)one</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>抽象类（abstract）<ul>
-<li><strong>Java 中使用抽象类，限制实例化</strong><ul>
-<li>通过 abstract 修饰的类，就是抽象类</li>
-<li>不允许实例化，可以通过向上转型，指向子类实例</li>
-</ul>
-</li>
-<li>通过abstract 修饰的方法，就是抽象方法<ul>
-<li>public abstract void eat(); </li>
-<li><em><strong>子类必须实现这个方法！</strong></em></li>
-</ul>
-</li>
-<li>应用场景<ul>
-<li>某个父类只是知道其子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法。</li>
-<li><em><strong>避免设计随意性，无意义父类实例化</strong></em></li>
-</ul>
-</li>
-<li>使用规则<ul>
-<li>1、abstract 定义抽象类</li>
-<li>2、抽象类不能直接实例化，只能被继承，可以通过向上转型完成对象实例</li>
-<li>3、abstract 定义抽象方法，不需要具体实现</li>
-<li>4、包含抽象方法的类是抽象类</li>
-<li>5、抽象类中可以没有抽象方法</li>
-<li>6、static final  private 不能与 abstract 并存</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>接口（interface）<ul>
-<li>基本概念<ul>
-<li>接口定义了某一批类所需要遵守的规范</li>
-<li>接口不关心这些类的内部数据，也不关心这些类里的方法的实现细节，它只规定这些类里必须提供某些方法</li>
-</ul>
-</li>
-<li>语法：<ul>
-<li>[修饰符] interface 接口名 [extends 付接口1, 父接口2…]<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   零个到多个常量定义...</span><br><span class="line">   零个到多个抽象方法定义...</span><br><span class="line">   零个到多个默认方法的定义.... (jdk1<span class="number">.8</span>新增)</span><br><span class="line">   零个到多个静态方法的定义... (jdk <span class="number">1.8</span>新增)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>使用注意：<ul>
-<li>一个类可以实现多个接口，通过逗号分割。 implements</li>
-<li>接口的实现要放在继承后面，一个类只能继承唯一父类，但可以实现若干个接口。实现接口的时候要去重写接口待重写的方法。否则通过 abstract 定义抽象类</li>
-<li>接口也可以实现继承关系，并且可以继承多个父接口，用逗号分开</li>
-<li>如果继承多个接口有多个重名的方法，子类不知道该实现哪个接口的方法，可以重写重名的方法。<ul>
-<li>如果继承父类的同时，也继承方法。它们都有同名的方法，默认继承父类方法。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>代码示例<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">package</span> com.zzz.tel;</span><br><span class="line">   <span class="comment">// 接口访问修饰符：public 默认</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">INet</span> &#123;</span><br><span class="line"> <span class="comment">/*接口中抽象方法可以不写abstract关键字</span></span><br><span class="line"><span class="comment">   /*访问修饰符默认public</span></span><br><span class="line"><span class="comment">    * 当类实现接口时，需要去实现接口中的所有抽象方法，否则需要将该类设置为抽象类</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">network</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//接口中可以包含常量，默认public static final</span></span><br><span class="line"><span class="type">int</span> TEMP=<span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//default：默认方法 可以带方法体 jdk1.8后新增</span></span><br><span class="line"><span class="comment">//可以在实现类中重写，并可以通过接口的引用调用</span></span><br><span class="line"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title function_">connection</span><span class="params">()</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;我是接口中的默认链接&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//static:静态方法 可以带方法体 jdk1.8后新增</span></span><br><span class="line"><span class="comment">//不可以在实现类中重写，可以同接口名调用</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">stop</span><span class="params">()</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;我是接口中的静态方法&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>内部类<ul>
-<li>在 Java 中，可以将一个类定义在另一个类里面或者一个方法里面，这样的类称为内部类。</li>
-<li>与之对应，包含内部类的类被称为外部类</li>
-<li>内部类隐藏在外部类之内，更好的实现了信息的隐藏。不允许其它类随意的访问。</li>
-<li>内部类分类<ul>
-<li>1、成员内部类<ul>
-<li>内部类中最常见的就是成员内部类，也称普通内部类</li>
-<li>1、内部类在外部使用时，无法直接实例化，需要借由外部类的信息才能完成实例化</li>
-<li>2、内部类的访问修饰符，可以任意，但是访问范围会受到影响</li>
-<li>3、内部类可以直接访问外部类的成员，如果出现同名属性，优先访问内部类中定义的</li>
-<li>4、可以使用 外部类.this.成员 的方式，访问外部类中同名的信息</li>
-<li>5、外部类访问内部类信息，需要通过内部类实例，无法直接访问</li>
-<li>6、内部类编译后 .class 文件命名：外部类$内部类.class</li>
-<li>内部类的获取方式<ul>
-<li>1、new 外部类.new 内部类</li>
-<li>2、外部类对象.new 内部类</li>
-<li>3、外部类对象.获取方法</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>2、静态内部类<ul>
-<li>【成员共享】静态内部类对象可以不依赖于外部类对象，直接创建</li>
-<li>1、静态内部类中，只能直接访问外部类的静态成员，如果需要调用非静态成员，可以通过对象实例</li>
-<li>2、静态内部类对象实例时，可以不依赖于外部类对象</li>
-<li>3、可以通过  外部类.内部类.静态成员  的方式，访问内部类中的静态成员</li>
-<li>4、当内部类属性与外部类属性同名时，默认直接调用内部类中的成员；如果需要访问外部类中的静态属性，则可以通过 外部类.属性 的方式；如果需要访问外部类中的非静态属性，则可以通过 new 外部类().属性 的方式；</li>
-</ul>
-</li>
-<li>3、方法内部类<ul>
-<li>定义在外部类方法中的内部类，也称局部类。</li>
-<li>1、定义在方法内，作用范围也在方法内</li>
-<li>2、和方法内部成员使用规则一样，class 前面不可以添加 public、private、protected、static</li>
-<li>3、类中不能包含静态成员</li>
-<li>4、类中可以包含 final、abstract 修饰的成员</li>
-</ul>
-</li>
-<li>4、匿名内部类<ul>
-<li>将类的定义与类的创建，放到一起完成</li>
-<li>1、匿名内部类没有类型名称、实例对象名称</li>
-<li>2、编译后的文件命名：外部类$数字.class</li>
-<li>3、无法使用 private、public、protected、abstract、static 修饰</li>
-<li>4、无法编写构造方法，可以添加代码块</li>
-<li>5、不能出现静态成员</li>
-<li>6、匿名内部类可以实现接口也可以继承父类，但是不可兼得</li>
-<li>适用场景<ul>
-<li>1、只有到类的一个实例</li>
-<li>2、类在定义后马上用到</li>
-<li>3、给类命名并不会导致代码更容易被理解</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MongoDB 入门</title>
-    <url>/2024/09/26/MongoDB-%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h3 id="1-安装-Homebrew"><a href="#1-安装-Homebrew" class="headerlink" title="1. 安装 Homebrew"></a>1. 安装 Homebrew</h3><p>如果还没有安装 Homebrew，可以使用以下命令安装 Homebrew：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>你可以访问 Homebrew 的 <a href="https://brew.sh/">官方网站</a> 了解更多信息。</p>
-<h3 id="2-使用-Homebrew-安装-MongoDB"><a href="#2-使用-Homebrew-安装-MongoDB" class="headerlink" title="2. 使用 Homebrew 安装 MongoDB"></a>2. 使用 Homebrew 安装 MongoDB</h3><h4 id="a-添加-MongoDB-官方-Homebrew-Tap"><a href="#a-添加-MongoDB-官方-Homebrew-Tap" class="headerlink" title="a. 添加 MongoDB 官方 Homebrew Tap"></a>a. 添加 MongoDB 官方 Homebrew Tap</h4><p>首先，运行以下命令来添加 MongoDB 官方的 Homebrew Tap（软件源）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br></pre></td></tr></table></figure>
-
-<h4 id="b-安装-MongoDB-社区版"><a href="#b-安装-MongoDB-社区版" class="headerlink" title="b. 安装 MongoDB 社区版"></a>b. 安装 MongoDB 社区版</h4><p>接下来，使用 Homebrew 来安装 MongoDB 社区版：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install mongodb-community@6.0</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里的 <code>@6.0</code> 是 MongoDB 的版本号，你可以根据需要替换为其他版本。</p>
-</blockquote>
-<h3 id="3-启动-MongoDB-服务"><a href="#3-启动-MongoDB-服务" class="headerlink" title="3. 启动 MongoDB 服务"></a>3. 启动 MongoDB 服务</h3><p>安装完成后，可以通过 Homebrew 启动 MongoDB：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services start mongodb/brew/mongodb-community</span><br></pre></td></tr></table></figure>
-
-<p>这会将 MongoDB 作为 macOS 服务启动，并且会在每次系统启动时自动启动。</p>
-<p>如果你只想手动启动 MongoDB 而不让它自动运行，可以使用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongod --config /usr/local/etc/mongod.conf</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-检查-MongoDB-是否运行"><a href="#4-检查-MongoDB-是否运行" class="headerlink" title="4. 检查 MongoDB 是否运行"></a>4. 检查 MongoDB 是否运行</h3><p>你可以运行以下命令，查看 MongoDB 服务是否已经成功启动：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services list</span><br></pre></td></tr></table></figure>
-
-<p>MongoDB 的状态应该显示为 “started”。</p>
-<h3 id="5-连接-MongoDB"><a href="#5-连接-MongoDB" class="headerlink" title="5. 连接 MongoDB"></a>5. 连接 MongoDB</h3><p>MongoDB 服务器启动后，你可以通过 <code>mongo</code> 命令连接到 MongoDB 的命令行工具：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
-
-<p>如果一切正常，你现在应该已经连接到 MongoDB 的 shell，可以开始使用数据库了。</p>
-<h3 id="6-停止-MongoDB-服务"><a href="#6-停止-MongoDB-服务" class="headerlink" title="6. 停止 MongoDB 服务"></a>6. 停止 MongoDB 服务</h3><p>如果你需要停止 MongoDB 服务，可以运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services stop mongodb/brew/mongodb-community</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>这样，你就可以在 Mac 上成功安装和运行 MongoDB。如果遇到任何问题，请确保 Homebrew 和 MongoDB 的安装路径正确，并查看 Homebrew 提供的安装日志。</p>
-]]></content>
-      <tags>
-        <tag>MongoDB</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java 面向对象2</title>
     <url>/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12/</url>
     <content><![CDATA[<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ol>
@@ -2781,157 +2581,153 @@ default void defaultMethod() &#123;
       </tags>
   </entry>
   <entry>
-    <title>Hexo 添加 Disqus 评论系统</title>
-    <url>/2024/04/14/hexo-%E6%B7%BB%E5%8A%A0-Disqus-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h3 id="登录-Disqus"><a href="#登录-Disqus" class="headerlink" title="登录 Disqus"></a>登录 Disqus</h3><p><img src="https://raw.githubusercontent.com/zhihuzeye/zhihuzeye.github.io/main/images/20240414002939.png" alt="图片" title="disqus登录"></p>
-<h3 id="选择-在我的网站上安装-Disqus"><a href="#选择-在我的网站上安装-Disqus" class="headerlink" title="选择 在我的网站上安装 Disqus"></a>选择 在我的网站上安装 Disqus</h3><p><img src="/images/20240414003055.png" alt="图片" title="disqus登录"></p>
-<h3 id="创建一个新站点"><a href="#创建一个新站点" class="headerlink" title="创建一个新站点"></a>创建一个新站点</h3><p>注意：Website Name 这个字段非常重要，后续需要在 _config.yml 中用到<br>点击 Create Site 按钮即可</p>
-<p><img src="/images/20240414003325.png" alt="图片" title="disqus登录"></p>
-<span id="more"></span>
-
-<h3 id="配置主题-config-yml-文件"><a href="#配置主题-config-yml-文件" class="headerlink" title="配置主题 _config.yml 文件"></a>配置主题 _config.yml 文件</h3><p>网上有很多教程 直接配置，这样是不对的，配置会报错</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">disqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname:your Website Name</span><br><span class="line">  count: true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>踩坑：disqus  shortname 报错 YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key</p>
-<p>shortname 需要换行</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">disqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname:</span><br><span class="line">          your Website Name</span><br><span class="line">  count: true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Disqus</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【踩坑】uni.navigateTo 微信小程序 跳转无效问题</title>
-    <url>/2024/04/17/%E3%80%90%E8%B8%A9%E5%9D%91%E3%80%91uni-navigateTo-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%B7%B3%E8%BD%AC%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>最近接手了一个项目，该项目在用户体验上极度不友好，如：每次请求就显示 loading ，自定义 tabbar 可点击区域太小，组件间切换白屏等等问题。本着 “要改革、就不要怕” 的原则，便大刀阔斧的对项目代码进行一系列优化。</p>
-</blockquote>
-<p>结果改着改着就出现了问题：</p>
-<ul>
-<li>分包 packageB 的路径能点击</li>
-<li>packageA、packageC 里的路径不能点击</li>
-<li>手机能点击、模拟器不能点击</li>
-<li>模拟器能点击，手机不能点击</li>
-</ul>
-<p><img src="/images/emoji/tieba/035.png" alt="图片"></p>
-<span id="more"></span>
-
-<h1 id="代码不报错，是最难解决的-bug-！！！"><a href="#代码不报错，是最难解决的-bug-！！！" class="headerlink" title="代码不报错，是最难解决的 bug ！！！"></a>代码不报错，是最难解决的 bug ！！！</h1><p>这让我一度怀疑是 小程序开发者工具问题、小程序基础库版本问题，nodejs 版本问题 、vue-cli 版本问题，<br>然后就 nvm 切换版本、开发者工具卸载删除、基础库版本修改一系列骚操作。。。</p>
-<p><strong>马后炮：</strong> 如果代码能跑起来，肯定是没有问题的，微信小程序开发者工具 navigateTo 、redirectTo 、switchTab 、reLaunch 这些基础的 API 无论是哪个基础库都能很好的支持。</p>
-<p>大概率不用去想 nodejs 版本问题， 删除掉 node_modules 再重装挺浪费时间的。 所以很多时候都是代码中的问题。</p>
-<p>比如我这个 bug 有些链接能跳转 有些不能跳转，就复制能跳转的 链接，<strong>全局检索</strong>。<strong>查找它们其中的差异</strong></p>
-<p>问题出现的地方：<br>程序初始化 拦截了 navigateTo、redirectTo、switchTab、reLaunch 这些操作，执行 checkVisitPage 方法，如果链接在白名单列表中且已登录就能跳转，否则唤起登录的弹窗。</p>
-<p>”好巧不巧，我把登录弹窗组件删除掉了，因为它在每个页面都写了一遍“，所以点击没有反应。。。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// App.vue</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;</span><br><span class="line">	addInterceptor,</span><br><span class="line">	checkVisitPage</span><br><span class="line">&#125; from &quot;./utils/index.js&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">	globalData: &#123;</span><br><span class="line">		systemInfo: null</span><br><span class="line">	&#125;,</span><br><span class="line">	onLaunch: function () &#123;</span><br><span class="line">		this.initApp();</span><br><span class="line">	&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		initApp() &#123;</span><br><span class="line">			addInterceptor.call(this);</span><br><span class="line">			checkVisitPage.call(this);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// utils/index.js</span><br><span class="line">const openPages = [</span><br><span class="line">	&#x27;/pages/home/index&#x27;,</span><br><span class="line">	&#x27;/pages/webView/index&#x27;,</span><br><span class="line">	...</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export function checkVisitPage(url) &#123;</span><br><span class="line">	if (!url) &#123;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">	if (url.indexOf(&quot;?&quot;) &gt; -1) &#123;</span><br><span class="line">		url = url.split(&quot;?&quot;)[0];</span><br><span class="line">	&#125;</span><br><span class="line">	if (!openPages.includes(url)) &#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			const userInfo = uni.getStorageSync(&#x27;userInfo&#x27;);</span><br><span class="line">			if (!userInfo.accessToken || userInfo?.userType == 7) &#123;</span><br><span class="line">				this.$store.commit(&#x27;common/setPurviewWarningMethod&#x27;, true)</span><br><span class="line">				return false;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				this.$store.commit(&#x27;common/setPurviewWarningMethod&#x27;, false)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (e) &#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function addInterceptor() &#123;</span><br><span class="line">	uni.addInterceptor(&#x27;navigateTo&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;redirectTo&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;switchTab&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;reLaunch&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>其它：如果无法跳转，请检查 是否 &#x2F; 斜杆开头</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">uni.navigateTo(&#123;</span><br><span class="line">	url: &#x27;/pages/index/index&#x27;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<blockquote>
-<p>因为这两天给环境整崩溃了，某些老项目没有 yarn.lock 或 package-lock 文件 ，代码 dev 能启动起来，但是 build 失败！，怀疑是 nodejs 版本问题，typescript 版本不兼容问题等等，最后向原来的开发人员，重新套了个壳， 才知道 package.json 少了 esbuild-loader 依赖！ 为啥源码里 package.json  没有 esbuild-loader …</p>
-</blockquote>
-<p>但是错误提示可不友好，让你根本搜索不到错误发生的原因</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[tsl] ERROR in \node_modules\@types\node\util.d.ts(1656,1)</span><br><span class="line">      TS1128: Declaration or statement expected.</span><br><span class="line">ERROR in \node_modules\@types\node\util.d.ts</span><br><span class="line"></span><br><span class="line">[tsl] ERROR in \node_modules\@types\node\util.d.ts(1654,26)</span><br><span class="line">      TS1005: &#x27;;&#x27; expected.</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h1 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h1><ol>
-<li>能自己解决的尽量不麻烦别人，遇到问题首先 谷歌，GPT 查询（此操作最好不要超过 1小时）</li>
-<li>仔细阅读源码，全局检索 查找它们其中的差异</li>
-<li>善于交流、勇于交流。（在不得已要麻烦别人的时候，也不要害怕。 出门靠朋友~ 态度好点虚心求教，很多人愿意帮你的）</li>
-<li>站起来喝杯咖啡吧！有时候把事情缓一缓。解决问题的思绪就来了</li>
-</ol>
-]]></content>
-      <categories>
-        <category>小程序</category>
-      </categories>
-      <tags>
-        <tag>uni-app</tag>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>多媒体与语义化标签</title>
-    <url>/2024/06/12/%E5%A4%9A%E5%AA%92%E4%BD%93%E4%B8%8E%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/</url>
-    <content><![CDATA[<h2 id="audio标签（兼容到IE9）"><a href="#audio标签（兼容到IE9）" class="headerlink" title="audio标签（兼容到IE9）"></a>audio标签（兼容到IE9）</h2><ol>
-<li>属性<ul>
-<li>autoplay（某些浏览器不支持自动播放、本地自动播放是可以的）</li>
-<li>loop （重复播放）</li>
+    <title>Java 面向对象3</title>
+    <url>/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13/</url>
+    <content><![CDATA[<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><ol>
+<li>基本概念<ul>
+<li>同一种行为，在不同的对象上，会产生不同的显示结果。</li>
+<li>允许不同类的对象对同一消息做出不同的响应</li>
+<li><strong>编译时多态</strong><ul>
+<li>设计时多态 方法重载</li>
 </ul>
 </li>
-</ol>
-<h2 id="video-标签（兼容到IE9）"><a href="#video-标签（兼容到IE9）" class="headerlink" title="video 标签（兼容到IE9）"></a>video 标签（兼容到IE9）</h2><ol>
-<li>属性<ul>
-<li>同 audio 标签</li>
-<li>width 视频播放器宽度</li>
+<li><em><strong>运行时多态（通常说的这个）</strong></em><ul>
+<li>程序运行时动态决定调用哪个方法</li>
 </ul>
 </li>
-</ol>
-<h2 id="大纲标签（区块标签）"><a href="#大纲标签（区块标签）" class="headerlink" title="大纲标签（区块标签）"></a>大纲标签（区块标签）</h2><ol>
-<li>section 文档的区域，语义比div大</li>
-<li>article 文档的核心文章内容，会被搜索引擎主要抓取</li>
-<li>nav 导航条</li>
-<li>footer 页脚</li>
-<li>aside 文档的非必要相关内容，比如广告等</li>
-<li>main 网页核心部分</li>
-<li>header 页头</li>
-</ol>
-<h2 id="语义化标签"><a href="#语义化标签" class="headerlink" title="语义化标签"></a>语义化标签</h2><ol>
-<li>span 文本中的区块标签</li>
-<li>b 加粗标签</li>
-<li>i 斜体标签</li>
-<li>u 下划线标签</li>
-<li>strong 加粗标签</li>
-<li>em 斜体标签</li>
-<li>mark 标记标签</li>
-<li>figure-figcaption 用于表示图片和图片的标题</li>
-</ol>
-<h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><ol>
-<li>a 标签<ul>
-<li>1、a 标签 anchor 锚 的首字母<br>2、hypertext reference 超文本引用<br>3、title 用于设置鼠标的悬停文本</li>
-<li>属性<ul>
-<li>href 超文本引用</li>
-<li>target<ul>
-<li>_blank 在新窗口或新标签页中打开链接。</li>
-<li>_self 在父级框架中打开链接。</li>
-<li>_top 在当前窗口中打开链接（默认值）。</li>
-<li>_parent 在顶级框架中打开链接。</li>
-</ul>
-</li>
-<li>title 用于设置鼠标的悬停文本</li>
-</ul>
-</li>
-<li>说明<ul>
-<li>mailto:me.test.com 邮件</li>
-<li>tel:135555555555 拨打电话</li>
-<li>#top 回到顶部</li>
+<li>必要条件<ul>
+<li>满足继承关系</li>
+<li>父类引用指向子类对象</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>img 标签<ul>
-<li>src</li>
-<li>width、height</li>
-<li>alt  alternate 替代品的缩写，它是图像的描述，不是强制性的(有利于搜索引擎优化)</li>
-<li>title 鼠标悬停时候显示</li>
-<li>class、style 设置样式用</li>
-<li>loading  指定图像加载方式，可选值有”eager”（立即加载）和”lazy”（延迟加载）。</li>
-<li>decoding  指定图像解码方式，可选值有”async”（异步解码）和”sync”（同步解码）。</li>
+<li>使用<ul>
+<li>父类引用子类实例 <ul>
+<li>向上转型、隐式转型、自动转型</li>
+<li>父类引用指向子类实例，可以调用子类重写父类的方法以及父类派生的方法，无法调用子类独有方法。</li>
+<li>小类转型大类</li>
+<li>父类 static 方法，不允许子类重写</li>
+<li>向上转型后，只能调用到父类原有的静态方法</li>
+</ul>
+</li>
+<li>子类引用指向父类实例<ul>
+<li>向下转型、强制类型转换</li>
+<li>子类引用指向父类对象，此时必须进行强转，可以调用子类独有方法</li>
+<li>必须满足转换条件才能进行强转<ul>
+<li><em><strong>对象 instanceof 类</strong></em></li>
+<li>判断对象是否是类的实例<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Animal</span>  <span class="variable">one</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line"><span class="type">Cat</span> <span class="variable">temp</span> <span class="operator">=</span> (Cat)one</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>抽象类（abstract）<ul>
+<li><strong>Java 中使用抽象类，限制实例化</strong><ul>
+<li>通过 abstract 修饰的类，就是抽象类</li>
+<li>不允许实例化，可以通过向上转型，指向子类实例</li>
+</ul>
+</li>
+<li>通过abstract 修饰的方法，就是抽象方法<ul>
+<li>public abstract void eat(); </li>
+<li><em><strong>子类必须实现这个方法！</strong></em></li>
+</ul>
+</li>
+<li>应用场景<ul>
+<li>某个父类只是知道其子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法。</li>
+<li><em><strong>避免设计随意性，无意义父类实例化</strong></em></li>
+</ul>
+</li>
+<li>使用规则<ul>
+<li>1、abstract 定义抽象类</li>
+<li>2、抽象类不能直接实例化，只能被继承，可以通过向上转型完成对象实例</li>
+<li>3、abstract 定义抽象方法，不需要具体实现</li>
+<li>4、包含抽象方法的类是抽象类</li>
+<li>5、抽象类中可以没有抽象方法</li>
+<li>6、static final  private 不能与 abstract 并存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>接口（interface）<ul>
+<li>基本概念<ul>
+<li>接口定义了某一批类所需要遵守的规范</li>
+<li>接口不关心这些类的内部数据，也不关心这些类里的方法的实现细节，它只规定这些类里必须提供某些方法</li>
+</ul>
+</li>
+<li>语法：<ul>
+<li>[修饰符] interface 接口名 [extends 付接口1, 父接口2…]<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   零个到多个常量定义...</span><br><span class="line">   零个到多个抽象方法定义...</span><br><span class="line">   零个到多个默认方法的定义.... (jdk1<span class="number">.8</span>新增)</span><br><span class="line">   零个到多个静态方法的定义... (jdk <span class="number">1.8</span>新增)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>使用注意：<ul>
+<li>一个类可以实现多个接口，通过逗号分割。 implements</li>
+<li>接口的实现要放在继承后面，一个类只能继承唯一父类，但可以实现若干个接口。实现接口的时候要去重写接口待重写的方法。否则通过 abstract 定义抽象类</li>
+<li>接口也可以实现继承关系，并且可以继承多个父接口，用逗号分开</li>
+<li>如果继承多个接口有多个重名的方法，子类不知道该实现哪个接口的方法，可以重写重名的方法。<ul>
+<li>如果继承父类的同时，也继承方法。它们都有同名的方法，默认继承父类方法。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>代码示例<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">package</span> com.zzz.tel;</span><br><span class="line">   <span class="comment">// 接口访问修饰符：public 默认</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">INet</span> &#123;</span><br><span class="line"> <span class="comment">/*接口中抽象方法可以不写abstract关键字</span></span><br><span class="line"><span class="comment">   /*访问修饰符默认public</span></span><br><span class="line"><span class="comment">    * 当类实现接口时，需要去实现接口中的所有抽象方法，否则需要将该类设置为抽象类</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">network</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//接口中可以包含常量，默认public static final</span></span><br><span class="line"><span class="type">int</span> TEMP=<span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//default：默认方法 可以带方法体 jdk1.8后新增</span></span><br><span class="line"><span class="comment">//可以在实现类中重写，并可以通过接口的引用调用</span></span><br><span class="line"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title function_">connection</span><span class="params">()</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;我是接口中的默认链接&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//static:静态方法 可以带方法体 jdk1.8后新增</span></span><br><span class="line"><span class="comment">//不可以在实现类中重写，可以同接口名调用</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">stop</span><span class="params">()</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;我是接口中的静态方法&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>内部类<ul>
+<li>在 Java 中，可以将一个类定义在另一个类里面或者一个方法里面，这样的类称为内部类。</li>
+<li>与之对应，包含内部类的类被称为外部类</li>
+<li>内部类隐藏在外部类之内，更好的实现了信息的隐藏。不允许其它类随意的访问。</li>
+<li>内部类分类<ul>
+<li>1、成员内部类<ul>
+<li>内部类中最常见的就是成员内部类，也称普通内部类</li>
+<li>1、内部类在外部使用时，无法直接实例化，需要借由外部类的信息才能完成实例化</li>
+<li>2、内部类的访问修饰符，可以任意，但是访问范围会受到影响</li>
+<li>3、内部类可以直接访问外部类的成员，如果出现同名属性，优先访问内部类中定义的</li>
+<li>4、可以使用 外部类.this.成员 的方式，访问外部类中同名的信息</li>
+<li>5、外部类访问内部类信息，需要通过内部类实例，无法直接访问</li>
+<li>6、内部类编译后 .class 文件命名：外部类$内部类.class</li>
+<li>内部类的获取方式<ul>
+<li>1、new 外部类.new 内部类</li>
+<li>2、外部类对象.new 内部类</li>
+<li>3、外部类对象.获取方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2、静态内部类<ul>
+<li>【成员共享】静态内部类对象可以不依赖于外部类对象，直接创建</li>
+<li>1、静态内部类中，只能直接访问外部类的静态成员，如果需要调用非静态成员，可以通过对象实例</li>
+<li>2、静态内部类对象实例时，可以不依赖于外部类对象</li>
+<li>3、可以通过  外部类.内部类.静态成员  的方式，访问内部类中的静态成员</li>
+<li>4、当内部类属性与外部类属性同名时，默认直接调用内部类中的成员；如果需要访问外部类中的静态属性，则可以通过 外部类.属性 的方式；如果需要访问外部类中的非静态属性，则可以通过 new 外部类().属性 的方式；</li>
+</ul>
+</li>
+<li>3、方法内部类<ul>
+<li>定义在外部类方法中的内部类，也称局部类。</li>
+<li>1、定义在方法内，作用范围也在方法内</li>
+<li>2、和方法内部成员使用规则一样，class 前面不可以添加 public、private、protected、static</li>
+<li>3、类中不能包含静态成员</li>
+<li>4、类中可以包含 final、abstract 修饰的成员</li>
+</ul>
+</li>
+<li>4、匿名内部类<ul>
+<li>将类的定义与类的创建，放到一起完成</li>
+<li>1、匿名内部类没有类型名称、实例对象名称</li>
+<li>2、编译后的文件命名：外部类$数字.class</li>
+<li>3、无法使用 private、public、protected、abstract、static 修饰</li>
+<li>4、无法编写构造方法，可以添加代码块</li>
+<li>5、不能出现静态成员</li>
+<li>6、匿名内部类可以实现接口也可以继承父类，但是不可兼得</li>
+<li>适用场景<ul>
+<li>1、只有到类的一个实例</li>
+<li>2、类在定义后马上用到</li>
+<li>3、给类命名并不会导致代码更容易被理解</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
@@ -2940,121 +2736,7 @@ default void defaultMethod() &#123;
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微搭 h5 跳转小程序</title>
-    <url>/2024/04/28/%E5%BE%AE%E6%90%AD-h5-%E8%B7%B3%E8%BD%AC%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
-    <content><![CDATA[<blockquote>
-<p>场景：小程序内嵌 微搭 H5 页面， 点击 H5 某块区域，跳转到小程序详情页</p>
-</blockquote>
-<p>代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export default function (&#123; event, data &#125;) &#123;</span><br><span class="line">  const value = data?.target</span><br><span class="line">  try &#123;</span><br><span class="line">    wx.miniProgram.navigateTo(&#123;</span><br><span class="line">      url: `/packageC/houseDetails/index?id=$&#123;value&#125;`,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; catch (err) &#123;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url: `/packageC/houseDetails/index?id=$&#123;value&#125;`,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>报错：事件响应失败:组件container8[tap事件 响应Id wwvcp1rff5h]:wx is not defined</p>
-<p><img src="/images/20240428154808.png" alt="图片"></p>
-<p>自建的 H5 判断 navigator.userAgent 是微信环境后可以 直接使用  wx.miniProgram.navigateTo Api , 微搭并不支持。</p>
-<p>解决方法：<br><a href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html">https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html</a></p>
-<ol>
-<li>微搭应用编辑-&gt;应用设置-&gt;开发设置-&gt;加载外部资源(JS&#x2F;CSS)</li>
-<li>将 <a href="https://res.wx.qq.com/open/js/jweixin-1.3.2.js">https://res.wx.qq.com/open/js/jweixin-1.3.2.js</a> 资源下载本地，放到公司 OSS 上</li>
-</ol>
-<p><img src="/images/20240428160058.png" alt="图片"></p>
-]]></content>
-      <categories>
-        <category>微搭</category>
-      </categories>
-      <tags>
-        <tag>微搭低代码</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装 vscode SCSS IntelliSense 插件后，$$符号问题</title>
-    <url>/2025/06/17/%E5%AE%89%E8%A3%85%20vscode%20SCSS%20IntelliSense%20%E6%8F%92%E4%BB%B6%E5%90%8E%EF%BC%8C$$%E7%AC%A6%E5%8F%B7%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><ul>
-<li>安装了SCSS IntelliSense ，输入 $,再选择，会多一个 $符号，如：   font-size:$$font-size-xs。有没有办法解决？</li>
-</ul>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><ol>
-<li>终端输入命令，打开services文件夹 open &#x2F;Users&#x2F;apple&#x2F;.vscode&#x2F;extensions&#x2F;mrmlnc.vscode-scss-0.10.0&#x2F;out&#x2F;unsafe&#x2F;services</li>
-<li>修改 parser.js 文件中的 findDocumentSymbols 方法</li>
-</ol>
-   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   async function findDocumentSymbols(document, ast) &#123;</span><br><span class="line">    const symbols = ls.findDocumentSymbols(document, ast);</span><br><span class="line">    const links = await findDocumentLinks(document, ast);</span><br><span class="line">    const result = &#123;</span><br><span class="line">        functions: [],</span><br><span class="line">        imports: convertLinksToImports(links),</span><br><span class="line">        mixins: [],</span><br><span class="line">        variables: []</span><br><span class="line">    &#125;;</span><br><span class="line">    for (const symbol of symbols) &#123;</span><br><span class="line">        const position = symbol.location.range.start;</span><br><span class="line">        const offset = document.offsetAt(symbol.location.range.start);</span><br><span class="line">        if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Variable) &#123;</span><br><span class="line">            result.variables.push(&#123;</span><br><span class="line">                name: symbol.name.replace(&quot;$&quot;, &quot;&quot;), // 关键点</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                value: getVariableValue(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Method) &#123;</span><br><span class="line">            result.mixins.push(&#123;</span><br><span class="line">                name: symbol.name,</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                parameters: getMethodParameters(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Function) &#123;</span><br><span class="line">            result.functions.push(&#123;</span><br><span class="line">                name: symbol.name,</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                parameters: getMethodParameters(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>常见问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>定时器和延时器</title>
-    <url>/2024/06/15/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%BB%B6%E6%97%B6%E5%99%A8/</url>
-    <content><![CDATA[<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><ol>
-<li>setInterval()  函数可以重复调用一个函数，在每次调用之间具有固定的时间间隔<ul>
-<li>第一个参数是函数</li>
-<li>第二个参数是间隔时间，以毫秒为单位，1000毫秒是1秒</li>
-<li>函数可以接受3，4….个参数，它们将按照顺序传入函数</li>
-<li>具名函数也可以传入serInterval （有名称的函数），但是不能加上括号，不加括号说明传入是 函数，加括号说明是传入执行体（会立即执行，起不到定时执行的效果）</li>
-</ul>
-</li>
-</ol>
-<h2 id="清除定时器"><a href="#清除定时器" class="headerlink" title="清除定时器"></a>清除定时器</h2><ol>
-<li>clearInterval() 函数可以清除定时器，入参传入定时器名称</li>
-</ol>
-<h2 id="延时器"><a href="#延时器" class="headerlink" title="延时器"></a>延时器</h2><ol>
-<li>setTimeout() 函数可以设置一个延时器，当指定时间到了之后，会执行函数一次，不会重复执行</li>
-<li>clearTimeout() 函数可以清除延时器</li>
-</ol>
-<h2 id="初步认识异步语句"><a href="#初步认识异步语句" class="headerlink" title="初步认识异步语句"></a>初步认识异步语句</h2><ol>
-<li>setInterval 和 setTimeout 是两个异步语句</li>
-<li>异步（asynchronous）: 不会阻塞CPU继续执行其它语句，当异步完成时，会执行“回调函数”（callback）</li>
-</ol>
-<h2 id="使用定时器实现动画"><a href="#使用定时器实现动画" class="headerlink" title="使用定时器实现动画"></a>使用定时器实现动画</h2><ol>
-<li>使用定时器实现动画较为不便：<ul>
-<li>1、不方便根据动画总时间计算步长</li>
-<li>2、运动方向要设置正负</li>
-<li>3、多种运动进行叠加较为困难（比如一个放下一边移动一边变为圆形）</li>
-</ul>
-</li>
-</ol>
-<h2 id="JS和CSS3结合实现动画"><a href="#JS和CSS3结合实现动画" class="headerlink" title="JS和CSS3结合实现动画"></a>JS和CSS3结合实现动画</h2><ol>
-<li>CSS3的transition过渡属性可以实现动画</li>
-<li>JavaScript可以使用css3的transtion属性轻松实现元素动画</li>
-<li>JS和CSS3结合实现动画规避了定时器制作动画的缺点</li>
-</ol>
-<h2 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h2><ol>
-<li>一个函数执行一次后，只有大于设定的执行周期后才允许执行第二次</li>
-<li>函数节流非常容易实现，只需要借助setTimeout()延时器</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>找不到插件依赖 @tarojs/plugin-platform-h5，请先在项目中安装</title>
-    <url>/2024/05/04/%E6%89%BE%E4%B8%8D%E5%88%B0%E6%8F%92%E4%BB%B6%E4%BE%9D%E8%B5%96-tarojs-plugin-platform-h5%EF%BC%8C%E8%AF%B7%E5%85%88%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<blockquote>
-<p>运行一个 Taro 的项目，安装完相关依赖后执行命令报错</p>
-</blockquote>
-<h1 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h1><ul>
-<li>yarn install </li>
-<li>yarn run start</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">正在执行任务: yarn run start </span><br><span class="line"></span><br><span class="line">yarn run v1.22.19</span><br><span class="line">$ npm run dev:h5</span><br><span class="line"></span><br><span class="line">&gt; renthouse-taro@1.0.0 dev:h5</span><br><span class="line">&gt; npm run build:h5 -- --watch</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; renthouse-taro@1.0.0 build:h5</span><br><span class="line">&gt; taro build --type h5 --watch </span><br><span class="line"></span><br><span class="line">👽 Taro v3.6.25</span><br><span class="line"></span><br><span class="line">找不到插件依赖 &quot;@tarojs/plugin-platform-h5&quot;，请先在项目中安装，项目路径：D:\xxx\xxx\renthouse-taro</span><br><span class="line">error Command failed with exit code 1.</span><br><span class="line">info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.</span><br></pre></td></tr></table></figure>
-
-<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>因为我之前安装过 Taro 最新版本的 cli , 和现有的 Taro 版本不兼容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taro --version</span><br><span class="line">👽 Taro v3.6.25</span><br><span class="line"></span><br><span class="line">3.6.25</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
-<li>npm uninstall -g @tarojs&#x2F;cli  # 卸载 Trao</li>
-<li>npm install -g @tarojs&#x2F;<a href="mailto:&#x63;&#x6c;&#105;&#64;&#x33;&#x2e;&#x30;&#x2e;&#50;&#57;">&#x63;&#x6c;&#105;&#64;&#x33;&#x2e;&#x30;&#x2e;&#50;&#57;</a>  # 安装指定版本 Trao</li>
-<li>也有可能 nodejs 版本过低和 taro&#x2F;cli 不兼容，nvm 切换 16.x 以上版本试试</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Taro</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -3196,6 +2878,73 @@ default void defaultMethod() &#123;
       </categories>
       <tags>
         <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 添加 Disqus 评论系统</title>
+    <url>/2024/04/14/hexo-%E6%B7%BB%E5%8A%A0-Disqus-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h3 id="登录-Disqus"><a href="#登录-Disqus" class="headerlink" title="登录 Disqus"></a>登录 Disqus</h3><p><img src="https://raw.githubusercontent.com/zhihuzeye/zhihuzeye.github.io/main/images/20240414002939.png" alt="图片" title="disqus登录"></p>
+<h3 id="选择-在我的网站上安装-Disqus"><a href="#选择-在我的网站上安装-Disqus" class="headerlink" title="选择 在我的网站上安装 Disqus"></a>选择 在我的网站上安装 Disqus</h3><p><img src="/images/20240414003055.png" alt="图片" title="disqus登录"></p>
+<h3 id="创建一个新站点"><a href="#创建一个新站点" class="headerlink" title="创建一个新站点"></a>创建一个新站点</h3><p>注意：Website Name 这个字段非常重要，后续需要在 _config.yml 中用到<br>点击 Create Site 按钮即可</p>
+<p><img src="/images/20240414003325.png" alt="图片" title="disqus登录"></p>
+<span id="more"></span>
+
+<h3 id="配置主题-config-yml-文件"><a href="#配置主题-config-yml-文件" class="headerlink" title="配置主题 _config.yml 文件"></a>配置主题 _config.yml 文件</h3><p>网上有很多教程 直接配置，这样是不对的，配置会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">disqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname:your Website Name</span><br><span class="line">  count: true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>踩坑：disqus  shortname 报错 YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key</p>
+<p>shortname 需要换行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">disqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname:</span><br><span class="line">          your Website Name</span><br><span class="line">  count: true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Disqus</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MongoDB 入门</title>
+    <url>/2024/09/26/MongoDB-%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h3 id="1-安装-Homebrew"><a href="#1-安装-Homebrew" class="headerlink" title="1. 安装 Homebrew"></a>1. 安装 Homebrew</h3><p>如果还没有安装 Homebrew，可以使用以下命令安装 Homebrew：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>你可以访问 Homebrew 的 <a href="https://brew.sh/">官方网站</a> 了解更多信息。</p>
+<h3 id="2-使用-Homebrew-安装-MongoDB"><a href="#2-使用-Homebrew-安装-MongoDB" class="headerlink" title="2. 使用 Homebrew 安装 MongoDB"></a>2. 使用 Homebrew 安装 MongoDB</h3><h4 id="a-添加-MongoDB-官方-Homebrew-Tap"><a href="#a-添加-MongoDB-官方-Homebrew-Tap" class="headerlink" title="a. 添加 MongoDB 官方 Homebrew Tap"></a>a. 添加 MongoDB 官方 Homebrew Tap</h4><p>首先，运行以下命令来添加 MongoDB 官方的 Homebrew Tap（软件源）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br></pre></td></tr></table></figure>
+
+<h4 id="b-安装-MongoDB-社区版"><a href="#b-安装-MongoDB-社区版" class="headerlink" title="b. 安装 MongoDB 社区版"></a>b. 安装 MongoDB 社区版</h4><p>接下来，使用 Homebrew 来安装 MongoDB 社区版：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install mongodb-community@6.0</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的 <code>@6.0</code> 是 MongoDB 的版本号，你可以根据需要替换为其他版本。</p>
+</blockquote>
+<h3 id="3-启动-MongoDB-服务"><a href="#3-启动-MongoDB-服务" class="headerlink" title="3. 启动 MongoDB 服务"></a>3. 启动 MongoDB 服务</h3><p>安装完成后，可以通过 Homebrew 启动 MongoDB：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services start mongodb/brew/mongodb-community</span><br></pre></td></tr></table></figure>
+
+<p>这会将 MongoDB 作为 macOS 服务启动，并且会在每次系统启动时自动启动。</p>
+<p>如果你只想手动启动 MongoDB 而不让它自动运行，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongod --config /usr/local/etc/mongod.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-检查-MongoDB-是否运行"><a href="#4-检查-MongoDB-是否运行" class="headerlink" title="4. 检查 MongoDB 是否运行"></a>4. 检查 MongoDB 是否运行</h3><p>你可以运行以下命令，查看 MongoDB 服务是否已经成功启动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services list</span><br></pre></td></tr></table></figure>
+
+<p>MongoDB 的状态应该显示为 “started”。</p>
+<h3 id="5-连接-MongoDB"><a href="#5-连接-MongoDB" class="headerlink" title="5. 连接 MongoDB"></a>5. 连接 MongoDB</h3><p>MongoDB 服务器启动后，你可以通过 <code>mongo</code> 命令连接到 MongoDB 的命令行工具：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+
+<p>如果一切正常，你现在应该已经连接到 MongoDB 的 shell，可以开始使用数据库了。</p>
+<h3 id="6-停止-MongoDB-服务"><a href="#6-停止-MongoDB-服务" class="headerlink" title="6. 停止 MongoDB 服务"></a>6. 停止 MongoDB 服务</h3><p>如果你需要停止 MongoDB 服务，可以运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services stop mongodb/brew/mongodb-community</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>这样，你就可以在 Mac 上成功安装和运行 MongoDB。如果遇到任何问题，请确保 Homebrew 和 MongoDB 的安装路径正确，并查看 Homebrew 提供的安装日志。</p>
+]]></content>
+      <tags>
+        <tag>MongoDB</tag>
       </tags>
   </entry>
   <entry>
@@ -3358,6 +3107,478 @@ default void defaultMethod() &#123;
       </tags>
   </entry>
   <entry>
+    <title>多媒体与语义化标签</title>
+    <url>/2024/06/12/%E5%A4%9A%E5%AA%92%E4%BD%93%E4%B8%8E%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/</url>
+    <content><![CDATA[<h2 id="audio标签（兼容到IE9）"><a href="#audio标签（兼容到IE9）" class="headerlink" title="audio标签（兼容到IE9）"></a>audio标签（兼容到IE9）</h2><ol>
+<li>属性<ul>
+<li>autoplay（某些浏览器不支持自动播放、本地自动播放是可以的）</li>
+<li>loop （重复播放）</li>
+</ul>
+</li>
+</ol>
+<h2 id="video-标签（兼容到IE9）"><a href="#video-标签（兼容到IE9）" class="headerlink" title="video 标签（兼容到IE9）"></a>video 标签（兼容到IE9）</h2><ol>
+<li>属性<ul>
+<li>同 audio 标签</li>
+<li>width 视频播放器宽度</li>
+</ul>
+</li>
+</ol>
+<h2 id="大纲标签（区块标签）"><a href="#大纲标签（区块标签）" class="headerlink" title="大纲标签（区块标签）"></a>大纲标签（区块标签）</h2><ol>
+<li>section 文档的区域，语义比div大</li>
+<li>article 文档的核心文章内容，会被搜索引擎主要抓取</li>
+<li>nav 导航条</li>
+<li>footer 页脚</li>
+<li>aside 文档的非必要相关内容，比如广告等</li>
+<li>main 网页核心部分</li>
+<li>header 页头</li>
+</ol>
+<h2 id="语义化标签"><a href="#语义化标签" class="headerlink" title="语义化标签"></a>语义化标签</h2><ol>
+<li>span 文本中的区块标签</li>
+<li>b 加粗标签</li>
+<li>i 斜体标签</li>
+<li>u 下划线标签</li>
+<li>strong 加粗标签</li>
+<li>em 斜体标签</li>
+<li>mark 标记标签</li>
+<li>figure-figcaption 用于表示图片和图片的标题</li>
+</ol>
+<h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><ol>
+<li>a 标签<ul>
+<li>1、a 标签 anchor 锚 的首字母<br>2、hypertext reference 超文本引用<br>3、title 用于设置鼠标的悬停文本</li>
+<li>属性<ul>
+<li>href 超文本引用</li>
+<li>target<ul>
+<li>_blank 在新窗口或新标签页中打开链接。</li>
+<li>_self 在父级框架中打开链接。</li>
+<li>_top 在当前窗口中打开链接（默认值）。</li>
+<li>_parent 在顶级框架中打开链接。</li>
+</ul>
+</li>
+<li>title 用于设置鼠标的悬停文本</li>
+</ul>
+</li>
+<li>说明<ul>
+<li>mailto:me.test.com 邮件</li>
+<li>tel:135555555555 拨打电话</li>
+<li>#top 回到顶部</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>img 标签<ul>
+<li>src</li>
+<li>width、height</li>
+<li>alt  alternate 替代品的缩写，它是图像的描述，不是强制性的(有利于搜索引擎优化)</li>
+<li>title 鼠标悬停时候显示</li>
+<li>class、style 设置样式用</li>
+<li>loading  指定图像加载方式，可选值有”eager”（立即加载）和”lazy”（延迟加载）。</li>
+<li>decoding  指定图像解码方式，可选值有”async”（异步解码）和”sync”（同步解码）。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装 vscode SCSS IntelliSense 插件后，$$符号问题</title>
+    <url>/2025/06/17/%E5%AE%89%E8%A3%85%20vscode%20SCSS%20IntelliSense%20%E6%8F%92%E4%BB%B6%E5%90%8E%EF%BC%8C$$%E7%AC%A6%E5%8F%B7%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><ul>
+<li>安装了SCSS IntelliSense ，输入 $,再选择，会多一个 $符号，如：   font-size:$$font-size-xs。有没有办法解决？</li>
+</ul>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><ol>
+<li>终端输入命令，打开services文件夹 open &#x2F;Users&#x2F;apple&#x2F;.vscode&#x2F;extensions&#x2F;mrmlnc.vscode-scss-0.10.0&#x2F;out&#x2F;unsafe&#x2F;services</li>
+<li>修改 parser.js 文件中的 findDocumentSymbols 方法</li>
+</ol>
+   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   async function findDocumentSymbols(document, ast) &#123;</span><br><span class="line">    const symbols = ls.findDocumentSymbols(document, ast);</span><br><span class="line">    const links = await findDocumentLinks(document, ast);</span><br><span class="line">    const result = &#123;</span><br><span class="line">        functions: [],</span><br><span class="line">        imports: convertLinksToImports(links),</span><br><span class="line">        mixins: [],</span><br><span class="line">        variables: []</span><br><span class="line">    &#125;;</span><br><span class="line">    for (const symbol of symbols) &#123;</span><br><span class="line">        const position = symbol.location.range.start;</span><br><span class="line">        const offset = document.offsetAt(symbol.location.range.start);</span><br><span class="line">        if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Variable) &#123;</span><br><span class="line">            result.variables.push(&#123;</span><br><span class="line">                name: symbol.name.replace(&quot;$&quot;, &quot;&quot;), // 关键点</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                value: getVariableValue(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Method) &#123;</span><br><span class="line">            result.mixins.push(&#123;</span><br><span class="line">                name: symbol.name,</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                parameters: getMethodParameters(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Function) &#123;</span><br><span class="line">            result.functions.push(&#123;</span><br><span class="line">                name: symbol.name,</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                parameters: getMethodParameters(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>常见问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【踩坑】uni.navigateTo 微信小程序 跳转无效问题</title>
+    <url>/2024/04/17/%E3%80%90%E8%B8%A9%E5%9D%91%E3%80%91uni-navigateTo-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%B7%B3%E8%BD%AC%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>最近接手了一个项目，该项目在用户体验上极度不友好，如：每次请求就显示 loading ，自定义 tabbar 可点击区域太小，组件间切换白屏等等问题。本着 “要改革、就不要怕” 的原则，便大刀阔斧的对项目代码进行一系列优化。</p>
+</blockquote>
+<p>结果改着改着就出现了问题：</p>
+<ul>
+<li>分包 packageB 的路径能点击</li>
+<li>packageA、packageC 里的路径不能点击</li>
+<li>手机能点击、模拟器不能点击</li>
+<li>模拟器能点击，手机不能点击</li>
+</ul>
+<p><img src="/images/emoji/tieba/035.png" alt="图片"></p>
+<span id="more"></span>
+
+<h1 id="代码不报错，是最难解决的-bug-！！！"><a href="#代码不报错，是最难解决的-bug-！！！" class="headerlink" title="代码不报错，是最难解决的 bug ！！！"></a>代码不报错，是最难解决的 bug ！！！</h1><p>这让我一度怀疑是 小程序开发者工具问题、小程序基础库版本问题，nodejs 版本问题 、vue-cli 版本问题，<br>然后就 nvm 切换版本、开发者工具卸载删除、基础库版本修改一系列骚操作。。。</p>
+<p><strong>马后炮：</strong> 如果代码能跑起来，肯定是没有问题的，微信小程序开发者工具 navigateTo 、redirectTo 、switchTab 、reLaunch 这些基础的 API 无论是哪个基础库都能很好的支持。</p>
+<p>大概率不用去想 nodejs 版本问题， 删除掉 node_modules 再重装挺浪费时间的。 所以很多时候都是代码中的问题。</p>
+<p>比如我这个 bug 有些链接能跳转 有些不能跳转，就复制能跳转的 链接，<strong>全局检索</strong>。<strong>查找它们其中的差异</strong></p>
+<p>问题出现的地方：<br>程序初始化 拦截了 navigateTo、redirectTo、switchTab、reLaunch 这些操作，执行 checkVisitPage 方法，如果链接在白名单列表中且已登录就能跳转，否则唤起登录的弹窗。</p>
+<p>”好巧不巧，我把登录弹窗组件删除掉了，因为它在每个页面都写了一遍“，所以点击没有反应。。。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// App.vue</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;</span><br><span class="line">	addInterceptor,</span><br><span class="line">	checkVisitPage</span><br><span class="line">&#125; from &quot;./utils/index.js&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">	globalData: &#123;</span><br><span class="line">		systemInfo: null</span><br><span class="line">	&#125;,</span><br><span class="line">	onLaunch: function () &#123;</span><br><span class="line">		this.initApp();</span><br><span class="line">	&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		initApp() &#123;</span><br><span class="line">			addInterceptor.call(this);</span><br><span class="line">			checkVisitPage.call(this);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// utils/index.js</span><br><span class="line">const openPages = [</span><br><span class="line">	&#x27;/pages/home/index&#x27;,</span><br><span class="line">	&#x27;/pages/webView/index&#x27;,</span><br><span class="line">	...</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export function checkVisitPage(url) &#123;</span><br><span class="line">	if (!url) &#123;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">	if (url.indexOf(&quot;?&quot;) &gt; -1) &#123;</span><br><span class="line">		url = url.split(&quot;?&quot;)[0];</span><br><span class="line">	&#125;</span><br><span class="line">	if (!openPages.includes(url)) &#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			const userInfo = uni.getStorageSync(&#x27;userInfo&#x27;);</span><br><span class="line">			if (!userInfo.accessToken || userInfo?.userType == 7) &#123;</span><br><span class="line">				this.$store.commit(&#x27;common/setPurviewWarningMethod&#x27;, true)</span><br><span class="line">				return false;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				this.$store.commit(&#x27;common/setPurviewWarningMethod&#x27;, false)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (e) &#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function addInterceptor() &#123;</span><br><span class="line">	uni.addInterceptor(&#x27;navigateTo&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;redirectTo&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;switchTab&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;reLaunch&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>其它：如果无法跳转，请检查 是否 &#x2F; 斜杆开头</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">uni.navigateTo(&#123;</span><br><span class="line">	url: &#x27;/pages/index/index&#x27;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>因为这两天给环境整崩溃了，某些老项目没有 yarn.lock 或 package-lock 文件 ，代码 dev 能启动起来，但是 build 失败！，怀疑是 nodejs 版本问题，typescript 版本不兼容问题等等，最后向原来的开发人员，重新套了个壳， 才知道 package.json 少了 esbuild-loader 依赖！ 为啥源码里 package.json  没有 esbuild-loader …</p>
+</blockquote>
+<p>但是错误提示可不友好，让你根本搜索不到错误发生的原因</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[tsl] ERROR in \node_modules\@types\node\util.d.ts(1656,1)</span><br><span class="line">      TS1128: Declaration or statement expected.</span><br><span class="line">ERROR in \node_modules\@types\node\util.d.ts</span><br><span class="line"></span><br><span class="line">[tsl] ERROR in \node_modules\@types\node\util.d.ts(1654,26)</span><br><span class="line">      TS1005: &#x27;;&#x27; expected.</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h1><ol>
+<li>能自己解决的尽量不麻烦别人，遇到问题首先 谷歌，GPT 查询（此操作最好不要超过 1小时）</li>
+<li>仔细阅读源码，全局检索 查找它们其中的差异</li>
+<li>善于交流、勇于交流。（在不得已要麻烦别人的时候，也不要害怕。 出门靠朋友~ 态度好点虚心求教，很多人愿意帮你的）</li>
+<li>站起来喝杯咖啡吧！有时候把事情缓一缓。解决问题的思绪就来了</li>
+</ol>
+]]></content>
+      <categories>
+        <category>小程序</category>
+      </categories>
+      <tags>
+        <tag>uni-app</tag>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>定时器和延时器</title>
+    <url>/2024/06/15/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%BB%B6%E6%97%B6%E5%99%A8/</url>
+    <content><![CDATA[<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><ol>
+<li>setInterval()  函数可以重复调用一个函数，在每次调用之间具有固定的时间间隔<ul>
+<li>第一个参数是函数</li>
+<li>第二个参数是间隔时间，以毫秒为单位，1000毫秒是1秒</li>
+<li>函数可以接受3，4….个参数，它们将按照顺序传入函数</li>
+<li>具名函数也可以传入serInterval （有名称的函数），但是不能加上括号，不加括号说明传入是 函数，加括号说明是传入执行体（会立即执行，起不到定时执行的效果）</li>
+</ul>
+</li>
+</ol>
+<h2 id="清除定时器"><a href="#清除定时器" class="headerlink" title="清除定时器"></a>清除定时器</h2><ol>
+<li>clearInterval() 函数可以清除定时器，入参传入定时器名称</li>
+</ol>
+<h2 id="延时器"><a href="#延时器" class="headerlink" title="延时器"></a>延时器</h2><ol>
+<li>setTimeout() 函数可以设置一个延时器，当指定时间到了之后，会执行函数一次，不会重复执行</li>
+<li>clearTimeout() 函数可以清除延时器</li>
+</ol>
+<h2 id="初步认识异步语句"><a href="#初步认识异步语句" class="headerlink" title="初步认识异步语句"></a>初步认识异步语句</h2><ol>
+<li>setInterval 和 setTimeout 是两个异步语句</li>
+<li>异步（asynchronous）: 不会阻塞CPU继续执行其它语句，当异步完成时，会执行“回调函数”（callback）</li>
+</ol>
+<h2 id="使用定时器实现动画"><a href="#使用定时器实现动画" class="headerlink" title="使用定时器实现动画"></a>使用定时器实现动画</h2><ol>
+<li>使用定时器实现动画较为不便：<ul>
+<li>1、不方便根据动画总时间计算步长</li>
+<li>2、运动方向要设置正负</li>
+<li>3、多种运动进行叠加较为困难（比如一个放下一边移动一边变为圆形）</li>
+</ul>
+</li>
+</ol>
+<h2 id="JS和CSS3结合实现动画"><a href="#JS和CSS3结合实现动画" class="headerlink" title="JS和CSS3结合实现动画"></a>JS和CSS3结合实现动画</h2><ol>
+<li>CSS3的transition过渡属性可以实现动画</li>
+<li>JavaScript可以使用css3的transtion属性轻松实现元素动画</li>
+<li>JS和CSS3结合实现动画规避了定时器制作动画的缺点</li>
+</ol>
+<h2 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h2><ol>
+<li>一个函数执行一次后，只有大于设定的执行周期后才允许执行第二次</li>
+<li>函数节流非常容易实现，只需要借助setTimeout()延时器</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信消息推送的几种方式</title>
+    <url>/2025/07/02/%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="微信消息推送的几种方式"><a href="#微信消息推送的几种方式" class="headerlink" title="微信消息推送的几种方式"></a>微信消息推送的几种方式</h1><h2 id="一、推送方式及对比"><a href="#一、推送方式及对比" class="headerlink" title="一、推送方式及对比"></a>一、推送方式及对比</h2><p>微信平台支持多种消息推送方式，主要包括以下三种：</p>
+<table>
+<thead>
+<tr>
+<th>推送方式</th>
+<th>使用平台</th>
+<th>消息类型</th>
+<th>用户接受程度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小程序推送</td>
+<td>微信小程序</td>
+<td>模板消息 &#x2F; 服务通知</td>
+<td>★★★★★（强提醒）</td>
+</tr>
+<tr>
+<td>服务号推送</td>
+<td>微信服务号</td>
+<td>模板消息</td>
+<td>★★★★☆</td>
+</tr>
+<tr>
+<td>公众号推送</td>
+<td>微信订阅号</td>
+<td>图文消息 &#x2F; 通知</td>
+<td>★★★☆☆</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>✅ <strong>通知强提醒等级排序：服务通知 &gt; 服务号 &gt; 公众号</strong></p>
+</blockquote>
+<hr>
+<h2 id="二、推送效果截图"><a href="#二、推送效果截图" class="headerlink" title="二、推送效果截图"></a>二、推送效果截图</h2><h3 id="1-服务通知截图"><a href="#1-服务通知截图" class="headerlink" title="1. 服务通知截图"></a>1. 服务通知截图</h3><p><img src="/images/WechatIMG406.jpg" alt="服务通知示例"></p>
+<hr>
+<h3 id="2-服务号通知截图"><a href="#2-服务号通知截图" class="headerlink" title="2. 服务号通知截图"></a>2. 服务号通知截图</h3><p><img src="/images/WechatIMG407.jpg" alt="服务号示例"></p>
+<hr>
+<h3 id="3-公众号通知截图"><a href="#3-公众号通知截图" class="headerlink" title="3. 公众号通知截图"></a>3. 公众号通知截图</h3><p><img src="/images/WechatIMG408.jpg" alt="公众号示例"></p>
+<hr>
+<h2 id="三、小程序消息推送说明"><a href="#三、小程序消息推送说明" class="headerlink" title="三、小程序消息推送说明"></a>三、小程序消息推送说明</h2><p>小程序支持不同类型的消息模板推送，其模板分类与使用要求如下：</p>
+<h3 id="小程序模板分类说明"><a href="#小程序模板分类说明" class="headerlink" title="小程序模板分类说明"></a>小程序模板分类说明</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>类目要求</th>
+<th>使用限制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新版一次性订阅消息</td>
+<td>仅支持电商等特定类目</td>
+<td>用户订阅后可发送 1 条消息，<strong>无时间限制</strong></td>
+</tr>
+<tr>
+<td>一次性订阅消息</td>
+<td>一般类目均可使用</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>长期订阅消息</td>
+<td>仅限政务民生、医疗、教育等公共服务类目</td>
+<td>当前使用方式未公开</td>
+</tr>
+<tr>
+<td>设备订阅消息</td>
+<td>公共服务类目，需接入硬件设备支持</td>
+<td>每日对单一用户可发送 1 条消息</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>📌 <strong>说明</strong>：新版模板会优先出现在符合类目要求的小程序的公共模板库中。</p>
+</blockquote>
+<h3 id="模板管理界面示意图"><a href="#模板管理界面示意图" class="headerlink" title="模板管理界面示意图"></a>模板管理界面示意图</h3><p><img src="/images/subscrib.png" alt="小程序订阅模板示意"></p>
+<hr>
+<h3 id="小程序推送使用场景说明"><a href="#小程序推送使用场景说明" class="headerlink" title="小程序推送使用场景说明"></a>小程序推送使用场景说明</h3><ul>
+<li><p><strong>基础订阅场景</strong><br>用户每完成一次订阅授权，开发者即可下发一条消息，<strong>没有时间限制</strong>。即使订阅与实际推送之间间隔很久，也不会失效。</p>
+</li>
+<li><p><strong>支付关联场景</strong><br>用户在小程序内完成微信支付后，开发者可基于支付订单触发<strong>服务通知</strong>，每笔订单最多可下发 <strong>3 条消息</strong>，该额度与普通订阅消息互不冲突。</p>
+</li>
+</ul>
+<hr>
+<h2 id="四、公众号消息推送说明"><a href="#四、公众号消息推送说明" class="headerlink" title="四、公众号消息推送说明"></a>四、公众号消息推送说明</h2><h3 id="公众号消息类型对比"><a href="#公众号消息类型对比" class="headerlink" title="公众号消息类型对比"></a>公众号消息类型对比</h3><table>
+<thead>
+<tr>
+<th>公众号类型</th>
+<th>模板消息支持</th>
+<th>限制条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>订阅号</td>
+<td>❌ 不支持模板消息</td>
+<td>仅支持图文或图文卡片消息</td>
+</tr>
+<tr>
+<td>服务号</td>
+<td>✅ 支持模板消息</td>
+<td>需企业或组织认证</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 服务号每月可主动向用户推送 <strong>4 条模板消息</strong>，适合企业级服务与重要通知场景。</p>
+</blockquote>
+<hr>
+<h2 id="五、核心流程图"><a href="#五、核心流程图" class="headerlink" title="五、核心流程图"></a>五、核心流程图</h2><p>以下为小程序&#x2F;服务号消息推送核心流程示意图：</p>
+<p><img src="/images/xxts.drawio.png" alt="核心流程图"></p>
+<hr>
+<h2 id="六、总结对比"><a href="#六、总结对比" class="headerlink" title="六、总结对比"></a>六、总结对比</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>小程序订阅消息</th>
+<th>服务号模板消息</th>
+<th>公众号图文推送</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>接收强度</td>
+<td>★★★★★</td>
+<td>★★★★☆</td>
+<td>★★★☆☆</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>支付提醒、任务提醒、系统通知等</td>
+<td>用户服务通知</td>
+<td>日常图文传播</td>
+</tr>
+<tr>
+<td>限制</td>
+<td>需用户主动订阅</td>
+<td>企业认证</td>
+<td>用户关注即可</td>
+</tr>
+<tr>
+<td>模板多样性</td>
+<td>模板需符合类目限制</td>
+<td>模板较自由</td>
+<td>图文内容为主</td>
+</tr>
+</tbody></table>
+<hr>
+<p>如需集成微信消息推送，请结合业务所属类目、目标用户行为和提醒紧急程度，选择最合适的推送方式，以实现更高的用户触达率和业务转化效果。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>微搭 h5 跳转小程序</title>
+    <url>/2024/04/28/%E5%BE%AE%E6%90%AD-h5-%E8%B7%B3%E8%BD%AC%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
+    <content><![CDATA[<blockquote>
+<p>场景：小程序内嵌 微搭 H5 页面， 点击 H5 某块区域，跳转到小程序详情页</p>
+</blockquote>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export default function (&#123; event, data &#125;) &#123;</span><br><span class="line">  const value = data?.target</span><br><span class="line">  try &#123;</span><br><span class="line">    wx.miniProgram.navigateTo(&#123;</span><br><span class="line">      url: `/packageC/houseDetails/index?id=$&#123;value&#125;`,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; catch (err) &#123;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url: `/packageC/houseDetails/index?id=$&#123;value&#125;`,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>报错：事件响应失败:组件container8[tap事件 响应Id wwvcp1rff5h]:wx is not defined</p>
+<p><img src="/images/20240428154808.png" alt="图片"></p>
+<p>自建的 H5 判断 navigator.userAgent 是微信环境后可以 直接使用  wx.miniProgram.navigateTo Api , 微搭并不支持。</p>
+<p>解决方法：<br><a href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html">https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html</a></p>
+<ol>
+<li>微搭应用编辑-&gt;应用设置-&gt;开发设置-&gt;加载外部资源(JS&#x2F;CSS)</li>
+<li>将 <a href="https://res.wx.qq.com/open/js/jweixin-1.3.2.js">https://res.wx.qq.com/open/js/jweixin-1.3.2.js</a> 资源下载本地，放到公司 OSS 上</li>
+</ol>
+<p><img src="/images/20240428160058.png" alt="图片"></p>
+]]></content>
+      <categories>
+        <category>微搭</category>
+      </categories>
+      <tags>
+        <tag>微搭低代码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>流程控制语句</title>
+    <url>/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><ol>
+<li>if 语句的基本使用 <ul>
+<li>如果…..就…..否则</li>
+</ul>
+</li>
+<li>if elseif 多条件分支<ul>
+<li>else if() 条件分支“暗含”不符合之前的所有条件，要深刻理解什么叫“否则如果”</li>
+</ul>
+</li>
+<li>if 语句算法题</li>
+<li>switch 语句<ul>
+<li>用途：当一个变量被分类讨论的情形</li>
+</ul>
+</li>
+<li>三元运算符<ul>
+<li>条件表达式 ? 表达式1 : 表达式2</li>
+<li>三元运算的用途：根据某个条件是否成立，在两个不同值中选择变量的值</li>
+</ul>
+</li>
+</ol>
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><ol>
+<li>for 循环语句<ul>
+<li>循环通常需要三个参数：起始值、结束值和步长。这些参数可以用for循环来指定。</li>
+</ul>
+</li>
+<li>for 循环算法题<ul>
+<li><em><strong>for循环有明确的范围，while循环没有明确的范围</strong></em></li>
+</ul>
+</li>
+<li>while 循环语句<ul>
+<li>while 语句 也是一种循环结构，是一种“不定范围”循环，和for循环各有不同的勇武之地</li>
+<li>几乎所有编程语言，都提供了for和while语句</li>
+<li><em><strong>while 语句事先不指定循环开始、结束范围，只要测试条件满足，就一直执行循环体</strong></em></li>
+<li>while 循环没有显式定义循环变量，必须自己在while循环外先定义好循环变量，有时甚至可以没有循环变量</li>
+<li>循环体内的语句，必须使循环测试条件趋向不成立，否侧会死循环。</li>
+<li>while 循环，while 是 “当”的意思。</li>
+<li>更适合while循环的场景<ul>
+<li>寻找最小满足n²&gt;456789的整数n</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>break 和 continue <ul>
+<li>break 表示立即终止循环，它只能用在循环语句中，在for循环和while循环中都可以使用</li>
+<li>continue 用于 跳过循环中的一个迭代，并继续执行循环中的下一个迭代。for循环更经常使用continue</li>
+</ul>
+</li>
+<li>do while 语句<ul>
+<li>是一种“后测试循环语句”，它不同于for循环和while循环每次都是“先测试条件是否满足，然后执行循环体”，do-while循环是“先执行循环体，再测试条件是否满足”</li>
+<li>do { 循环体 } while (循环执行条件)</li>
+</ul>
+</li>
+<li>while 语句算法题</li>
+</ol>
+<h2 id="初识算法"><a href="#初识算法" class="headerlink" title="初识算法"></a>初识算法</h2><ol>
+<li>什么是算法<ul>
+<li>指的是解题方案的准确而完整的描述。是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制，也就是说，能够对一定规范的输入，在有限的实际内获得所要求的的输出。</li>
+<li>算法就是把一个问题，拆解成计算机能够一步一步执行的步骤。</li>
+<li>计算机的流程控制语句：顺序执行，选择语句，循环语句。</li>
+<li>优秀算法的要求<ul>
+<li>正确性</li>
+<li>健壮性</li>
+<li>可读性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>累加器和累乘器</li>
+<li>穷举法</li>
+<li>综合算法题目</li>
+<li>随机数函数<ul>
+<li>得到[a,b]区间的整数，公式：</li>
+<li><code>parseInt(Math.random()* (b-a + 1)) + a</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="如何拆位"><a href="#如何拆位" class="headerlink" title="如何拆位"></a>如何拆位</h2><ol>
+<li>数学方法<ul>
+<li><code>百位是原数字除以100取整  Math.floor(n/100)</code></li>
+<li><code>十位是原数字除以10取整，再与10求模  Math.floor(n/10) % 10</code></li>
+<li><code>个位是原数字与10求模  n % 10</code></li>
+</ul>
+</li>
+<li>字符串方法<ul>
+<li>直接将原数字 变为字符串，然后再用charAt()方法得到每个数位的值</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>盒模型</title>
     <url>/2024/06/12/%E7%9B%92%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<h2 id="认识盒模型"><a href="#认识盒模型" class="headerlink" title="认识盒模型"></a>认识盒模型</h2><ol>
@@ -3507,93 +3728,117 @@ default void defaultMethod() &#123;
       </tags>
   </entry>
   <entry>
-    <title>流程控制语句</title>
-    <url>/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><ol>
-<li>if 语句的基本使用 <ul>
-<li>如果…..就…..否则</li>
+    <title>找不到插件依赖 @tarojs/plugin-platform-h5，请先在项目中安装</title>
+    <url>/2024/05/04/%E6%89%BE%E4%B8%8D%E5%88%B0%E6%8F%92%E4%BB%B6%E4%BE%9D%E8%B5%96-tarojs-plugin-platform-h5%EF%BC%8C%E8%AF%B7%E5%85%88%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<blockquote>
+<p>运行一个 Taro 的项目，安装完相关依赖后执行命令报错</p>
+</blockquote>
+<h1 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h1><ul>
+<li>yarn install </li>
+<li>yarn run start</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">正在执行任务: yarn run start </span><br><span class="line"></span><br><span class="line">yarn run v1.22.19</span><br><span class="line">$ npm run dev:h5</span><br><span class="line"></span><br><span class="line">&gt; renthouse-taro@1.0.0 dev:h5</span><br><span class="line">&gt; npm run build:h5 -- --watch</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; renthouse-taro@1.0.0 build:h5</span><br><span class="line">&gt; taro build --type h5 --watch </span><br><span class="line"></span><br><span class="line">👽 Taro v3.6.25</span><br><span class="line"></span><br><span class="line">找不到插件依赖 &quot;@tarojs/plugin-platform-h5&quot;，请先在项目中安装，项目路径：D:\xxx\xxx\renthouse-taro</span><br><span class="line">error Command failed with exit code 1.</span><br><span class="line">info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.</span><br></pre></td></tr></table></figure>
+
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>因为我之前安装过 Taro 最新版本的 cli , 和现有的 Taro 版本不兼容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taro --version</span><br><span class="line">👽 Taro v3.6.25</span><br><span class="line"></span><br><span class="line">3.6.25</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
+<li>npm uninstall -g @tarojs&#x2F;cli  # 卸载 Trao</li>
+<li>npm install -g @tarojs&#x2F;<a href="mailto:&#x63;&#108;&#x69;&#64;&#x33;&#x2e;&#48;&#46;&#x32;&#x39;">&#x63;&#108;&#x69;&#64;&#x33;&#x2e;&#48;&#46;&#x32;&#x39;</a>  # 安装指定版本 Trao</li>
+<li>也有可能 nodejs 版本过低和 taro&#x2F;cli 不兼容，nvm 切换 16.x 以上版本试试</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Taro</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>文本与字体属性</title>
+    <url>/2024/06/12/%E6%96%87%E6%9C%AC%E4%B8%8E%E5%AD%97%E4%BD%93%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<h2 id="常用文本样式属性"><a href="#常用文本样式属性" class="headerlink" title="常用文本样式属性"></a>常用文本样式属性</h2><ol>
+<li>color<ul>
+<li>设置文本内容的前景色<ul>
+<li>RGBA ，最后一个表示透明度，0表示纯透明，1表示纯实心</li>
 </ul>
 </li>
-<li>if elseif 多条件分支<ul>
-<li>else if() 条件分支“暗含”不符合之前的所有条件，要深刻理解什么叫“否则如果”</li>
+<li>16进制，RGB，RGBA</li>
+<li><strong>如果颜色值是#aabbcc的形式，可以简写为#abc</strong><ul>
+<li>#ff0000 -&gt; #f00</li>
 </ul>
 </li>
-<li>if 语句算法题</li>
-<li>switch 语句<ul>
-<li>用途：当一个变量被分类讨论的情形</li>
 </ul>
 </li>
-<li>三元运算符<ul>
-<li>条件表达式 ? 表达式1 : 表达式2</li>
-<li>三元运算的用途：根据某个条件是否成立，在两个不同值中选择变量的值</li>
+<li>font-size<ul>
+<li>设置字号，单位通常px</li>
+</ul>
+</li>
+<li>font-weight<ul>
+<li>normal  正常粗细，与400等值</li>
+<li>bold  加粗，与700等值</li>
+<li>lighter  更细，大多数中文字体不支持</li>
+<li>bolder  更粗，大多数中文字体不支持</li>
+</ul>
+</li>
+<li>font-style<ul>
+<li>normal  取消倾斜，比如把天生倾斜的i、em等标签设置为不倾斜</li>
+<li>italic  设置为倾斜字体（常用）</li>
+<li>oblique  设置为倾斜字体（用常规字体模拟，不常用）</li>
+</ul>
+</li>
+<li>text-decoration<ul>
+<li>none  没有修饰线</li>
+<li>underline  下划线</li>
+<li>line-through  删除线</li>
 </ul>
 </li>
 </ol>
-<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><ol>
-<li>for 循环语句<ul>
-<li>循环通常需要三个参数：起始值、结束值和步长。这些参数可以用for循环来指定。</li>
-</ul>
-</li>
-<li>for 循环算法题<ul>
-<li><em><strong>for循环有明确的范围，while循环没有明确的范围</strong></em></li>
-</ul>
-</li>
-<li>while 循环语句<ul>
-<li>while 语句 也是一种循环结构，是一种“不定范围”循环，和for循环各有不同的勇武之地</li>
-<li>几乎所有编程语言，都提供了for和while语句</li>
-<li><em><strong>while 语句事先不指定循环开始、结束范围，只要测试条件满足，就一直执行循环体</strong></em></li>
-<li>while 循环没有显式定义循环变量，必须自己在while循环外先定义好循环变量，有时甚至可以没有循环变量</li>
-<li>循环体内的语句，必须使循环测试条件趋向不成立，否侧会死循环。</li>
-<li>while 循环，while 是 “当”的意思。</li>
-<li>更适合while循环的场景<ul>
-<li>寻找最小满足n²&gt;456789的整数n</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>break 和 continue <ul>
-<li>break 表示立即终止循环，它只能用在循环语句中，在for循环和while循环中都可以使用</li>
-<li>continue 用于 跳过循环中的一个迭代，并继续执行循环中的下一个迭代。for循环更经常使用continue</li>
-</ul>
-</li>
-<li>do while 语句<ul>
-<li>是一种“后测试循环语句”，它不同于for循环和while循环每次都是“先测试条件是否满足，然后执行循环体”，do-while循环是“先执行循环体，再测试条件是否满足”</li>
-<li>do { 循环体 } while (循环执行条件)</li>
-</ul>
-</li>
-<li>while 语句算法题</li>
+<h2 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h2><ol>
+<li>color</li>
+<li>font-开头的</li>
+<li>list-开头的</li>
+<li>text-开头的</li>
+<li>line-开头的</li>
+<li><em><strong>因为文字相关属性有继承性，所以通常会设置body标签的字号、颜色、行高等，这样就能当做整个网页的默认样式了</strong></em></li>
+<li><em><strong>在继承的情况下，选择器权重计算失效，而是“就近原则”，继承的不如元素选中的权重大</strong></em></li>
 </ol>
-<h2 id="初识算法"><a href="#初识算法" class="headerlink" title="初识算法"></a>初识算法</h2><ol>
-<li>什么是算法<ul>
-<li>指的是解题方案的准确而完整的描述。是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制，也就是说，能够对一定规范的输入，在有限的实际内获得所要求的的输出。</li>
-<li>算法就是把一个问题，拆解成计算机能够一步一步执行的步骤。</li>
-<li>计算机的流程控制语句：顺序执行，选择语句，循环语句。</li>
-<li>优秀算法的要求<ul>
-<li>正确性</li>
-<li>健壮性</li>
-<li>可读性</li>
+<h2 id="字体属性详解"><a href="#字体属性详解" class="headerlink" title="字体属性详解"></a>字体属性详解</h2><ol>
+<li>font-family<ul>
+<li>字体可以是列表形式，一般英语字体放前面，后面的字体是前面字体的“后备”字体</li>
+<li>font-family: serif, “Times New Roman”, “微软雅黑”;</li>
+<li>字体名称中有空格，必须用引号包裹</li>
+<li>中文字体可以称呼它们的英语名字<ul>
+<li>“Microsoft Yahei”  等同于 “微软雅黑”</li>
+<li>“SimSun” 等价于 “宋体”</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>累加器和累乘器</li>
-<li>穷举法</li>
-<li>综合算法题目</li>
-<li>随机数函数<ul>
-<li>得到[a,b]区间的整数，公式：</li>
-<li><code>parseInt(Math.random()* (b-a + 1)) + a</code></li>
+<li><strong>字体通常必须是用户计算机中已经安装好的字体</strong></li>
+<li>定义新字体，需要我们有新字体  @font-face</li>
 </ul>
 </li>
 </ol>
-<h2 id="如何拆位"><a href="#如何拆位" class="headerlink" title="如何拆位"></a>如何拆位</h2><ol>
-<li>数学方法<ul>
-<li><code>百位是原数字除以100取整  Math.floor(n/100)</code></li>
-<li><code>十位是原数字除以10取整，再与10求模  Math.floor(n/10) % 10</code></li>
-<li><code>个位是原数字与10求模  n % 10</code></li>
+<h2 id="段落和行相关属性"><a href="#段落和行相关属性" class="headerlink" title="段落和行相关属性"></a>段落和行相关属性</h2><ol>
+<li>text-indent 属性<ul>
+<li>定义文本内容首行缩进量</li>
 </ul>
 </li>
-<li>字符串方法<ul>
-<li>直接将原数字 变为字符串，然后再用charAt()方法得到每个数位的值</li>
+<li>line-height<ul>
+<li>定义行高</li>
+<li>line-height:30px</li>
+<li>line-height:1.5  字号的倍数</li>
+<li>line-height:150%   字号的倍数</li>
+</ul>
+</li>
+<li>单行文本垂直居中<ul>
+<li>行高&#x3D;盒子高度，即可实现单行文本的垂直居中</li>
+</ul>
+</li>
+<li>text-align:center<ul>
+<li>文字水平居中</li>
+</ul>
+</li>
+<li>font 合写属性<ul>
+<li>font: italic bold 20px&#x2F;1.5 “阿里妈妈刀隶体 Regular”;</li>
 </ul>
 </li>
 </ol>
@@ -3602,7 +3847,7 @@ default void defaultMethod() &#123;
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>Javascript</tag>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -3779,103 +4024,6 @@ default void defaultMethod() &#123;
       </tags>
   </entry>
   <entry>
-    <title>文本与字体属性</title>
-    <url>/2024/06/12/%E6%96%87%E6%9C%AC%E4%B8%8E%E5%AD%97%E4%BD%93%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<h2 id="常用文本样式属性"><a href="#常用文本样式属性" class="headerlink" title="常用文本样式属性"></a>常用文本样式属性</h2><ol>
-<li>color<ul>
-<li>设置文本内容的前景色<ul>
-<li>RGBA ，最后一个表示透明度，0表示纯透明，1表示纯实心</li>
-</ul>
-</li>
-<li>16进制，RGB，RGBA</li>
-<li><strong>如果颜色值是#aabbcc的形式，可以简写为#abc</strong><ul>
-<li>#ff0000 -&gt; #f00</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>font-size<ul>
-<li>设置字号，单位通常px</li>
-</ul>
-</li>
-<li>font-weight<ul>
-<li>normal  正常粗细，与400等值</li>
-<li>bold  加粗，与700等值</li>
-<li>lighter  更细，大多数中文字体不支持</li>
-<li>bolder  更粗，大多数中文字体不支持</li>
-</ul>
-</li>
-<li>font-style<ul>
-<li>normal  取消倾斜，比如把天生倾斜的i、em等标签设置为不倾斜</li>
-<li>italic  设置为倾斜字体（常用）</li>
-<li>oblique  设置为倾斜字体（用常规字体模拟，不常用）</li>
-</ul>
-</li>
-<li>text-decoration<ul>
-<li>none  没有修饰线</li>
-<li>underline  下划线</li>
-<li>line-through  删除线</li>
-</ul>
-</li>
-</ol>
-<h2 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h2><ol>
-<li>color</li>
-<li>font-开头的</li>
-<li>list-开头的</li>
-<li>text-开头的</li>
-<li>line-开头的</li>
-<li><em><strong>因为文字相关属性有继承性，所以通常会设置body标签的字号、颜色、行高等，这样就能当做整个网页的默认样式了</strong></em></li>
-<li><em><strong>在继承的情况下，选择器权重计算失效，而是“就近原则”，继承的不如元素选中的权重大</strong></em></li>
-</ol>
-<h2 id="字体属性详解"><a href="#字体属性详解" class="headerlink" title="字体属性详解"></a>字体属性详解</h2><ol>
-<li>font-family<ul>
-<li>字体可以是列表形式，一般英语字体放前面，后面的字体是前面字体的“后备”字体</li>
-<li>font-family: serif, “Times New Roman”, “微软雅黑”;</li>
-<li>字体名称中有空格，必须用引号包裹</li>
-<li>中文字体可以称呼它们的英语名字<ul>
-<li>“Microsoft Yahei”  等同于 “微软雅黑”</li>
-<li>“SimSun” 等价于 “宋体”</li>
-</ul>
-</li>
-<li><strong>字体通常必须是用户计算机中已经安装好的字体</strong></li>
-<li>定义新字体，需要我们有新字体  @font-face</li>
-</ul>
-</li>
-</ol>
-<h2 id="段落和行相关属性"><a href="#段落和行相关属性" class="headerlink" title="段落和行相关属性"></a>段落和行相关属性</h2><ol>
-<li>text-indent 属性<ul>
-<li>定义文本内容首行缩进量</li>
-</ul>
-</li>
-<li>line-height<ul>
-<li>定义行高</li>
-<li>line-height:30px</li>
-<li>line-height:1.5  字号的倍数</li>
-<li>line-height:150%   字号的倍数</li>
-</ul>
-</li>
-<li>单行文本垂直居中<ul>
-<li>行高&#x3D;盒子高度，即可实现单行文本的垂直居中</li>
-</ul>
-</li>
-<li>text-align:center<ul>
-<li>文字水平居中</li>
-</ul>
-</li>
-<li>font 合写属性<ul>
-<li>font: italic bold 20px&#x2F;1.5 “阿里妈妈刀隶体 Regular”;</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>表格标签</title>
     <url>/2024/06/12/%E8%A1%A8%E6%A0%BC%E6%A0%87%E7%AD%BE/</url>
     <content><![CDATA[<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><ol>
@@ -3934,6 +4082,80 @@ default void defaultMethod() &#123;
 <li>使用 bignumber.js、decimal.js 等第三方库解决</li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>过渡与动画</title>
+    <url>/2024/06/12/%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/</url>
+    <content><![CDATA[<h2 id="过渡（最低支持-IE10）"><a href="#过渡（最低支持-IE10）" class="headerlink" title="过渡（最低支持 IE10）"></a>过渡（最低支持 IE10）</h2><ol>
+<li>过渡的基本使用<ul>
+<li>transition 过渡属性是CSS3浓墨重彩的特性，过渡可以为一个元素在不同的样式之间变化自动添加“补间动画”</li>
+<li>优点：动画更细腻，内存开销小</li>
+<li>transition: width 1s linear 0s;<ul>
+<li>如果所有属性要参与过渡，可以写 all</li>
+</ul>
+</li>
+<li><em><strong>参数说明：什么属性需要过渡，动画时长，变化速度曲线，延迟时间</strong></em><br>  过渡的四个小属性<ul>
+<li>transition-duration 动画时间</li>
+<li>transition-property 哪些属性要过渡</li>
+<li>transition-timing-function 动画变化曲线（缓动效果）<ul>
+<li>ease</li>
+<li>linear</li>
+<li>ease-in</li>
+<li>ease-out</li>
+<li>ease-in-out</li>
+<li>贝塞尔曲线<ul>
+<li>可以通过 <a href="https://cubic-bezier.com/">https://cubic-bezier.com/</a> 这个网址自定义动画缓动参数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>transition-delay 延迟时间</li>
+</ul>
+</li>
+<li>哪些属性可以参与过渡？<ul>
+<li>所有数值属性都可以参与过渡，比如<ul>
+<li>width</li>
+<li>height</li>
+<li>left</li>
+<li>top</li>
+<li>border-radius</li>
+</ul>
+</li>
+<li>背景颜色和文字颜色都可以被过渡</li>
+<li>所有变形（包括2D和3D）都能被过渡</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>过渡的缓动效果（参考 transition-timing-function 属性）</li>
+</ol>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><ol>
+<li>动画的定义和调用<ul>
+<li><p>可以使用 @keyframes 来定义动画，keyframes 表示“关键帧”，在项目上线前，要补上@-webkit-这样的私有前缀</p>
+</li>
+<li><p>定义动画后，就可以用 animation 属性调用动画</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>动画的定义<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="keyword">@keyframes</span> r&#123;</span></span><br><span class="line"><span class="language-css">          <span class="selector-tag">from</span> &#123;</span></span><br><span class="line"><span class="language-css">              <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0</span>);</span></span><br><span class="line"><span class="language-css">          &#125;</span></span><br><span class="line"><span class="language-css">          <span class="selector-tag">to</span> &#123;</span></span><br><span class="line"><span class="language-css">              <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">          &#125;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.box1</span> &#123;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">animation</span>: r <span class="number">1s</span> linear <span class="number">0s</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>animation: r 1s ease 3s 3; </code></p>
+<ul>
+<li>动画的参数：动画的名称，执行的时间，动画效果，延迟时间，执行次数</li>
+<li>如果想永远设置执行就是 infinite 属性</li>
+<li>如果想让动画的第2、4、6…..（偶数次）自动逆向执行，那么要加上 alternate 参数即可</li>
+<li>如果想让动画停止在最后结束状态，那么要加上 forwards</li>
+</ul>
+</li>
+<li><p>多关键帧动画</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> changeColor &#123;</span><br><span class="line">     <span class="number">0%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: red;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="number">50%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: yellow;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="number">100%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: aqua;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
   </entry>
   <entry>
     <title>表达式与操作符</title>
@@ -4101,80 +4323,6 @@ default void defaultMethod() &#123;
       <tags>
         <tag>HTML</tag>
         <tag>CSS3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>过渡与动画</title>
-    <url>/2024/06/12/%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/</url>
-    <content><![CDATA[<h2 id="过渡（最低支持-IE10）"><a href="#过渡（最低支持-IE10）" class="headerlink" title="过渡（最低支持 IE10）"></a>过渡（最低支持 IE10）</h2><ol>
-<li>过渡的基本使用<ul>
-<li>transition 过渡属性是CSS3浓墨重彩的特性，过渡可以为一个元素在不同的样式之间变化自动添加“补间动画”</li>
-<li>优点：动画更细腻，内存开销小</li>
-<li>transition: width 1s linear 0s;<ul>
-<li>如果所有属性要参与过渡，可以写 all</li>
-</ul>
-</li>
-<li><em><strong>参数说明：什么属性需要过渡，动画时长，变化速度曲线，延迟时间</strong></em><br>  过渡的四个小属性<ul>
-<li>transition-duration 动画时间</li>
-<li>transition-property 哪些属性要过渡</li>
-<li>transition-timing-function 动画变化曲线（缓动效果）<ul>
-<li>ease</li>
-<li>linear</li>
-<li>ease-in</li>
-<li>ease-out</li>
-<li>ease-in-out</li>
-<li>贝塞尔曲线<ul>
-<li>可以通过 <a href="https://cubic-bezier.com/">https://cubic-bezier.com/</a> 这个网址自定义动画缓动参数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>transition-delay 延迟时间</li>
-</ul>
-</li>
-<li>哪些属性可以参与过渡？<ul>
-<li>所有数值属性都可以参与过渡，比如<ul>
-<li>width</li>
-<li>height</li>
-<li>left</li>
-<li>top</li>
-<li>border-radius</li>
-</ul>
-</li>
-<li>背景颜色和文字颜色都可以被过渡</li>
-<li>所有变形（包括2D和3D）都能被过渡</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>过渡的缓动效果（参考 transition-timing-function 属性）</li>
-</ol>
-<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><ol>
-<li>动画的定义和调用<ul>
-<li><p>可以使用 @keyframes 来定义动画，keyframes 表示“关键帧”，在项目上线前，要补上@-webkit-这样的私有前缀</p>
-</li>
-<li><p>定义动画后，就可以用 animation 属性调用动画</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>动画的定义<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="keyword">@keyframes</span> r&#123;</span></span><br><span class="line"><span class="language-css">          <span class="selector-tag">from</span> &#123;</span></span><br><span class="line"><span class="language-css">              <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0</span>);</span></span><br><span class="line"><span class="language-css">          &#125;</span></span><br><span class="line"><span class="language-css">          <span class="selector-tag">to</span> &#123;</span></span><br><span class="line"><span class="language-css">              <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">          &#125;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.box1</span> &#123;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">animation</span>: r <span class="number">1s</span> linear <span class="number">0s</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>animation: r 1s ease 3s 3; </code></p>
-<ul>
-<li>动画的参数：动画的名称，执行的时间，动画效果，延迟时间，执行次数</li>
-<li>如果想永远设置执行就是 infinite 属性</li>
-<li>如果想让动画的第2、4、6…..（偶数次）自动逆向执行，那么要加上 alternate 参数即可</li>
-<li>如果想让动画停止在最后结束状态，那么要加上 forwards</li>
-</ul>
-</li>
-<li><p>多关键帧动画</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> changeColor &#123;</span><br><span class="line">     <span class="number">0%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: red;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="number">50%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: yellow;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="number">100%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: aqua;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
