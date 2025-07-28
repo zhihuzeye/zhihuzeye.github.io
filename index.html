@@ -151,7 +151,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -162,7 +162,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -187,6 +187,153 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2025/07/28/NextJs-%E8%B7%AF%E7%94%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/28/NextJs-%E8%B7%AF%E7%94%B1/" class="post-title-link" itemprop="url">Next.js 路由系统</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-28 19:41:39 / 修改时间：23:23:03" itemprop="dateCreated datePublished" datetime="2025-07-28T19:41:39+08:00">2025-07-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Next-js-路由系统（约定式路由）"><a href="#Next-js-路由系统（约定式路由）" class="headerlink" title="Next.js 路由系统（约定式路由）"></a>Next.js 路由系统（约定式路由）</h1><p>Next.js 的路由系统基于 <strong>约定大于配置</strong> 原则，开发者只需要将页面组件放在特定目录下，即可自动生成对应的路由，无需手动配置路由表。</p>
+<hr>
+<h2 id="路由基本约定"><a href="#路由基本约定" class="headerlink" title="路由基本约定"></a>路由基本约定</h2><ol>
+<li>所有路由文件必须放在 <code>app/</code> 目录下（App Router 模式）。</li>
+<li>每个<strong>文件夹</strong>表示一个 URL 路径段。</li>
+<li>路由页面文件必须命名为 <code>page.tsx</code> 或 <code>page.js</code>。</li>
+<li>每个页面组件将自动作为一个路由。</li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>├── page.tsx             → 路由路径 &#x2F;<br>├── about&#x2F;<br>│   └── page.tsx         → 路由路径 &#x2F;about<br>└── contact&#x2F;<br>└── page.tsx         → 路由路径 &#x2F;contact</p>
+<hr>
+<h2 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h2><p>使用 <code>[]</code> 包裹文件夹名来创建动态路由参数。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>└── products&#x2F;<br>└── [productId]&#x2F;<br>└── page.tsx     → 路由路径 &#x2F;products&#x2F;:productId</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// products/[productId]/page.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">ProductPage</span>(<span class="params">&#123; params &#125;: &#123; params: &#123; productId: <span class="built_in">string</span> &#125; &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Product ID: &#123;params.productId&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="嵌套动态路由"><a href="#嵌套动态路由" class="headerlink" title="嵌套动态路由"></a>嵌套动态路由</h2><p>支持多级动态参数结构。<br>app&#x2F;<br>└── products&#x2F;<br>    └── [productId]&#x2F;<br>        ├── page.tsx         → <code>/products/:productId</code><br>        └── [reviewId]&#x2F;<br>            └── page.tsx     → <code>/products/:productId/:reviewId</code></p>
+<h3 id="捕获所有路由段（Catch-All-Routes）"><a href="#捕获所有路由段（Catch-All-Routes）" class="headerlink" title="捕获所有路由段（Catch-All Routes）"></a>捕获所有路由段（Catch-All Routes）</h3><p>使用 […slug] 语法捕获任意数量的路径段。</p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>└── blog&#x2F;<br>    └── […slug]&#x2F;<br>        └── page.tsx         → <code>/blog/*</code> 动态匹配所有子路径</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// blog/12</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">CatchAllPage</span>(<span class="params">&#123; params &#125;: &#123; params: &#123; slug: <span class="built_in">string</span>[] &#125; &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>路径段: &#123;params.slug.join(&#x27; / &#x27;)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="404-页面（Not-Found）"><a href="#404-页面（Not-Found）" class="headerlink" title="404 页面（Not Found）"></a>404 页面（Not Found）</h2><p>全局 404 页面<br>app&#x2F;not-found.tsx</p>
+<p>你也可以为每个路由子目录创建局部 404 页面：<br>app&#x2F;<br>└── about&#x2F;<br>    ├── not-found.tsx<br>    └── page.tsx</p>
+<p>在 not-found.tsx 中定义页面不存在时的 UI：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">NotFound</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>此页面不存在<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>主动触发 404</strong><br>你可以通过 notFound() 方法主动触发 404：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; notFound &#125; <span class="keyword">from</span> <span class="string">&#x27;next/navigation&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Page</span>(<span class="params">&#123; params &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!data) <span class="keyword">return</span> <span class="title function_">notFound</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>正常页面内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="私有文件夹（下划线命名）"><a href="#私有文件夹（下划线命名）" class="headerlink" title="私有文件夹（下划线命名）"></a>私有文件夹（下划线命名）</h2><p>使用下划线 _ 开头的文件夹（如 _components&#x2F;）不会被视为路由路径。</p>
+<ul>
+<li>通常用于存放共享组件、工具函数、布局模板等。</li>
+<li>如果确实需要使用下划线路径（不推荐），需通过 %5f URL 编码。</li>
+</ul>
+<h2 id="路由分组（Route-Groups）"><a href="#路由分组（Route-Groups）" class="headerlink" title="路由分组（Route Groups）"></a>路由分组（Route Groups）</h2><p>使用 括号 () 包裹文件夹名 创建逻辑上的路由分组，不影响实际 URL 路径结构。</p>
+<p>app&#x2F;<br>└── (auth)&#x2F;<br>    └── login&#x2F;<br>        └── page.tsx     → <code>/login</code></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>语法&#x2F;文件名</th>
+<th>示例路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态路由</td>
+<td>page.tsx</td>
+<td>&#x2F;about</td>
+</tr>
+<tr>
+<td>动态路由</td>
+<td>[id]&#x2F;page.tsx</td>
+<td>&#x2F;products&#x2F;123</td>
+</tr>
+<tr>
+<td>嵌套路由</td>
+<td>子目录结构</td>
+<td>&#x2F;products&#x2F;123&#x2F;reviews&#x2F;1</td>
+</tr>
+<tr>
+<td>捕获全部路由</td>
+<td>[…slug]</td>
+<td>&#x2F;blog&#x2F;a&#x2F;b&#x2F;c</td>
+</tr>
+<tr>
+<td>404 页面</td>
+<td>not-found.tsx</td>
+<td>&#x2F;about&#x2F;not-found.tsx</td>
+</tr>
+<tr>
+<td>路由分组</td>
+<td>(group)&#x2F;</td>
+<td>&#x2F;login from (auth)&#x2F;login</td>
+</tr>
+<tr>
+<td>私有目录</td>
+<td>_components&#x2F;</td>
+<td>不作为路由路径</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1856,142 +2003,6 @@
 <h2 id="typeof-运算符可以检测值或者变量的类型"><a href="#typeof-运算符可以检测值或者变量的类型" class="headerlink" title="typeof 运算符可以检测值或者变量的类型"></a>typeof 运算符可以检测值或者变量的类型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="number">5</span>; </span><br><span class="line"><span class="keyword">typeof</span> <span class="string">&quot;shanmu&quot;</span>;</span><br></pre></td></tr></table></figure>
 <ol>
 <li>typeof 不是内置函数 是操作符</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/14/JS%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/face1.png">
-      <meta itemprop="name" content="之乎泽野">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽野之乡">
-      <meta itemprop="description" content="积跬步，至千里">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 泽野之乡">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/14/JS%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">JS语法与变量</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-14 19:36:17" itemprop="dateCreated datePublished" datetime="2024-06-14T19:36:17+08:00">2024-06-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="输出语句"><a href="#输出语句" class="headerlink" title="输出语句"></a>输出语句</h2><ol>
-<li>alert</li>
-<li>console</li>
-</ol>
-<h2 id="前端开发主要有哪些层，语言和功能是什么？"><a href="#前端开发主要有哪些层，语言和功能是什么？" class="headerlink" title="前端开发主要有哪些层，语言和功能是什么？"></a>前端开发主要有哪些层，语言和功能是什么？</h2><ol>
-<li>HTML<ul>
-<li>结构层  搭建骨架、描述页面语义</li>
-</ul>
-</li>
-<li>CSS<ul>
-<li>样式层</li>
-</ul>
-</li>
-<li>Javascript<ul>
-<li>行为层  表单验证、数据交互、数据收发等</li>
-</ul>
-</li>
-</ol>
-<h2 id="变量声明提升（面试题）"><a href="#变量声明提升（面试题）" class="headerlink" title="变量声明提升（面试题）"></a><strong>变量声明提升（面试题）</strong></h2><ol>
-<li>你可以提前使用一个稍后才声明的变量，而不会引发异常</li>
-<li>在执行所有代码前，JS有预解析阶段，会预读所有变量的定义</li>
-<li>只提升定义，并不提升值</li>
-<li>var 关键词可以变量提升， let 并不能</li>
-<li>在实际开发中，一定要先定义变量赋值，再使用。</li>
-</ol>
-<h2 id="变量是什么"><a href="#变量是什么" class="headerlink" title="变量是什么"></a>变量是什么</h2><ol>
-<li>要定义变量，第一步就是声明它，并给它赋值</li>
-<li>变量是计算机语言中能存储计算结果或能表示值抽象概念</li>
-<li>变量不是数值本身，它们仅仅是一个用于存储数值的容器</li>
-<li>标识符的命名规则（函数、类名、对象的属性也要遵守这个规则）<ul>
-<li><strong>变量名大小写敏感，a和A两个不同的变量</strong></li>
-<li><strong>不能是关键词或保留词</strong></li>
-<li><strong>只能由字母、数字、下划线、$组成，但不能以数字开头</strong></li>
-</ul>
-</li>
-<li>优秀的变量命名法<ul>
-<li>驼峰命名法 例如：mathTestScore</li>
-<li>c风格 例如：math_test_score</li>
-<li>匈牙利命名法 例如：iMathTestScore ，第一个字母 i，提示变量类型</li>
-</ul>
-</li>
-<li>变量的默认值<ul>
-<li>一个变量只定义，但没有赋值，默认是undefined</li>
-</ul>
-</li>
-<li>等号表示赋值</li>
-<li>同时声明多个变量<ul>
-<li>var a&#x3D;0,b&#x3D;0;</li>
-</ul>
-</li>
-<li>var 定义的变量会被挂载在 window 上，let 不会</li>
 </ol>
 
       

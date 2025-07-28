@@ -151,7 +151,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -162,7 +162,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -187,6 +187,142 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/14/JS%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/14/JS%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">JS语法与变量</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-14 19:36:17" itemprop="dateCreated datePublished" datetime="2024-06-14T19:36:17+08:00">2024-06-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="输出语句"><a href="#输出语句" class="headerlink" title="输出语句"></a>输出语句</h2><ol>
+<li>alert</li>
+<li>console</li>
+</ol>
+<h2 id="前端开发主要有哪些层，语言和功能是什么？"><a href="#前端开发主要有哪些层，语言和功能是什么？" class="headerlink" title="前端开发主要有哪些层，语言和功能是什么？"></a>前端开发主要有哪些层，语言和功能是什么？</h2><ol>
+<li>HTML<ul>
+<li>结构层  搭建骨架、描述页面语义</li>
+</ul>
+</li>
+<li>CSS<ul>
+<li>样式层</li>
+</ul>
+</li>
+<li>Javascript<ul>
+<li>行为层  表单验证、数据交互、数据收发等</li>
+</ul>
+</li>
+</ol>
+<h2 id="变量声明提升（面试题）"><a href="#变量声明提升（面试题）" class="headerlink" title="变量声明提升（面试题）"></a><strong>变量声明提升（面试题）</strong></h2><ol>
+<li>你可以提前使用一个稍后才声明的变量，而不会引发异常</li>
+<li>在执行所有代码前，JS有预解析阶段，会预读所有变量的定义</li>
+<li>只提升定义，并不提升值</li>
+<li>var 关键词可以变量提升， let 并不能</li>
+<li>在实际开发中，一定要先定义变量赋值，再使用。</li>
+</ol>
+<h2 id="变量是什么"><a href="#变量是什么" class="headerlink" title="变量是什么"></a>变量是什么</h2><ol>
+<li>要定义变量，第一步就是声明它，并给它赋值</li>
+<li>变量是计算机语言中能存储计算结果或能表示值抽象概念</li>
+<li>变量不是数值本身，它们仅仅是一个用于存储数值的容器</li>
+<li>标识符的命名规则（函数、类名、对象的属性也要遵守这个规则）<ul>
+<li><strong>变量名大小写敏感，a和A两个不同的变量</strong></li>
+<li><strong>不能是关键词或保留词</strong></li>
+<li><strong>只能由字母、数字、下划线、$组成，但不能以数字开头</strong></li>
+</ul>
+</li>
+<li>优秀的变量命名法<ul>
+<li>驼峰命名法 例如：mathTestScore</li>
+<li>c风格 例如：math_test_score</li>
+<li>匈牙利命名法 例如：iMathTestScore ，第一个字母 i，提示变量类型</li>
+</ul>
+</li>
+<li>变量的默认值<ul>
+<li>一个变量只定义，但没有赋值，默认是undefined</li>
+</ul>
+</li>
+<li>等号表示赋值</li>
+<li>同时声明多个变量<ul>
+<li>var a&#x3D;0,b&#x3D;0;</li>
+</ul>
+</li>
+<li>var 定义的变量会被挂载在 window 上，let 不会</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1850,120 +1986,6 @@
 <h2 id="label"><a href="#label" class="headerlink" title="label"></a>label</h2><ol>
 <li>定义一个控制的标签。如输入框前的文字，用以关联用户的选择。</li>
 <li>for</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/06/%E8%BE%B9%E6%A1%86%E4%B8%8E%E5%9C%86%E8%A7%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/face1.png">
-      <meta itemprop="name" content="之乎泽野">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽野之乡">
-      <meta itemprop="description" content="积跬步，至千里">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 泽野之乡">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/06/%E8%BE%B9%E6%A1%86%E4%B8%8E%E5%9C%86%E8%A7%92/" class="post-title-link" itemprop="url">边框与圆角</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-06 13:52:45" itemprop="dateCreated datePublished" datetime="2024-06-06T13:52:45+08:00">2024-06-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="盒子阴影"><a href="#盒子阴影" class="headerlink" title="盒子阴影"></a>盒子阴影</h2><ol>
-<li><code>box-shadow: 10px 20px 30px rgba(0, 0, 0, .4);</code></li>
-<li>inset（内阴影，可选），x偏移，y偏移，模糊量，阴影延展（可选），颜色</li>
-<li>可以用逗号隔开多个阴影<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">       <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">       <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">       <span class="attribute">box-shadow</span>: inset <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">4</span>),<span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">#ff0000</span>;</span><br><span class="line">       <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><ol>
-<li><code>border-top</code></li>
-<li><code>border-bottom</code></li>
-<li><code>border-left</code></li>
-<li><code>border-right</code></li>
-<li><code>border-方向-style 边框线形</code></li>
-<li><code>border-方向-width 边框宽度</code></li>
-<li><code>border-方向-color 边框颜色</code></li>
-<li><code>border-方向:none 去掉边框</code></li>
-<li><code>利用border制作三角形</code><ul>
-<li><code>width: 0; height: 0; border: 20px solid transparent; margin-top: 50px; border-top-color: #ff0000;</code></li>
-</ul>
-</li>
-<li><code>边框的三要素</code><ul>
-<li><em><strong>线宽度、线型、线颜色</strong></em><ul>
-<li>solid 实线</li>
-<li>dotted 虚线（圆）</li>
-<li>double 双边</li>
-<li>dashed 虚线（矩形）</li>
-</ul>
-</li>
-<li><code>border:1px solid #ff0</code></li>
-</ul>
-</li>
 </ol>
 
       

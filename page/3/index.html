@@ -151,7 +151,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -162,7 +162,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -187,6 +187,120 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/06/%E8%BE%B9%E6%A1%86%E4%B8%8E%E5%9C%86%E8%A7%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/06/%E8%BE%B9%E6%A1%86%E4%B8%8E%E5%9C%86%E8%A7%92/" class="post-title-link" itemprop="url">边框与圆角</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 13:52:45" itemprop="dateCreated datePublished" datetime="2024-06-06T13:52:45+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="盒子阴影"><a href="#盒子阴影" class="headerlink" title="盒子阴影"></a>盒子阴影</h2><ol>
+<li><code>box-shadow: 10px 20px 30px rgba(0, 0, 0, .4);</code></li>
+<li>inset（内阴影，可选），x偏移，y偏移，模糊量，阴影延展（可选），颜色</li>
+<li>可以用逗号隔开多个阴影<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">       <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">       <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">       <span class="attribute">box-shadow</span>: inset <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">4</span>),<span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">#ff0000</span>;</span><br><span class="line">       <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><ol>
+<li><code>border-top</code></li>
+<li><code>border-bottom</code></li>
+<li><code>border-left</code></li>
+<li><code>border-right</code></li>
+<li><code>border-方向-style 边框线形</code></li>
+<li><code>border-方向-width 边框宽度</code></li>
+<li><code>border-方向-color 边框颜色</code></li>
+<li><code>border-方向:none 去掉边框</code></li>
+<li><code>利用border制作三角形</code><ul>
+<li><code>width: 0; height: 0; border: 20px solid transparent; margin-top: 50px; border-top-color: #ff0000;</code></li>
+</ul>
+</li>
+<li><code>边框的三要素</code><ul>
+<li><em><strong>线宽度、线型、线颜色</strong></em><ul>
+<li>solid 实线</li>
+<li>dotted 虚线（圆）</li>
+<li>double 双边</li>
+<li>dashed 虚线（矩形）</li>
+</ul>
+</li>
+<li><code>border:1px solid #ff0</code></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1979,339 +2093,6 @@
 </ul>
 </li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/02/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A11/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/face1.png">
-      <meta itemprop="name" content="之乎泽野">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽野之乡">
-      <meta itemprop="description" content="积跬步，至千里">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 泽野之乡">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/02/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A11/" class="post-title-link" itemprop="url">Java 面向对象1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-02 22:39:17" itemprop="dateCreated datePublished" datetime="2024-06-02T22:39:17+08:00">2024-06-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><ol>
-<li>面向对象<ul>
-<li><strong>关注现实存在的事物的各方面信息，从对象的角度出发，根据事物的特征进行程序设计</strong></li>
-<li>对象：用来描述客观事物的一个实体</li>
-<li>类：具有相同属性和方法的一组对象的集合</li>
-</ul>
-</li>
-<li>属性<ul>
-<li>对象具有的各种静态特征</li>
-<li>“对象有什么”</li>
-</ul>
-</li>
-<li>方法<ul>
-<li>对象具有的各种</li>
-<li>“对象能做什么”</li>
-<li>在方法中通过对象作为参数，传递的是它的引用，可以通过引用获取该对象的所有信息。</li>
-</ul>
-</li>
-<li>类<ul>
-<li>抽象的概念</li>
-<li>模板</li>
-<li>类是模子，确定对象将会拥有的特征（属性）和行为（方法）</li>
-<li>类是对象的类型</li>
-<li>构造方法<ul>
-<li>注意事项<ul>
-<li><em><strong>构造方法与类同名且没有返回值（必须与类名相同）</strong></em><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造方法的语法格式：</span></span><br><span class="line"><span class="comment">// 没有返回值类型 , 构造方法名 与类名相同 </span></span><br><span class="line"><span class="keyword">public</span> 构造方法名()&#123;</span><br><span class="line">  <span class="comment">// 初始化代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>只能在对象实例化的时候调用</li>
-</ul>
-</li>
-<li>特点<ul>
-<li><em><strong>当没有指定构造方法时，系统会自动添加无参的构造方法</strong></em></li>
-<li><em><strong>当有指定构造方法，无论是有参、无参的构造方法，都不会自动添加无参的构造方法</strong></em></li>
-<li>一个类中可以有多个构造方法</li>
-<li>this();  访问其它无参或带参 构造方法</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>this 关键字<ul>
-<li>this：当前对象的默认引用</li>
-<li>this 的使用<ul>
-<li>调用成员属性，解决成员属性的局部变量同名冲突</li>
-<li>调用成员方法</li>
-<li>调用重载的构造方法 this();<ul>
-<li><em><strong>通过 this() 调用构造方法，必须放在方法体内的第一行！！！</strong></em></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>对象<ul>
-<li>基本概念<ul>
-<li>一个看得到、摸着着的具体实体</li>
-<li>对象是类的实例表现</li>
-<li>万物皆对象</li>
-<li>对象是特定的类型数据</li>
-</ul>
-</li>
-<li>对象实例化<ul>
-<li>实例化对象过程可以分为两部分<ul>
-<li>声明对象 Class 对象名称<ul>
-<li><strong>在内存的栈中开辟一个空间，此时栈空间的数据是空的</strong></li>
-</ul>
-</li>
-<li>实例化对象 new Class<ul>
-<li><strong>经过实例化的环节，会在内存的堆中开辟一块空间，在此完成具体属性赋值等相关操作</strong><br><em><strong>声明对象和实例化对象通过 &#x3D; 赋值符号完成。经过赋值操作，将内存的堆地址，传递到栈当中的内存空间里。</strong></em></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>内存分配 栈[局部变量] ，堆[动态数据]</li>
-</ul>
-</li>
-<li>注意事项<ul>
-<li>需要多次访问同一对象时，必须进行声明</li>
-<li>同一作用范围内，不能定义同名对象</li>
-<li>可以同时声明多个引用，用逗号分割<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Cat one,two;</span><br><span class="line">one = <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line">two = <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line"><span class="type">Cat</span> <span class="variable">three</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cat</span>();four = <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><ol>
-<li>将类的某些信息隐藏在类的内部，不允许外部程序直接访问，通过该类提供的方法来实现对隐藏信息的操作和访问<ul>
-<li>隐藏对象的信息</li>
-<li>留出访问的接口</li>
-</ul>
-</li>
-<li>特点<ul>
-<li>只能通过规定的方法访问数据</li>
-<li>隐藏类的实例细节，方便修改和实现</li>
-</ul>
-</li>
-<li>实现步骤<ul>
-<li>1、修改属性的可见性 ，设为 private</li>
-<li>2、创建 getter&#x2F;setter 方法 ，设为 public 用户属性的读写</li>
-<li>3、在 getter&#x2F;setter 方法中加入属性控制语句，对属性的合法性进行判断</li>
-</ul>
-</li>
-<li>包（类似文件夹）<ul>
-<li>作用<ul>
-<li><strong>管理 Java 文件</strong></li>
-<li><strong>解决同名文件冲突</strong></li>
-</ul>
-</li>
-<li>定义包<ul>
-<li>语法 package 包名;例：package com.zje.animal;</li>
-<li>注意<ul>
-<li><em><strong>一个 Java 源文件只能有一个 package 语句，必须放在 Java 源文件中的第一行</strong></em></li>
-<li>包名全部英文小写</li>
-<li>建议每个包内存储信息功能单一</li>
-<li>包命名规则：域名倒序+模块+功能</li>
-<li>Java 中一个包不能存在同名类</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>导入包<ul>
-<li>语法 import 包名.类名;</li>
-<li>导入包中全部类 import com.xxx.*; 导入包中指定类 import com.xxx.animal.Cat;</li>
-</ul>
-</li>
-<li>常用系统包<ul>
-<li>java.lang<ul>
-<li>包含 Java 语言基础的类，该包系统加载时 默认导入。如 System、String、Math</li>
-</ul>
-</li>
-<li>java.util<ul>
-<li>包含 Java 语言中常用工具。如 Scanner、Random</li>
-</ul>
-</li>
-<li>java.io<ul>
-<li>包含输入、输出相关功能的类。如File、InputStream</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>问题<ul>
-<li>如何实现跨包的类调用？<ul>
-<li>建议采用“import 包名.类名;” 的方式加载，提高效率</li>
-<li>加载类的顺序跟 import 导入语句的位置无关</li>
-<li>“import 包名.*”; 无法访问指定包名下的类，无法访问子包下的类</li>
-</ul>
-</li>
-<li>有几种调用形式？<ol>
-<li>使用 import 语句导入目标类:这种方式可以直接在代码中使用 TargetClass 而无需指定完整的包路径。</li>
-</ol>
-<pre><code class="Java">import com.example.targetpackage.TargetClass;
-</code></pre>
-<ol start="2">
-<li>使用完整的包路径访问目标类:这种方式需要在代码中完整地指定目标类的包路径。</li>
-</ol>
-<pre><code class="Java">com.example.targetpackage.TargetClass targetObject = new com.example.targetpackage.TargetClass();
-</code></pre>
-<ol start="3">
-<li>使用 static import 导入目标类的静态成员:这种方式可以直接访问目标类的静态成员,无需指定类名。</li>
-</ol>
-<pre><code class="Java">import static com.example.targetpackage.TargetClass.staticMethod;
-staticMethod(); // 直接调用静态方法
-</code></pre>
-<ol start="4">
-<li>使用 default 访问修饰符允许同一个包下的类进行访问:这种方式需要将目标类的方法声明为 default 访问修饰符,这样同包下的其他类就可以访问该方法。</li>
-</ol>
-<pre><code class="Java">// com.example.targetpackage.TargetClass
-default void defaultMethod() &#123;
-  // 此方法可被同包下的其他类访问
-&#125;
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>static 关键字</strong><ul>
-<li><strong>1、类对象共享</strong></li>
-<li><strong>2、类加载时产生，销毁时释放，生命周期长</strong></li>
-<li>注意事项<ul>
-<li>在成员方法中，可以直接访问类中的静态成员</li>
-<li>静态方法中不能直接访问非静态成员，只能直接调用静态成员</li>
-<li>只能通过对象实例化后，对象.成员方法的方式访问非静态成员</li>
-<li>静态方法中不能使用 this</li>
-</ul>
-</li>
-<li>静态成员访问方式<ul>
-<li>1、对象.成员</li>
-<li>2、类.成员</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>代码块<ul>
-<li>普通代码块：每此调用方法 顺序执行，先出现，先执行。</li>
-<li>构造代码块：在类中定义，创建对象时调用，优先于构造方法执行。可以有多个</li>
-<li>静态代码块<ul>
-<li>static { &lt;语句&gt; }</li>
-<li>类加载时调用，优先于构造代码块执行</li>
-<li>无论产生多少类实例，静态代码块只执行一次，构造代码块在每次对象构造的时候调用</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="成员属性的初始值"><a href="#成员属性的初始值" class="headerlink" title="成员属性的初始值"></a>成员属性的初始值</h2><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>byte</td>
-<td>0</td>
-</tr>
-<tr>
-<td>short</td>
-<td>0</td>
-</tr>
-<tr>
-<td>int</td>
-<td>0</td>
-</tr>
-<tr>
-<td>long</td>
-<td>0L</td>
-</tr>
-<tr>
-<td>float</td>
-<td>0.0f</td>
-</tr>
-<tr>
-<td>double</td>
-<td>0.0d</td>
-</tr>
-<tr>
-<td>char</td>
-<td>‘\u0000’</td>
-</tr>
-<tr>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>引用类型对象的初始值</td>
-<td>null</td>
-</tr>
-</tbody></table>
 
       
     </div>

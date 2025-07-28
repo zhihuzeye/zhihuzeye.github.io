@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhihuzeye.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Next.js 路由系统（约定式路由）Next.js 的路由系统基于 约定大于配置 原则，开发者只需要将页面组件放在特定目录下，即可自动生成对应的路由，无需手动配置路由表。  路由基本约定 所有路由文件必须放在 app&#x2F; 目录下（App Router 模式）。 每个文件夹表示一个 URL 路径段。 路由页面文件必须命名为 page.tsx 或 page.js。 每个页面组件将自动作为一个路由。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Next.js 路由系统">
+<meta property="og:url" content="https://zhihuzeye.github.io/2025/07/28/NextJs-%E8%B7%AF%E7%94%B1/index.html">
+<meta property="og:site_name" content="泽野之乡">
+<meta property="og:description" content="Next.js 路由系统（约定式路由）Next.js 的路由系统基于 约定大于配置 原则，开发者只需要将页面组件放在特定目录下，即可自动生成对应的路由，无需手动配置路由表。  路由基本约定 所有路由文件必须放在 app&#x2F; 目录下（App Router 模式）。 每个文件夹表示一个 URL 路径段。 路由页面文件必须命名为 page.tsx 或 page.js。 每个页面组件将自动作为一个路由。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-28T11:41:39.000Z">
+<meta property="article:modified_time" content="2025-07-28T15:23:03.561Z">
+<meta property="article:author" content="之乎泽野">
+<meta property="article:tag" content="Next.js">
+<meta property="article:tag" content="路由">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhihuzeye.github.io/2025/07/28/NextJs-%E8%B7%AF%E7%94%B1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhihuzeye.github.io/2025/07/28/NextJs-%E8%B7%AF%E7%94%B1/","path":"2025/07/28/NextJs-路由/","title":"Next.js 路由系统"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Next.js 路由系统 | 泽野之乡</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="泽野之乡" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽野之乡</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Next-js-%E8%B7%AF%E7%94%B1%E7%B3%BB%E7%BB%9F%EF%BC%88%E7%BA%A6%E5%AE%9A%E5%BC%8F%E8%B7%AF%E7%94%B1%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">Next.js 路由系统（约定式路由）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%9F%BA%E6%9C%AC%E7%BA%A6%E5%AE%9A"><span class="nav-number">1.1.</span> <span class="nav-text">路由基本约定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1"><span class="nav-number">1.2.</span> <span class="nav-text">动态路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1"><span class="nav-number">1.3.</span> <span class="nav-text">嵌套动态路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%95%E8%8E%B7%E6%89%80%E6%9C%89%E8%B7%AF%E7%94%B1%E6%AE%B5%EF%BC%88Catch-All-Routes%EF%BC%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">捕获所有路由段（Catch-All Routes）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#404-%E9%A1%B5%E9%9D%A2%EF%BC%88Not-Found%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">404 页面（Not Found）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%81%E6%9C%89%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%88%E4%B8%8B%E5%88%92%E7%BA%BF%E5%91%BD%E5%90%8D%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">私有文件夹（下划线命名）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%88%86%E7%BB%84%EF%BC%88Route-Groups%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">路由分组（Route Groups）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.7.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="之乎泽野"
+      src="/images/face1.png">
+  <p class="site-author-name" itemprop="name">之乎泽野</p>
+  <div class="site-description" itemprop="description">积跬步，至千里</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhihuzeye" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhihuzeye" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kydlyj@gmail.com" title="E-Mail → mailto:kydlyj@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2025/07/28/NextJs-%E8%B7%AF%E7%94%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Next.js 路由系统 | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Next.js 路由系统
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-28 19:41:39 / 修改时间：23:23:03" itemprop="dateCreated datePublished" datetime="2025-07-28T19:41:39+08:00">2025-07-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Next-js-路由系统（约定式路由）"><a href="#Next-js-路由系统（约定式路由）" class="headerlink" title="Next.js 路由系统（约定式路由）"></a>Next.js 路由系统（约定式路由）</h1><p>Next.js 的路由系统基于 <strong>约定大于配置</strong> 原则，开发者只需要将页面组件放在特定目录下，即可自动生成对应的路由，无需手动配置路由表。</p>
+<hr>
+<h2 id="路由基本约定"><a href="#路由基本约定" class="headerlink" title="路由基本约定"></a>路由基本约定</h2><ol>
+<li>所有路由文件必须放在 <code>app/</code> 目录下（App Router 模式）。</li>
+<li>每个<strong>文件夹</strong>表示一个 URL 路径段。</li>
+<li>路由页面文件必须命名为 <code>page.tsx</code> 或 <code>page.js</code>。</li>
+<li>每个页面组件将自动作为一个路由。</li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>├── page.tsx             → 路由路径 &#x2F;<br>├── about&#x2F;<br>│   └── page.tsx         → 路由路径 &#x2F;about<br>└── contact&#x2F;<br>└── page.tsx         → 路由路径 &#x2F;contact</p>
+<hr>
+<h2 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h2><p>使用 <code>[]</code> 包裹文件夹名来创建动态路由参数。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>└── products&#x2F;<br>└── [productId]&#x2F;<br>└── page.tsx     → 路由路径 &#x2F;products&#x2F;:productId</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// products/[productId]/page.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">ProductPage</span>(<span class="params">&#123; params &#125;: &#123; params: &#123; productId: <span class="built_in">string</span> &#125; &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Product ID: &#123;params.productId&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="嵌套动态路由"><a href="#嵌套动态路由" class="headerlink" title="嵌套动态路由"></a>嵌套动态路由</h2><p>支持多级动态参数结构。<br>app&#x2F;<br>└── products&#x2F;<br>    └── [productId]&#x2F;<br>        ├── page.tsx         → <code>/products/:productId</code><br>        └── [reviewId]&#x2F;<br>            └── page.tsx     → <code>/products/:productId/:reviewId</code></p>
+<h3 id="捕获所有路由段（Catch-All-Routes）"><a href="#捕获所有路由段（Catch-All-Routes）" class="headerlink" title="捕获所有路由段（Catch-All Routes）"></a>捕获所有路由段（Catch-All Routes）</h3><p>使用 […slug] 语法捕获任意数量的路径段。</p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>└── blog&#x2F;<br>    └── […slug]&#x2F;<br>        └── page.tsx         → <code>/blog/*</code> 动态匹配所有子路径</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// blog/12</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">CatchAllPage</span>(<span class="params">&#123; params &#125;: &#123; params: &#123; slug: <span class="built_in">string</span>[] &#125; &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>路径段: &#123;params.slug.join(&#x27; / &#x27;)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="404-页面（Not-Found）"><a href="#404-页面（Not-Found）" class="headerlink" title="404 页面（Not Found）"></a>404 页面（Not Found）</h2><p>全局 404 页面<br>app&#x2F;not-found.tsx</p>
+<p>你也可以为每个路由子目录创建局部 404 页面：<br>app&#x2F;<br>└── about&#x2F;<br>    ├── not-found.tsx<br>    └── page.tsx</p>
+<p>在 not-found.tsx 中定义页面不存在时的 UI：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">NotFound</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>此页面不存在<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>主动触发 404</strong><br>你可以通过 notFound() 方法主动触发 404：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; notFound &#125; <span class="keyword">from</span> <span class="string">&#x27;next/navigation&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Page</span>(<span class="params">&#123; params &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!data) <span class="keyword">return</span> <span class="title function_">notFound</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>正常页面内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="私有文件夹（下划线命名）"><a href="#私有文件夹（下划线命名）" class="headerlink" title="私有文件夹（下划线命名）"></a>私有文件夹（下划线命名）</h2><p>使用下划线 _ 开头的文件夹（如 _components&#x2F;）不会被视为路由路径。</p>
+<ul>
+<li>通常用于存放共享组件、工具函数、布局模板等。</li>
+<li>如果确实需要使用下划线路径（不推荐），需通过 %5f URL 编码。</li>
+</ul>
+<h2 id="路由分组（Route-Groups）"><a href="#路由分组（Route-Groups）" class="headerlink" title="路由分组（Route Groups）"></a>路由分组（Route Groups）</h2><p>使用 括号 () 包裹文件夹名 创建逻辑上的路由分组，不影响实际 URL 路径结构。</p>
+<p>app&#x2F;<br>└── (auth)&#x2F;<br>    └── login&#x2F;<br>        └── page.tsx     → <code>/login</code></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>语法&#x2F;文件名</th>
+<th>示例路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态路由</td>
+<td>page.tsx</td>
+<td>&#x2F;about</td>
+</tr>
+<tr>
+<td>动态路由</td>
+<td>[id]&#x2F;page.tsx</td>
+<td>&#x2F;products&#x2F;123</td>
+</tr>
+<tr>
+<td>嵌套路由</td>
+<td>子目录结构</td>
+<td>&#x2F;products&#x2F;123&#x2F;reviews&#x2F;1</td>
+</tr>
+<tr>
+<td>捕获全部路由</td>
+<td>[…slug]</td>
+<td>&#x2F;blog&#x2F;a&#x2F;b&#x2F;c</td>
+</tr>
+<tr>
+<td>404 页面</td>
+<td>not-found.tsx</td>
+<td>&#x2F;about&#x2F;not-found.tsx</td>
+</tr>
+<tr>
+<td>路由分组</td>
+<td>(group)&#x2F;</td>
+<td>&#x2F;login from (auth)&#x2F;login</td>
+</tr>
+<tr>
+<td>私有目录</td>
+<td>_components&#x2F;</td>
+<td>不作为路由路径</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>之乎泽野
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zhihuzeye.github.io/2025/07/28/NextJs-%E8%B7%AF%E7%94%B1/" title="Next.js 路由系统">https://zhihuzeye.github.io/2025/07/28/NextJs-路由/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Next-js/" rel="tag"># Next.js</a>
+              <a href="/tags/%E8%B7%AF%E7%94%B1/" rel="tag"># 路由</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/07/09/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%85%B3%E8%81%94%E6%9C%8D%E5%8A%A1%E5%8F%B7%E5%8F%91%E9%80%81%E6%A8%A1%E6%9D%BF%E6%B6%88%E6%81%AF/" rel="prev" title="微信小程序关联服务号发送模板消息">
+                  <i class="fa fa-angle-left"></i> 微信小程序关联服务号发送模板消息
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">之乎泽野</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zhihuzeye","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
