@@ -60,61 +60,6 @@
       </tags>
   </entry>
   <entry>
-    <title>5月最后一天，我开源了一个数据可视化大屏项目</title>
-    <url>/2024/05/31/5%E6%9C%88%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%A4%A9%EF%BC%8C%E5%BC%80%E6%BA%90%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%B0/</url>
-    <content><![CDATA[<p>设计原型：<br><img src="/images/design.png" alt="大屏设计"><br>项目成果：<br><img src="/images/20240531110200.png" alt="项目成果"></p>
-<p><strong>以上大屏数据为模拟数据</strong></p>
-<p>脚手架命令：pnpm create vite my-react-app –template react-ts</p>
-<h2 id="一、项目描述"><a href="#一、项目描述" class="headerlink" title="一、项目描述"></a>一、项目描述</h2><ul>
-<li><p>一个基于 React、TypeScript、Vite、Redux、DataV、ECharts 框架的 “ <strong>数据大屏项目</strong> “。支持数据动态刷新渲染、屏幕适配、数据请求模拟、局部样式、图表自由替换&#x2F;复用等功能。</p>
-</li>
-<li><p>项目全屏展示点击右上角全屏按钮或（按 F11）。</p>
-</li>
-<li><p>项目环境：<a href="mailto:&#x72;&#101;&#x61;&#99;&#116;&#64;&#49;&#56;&#46;&#50;&#x2e;&#48;">&#x72;&#101;&#x61;&#99;&#116;&#64;&#49;&#56;&#46;&#50;&#x2e;&#48;</a>、<a href="mailto:&#x74;&#121;&#x70;&#101;&#x73;&#x63;&#114;&#105;&#112;&#116;&#x40;&#53;&#x2e;&#x32;&#x2e;&#x32;">&#x74;&#121;&#x70;&#101;&#x73;&#x63;&#114;&#105;&#112;&#116;&#x40;&#53;&#x2e;&#x32;&#x2e;&#x32;</a>、<a href="mailto:&#118;&#105;&#116;&#x65;&#x40;&#x35;&#46;&#50;&#x2e;&#48;">&#118;&#105;&#116;&#x65;&#x40;&#x35;&#46;&#50;&#x2e;&#48;</a>、<a href="mailto:&#101;&#x63;&#x68;&#97;&#114;&#116;&#x73;&#64;&#53;&#46;&#x35;&#x2e;&#48;">&#101;&#x63;&#x68;&#97;&#114;&#116;&#x73;&#64;&#53;&#46;&#x35;&#x2e;&#48;</a>、<a href="mailto:&#x70;&#x6e;&#112;&#109;&#64;&#55;&#x2e;&#x32;&#x37;&#x2e;&#x30;">&#x70;&#x6e;&#112;&#109;&#64;&#55;&#x2e;&#x32;&#x37;&#x2e;&#x30;</a>、<a href="mailto:&#110;&#x6f;&#x64;&#x65;&#x40;&#118;&#49;&#54;&#46;&#x31;&#56;&#x2e;&#49;">&#110;&#x6f;&#x64;&#x65;&#x40;&#118;&#49;&#54;&#46;&#x31;&#56;&#x2e;&#49;</a>。</p>
-</li>
-</ul>
-<p>友情链接：</p>
-<ol>
-<li><a href="https://react.docschina.org/docs/introducing-jsx.html">React 官方文档</a></li>
-<li><a href="https://geohub.amap.com/mapstyle/index">高德 自定义地图</a></li>
-<li><a href="http://mockjs.com/">Mockjs 官方文档</a></li>
-<li><a href="http://datav-react.jiaminghi.com/guide/">DataV 官方文档</a></li>
-<li><a href="https://echarts.apache.org/examples/zh/index.html">echarts 实例</a>，<a href="https://echarts.apache.org/zh/api.html#echarts">echarts API文档</a></li>
-</ol>
-<h2 id="二、文件目录介绍"><a href="#二、文件目录介绍" class="headerlink" title="二、文件目录介绍"></a>二、文件目录介绍</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Project</span><br><span class="line">├─.eslintrc.cjs ----------- // eslint 配置</span><br><span class="line">├─.gitignore -------------- // git 控制文件</span><br><span class="line">├─custom.d.ts ------------- // 自定义类型声明</span><br><span class="line">├─index.html -------------- // 主页面</span><br><span class="line">├─mock -------------------- // 模拟数据</span><br><span class="line">├─package.json ------------ // 项目信息+依赖包</span><br><span class="line">├─pnpm-lock.yaml ---------- // 锁定依赖包</span><br><span class="line">├─README.md --------------- // 说明文档</span><br><span class="line">├─src </span><br><span class="line">│ ├─App.module.css </span><br><span class="line">│ ├─App.tsx --------------- // App 入口</span><br><span class="line">│ ├─assets ---------------- // 静态资源</span><br><span class="line">│ ├─components </span><br><span class="line">│ │ ├─AutoScale ----------- // 自动缩放 HOC</span><br><span class="line">│ │ ├─index.ts </span><br><span class="line">│ │ └─ScaleContainer ------ // 缩放容器 HOC</span><br><span class="line">│ ├─hooks </span><br><span class="line">│ │ └─useFullscreen.ts ---- // 控制全屏 Hooks</span><br><span class="line">│ ├─index.css </span><br><span class="line">│ ├─main.tsx -------------- // 主入口</span><br><span class="line">│ ├─redux ----------------- // redux 相关</span><br><span class="line">│ ├─services -------------- // 服务端相关配置文件</span><br><span class="line">│ ├─utils ----------------- // 工具函数</span><br><span class="line">│ ├─views ----------------- // 页面</span><br><span class="line">│ └─vite-env.d.ts </span><br><span class="line">├─tsconfig.json ----------- // ts 配置文件</span><br><span class="line">├─tsconfig.node.json ------ // node ts 配置文件</span><br><span class="line">└─vite.config.ts ---------- // vite 配置文件</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、详情介绍"><a href="#三、详情介绍" class="headerlink" title="三、详情介绍"></a>三、详情介绍</h2><h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p>需要提前安装好 <code>nodejs</code> 与 <code>pnpm</code>，下载项目后在项目主目录下运行 <code>pnpm install</code> 拉取依赖包，使用命令 <code>pnpm dev</code> 启动项目。</p>
-<h3 id="数据请求模拟"><a href="#数据请求模拟" class="headerlink" title="数据请求模拟"></a>数据请求模拟</h3><p>项目采用 Mockjs 模拟数据方式，配置在 <code>mock</code> 文件夹中，Mockjs 使用方法请查阅 <a href="http://mockjs.com/">Mockjs文档</a>，主入口文件 main.tsx 引入 mock 文件。</p>
-<p>接口 API 请求地址写在 <code>services/api.service.ts</code> 中，由 <code>@reduxjs/toolkit createAsyncThunk</code> 创建异步 Thunk 发起请求。</p>
-<p>页面通过 <code>useDispatch</code> 发起请求，<code>useSelector</code> 接收数据。</p>
-<h3 id="图表组件"><a href="#图表组件" class="headerlink" title="图表组件"></a>图表组件</h3><p>图表组件主要使用了 ECharts 和 DataV 可视化框架来进行开发。图表配置文件在 <code>views/components/*/options.ts</code> 中，数据由各个组件请求后导入。ECharts 渲染函数统一封装在了 <code>utils/chart.js</code> 中。</p>
-<h3 id="样式编写"><a href="#样式编写" class="headerlink" title="样式编写"></a>样式编写</h3><p>样式编写使用了 <code>CSS in JS (JSS)</code> ，使样式具有组件级别的作用域，避免了全局样式污染的问题。<br>使用示例：</p>
-<ol>
-<li>将 css 文件名修改为 xxx.module.css</li>
-<li>导入样式文件 import styles from ‘.&#x2F;xxx.module.css’</li>
-<li>使用 styles.className</li>
-<li>定义 ts 类型文件<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// custom.d.ts</span></span><br><span class="line"> declare <span class="variable language_">module</span> <span class="string">&quot;*.css&quot;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="attr">css</span>: &#123; [<span class="attr">key</span>: string]: string &#125;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> css</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>vscode 安装插件：typescript-plugin-css-modules<ul>
-<li>作用：解析 css 文件，并生成 ts 对应的类型</li>
-<li>使用：在 tsconfig.json 配置 plugins 字段 [{“typescript-plugin-css-modules”}]</li>
-<li>在 项目根目录创建 .vscode 文件夹  创建 settings.json 文件<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// settings.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;typescript.tsdk&quot;</span>: <span class="string">&quot;node_modules/typescript/lib&quot;</span>,</span><br><span class="line">    <span class="string">&quot;typescript.enablePromptUseWorkspaceTsdk&quot;</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<h3 id="屏幕适配"><a href="#屏幕适配" class="headerlink" title="屏幕适配"></a>屏幕适配</h3><p>本项目借助 HOC 高阶组件包裹，将大屏限制在 1920x1080 尺寸。通过动态计算缩放比例，实时控制容器缩放大小，具体代码请参阅。<code>components/AutoScale</code> 和 <code>components/ScaleContainer</code> 组件。</p>
-<p>在编写大屏代码时，样式无需转换，按照设计稿 1920x1080 <strong>1:1</strong> 编写即可。</p>
-<h2 id="四、全屏控制"><a href="#四、全屏控制" class="headerlink" title="四、全屏控制"></a>四、全屏控制</h2><p>自定义 Hook（高阶组件）useFullscreen，用于控制页面全屏显示的功能，具体代码请参阅 <code>hooks/useFullscreen</code> 自定义钩子。</p>
-<h2 id="五、其它"><a href="#五、其它" class="headerlink" title="五、其它"></a>五、其它</h2><p>这个项目是个人的作品，难免会有问题和 BUG。如果您发现任何问题，欢迎提出反馈和建议。我会尽力去更新和修复，并持续学习前端知识。非常感谢您的支持和理解！我很乐意与您交流，共同进步。</p>
-<p><strong>GitHub 地址</strong><br><a href="https://github.com/zhihuzeye/react-screen-demo.git">GitHub 地址</a>：<a href="https://github.com/zhihuzeye/react-screen-demo.git">https://github.com/zhihuzeye/react-screen-demo.git</a></p>
-]]></content>
-      <categories>
-        <category>开源项目</category>
-      </categories>
-      <tags>
-        <tag>数据可视化大屏</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>BOM基础</title>
     <url>/2024/06/12/BOM%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h2 id="BOM是什么"><a href="#BOM是什么" class="headerlink" title="BOM是什么"></a>BOM是什么</h2><ol>
@@ -211,6 +156,61 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>5月最后一天，我开源了一个数据可视化大屏项目</title>
+    <url>/2024/05/31/5%E6%9C%88%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%A4%A9%EF%BC%8C%E5%BC%80%E6%BA%90%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%B0/</url>
+    <content><![CDATA[<p>设计原型：<br><img src="/images/design.png" alt="大屏设计"><br>项目成果：<br><img src="/images/20240531110200.png" alt="项目成果"></p>
+<p><strong>以上大屏数据为模拟数据</strong></p>
+<p>脚手架命令：pnpm create vite my-react-app –template react-ts</p>
+<h2 id="一、项目描述"><a href="#一、项目描述" class="headerlink" title="一、项目描述"></a>一、项目描述</h2><ul>
+<li><p>一个基于 React、TypeScript、Vite、Redux、DataV、ECharts 框架的 “ <strong>数据大屏项目</strong> “。支持数据动态刷新渲染、屏幕适配、数据请求模拟、局部样式、图表自由替换&#x2F;复用等功能。</p>
+</li>
+<li><p>项目全屏展示点击右上角全屏按钮或（按 F11）。</p>
+</li>
+<li><p>项目环境：<a href="mailto:&#114;&#101;&#x61;&#x63;&#116;&#64;&#49;&#x38;&#x2e;&#50;&#46;&#48;">&#114;&#101;&#x61;&#x63;&#116;&#64;&#49;&#x38;&#x2e;&#50;&#46;&#48;</a>、<a href="mailto:&#116;&#121;&#112;&#101;&#x73;&#x63;&#x72;&#105;&#x70;&#116;&#x40;&#53;&#46;&#50;&#x2e;&#50;">&#116;&#121;&#112;&#101;&#x73;&#x63;&#x72;&#105;&#x70;&#116;&#x40;&#53;&#46;&#50;&#x2e;&#50;</a>、<a href="mailto:&#x76;&#105;&#116;&#x65;&#x40;&#x35;&#x2e;&#50;&#46;&#x30;">&#x76;&#105;&#116;&#x65;&#x40;&#x35;&#x2e;&#50;&#46;&#x30;</a>、<a href="mailto:&#x65;&#99;&#x68;&#x61;&#x72;&#x74;&#115;&#64;&#53;&#x2e;&#53;&#46;&#48;">&#x65;&#99;&#x68;&#x61;&#x72;&#x74;&#115;&#64;&#53;&#x2e;&#53;&#46;&#48;</a>、<a href="mailto:&#112;&#110;&#112;&#109;&#x40;&#55;&#46;&#50;&#55;&#46;&#48;">&#112;&#110;&#112;&#109;&#x40;&#55;&#46;&#50;&#55;&#46;&#48;</a>、<a href="mailto:&#x6e;&#x6f;&#x64;&#x65;&#x40;&#x76;&#x31;&#x36;&#x2e;&#49;&#x38;&#x2e;&#49;">&#x6e;&#x6f;&#x64;&#x65;&#x40;&#x76;&#x31;&#x36;&#x2e;&#49;&#x38;&#x2e;&#49;</a>。</p>
+</li>
+</ul>
+<p>友情链接：</p>
+<ol>
+<li><a href="https://react.docschina.org/docs/introducing-jsx.html">React 官方文档</a></li>
+<li><a href="https://geohub.amap.com/mapstyle/index">高德 自定义地图</a></li>
+<li><a href="http://mockjs.com/">Mockjs 官方文档</a></li>
+<li><a href="http://datav-react.jiaminghi.com/guide/">DataV 官方文档</a></li>
+<li><a href="https://echarts.apache.org/examples/zh/index.html">echarts 实例</a>，<a href="https://echarts.apache.org/zh/api.html#echarts">echarts API文档</a></li>
+</ol>
+<h2 id="二、文件目录介绍"><a href="#二、文件目录介绍" class="headerlink" title="二、文件目录介绍"></a>二、文件目录介绍</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Project</span><br><span class="line">├─.eslintrc.cjs ----------- // eslint 配置</span><br><span class="line">├─.gitignore -------------- // git 控制文件</span><br><span class="line">├─custom.d.ts ------------- // 自定义类型声明</span><br><span class="line">├─index.html -------------- // 主页面</span><br><span class="line">├─mock -------------------- // 模拟数据</span><br><span class="line">├─package.json ------------ // 项目信息+依赖包</span><br><span class="line">├─pnpm-lock.yaml ---------- // 锁定依赖包</span><br><span class="line">├─README.md --------------- // 说明文档</span><br><span class="line">├─src </span><br><span class="line">│ ├─App.module.css </span><br><span class="line">│ ├─App.tsx --------------- // App 入口</span><br><span class="line">│ ├─assets ---------------- // 静态资源</span><br><span class="line">│ ├─components </span><br><span class="line">│ │ ├─AutoScale ----------- // 自动缩放 HOC</span><br><span class="line">│ │ ├─index.ts </span><br><span class="line">│ │ └─ScaleContainer ------ // 缩放容器 HOC</span><br><span class="line">│ ├─hooks </span><br><span class="line">│ │ └─useFullscreen.ts ---- // 控制全屏 Hooks</span><br><span class="line">│ ├─index.css </span><br><span class="line">│ ├─main.tsx -------------- // 主入口</span><br><span class="line">│ ├─redux ----------------- // redux 相关</span><br><span class="line">│ ├─services -------------- // 服务端相关配置文件</span><br><span class="line">│ ├─utils ----------------- // 工具函数</span><br><span class="line">│ ├─views ----------------- // 页面</span><br><span class="line">│ └─vite-env.d.ts </span><br><span class="line">├─tsconfig.json ----------- // ts 配置文件</span><br><span class="line">├─tsconfig.node.json ------ // node ts 配置文件</span><br><span class="line">└─vite.config.ts ---------- // vite 配置文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、详情介绍"><a href="#三、详情介绍" class="headerlink" title="三、详情介绍"></a>三、详情介绍</h2><h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p>需要提前安装好 <code>nodejs</code> 与 <code>pnpm</code>，下载项目后在项目主目录下运行 <code>pnpm install</code> 拉取依赖包，使用命令 <code>pnpm dev</code> 启动项目。</p>
+<h3 id="数据请求模拟"><a href="#数据请求模拟" class="headerlink" title="数据请求模拟"></a>数据请求模拟</h3><p>项目采用 Mockjs 模拟数据方式，配置在 <code>mock</code> 文件夹中，Mockjs 使用方法请查阅 <a href="http://mockjs.com/">Mockjs文档</a>，主入口文件 main.tsx 引入 mock 文件。</p>
+<p>接口 API 请求地址写在 <code>services/api.service.ts</code> 中，由 <code>@reduxjs/toolkit createAsyncThunk</code> 创建异步 Thunk 发起请求。</p>
+<p>页面通过 <code>useDispatch</code> 发起请求，<code>useSelector</code> 接收数据。</p>
+<h3 id="图表组件"><a href="#图表组件" class="headerlink" title="图表组件"></a>图表组件</h3><p>图表组件主要使用了 ECharts 和 DataV 可视化框架来进行开发。图表配置文件在 <code>views/components/*/options.ts</code> 中，数据由各个组件请求后导入。ECharts 渲染函数统一封装在了 <code>utils/chart.js</code> 中。</p>
+<h3 id="样式编写"><a href="#样式编写" class="headerlink" title="样式编写"></a>样式编写</h3><p>样式编写使用了 <code>CSS in JS (JSS)</code> ，使样式具有组件级别的作用域，避免了全局样式污染的问题。<br>使用示例：</p>
+<ol>
+<li>将 css 文件名修改为 xxx.module.css</li>
+<li>导入样式文件 import styles from ‘.&#x2F;xxx.module.css’</li>
+<li>使用 styles.className</li>
+<li>定义 ts 类型文件<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// custom.d.ts</span></span><br><span class="line"> declare <span class="variable language_">module</span> <span class="string">&quot;*.css&quot;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="attr">css</span>: &#123; [<span class="attr">key</span>: string]: string &#125;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> css</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>vscode 安装插件：typescript-plugin-css-modules<ul>
+<li>作用：解析 css 文件，并生成 ts 对应的类型</li>
+<li>使用：在 tsconfig.json 配置 plugins 字段 [{“typescript-plugin-css-modules”}]</li>
+<li>在 项目根目录创建 .vscode 文件夹  创建 settings.json 文件<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// settings.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;typescript.tsdk&quot;</span>: <span class="string">&quot;node_modules/typescript/lib&quot;</span>,</span><br><span class="line">    <span class="string">&quot;typescript.enablePromptUseWorkspaceTsdk&quot;</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h3 id="屏幕适配"><a href="#屏幕适配" class="headerlink" title="屏幕适配"></a>屏幕适配</h3><p>本项目借助 HOC 高阶组件包裹，将大屏限制在 1920x1080 尺寸。通过动态计算缩放比例，实时控制容器缩放大小，具体代码请参阅。<code>components/AutoScale</code> 和 <code>components/ScaleContainer</code> 组件。</p>
+<p>在编写大屏代码时，样式无需转换，按照设计稿 1920x1080 <strong>1:1</strong> 编写即可。</p>
+<h2 id="四、全屏控制"><a href="#四、全屏控制" class="headerlink" title="四、全屏控制"></a>四、全屏控制</h2><p>自定义 Hook（高阶组件）useFullscreen，用于控制页面全屏显示的功能，具体代码请参阅 <code>hooks/useFullscreen</code> 自定义钩子。</p>
+<h2 id="五、其它"><a href="#五、其它" class="headerlink" title="五、其它"></a>五、其它</h2><p>这个项目是个人的作品，难免会有问题和 BUG。如果您发现任何问题，欢迎提出反馈和建议。我会尽力去更新和修复，并持续学习前端知识。非常感谢您的支持和理解！我很乐意与您交流，共同进步。</p>
+<p><strong>GitHub 地址</strong><br><a href="https://github.com/zhihuzeye/react-screen-demo.git">GitHub 地址</a>：<a href="https://github.com/zhihuzeye/react-screen-demo.git">https://github.com/zhihuzeye/react-screen-demo.git</a></p>
+]]></content>
+      <categories>
+        <category>开源项目</category>
+      </categories>
+      <tags>
+        <tag>数据可视化大屏</tag>
       </tags>
   </entry>
   <entry>
@@ -783,6 +783,164 @@
       </tags>
   </entry>
   <entry>
+    <title>Java 包装类</title>
+    <url>/2024/06/06/Java-%E5%8C%85%E8%A3%85%E7%B1%BB/</url>
+    <content><![CDATA[<h2 id="什么是包装类"><a href="#什么是包装类" class="headerlink" title="什么是包装类"></a>什么是包装类</h2><ol>
+<li><em><strong>基本数据类型不具有对象特征，没有属性和方法，无法对象化交互，包装类的产生就是为了解决这样的问题，通过包装类，让基本数据类型拥有属性、方法，可以对象化交互</strong></em></li>
+<li>包装类不允许被继承，没有子类</li>
+</ol>
+<h2 id="包装类与基本数据类型之间的对应关系"><a href="#包装类与基本数据类型之间的对应关系" class="headerlink" title="包装类与基本数据类型之间的对应关系"></a>包装类与基本数据类型之间的对应关系</h2><p>包装类与基本数据类型</p>
+<ul>
+<li>byte -&gt; Byte</li>
+<li>short -&gt; Short</li>
+<li><strong>int -&gt; Integer</strong></li>
+<li>long -&gt; Long</li>
+<li>float -&gt; Float</li>
+<li>double -&gt; Double</li>
+<li><strong>char -&gt; Character</strong></li>
+<li>boolean -&gt; Boolean</li>
+<li>除了 double、float 都可以应用对象常量池的概念</li>
+</ul>
+<h2 id="包装类的常用方法"><a href="#包装类的常用方法" class="headerlink" title="包装类的常用方法"></a>包装类的常用方法</h2><p> <a href="https://docs.oracle.com/javase/8/docs/api/">Java 文档手册</a></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS函数与DOM</title>
+    <url>/2024/06/14/JS%E5%87%BD%E6%95%B0%E4%B8%8EDOM/</url>
+    <content><![CDATA[<h2 id="函数的基本使用"><a href="#函数的基本使用" class="headerlink" title="函数的基本使用"></a>函数的基本使用</h2><ol>
+<li>函数的参数和返回值<ul>
+<li>参数可多可少，用逗号分开</li>
+<li>函数体内可以使用 return 关键词表示 “函数的返回值”</li>
+<li>调用一个有返回值的函数，可以被当做一个普通纸，从而可以出现在哪任何可以书写值的地方</li>
+<li>调用函数时，一旦遇见 return 语句则会立即退出函数，将执行权还给调用者</li>
+</ul>
+</li>
+<li>函数的定义和调用<ul>
+<li>和变量相似，函数必须先定义然后才能使用</li>
+<li>使用 function 关键词定义函数，function 是“功能”的意思</li>
+<li>函数名，必须符合JS标识符的命名规则</li>
+</ul>
+</li>
+<li>什么是函数<ul>
+<li>函数就是语句的封装，可以让这些代码方便的被复用</li>
+<li>函数具有“一次定义，多次调用”的优点</li>
+<li>使用函数，可以简化代码，让代码更具有可读性</li>
+</ul>
+</li>
+<li><em><strong>函数声明的提升（面试题）</strong></em><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">fun</span>()</span><br><span class="line">   <span class="comment">//  函数表达式</span></span><br><span class="line">   <span class="keyword">var</span> fun = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;A&quot;</span>)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">function</span> <span class="title function_">fun</span>(<span class="params"></span>) &#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;B&quot;</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="title function_">fun</span>()</span><br><span class="line"></span><br><span class="line">   <span class="comment">// B A</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>和变量声明提升类似，函数声明也可以被替身，函数表达式不能提升</li>
+<li>变量的提升，只提升定义，不提升值。</li>
+<li><em><strong>函数优先提升，然后再提升变量。</strong></em></li>
+</ul>
+</li>
+</ol>
+<h2 id="函数算法题"><a href="#函数算法题" class="headerlink" title="函数算法题"></a>函数算法题</h2><ol>
+<li>函数算法题1<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 【阿姆斯特朗数】 数字是 n 位数 , 该数字的每一位的 n 次方之和等于该数字本身 </span></span><br><span class="line"><span class="comment"> *  阿姆斯特朗数是指上述条件成立的任意位数的数字 水仙花数是指上述条件成立的 3 位数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">factorial</span>(<span class="params">n</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> result = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            result *= i</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">100</span>; i &lt;= <span class="number">999</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> str = i.<span class="title function_">toString</span>();</span><br><span class="line">        <span class="keyword">var</span> a = <span class="title class_">Number</span>(str[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">var</span> b = <span class="title class_">Number</span>(str[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">var</span> c = <span class="title class_">Number</span>(str[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_">factorial</span>(a) + <span class="title function_">factorial</span>(b) + <span class="title function_">factorial</span>(c) == i) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;i&quot;</span>, i)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li>函数算法题2<ul>
+<li>函数是JS的一等公民，它可以当做参数传入另一个函数</li>
+<li>sort()函数 这个函数中的a，b分别表示数组中靠前和靠后的项，如果需要将它们交换位置，则返回任意整数，否则返回负数<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">33</span>, <span class="number">22</span>, <span class="number">55</span>, <span class="number">11</span>];</span><br><span class="line">arr.<span class="title function_">sort</span>(<span class="keyword">function</span> (<span class="params">a, b</span>) &#123;</span><br><span class="line">    <span class="comment">// if (a &gt; b) &#123;</span></span><br><span class="line">    <span class="comment">//     return 1</span></span><br><span class="line">    <span class="comment">// &#125; else &#123;</span></span><br><span class="line">    <span class="comment">//     return -1</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="keyword">return</span> b-a</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arr&quot;</span>, arr)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><ol>
+<li>什么是递归<ul>
+<li>函数的内部语句可以调用这个函数自身，从而发起对函数的一次迭代，在新的迭代中，又会执行调用函数自身的语句，从而又产生一次迭代，当函数执行到某一次时，不在进行新的迭代，函数被一层一层返回，函数被递归。</li>
+<li>递归是一种较为高级的编程技巧，它把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解</li>
+<li>递归的要素<ul>
+<li><strong>边界条件：确定递归到何时终止，也称为递归出口</strong></li>
+<li><strong>递归模式：大问题是如何分解为小问题的，也称为 递归体</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>递归常见算法题<ul>
+<li>斐波那契数列<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fib</span>(<span class="params">n</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">fib</span>(n - <span class="number">1</span>) + <span class="title function_">fib</span>(n - <span class="number">2</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li>阶乘<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">n</span>) &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;n：&quot;</span>,n)</span><br><span class="line">         <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;123&quot;</span>)</span><br><span class="line">         <span class="keyword">return</span> n * <span class="title function_">test</span>(n - <span class="number">1</span>)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="title function_">test</span>(<span class="number">3</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>实现深克隆<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">12</span>, <span class="number">34</span>, <span class="number">12</span>, <span class="number">45</span>, [<span class="number">12</span>, <span class="number">44</span>]];</span><br><span class="line">   <span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">       <span class="keyword">var</span> result = [];</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(arr[i])) &#123;</span><br><span class="line">               result.<span class="title function_">push</span>(<span class="title function_">deepClone</span>(arr[i]))</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               result.<span class="title function_">push</span>(arr[i])</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> result;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> arr2 = <span class="title function_">deepClone</span>(arr1);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h2><ol>
+<li>全局变量和局部变量<ul>
+<li>JavaScript 是 函数作用域编程语言：变量只在其定义时所在的function内部有意义。</li>
+<li>如果变量不定义在函数的内部，此时这个变量就是全局变量</li>
+<li>遮蔽效应<ul>
+<li>如果函数中也定义了和全局同名的变量，则函数内的变量会将全局的变量 “遮蔽”</li>
+</ul>
+</li>
+<li>形参也是局部变量<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fun</span>(<span class="params">a</span>) &#123;</span><br><span class="line"> a++</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fun</span>(<span class="number">7</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br></pre></td></tr></table></figure></li>
+<li>函数的嵌套<ul>
+<li>一个函数内部也可以定义一个函数。和局部变量类似，定义在一个函数内部的函数时局部函数</li>
+</ul>
+</li>
+<li>不加 var 将定义全局变量</li>
+</ul>
+</li>
+<li>作用域链<ul>
+<li>就是这个变量会被一层一层的（从内层到外层），去寻找它的作用域</li>
+</ul>
+</li>
+<li>闭包<ul>
+<li>什么是闭包<ul>
+<li>Javascript 中函数会产生闭包（closure）。闭包是函数本身和该函数声明时所处的环境状态的组合。</li>
+<li>函数能够“记忆住”其定义时所处的环境，即使函数不在其定义的环境中被调用，也能访问定义时所处环境的变量。</li>
+</ul>
+</li>
+<li>观察闭包现象<ul>
+<li>在JavaScript中，每次创建函数时都会创建闭包。但是，闭包特性往往需要将函数“换一个地方”执行，才能观察出来</li>
+</ul>
+</li>
+<li>闭包非常实用<ul>
+<li>因为它允许我们将数组与操作改数组的函数关联起来，这与“面向对象编程”有少许相似之处</li>
+</ul>
+</li>
+<li>闭包的功能<ul>
+<li>记忆性<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createCheckTemp</span>(<span class="params">standardTemp</span>) &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">checkTemp</span>(<span class="params">n</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (n &lt;= standardTemp) &#123;</span><br><span class="line">               <span class="title function_">alert</span>(<span class="string">&#x27;你的体温正常&#x27;</span>)</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="title function_">alert</span>(<span class="string">&#x27;你的体温偏高&#x27;</span>)</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> area1 = <span class="title function_">createCheckTemp</span>(<span class="number">37.1</span>)</span><br><span class="line">   <span class="keyword">var</span> area2 = <span class="title function_">createCheckTemp</span>(<span class="number">38.1</span>)</span><br><span class="line">   <span class="title function_">area1</span>(<span class="number">38</span>)</span><br><span class="line">   <span class="title function_">area2</span>(<span class="number">38</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当闭包产生时，函数所处环境的状态会始终保持在内存中，不会在外层函数调用后被自动清除。这就是闭包的记忆性</li>
+</ul>
+</li>
+<li>模拟私有变量<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fun</span>(<span class="params"></span>) &#123;</span><br><span class="line">     <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">     <span class="keyword">return</span> &#123;</span><br><span class="line">         <span class="attr">getA</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="keyword">return</span> a</span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="attr">add</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="keyword">return</span> a++</span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="attr">pow</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="keyword">return</span> a *= <span class="number">2</span></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">var</span> obj = <span class="title function_">fun</span>()</span><br><span class="line"> obj.<span class="title function_">pow</span>()</span><br><span class="line"> obj.<span class="title function_">add</span>()</span><br><span class="line"> <span class="title function_">alert</span>(obj.<span class="title function_">getA</span>())</span><br></pre></td></tr></table></figure></li>
+<li>使用闭包的注意点<ul>
+<li>不能滥用闭包，否则会造成网页的性能问题，严重时可能导致内存泄漏。所谓内存泄漏是指程序中以动态分贝的内存由于某种原因未释放或无法释放</li>
+</ul>
+</li>
+<li><strong>闭包面试题</strong><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">addCount</span>(<span class="params"></span>) &#123;</span><br><span class="line">       <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">           count = count + <span class="number">1</span>;</span><br><span class="line">           <span class="variable language_">console</span>.<span class="title function_">log</span>(count)</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> fun1 = <span class="title function_">addCount</span>()</span><br><span class="line">   <span class="keyword">var</span> fun2 = <span class="title function_">addCount</span>()</span><br><span class="line">   <span class="title function_">fun1</span>()</span><br><span class="line">   <span class="title function_">fun2</span>()</span><br><span class="line">   <span class="title function_">fun2</span>()</span><br><span class="line">   <span class="title function_">fun1</span>()</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h2><ol>
+<li>立即执行函数 IIFE</li>
+<li>立即调用函数，一旦被定义，就立即被调用</li>
+<li>形成IIFE的方法<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 运行函数 </span></span><br><span class="line">+<span class="keyword">function</span> <span class="title function_">fun1</span>(<span class="params"></span>)&#123; <span class="title function_">alert</span>(<span class="string">&#x27;立即调用1&#x27;</span>); &#125;() </span><br><span class="line">-<span class="keyword">function</span> <span class="title function_">fun2</span>(<span class="params"></span>)&#123; <span class="title function_">alert</span>(<span class="string">&#x27;立即调用2&#x27;</span>); &#125;()</span><br><span class="line">~<span class="keyword">function</span> <span class="title function_">fun3</span>(<span class="params"></span>)&#123; <span class="title function_">alert</span>(<span class="string">&#x27;立即调用3&#x27;</span>); &#125;() </span><br><span class="line">!<span class="keyword">function</span> <span class="title function_">fun4</span>(<span class="params"></span>)&#123; <span class="title function_">alert</span>(<span class="string">&#x27;立即调用4&#x27;</span>); &#125;()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数必须转为“函数表达式”才能被调用</li>
+</ul>
+</li>
+<li>IIFE的作用<ul>
+<li>为变量赋值<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">28</span>;</span><br><span class="line">    <span class="keyword">var</span> sex = <span class="string">&#x27;女&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> title = (<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (age &lt; <span class="number">18</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;小朋友&#x27;</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (sex == <span class="string">&#x27;男&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&#x27;先生&#x27;</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&#x27;女士&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)()</span><br><span class="line">    <span class="title function_">alert</span>(title)</span><br></pre></td></tr></table></figure></li>
+<li>将全局变量变为局部变量<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = []</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">         (<span class="keyword">function</span> (<span class="params">i</span>) &#123;</span><br><span class="line">             arr.<span class="title function_">push</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                 <span class="title function_">alert</span>(i)</span><br><span class="line">             &#125;)</span><br><span class="line">         &#125;)(i)</span><br><span class="line">     &#125;</span><br><span class="line">     arr[<span class="number">1</span>]()</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS语法与变量</title>
     <url>/2024/06/14/JS%E8%AF%AD%E6%B3%95%E4%B8%8E%E5%8F%98%E9%87%8F/</url>
     <content><![CDATA[<h2 id="输出语句"><a href="#输出语句" class="headerlink" title="输出语句"></a>输出语句</h2><ol>
@@ -843,34 +1001,6 @@
       </categories>
       <tags>
         <tag>Javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 包装类</title>
-    <url>/2024/06/06/Java-%E5%8C%85%E8%A3%85%E7%B1%BB/</url>
-    <content><![CDATA[<h2 id="什么是包装类"><a href="#什么是包装类" class="headerlink" title="什么是包装类"></a>什么是包装类</h2><ol>
-<li><em><strong>基本数据类型不具有对象特征，没有属性和方法，无法对象化交互，包装类的产生就是为了解决这样的问题，通过包装类，让基本数据类型拥有属性、方法，可以对象化交互</strong></em></li>
-<li>包装类不允许被继承，没有子类</li>
-</ol>
-<h2 id="包装类与基本数据类型之间的对应关系"><a href="#包装类与基本数据类型之间的对应关系" class="headerlink" title="包装类与基本数据类型之间的对应关系"></a>包装类与基本数据类型之间的对应关系</h2><p>包装类与基本数据类型</p>
-<ul>
-<li>byte -&gt; Byte</li>
-<li>short -&gt; Short</li>
-<li><strong>int -&gt; Integer</strong></li>
-<li>long -&gt; Long</li>
-<li>float -&gt; Float</li>
-<li>double -&gt; Double</li>
-<li><strong>char -&gt; Character</strong></li>
-<li>boolean -&gt; Boolean</li>
-<li>除了 double、float 都可以应用对象常量池的概念</li>
-</ul>
-<h2 id="包装类的常用方法"><a href="#包装类的常用方法" class="headerlink" title="包装类的常用方法"></a>包装类的常用方法</h2><p> <a href="https://docs.oracle.com/javase/8/docs/api/">Java 文档手册</a></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1039,136 +1169,6 @@
       </categories>
       <tags>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS函数与DOM</title>
-    <url>/2024/06/14/JS%E5%87%BD%E6%95%B0%E4%B8%8EDOM/</url>
-    <content><![CDATA[<h2 id="函数的基本使用"><a href="#函数的基本使用" class="headerlink" title="函数的基本使用"></a>函数的基本使用</h2><ol>
-<li>函数的参数和返回值<ul>
-<li>参数可多可少，用逗号分开</li>
-<li>函数体内可以使用 return 关键词表示 “函数的返回值”</li>
-<li>调用一个有返回值的函数，可以被当做一个普通纸，从而可以出现在哪任何可以书写值的地方</li>
-<li>调用函数时，一旦遇见 return 语句则会立即退出函数，将执行权还给调用者</li>
-</ul>
-</li>
-<li>函数的定义和调用<ul>
-<li>和变量相似，函数必须先定义然后才能使用</li>
-<li>使用 function 关键词定义函数，function 是“功能”的意思</li>
-<li>函数名，必须符合JS标识符的命名规则</li>
-</ul>
-</li>
-<li>什么是函数<ul>
-<li>函数就是语句的封装，可以让这些代码方便的被复用</li>
-<li>函数具有“一次定义，多次调用”的优点</li>
-<li>使用函数，可以简化代码，让代码更具有可读性</li>
-</ul>
-</li>
-<li><em><strong>函数声明的提升（面试题）</strong></em><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">fun</span>()</span><br><span class="line">   <span class="comment">//  函数表达式</span></span><br><span class="line">   <span class="keyword">var</span> fun = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;A&quot;</span>)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">function</span> <span class="title function_">fun</span>(<span class="params"></span>) &#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;B&quot;</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="title function_">fun</span>()</span><br><span class="line"></span><br><span class="line">   <span class="comment">// B A</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>和变量声明提升类似，函数声明也可以被替身，函数表达式不能提升</li>
-<li>变量的提升，只提升定义，不提升值。</li>
-<li><em><strong>函数优先提升，然后再提升变量。</strong></em></li>
-</ul>
-</li>
-</ol>
-<h2 id="函数算法题"><a href="#函数算法题" class="headerlink" title="函数算法题"></a>函数算法题</h2><ol>
-<li>函数算法题1<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 【阿姆斯特朗数】 数字是 n 位数 , 该数字的每一位的 n 次方之和等于该数字本身 </span></span><br><span class="line"><span class="comment"> *  阿姆斯特朗数是指上述条件成立的任意位数的数字 水仙花数是指上述条件成立的 3 位数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">factorial</span>(<span class="params">n</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> result = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            result *= i</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">100</span>; i &lt;= <span class="number">999</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> str = i.<span class="title function_">toString</span>();</span><br><span class="line">        <span class="keyword">var</span> a = <span class="title class_">Number</span>(str[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">var</span> b = <span class="title class_">Number</span>(str[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">var</span> c = <span class="title class_">Number</span>(str[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_">factorial</span>(a) + <span class="title function_">factorial</span>(b) + <span class="title function_">factorial</span>(c) == i) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;i&quot;</span>, i)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li>函数算法题2<ul>
-<li>函数是JS的一等公民，它可以当做参数传入另一个函数</li>
-<li>sort()函数 这个函数中的a，b分别表示数组中靠前和靠后的项，如果需要将它们交换位置，则返回任意整数，否则返回负数<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">33</span>, <span class="number">22</span>, <span class="number">55</span>, <span class="number">11</span>];</span><br><span class="line">arr.<span class="title function_">sort</span>(<span class="keyword">function</span> (<span class="params">a, b</span>) &#123;</span><br><span class="line">    <span class="comment">// if (a &gt; b) &#123;</span></span><br><span class="line">    <span class="comment">//     return 1</span></span><br><span class="line">    <span class="comment">// &#125; else &#123;</span></span><br><span class="line">    <span class="comment">//     return -1</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="keyword">return</span> b-a</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arr&quot;</span>, arr)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><ol>
-<li>什么是递归<ul>
-<li>函数的内部语句可以调用这个函数自身，从而发起对函数的一次迭代，在新的迭代中，又会执行调用函数自身的语句，从而又产生一次迭代，当函数执行到某一次时，不在进行新的迭代，函数被一层一层返回，函数被递归。</li>
-<li>递归是一种较为高级的编程技巧，它把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解</li>
-<li>递归的要素<ul>
-<li><strong>边界条件：确定递归到何时终止，也称为递归出口</strong></li>
-<li><strong>递归模式：大问题是如何分解为小问题的，也称为 递归体</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>递归常见算法题<ul>
-<li>斐波那契数列<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fib</span>(<span class="params">n</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">fib</span>(n - <span class="number">1</span>) + <span class="title function_">fib</span>(n - <span class="number">2</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li>阶乘<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">n</span>) &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;n：&quot;</span>,n)</span><br><span class="line">         <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;123&quot;</span>)</span><br><span class="line">         <span class="keyword">return</span> n * <span class="title function_">test</span>(n - <span class="number">1</span>)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="title function_">test</span>(<span class="number">3</span>)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>实现深克隆<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">12</span>, <span class="number">34</span>, <span class="number">12</span>, <span class="number">45</span>, [<span class="number">12</span>, <span class="number">44</span>]];</span><br><span class="line">   <span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">       <span class="keyword">var</span> result = [];</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(arr[i])) &#123;</span><br><span class="line">               result.<span class="title function_">push</span>(<span class="title function_">deepClone</span>(arr[i]))</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               result.<span class="title function_">push</span>(arr[i])</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> result;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> arr2 = <span class="title function_">deepClone</span>(arr1);</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h2><ol>
-<li>全局变量和局部变量<ul>
-<li>JavaScript 是 函数作用域编程语言：变量只在其定义时所在的function内部有意义。</li>
-<li>如果变量不定义在函数的内部，此时这个变量就是全局变量</li>
-<li>遮蔽效应<ul>
-<li>如果函数中也定义了和全局同名的变量，则函数内的变量会将全局的变量 “遮蔽”</li>
-</ul>
-</li>
-<li>形参也是局部变量<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fun</span>(<span class="params">a</span>) &#123;</span><br><span class="line"> a++</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fun</span>(<span class="number">7</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br></pre></td></tr></table></figure></li>
-<li>函数的嵌套<ul>
-<li>一个函数内部也可以定义一个函数。和局部变量类似，定义在一个函数内部的函数时局部函数</li>
-</ul>
-</li>
-<li>不加 var 将定义全局变量</li>
-</ul>
-</li>
-<li>作用域链<ul>
-<li>就是这个变量会被一层一层的（从内层到外层），去寻找它的作用域</li>
-</ul>
-</li>
-<li>闭包<ul>
-<li>什么是闭包<ul>
-<li>Javascript 中函数会产生闭包（closure）。闭包是函数本身和该函数声明时所处的环境状态的组合。</li>
-<li>函数能够“记忆住”其定义时所处的环境，即使函数不在其定义的环境中被调用，也能访问定义时所处环境的变量。</li>
-</ul>
-</li>
-<li>观察闭包现象<ul>
-<li>在JavaScript中，每次创建函数时都会创建闭包。但是，闭包特性往往需要将函数“换一个地方”执行，才能观察出来</li>
-</ul>
-</li>
-<li>闭包非常实用<ul>
-<li>因为它允许我们将数组与操作改数组的函数关联起来，这与“面向对象编程”有少许相似之处</li>
-</ul>
-</li>
-<li>闭包的功能<ul>
-<li>记忆性<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createCheckTemp</span>(<span class="params">standardTemp</span>) &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">checkTemp</span>(<span class="params">n</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (n &lt;= standardTemp) &#123;</span><br><span class="line">               <span class="title function_">alert</span>(<span class="string">&#x27;你的体温正常&#x27;</span>)</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="title function_">alert</span>(<span class="string">&#x27;你的体温偏高&#x27;</span>)</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> area1 = <span class="title function_">createCheckTemp</span>(<span class="number">37.1</span>)</span><br><span class="line">   <span class="keyword">var</span> area2 = <span class="title function_">createCheckTemp</span>(<span class="number">38.1</span>)</span><br><span class="line">   <span class="title function_">area1</span>(<span class="number">38</span>)</span><br><span class="line">   <span class="title function_">area2</span>(<span class="number">38</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>当闭包产生时，函数所处环境的状态会始终保持在内存中，不会在外层函数调用后被自动清除。这就是闭包的记忆性</li>
-</ul>
-</li>
-<li>模拟私有变量<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fun</span>(<span class="params"></span>) &#123;</span><br><span class="line">     <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">     <span class="keyword">return</span> &#123;</span><br><span class="line">         <span class="attr">getA</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="keyword">return</span> a</span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="attr">add</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="keyword">return</span> a++</span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="attr">pow</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="keyword">return</span> a *= <span class="number">2</span></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">var</span> obj = <span class="title function_">fun</span>()</span><br><span class="line"> obj.<span class="title function_">pow</span>()</span><br><span class="line"> obj.<span class="title function_">add</span>()</span><br><span class="line"> <span class="title function_">alert</span>(obj.<span class="title function_">getA</span>())</span><br></pre></td></tr></table></figure></li>
-<li>使用闭包的注意点<ul>
-<li>不能滥用闭包，否则会造成网页的性能问题，严重时可能导致内存泄漏。所谓内存泄漏是指程序中以动态分贝的内存由于某种原因未释放或无法释放</li>
-</ul>
-</li>
-<li><strong>闭包面试题</strong><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">addCount</span>(<span class="params"></span>) &#123;</span><br><span class="line">       <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">           count = count + <span class="number">1</span>;</span><br><span class="line">           <span class="variable language_">console</span>.<span class="title function_">log</span>(count)</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> fun1 = <span class="title function_">addCount</span>()</span><br><span class="line">   <span class="keyword">var</span> fun2 = <span class="title function_">addCount</span>()</span><br><span class="line">   <span class="title function_">fun1</span>()</span><br><span class="line">   <span class="title function_">fun2</span>()</span><br><span class="line">   <span class="title function_">fun2</span>()</span><br><span class="line">   <span class="title function_">fun1</span>()</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h2><ol>
-<li>立即执行函数 IIFE</li>
-<li>立即调用函数，一旦被定义，就立即被调用</li>
-<li>形成IIFE的方法<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 运行函数 </span></span><br><span class="line">+<span class="keyword">function</span> <span class="title function_">fun1</span>(<span class="params"></span>)&#123; <span class="title function_">alert</span>(<span class="string">&#x27;立即调用1&#x27;</span>); &#125;() </span><br><span class="line">-<span class="keyword">function</span> <span class="title function_">fun2</span>(<span class="params"></span>)&#123; <span class="title function_">alert</span>(<span class="string">&#x27;立即调用2&#x27;</span>); &#125;()</span><br><span class="line">~<span class="keyword">function</span> <span class="title function_">fun3</span>(<span class="params"></span>)&#123; <span class="title function_">alert</span>(<span class="string">&#x27;立即调用3&#x27;</span>); &#125;() </span><br><span class="line">!<span class="keyword">function</span> <span class="title function_">fun4</span>(<span class="params"></span>)&#123; <span class="title function_">alert</span>(<span class="string">&#x27;立即调用4&#x27;</span>); &#125;()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>函数必须转为“函数表达式”才能被调用</li>
-</ul>
-</li>
-<li>IIFE的作用<ul>
-<li>为变量赋值<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">28</span>;</span><br><span class="line">    <span class="keyword">var</span> sex = <span class="string">&#x27;女&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> title = (<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (age &lt; <span class="number">18</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;小朋友&#x27;</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (sex == <span class="string">&#x27;男&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&#x27;先生&#x27;</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&#x27;女士&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)()</span><br><span class="line">    <span class="title function_">alert</span>(title)</span><br></pre></td></tr></table></figure></li>
-<li>将全局变量变为局部变量<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = []</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">         (<span class="keyword">function</span> (<span class="params">i</span>) &#123;</span><br><span class="line">             arr.<span class="title function_">push</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                 <span class="title function_">alert</span>(i)</span><br><span class="line">             &#125;)</span><br><span class="line">         &#125;)(i)</span><br><span class="line">     &#125;</span><br><span class="line">     arr[<span class="number">1</span>]()</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -1475,411 +1475,146 @@
       </tags>
   </entry>
   <entry>
-    <title>Java 开发环境搭建</title>
-    <url>/2024/05/31/Java-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<ol>
-<li>安装 JDK </li>
-<li>安装 Navicat 数据库工具</li>
-<li>安装 IntelliJ IDEA 编译器</li>
-<li>安装 Redis <a href="https://blog.csdn.net/antma/article/details/79225084">Redis安装（Windows环境下Redis安装）</a> </li>
-<li>maven3.6.3 安装 <a href="https://blog.csdn.net/kenkao/article/details/128842266">Windows系统Maven3.6.3下载与安装</a><ul>
-<li>apache-maven-3.6.1&#x2F;conf  目录下配置  settingsapplication.xml 文件 <strong>主要用于配置 Maven 的行为和外部依赖</strong></li>
-<li>apache-maven-3.6.1 目录下创建 repo 文件夹</li>
+    <title>Java 异常</title>
+    <url>/2024/06/03/Java-%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<h2 id="什么是异常"><a href="#什么是异常" class="headerlink" title="什么是异常"></a>什么是异常</h2><ol>
+<li>异常本质上是程序上的错误。</li>
+<li>错误在我们编写程序的过程中会经常发生，包括编译期间和运行期间的错误。</li>
+<li>在程序运行过程中，意外发生的情况，背离我们程序本身的意图的表现，都可以理解为异常。</li>
+</ol>
+<h2 id="Throwable（异常的根类）"><a href="#Throwable（异常的根类）" class="headerlink" title="Throwable（异常的根类）"></a>Throwable（异常的根类）</h2><ol>
+<li>Error（Java 虚拟机出现问题）<ul>
+<li>Error 是程序无法处理的错误，表示运行应用程序中比较严重的问题。</li>
+<li>它们在应用程序的控制和处理能力之外，而且绝大多数是程序运行时不允许出现的状况。</li>
+<li>对于设计的合理的应用程序来说，即使确实发生了错误，本质上也不应该试图去处理它所引起的异常状况。</li>
+<li>常见错误<ul>
+<li>虚拟机错误 VirtualMachineError</li>
+<li>内存溢出 OutOfMemoryError</li>
+<li>线程死锁 ThreadDeath</li>
 </ul>
 </li>
-<li>安装 IntelliJ IDEA  插件<br><img src="/images/874811934.png" alt="插件"><br><img src="/images/94823832832.png" alt="插件"></li>
-<li>项目 .idea 目录下 misc.xml 文件配置 Yapi <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">component</span> <span class="attr">name</span>=<span class="string">&quot;yapi&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;projectToken&quot;</span>&gt;</span>your yapiToken<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;projectId&quot;</span>&gt;</span>789<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;yapiUrl&quot;</span>&gt;</span>your yapiUrl<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;projectType&quot;</span>&gt;</span>api<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>安装 Xshell </li>
-<li>安装 XFTP</li>
-</ol>
-<p>友情链接：</p>
-<ol>
-<li><a href="https://plugins.jetbrains.com/plugin/index?xmlId=cn.wuzhizhan.plugin.mybatis">Free MyBatis plugin</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 数组</title>
-    <url>/2024/06/02/Java-%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<h2 id="什么是数组"><a href="#什么是数组" class="headerlink" title="什么是数组"></a>什么是数组</h2><ol>
-<li><strong>数组是相同类型的数据按顺序组成的一种引用类型</strong></li>
-<li>数据类型</li>
-</ol>
-<ul>
-<li>基本数据类型</li>
-<li>引用数据类型<ul>
-<li>类</li>
-<li>接口</li>
-<li>数组</li>
+</ul>
+</li>
+<li>Exception<ul>
+<li>Exception 是程序本身可以处理的异常。异常处理通常指针对这种类型异常的处理。</li>
+<li>检查异常 Checked Exception<ul>
+<li>编译器要求必须处置的异常。（编码阶段）</li>
+<li>除了 RuntimeException 及相关子类，其它异常都属于 Checked Exception<ul>
+<li>IO 异常 IOException</li>
+<li>SQL 异常 SQLException</li>
 <li>等等</li>
 </ul>
 </li>
 </ul>
-<ol start="3">
-<li>注意的问题</li>
-</ol>
-<ul>
-<li>数组是引用数据类型</li>
-<li>创建数组时，会开辟连续的内存空间</li>
-<li>数据长度使用 length 属性获取</li>
-<li>数组元素的下标从0开始</li>
-<li>数组下标越界问题</li>
-</ul>
-<h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><ol>
-<li>声明</li>
-</ol>
-<ul>
-<li>语法格式<ul>
-<li><strong>数据类型[] 数组名;</strong></li>
-<li><strong>数据类型 数组名[];</strong></li>
-</ul>
 </li>
-<li>变量声明的语法格式<ul>
-<li>数据类型 变量名;</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>创建<ul>
-<li><strong>语法格式一：先声明后创建</strong><ul>
-<li>数据类型[] 数组名;</li>
-<li>数组名 &#x3D; new 数据类型[数组长度];</li>
-<li>int [] arr;arr &#x3D; new int[10]; 创建一个长度为10的整型数组</li>
-</ul>
-</li>
-<li><strong>语法格式二：声明的同时创建数组</strong><ul>
-<li>数据类型[] 数组名 &#x3D; new 数据类型[数组长度];</li>
-<li>int [] arr &#x3D; new int[10]; 创建长度为10的整型数组 arr</li>
-<li>注意：数组长度必须指定</li>
-</ul>
-</li>
-<li><strong>数组在内存中的存储</strong><ul>
-<li><strong>数组会被分配连续的内存空间</strong></li>
-<li>局部变量和数组的默认值问题<ul>
-<li>局部变量没有默认值、数组有默认值（数组的本身是对象）</li>
+<li>非检查异常 Unchecked Exception<ul>
+<li>编译器不要求强制处置的异常（运行阶段）</li>
+<li>包含 RuntimeException 及相关子类<ul>
+<li>空指针异常 NullPointerException</li>
+<li>数组下标越界异常 ArrayIndexOutOfBoundsException</li>
+<li>算数异常 ArithmeticException</li>
+<li>类型转换异常 ClassCastException</li>
+<li>等等…</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li>初始化<ul>
-<li>声明数组的同时给数组赋值，叫做数组的初始化</li>
-<li><strong>int[] arr &#x3D; {1,2,3,4,5}; 数组的长度就是初始化时所给数组元素的个数</strong> (花括号)</li>
-</ul>
-</li>
-<li>元素的引用<ul>
-<li>语法格式：数组名[下标]</li>
-<li>注意：下标从 0 开始</li>
-</ul>
-</li>
-<li>长度<ul>
-<li>arr.length 表示数组的长度</li>
+<li>System.exit(1); 终止程序运行</li>
 </ul>
 </li>
 </ol>
-<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><ul>
-<li>二维数组的声明和创建<ul>
-<li>声明<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] intArray;</span><br><span class="line"><span class="type">float</span> floatArray[][];</span><br><span class="line"><span class="type">double</span>[] doubleArray[];</span><br></pre></td></tr></table></figure></li>
-<li>创建 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">intArray = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>][<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>列可以省略，行不能省略 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">floatArray = <span class="keyword">new</span> <span class="title class_">float</span>[<span class="number">3</span>][]; floatArray[<span class="number">1</span>] = <span class="keyword">new</span> <span class="title class_">float</span>[<span class="number">3</span>];</span><br></pre></td></tr></table></figure></li>
+<h2 id="throw-throws"><a href="#throw-throws" class="headerlink" title="throw &amp; throws"></a>throw &amp; throws</h2><ol>
+<li>throws<ul>
+<li>可以通过 throws 声明将要抛出何种类型的异常，通过 throw 将产生的异常抛出。</li>
+<li>如果一个方法可能出现异常，但没有能力处理这种异常，可以在方法声明处用 throws 子句来声明抛出异常。</li>
+<li>throws 语句用在方法定义时声明该方法要抛出的异常类型。</li>
+<li>当方法抛出异常列表中的异常时，方法将不对这些类型及其子类类型的异常做处理，而抛向调用该方法的方法，由他去处理。</li>
 </ul>
 </li>
+<li>throw<ul>
+<li>throw 用来抛出一个异常。<ul>
+<li>例如：throw new IOException():</li>
 </ul>
 </li>
-<li>二维数组的初始化  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] num = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;,&#123;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;&#125;;</span><br></pre></td></tr></table></figure></li>
-<li>二维数组的引用</li>
-<li>多个一维数组组成的内容</li>
-</ul>
-<h2 id="增强型-for-循环"><a href="#增强型-for-循环" class="headerlink" title="增强型 for 循环"></a>增强型 for 循环</h2><ol>
-<li>又叫 foreach 循环</li>
-<li>foreach 循环引用<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> n;arr)</span><br><span class="line">System.out.println(n);</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 方法</title>
-    <url>/2024/06/02/Java-%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="什么是方法？"><a href="#什么是方法？" class="headerlink" title="什么是方法？"></a>什么是方法？</h2><p>所谓方法，就是用来解决一类问题的代码的有序组合，是一个功能模块。</p>
-<h2 id="方法的声明和调用"><a href="#方法的声明和调用" class="headerlink" title="方法的声明和调用"></a>方法的声明和调用</h2><ol>
-<li>方法声明<ul>
-<li>语法格式<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">访问修饰符 返回类型 方法名(参数列表)&#123;</span><br><span class="line">  方法体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>访问修饰符<ul>
-<li>public</li>
-<li>privete</li>
-<li>protected</li>
-<li>默认</li>
+<li>thorw 抛出的只能够是可抛出类 Throwable 或者其子类的实例对象。<ul>
+<li>例如：throw new String(“出错了”); 是错误的<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">     <span class="comment">// 代码段1</span></span><br><span class="line">     <span class="keyword">throw</span> <span class="keyword">new</span> 异常类型();</span><br><span class="line">   &#125;<span class="keyword">catch</span>(异常类型 ex)&#123;</span><br><span class="line">      <span class="comment">// 对异常处理的代码段2</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span>  <span class="keyword">throws</span> 异常类型&#123;</span><br><span class="line">   <span class="comment">// 代码段1</span></span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> 异常类型();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><strong>方法是在类的内部中定义</strong></li>
+<li>作用<ul>
+<li><em><strong>规避可能出现的风险</strong></em></li>
+<li><em><strong>完成一些程序的逻辑</strong></em></li>
 </ul>
 </li>
-<li>方法调用<ul>
-<li>语法格式 <ul>
-<li>类名 实例名 &#x3D; new 类名(); 实例名.方法名();</li>
-<li>对于静态方法 static , 直接调用 方法名();</li>
+<li>throw 抛出异常对象的处理方案<ul>
+<li>通过 try…catch 包含 throw 语句 —— 自己抛出自己处理</li>
+<li>通过 throws 在方法声明抛出异常类型 —— 谁调用谁处理 —— 调用者可以自己处理，也可以继续上抛。此时可以抛出与 throw 对象相同类型或者其父类</li>
+<li><strong>当子类重写父类抛出异常方法时，声明的异常必须是父类方法所声明异常的同类或子类。</strong></li>
 </ul>
 </li>
-</ul>
-</li>
-<li>方法分类<ul>
-<li>根据方法是否带参数、是否返回值，可以分为四类：</li>
-<li>无参无返回值方法</li>
-<li>无参带返回值方法</li>
-<li>带参带返回值方法</li>
-<li>带参无返回值方法</li>
 </ul>
 </li>
 </ol>
-<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><ol>
-<li>同一个类中</li>
-<li><strong>方法名相同，参数列表不同</strong></li>
-<li>方法返回值、访问修饰符任意</li>
-<li>与方法参数名无关</li>
-</ol>
-<h2 id="可变参数列表"><a href="#可变参数列表" class="headerlink" title="可变参数列表"></a>可变参数列表</h2><ol>
-<li>public void sum(int… n) { &lt;语句块&gt; }<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span>... n)</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span><span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i:n) </span><br><span class="line">		sum+=i;</span><br><span class="line">	</span><br><span class="line">	System.out.println(<span class="string">&quot;sum=&quot;</span>+sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><em><strong>参数列表中如果有两个以上的参数，可变参数一定是在最后的！</strong></em></li>
-<li><em><strong>可以将数组传递给可变参数列表，反之不行</strong></em></li>
-<li>数组作为参数时，是不能将多个值传递给数组的！</li>
-<li><strong>一个方法中，只能有一个可变参数</strong></li>
-<li>可变参数列表所在的方法是最后被访问的。</li>
-</ol>
-<h2 id="方法的传值问题"><a href="#方法的传值问题" class="headerlink" title="方法的传值问题"></a>方法的传值问题</h2><ol>
-<li>基本数据类型传值<ul>
-<li>方法中对参数的修改，不会对主方法传来的变量值产生影响</li>
-</ul>
-</li>
-<li>引用数据类型传值<ul>
-<li>方法中对数组的改变，会印象主方法中传来的数组</li>
+<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><ol>
+<li>基本概念<ul>
+<li>使用 Java 内置的异常类可以描述在编程时出现的大部分异常情况。</li>
+<li>也可以通过自定义异常描述特定业务产生的异常类型。</li>
+<li>所谓自定义异常，就是定义一个类，去继承 Throwable 类或者它的子类<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestException</span> <span class="keyword">extends</span> <span class="title class_">Exception</span>&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="title function_">TestException</span><span class="params">()</span>&#123;</span><br><span class="line">         <span class="built_in">super</span>(<span class="string">&quot;向父类抛的异常消息&quot;</span>);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> <span class="keyword">throw</span> TestException&#123;</span><br><span class="line">       &lt;代码块&gt;</span><br><span class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TestException</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
-<h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><table>
-<thead>
-<tr>
-<th>访问修饰符</th>
-<th>本类</th>
-<th>同包</th>
-<th>子类</th>
-<th>其他</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>private</td>
-<td>√</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>默认（不写）</td>
-<td>√</td>
-<td>√</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>protected</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td></td>
-</tr>
-<tr>
-<td>private</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 运算符</title>
-    <url>/2024/05/31/Java-%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
-    <content><![CDATA[<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><ol>
-<li>表达式由运算符和操作数组成</li>
-<li>如：5、num1、num1 + num2</li>
+<h2 id="异常链"><a href="#异常链" class="headerlink" title="异常链"></a>异常链</h2><ol>
+<li>基本概念<ul>
+<li>有时候我们会捕获一个异常后在抛出另一个异常</li>
+<li>顾名思义就是：将异常发生的原因一个传一个串起来，即把底层的异常信息传个上层，这样逐层抛出。</li>
+</ul>
+</li>
+<li>Exception e1 &#x3D; new Exception(“异常消息”); e1.initCause(e);</li>
 </ol>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ol>
-<li>算数运算符<ul>
-<li>算数运算符主要用于进行基本的算数运算，如加法、减法、乘法和除法等。</li>
-<li>加法 +</li>
-<li>减法 - </li>
-<li>乘法 * </li>
-<li>除法 &#x2F;  <strong>在除法运算中，如果除数和被除数都是整数，则做整除运算</strong></li>
-<li>求余数 %</li>
-<li>自增1 ++</li>
-<li>自减1 –</li>
+<h2 id="如何处理异常"><a href="#如何处理异常" class="headerlink" title="如何处理异常"></a>如何处理异常</h2><ol>
+<li>在 Java 应用程序中，异常处理机制为<ul>
+<li>抛出异常（先抛出，才能被捕获）</li>
+<li>捕获异常</li>
 </ul>
 </li>
-<li>赋值运算符<ul>
-<li>格式：变量 &#x3D; 表达式;</li>
-<li><strong>注意：赋值运算符是从右往左运算！</strong> </li>
-<li><strong>赋值运算符的左边不能是常量，必须是常量</strong></li>
-<li>复合赋值运算符<ul>
-<li>+&#x3D; 代码示例：x+&#x3D;5 , x &#x3D; x + 5</li>
-<li>-&#x3D;</li>
-<li>*&#x3D;</li>
-<li>&#x2F;&#x3D;</li>
-<li>%&#x3D;</li>
+<li>对于运行时异常，错误或可检查异常，Java 技术所要求的异常处理方式有所不同。<ul>
+<li>1、对于可查异常必须捕捉、或者声明抛出</li>
+<li>2、允许忽略不可查的 RuntimeException（含子类）和 Error（含子类）</li>
 </ul>
 </li>
+<li>通过 5 个关键字来实现<ul>
+<li>捕获异常<ul>
+<li>try（执行可能产生异常的代码）</li>
+<li>catch（捕获异常）</li>
+<li>finally（无论是否发生异常 代码总能执行）</li>
 </ul>
 </li>
-<li>关系运算符<ul>
-<li>比较运算符用于判断两个数据的大小，如大于</li>
-<li>比较的结果是一个 布尔值</li>
-<li>大于 &gt;<ul>
-<li>‘A’ &gt; ‘’B  结果为 false , 比较的是两个字符的 ASCll 值</li>
+<li>声明异常<ul>
+<li>throws（声明可能要抛出的异常）</li>
 </ul>
 </li>
-<li>小于 &lt;</li>
-<li>大于等于 &gt;&#x3D;</li>
-<li>小于等于 &lt;&#x3D;</li>
-<li>等于 &#x3D;&#x3D;<ul>
-<li>float  f &#x3D; 5.0f; long l &#x3D;5; f&#x3D;&#x3D;l;  结果为true，浮点数与整数进行比较，只要值相等就返回true</li>
-</ul>
-</li>
-<li>不等于 !&#x3D;</li>
-<li>作用与功能<ul>
-<li>数据比较<ul>
-<li>关系运算符主要用于条件和循环语句中的判断条件</li>
-<li>条件结构就是根据不同的条件去执行不同的操作</li>
+<li>抛出异常<ul>
+<li>throw （手动抛出异常）</li>
 </ul>
 </li>
 </ul>
 </li>
+<li>规则说明<ul>
+<li>try-catch-finally <ul>
+<li>try 块后可接零个或多个catch块，如果没有 catch 块，则必须跟一个finally块。</li>
 </ul>
 </li>
-<li>逻辑运算符<ul>
-<li>逻辑运算符是用来连接一个或多个条件，判断这些条件是否成立 </li>
-<li>逻辑运算符的结果是布尔类型</li>
-<li>与<ul>
-<li>&amp;&amp; 或 &amp;<ul>
-<li>&amp;&amp; 运算符又叫短路运算符，如果第一个表达式的值就能决定表达式最后的结果，运算符右边的表达式就不再运算了</li>
-<li>&amp; 不论第一个表达式 true 还是 false，都要执行右边的表达式</li>
 </ul>
 </li>
-<li>operator1 &amp;&amp; operator2</li>
-</ul>
-</li>
-<li>或<ul>
-<li>|| 或 |<ul>
-<li>|| 和  &amp;&amp; 运算符一样</li>
-<li>| 和 &amp; 一样</li>
-</ul>
-</li>
-<li>operator1 || operator2</li>
-</ul>
-</li>
-<li>非<ul>
-<li>!<ul>
-<li>对原条件进行取反</li>
-</ul>
-</li>
-<li>!operator1</li>
-</ul>
-</li>
-<li>注意：<strong>逻辑运算符的操作数都是布尔类型的</strong></li>
-</ul>
-</li>
-<li>条件运算符<ul>
-<li>三元运算符 ? :</li>
-</ul>
-</li>
-<li>Java 中的条件运算符是三目运算符<ul>
-<li>++ 单目运算符</li>
-<li>双目运算符，需要对两个数进行操作 + - * &#x2F; </li>
-<li><strong>语法：布尔表达式 ? 表达式1 : 表达式2</strong></li>
-<li>当布尔表达式的值为 true , 则返回表达式 1 的值，否则 返回表达式 2 的值</li>
-</ul>
-</li>
-<li>位运算符<ul>
-<li>按位与（&amp;）：逐位进行与操作，只有当对应位都为 1 时，结果位才为 1。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">// 二进制为 0011</span></span><br><span class="line"><span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> a &amp; b; <span class="comment">// 结果为 1 (二进制为 0001)</span></span><br></pre></td></tr></table></figure></li>
-<li>按位或（|）：逐位进行或操作，只要有一个对应位为 1，结果位就为 1。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">// 二进制为 0011</span></span><br><span class="line"><span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> a | b; <span class="comment">// 结果为 7 (二进制为 0111)</span></span><br></pre></td></tr></table></figure></li>
-<li>按位异或（^）：逐位进行异或操作，当对应位不同时，结果位为 1。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">// 二进制为 0011</span></span><br><span class="line"><span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> a ^ b; <span class="comment">// 结果为 6 (二进制为 0110)</span></span><br></pre></td></tr></table></figure></li>
-<li>按位取反（~）：逐位进行取反操作，0 变 1，1 变 0。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> ~a; <span class="comment">// 结果为 -6 (二进制为 1010)</span></span><br></pre></td></tr></table></figure></li>
-<li>左移（&lt;&lt;）：将二进制位向左移动指定的位数，相当于乘以 2 的指定次方。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> a &lt;&lt; <span class="number">1</span>; <span class="comment">// 结果为 10 (二进制为 1010)</span></span><br></pre></td></tr></table></figure></li>
-<li>右移（&gt;&gt;）：将二进制位向右移动指定的位数，相当于除以 2 的指定次方。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> a &gt;&gt; <span class="number">1</span>; <span class="comment">// 结果为 2 (二进制为 0010)</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>运算符优先级<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>权重</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>()</td>
-<td>圆括号</td>
-<td>0</td>
-</tr>
-<tr>
-<td>!，++，–</td>
-<td>逻辑非，自增，自减</td>
-<td>1</td>
-</tr>
-<tr>
-<td>*，&#x2F;，%</td>
-<td>乘法，除法，取余</td>
-<td>2</td>
-</tr>
-<tr>
-<td>+，-</td>
-<td>加法，减法</td>
-<td>3</td>
-</tr>
-<tr>
-<td>&lt;，&lt;&#x3D;，&gt;，&gt;&#x3D;</td>
-<td>小于，小于等于，大于，大于等于</td>
-<td>4</td>
-</tr>
-<tr>
-<td>&#x3D;&#x3D;，!&#x3D;</td>
-<td>等于，不等于</td>
-<td>5</td>
-</tr>
-<tr>
-<td>&amp;&amp;</td>
-<td>逻辑与</td>
-<td>6</td>
-</tr>
-<tr>
-<td>||</td>
-<td>逻辑或</td>
-<td>7</td>
-</tr>
-<tr>
-<td>&#x3D;，+&#x3D;，*&#x3D;，&#x2F;&#x3D;，%&#x3D;，-&#x3D;</td>
-<td>赋值运算符，复合赋值运算符</td>
-<td>8</td>
-</tr>
-</tbody></table>
-</li>
+<li>自定义异常</li>
+<li>异常链</li>
+</ol>
+<h2 id="实际应用总结"><a href="#实际应用总结" class="headerlink" title="实际应用总结"></a>实际应用总结</h2><ol>
+<li>处理运行异常时，采用逻辑去合理规避同时辅助 try-catch 处理</li>
+<li>在多重 catch 块后面，可以加一个 catch（Exception） 来处理可能被遗漏的异常</li>
+<li>对于不确定的代码，也可以加上 try-catch，处理潜在的异常</li>
+<li>尽量去处理异常，切忌知识简单的调用 printStackTrace() 去打印输出</li>
+<li>具体如何处理异常，要根据不同的业务需求和异常类型去决定</li>
+<li>尽量添加 finally 语句块去释放占用的资源（关闭文件、关闭 sql 链接）等</li>
 </ol>
 ]]></content>
       <categories>
@@ -2431,6 +2166,142 @@ default void defaultMethod() &#123;
       </tags>
   </entry>
   <entry>
+    <title>Java 数组</title>
+    <url>/2024/06/02/Java-%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h2 id="什么是数组"><a href="#什么是数组" class="headerlink" title="什么是数组"></a>什么是数组</h2><ol>
+<li><strong>数组是相同类型的数据按顺序组成的一种引用类型</strong></li>
+<li>数据类型</li>
+</ol>
+<ul>
+<li>基本数据类型</li>
+<li>引用数据类型<ul>
+<li>类</li>
+<li>接口</li>
+<li>数组</li>
+<li>等等</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>注意的问题</li>
+</ol>
+<ul>
+<li>数组是引用数据类型</li>
+<li>创建数组时，会开辟连续的内存空间</li>
+<li>数据长度使用 length 属性获取</li>
+<li>数组元素的下标从0开始</li>
+<li>数组下标越界问题</li>
+</ul>
+<h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><ol>
+<li>声明</li>
+</ol>
+<ul>
+<li>语法格式<ul>
+<li><strong>数据类型[] 数组名;</strong></li>
+<li><strong>数据类型 数组名[];</strong></li>
+</ul>
+</li>
+<li>变量声明的语法格式<ul>
+<li>数据类型 变量名;</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>创建<ul>
+<li><strong>语法格式一：先声明后创建</strong><ul>
+<li>数据类型[] 数组名;</li>
+<li>数组名 &#x3D; new 数据类型[数组长度];</li>
+<li>int [] arr;arr &#x3D; new int[10]; 创建一个长度为10的整型数组</li>
+</ul>
+</li>
+<li><strong>语法格式二：声明的同时创建数组</strong><ul>
+<li>数据类型[] 数组名 &#x3D; new 数据类型[数组长度];</li>
+<li>int [] arr &#x3D; new int[10]; 创建长度为10的整型数组 arr</li>
+<li>注意：数组长度必须指定</li>
+</ul>
+</li>
+<li><strong>数组在内存中的存储</strong><ul>
+<li><strong>数组会被分配连续的内存空间</strong></li>
+<li>局部变量和数组的默认值问题<ul>
+<li>局部变量没有默认值、数组有默认值（数组的本身是对象）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>初始化<ul>
+<li>声明数组的同时给数组赋值，叫做数组的初始化</li>
+<li><strong>int[] arr &#x3D; {1,2,3,4,5}; 数组的长度就是初始化时所给数组元素的个数</strong> (花括号)</li>
+</ul>
+</li>
+<li>元素的引用<ul>
+<li>语法格式：数组名[下标]</li>
+<li>注意：下标从 0 开始</li>
+</ul>
+</li>
+<li>长度<ul>
+<li>arr.length 表示数组的长度</li>
+</ul>
+</li>
+</ol>
+<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><ul>
+<li>二维数组的声明和创建<ul>
+<li>声明<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] intArray;</span><br><span class="line"><span class="type">float</span> floatArray[][];</span><br><span class="line"><span class="type">double</span>[] doubleArray[];</span><br></pre></td></tr></table></figure></li>
+<li>创建 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">intArray = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>][<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>列可以省略，行不能省略 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">floatArray = <span class="keyword">new</span> <span class="title class_">float</span>[<span class="number">3</span>][]; floatArray[<span class="number">1</span>] = <span class="keyword">new</span> <span class="title class_">float</span>[<span class="number">3</span>];</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>二维数组的初始化  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] num = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;,&#123;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>二维数组的引用</li>
+<li>多个一维数组组成的内容</li>
+</ul>
+<h2 id="增强型-for-循环"><a href="#增强型-for-循环" class="headerlink" title="增强型 for 循环"></a>增强型 for 循环</h2><ol>
+<li>又叫 foreach 循环</li>
+<li>foreach 循环引用<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> n;arr)</span><br><span class="line">System.out.println(n);</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 开发环境搭建</title>
+    <url>/2024/05/31/Java-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<ol>
+<li>安装 JDK </li>
+<li>安装 Navicat 数据库工具</li>
+<li>安装 IntelliJ IDEA 编译器</li>
+<li>安装 Redis <a href="https://blog.csdn.net/antma/article/details/79225084">Redis安装（Windows环境下Redis安装）</a> </li>
+<li>maven3.6.3 安装 <a href="https://blog.csdn.net/kenkao/article/details/128842266">Windows系统Maven3.6.3下载与安装</a><ul>
+<li>apache-maven-3.6.1&#x2F;conf  目录下配置  settingsapplication.xml 文件 <strong>主要用于配置 Maven 的行为和外部依赖</strong></li>
+<li>apache-maven-3.6.1 目录下创建 repo 文件夹</li>
+</ul>
+</li>
+<li>安装 IntelliJ IDEA  插件<br><img src="/images/874811934.png" alt="插件"><br><img src="/images/94823832832.png" alt="插件"></li>
+<li>项目 .idea 目录下 misc.xml 文件配置 Yapi <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">component</span> <span class="attr">name</span>=<span class="string">&quot;yapi&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;projectToken&quot;</span>&gt;</span>your yapiToken<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;projectId&quot;</span>&gt;</span>789<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;yapiUrl&quot;</span>&gt;</span>your yapiUrl<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;projectType&quot;</span>&gt;</span>api<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>安装 Xshell </li>
+<li>安装 XFTP</li>
+</ol>
+<p>友情链接：</p>
+<ol>
+<li><a href="https://plugins.jetbrains.com/plugin/index?xmlId=cn.wuzhizhan.plugin.mybatis">Free MyBatis plugin</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java 面向对象3</title>
     <url>/2024/06/03/Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A13/</url>
     <content><![CDATA[<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><ol>
@@ -2590,371 +2461,6 @@ default void defaultMethod() &#123;
       </tags>
   </entry>
   <entry>
-    <title>Java 异常</title>
-    <url>/2024/06/03/Java-%E5%BC%82%E5%B8%B8/</url>
-    <content><![CDATA[<h2 id="什么是异常"><a href="#什么是异常" class="headerlink" title="什么是异常"></a>什么是异常</h2><ol>
-<li>异常本质上是程序上的错误。</li>
-<li>错误在我们编写程序的过程中会经常发生，包括编译期间和运行期间的错误。</li>
-<li>在程序运行过程中，意外发生的情况，背离我们程序本身的意图的表现，都可以理解为异常。</li>
-</ol>
-<h2 id="Throwable（异常的根类）"><a href="#Throwable（异常的根类）" class="headerlink" title="Throwable（异常的根类）"></a>Throwable（异常的根类）</h2><ol>
-<li>Error（Java 虚拟机出现问题）<ul>
-<li>Error 是程序无法处理的错误，表示运行应用程序中比较严重的问题。</li>
-<li>它们在应用程序的控制和处理能力之外，而且绝大多数是程序运行时不允许出现的状况。</li>
-<li>对于设计的合理的应用程序来说，即使确实发生了错误，本质上也不应该试图去处理它所引起的异常状况。</li>
-<li>常见错误<ul>
-<li>虚拟机错误 VirtualMachineError</li>
-<li>内存溢出 OutOfMemoryError</li>
-<li>线程死锁 ThreadDeath</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Exception<ul>
-<li>Exception 是程序本身可以处理的异常。异常处理通常指针对这种类型异常的处理。</li>
-<li>检查异常 Checked Exception<ul>
-<li>编译器要求必须处置的异常。（编码阶段）</li>
-<li>除了 RuntimeException 及相关子类，其它异常都属于 Checked Exception<ul>
-<li>IO 异常 IOException</li>
-<li>SQL 异常 SQLException</li>
-<li>等等</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>非检查异常 Unchecked Exception<ul>
-<li>编译器不要求强制处置的异常（运行阶段）</li>
-<li>包含 RuntimeException 及相关子类<ul>
-<li>空指针异常 NullPointerException</li>
-<li>数组下标越界异常 ArrayIndexOutOfBoundsException</li>
-<li>算数异常 ArithmeticException</li>
-<li>类型转换异常 ClassCastException</li>
-<li>等等…</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>System.exit(1); 终止程序运行</li>
-</ul>
-</li>
-</ol>
-<h2 id="throw-throws"><a href="#throw-throws" class="headerlink" title="throw &amp; throws"></a>throw &amp; throws</h2><ol>
-<li>throws<ul>
-<li>可以通过 throws 声明将要抛出何种类型的异常，通过 throw 将产生的异常抛出。</li>
-<li>如果一个方法可能出现异常，但没有能力处理这种异常，可以在方法声明处用 throws 子句来声明抛出异常。</li>
-<li>throws 语句用在方法定义时声明该方法要抛出的异常类型。</li>
-<li>当方法抛出异常列表中的异常时，方法将不对这些类型及其子类类型的异常做处理，而抛向调用该方法的方法，由他去处理。</li>
-</ul>
-</li>
-<li>throw<ul>
-<li>throw 用来抛出一个异常。<ul>
-<li>例如：throw new IOException():</li>
-</ul>
-</li>
-<li>thorw 抛出的只能够是可抛出类 Throwable 或者其子类的实例对象。<ul>
-<li>例如：throw new String(“出错了”); 是错误的<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">     <span class="comment">// 代码段1</span></span><br><span class="line">     <span class="keyword">throw</span> <span class="keyword">new</span> 异常类型();</span><br><span class="line">   &#125;<span class="keyword">catch</span>(异常类型 ex)&#123;</span><br><span class="line">      <span class="comment">// 对异常处理的代码段2</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span>  <span class="keyword">throws</span> 异常类型&#123;</span><br><span class="line">   <span class="comment">// 代码段1</span></span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> 异常类型();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>作用<ul>
-<li><em><strong>规避可能出现的风险</strong></em></li>
-<li><em><strong>完成一些程序的逻辑</strong></em></li>
-</ul>
-</li>
-<li>throw 抛出异常对象的处理方案<ul>
-<li>通过 try…catch 包含 throw 语句 —— 自己抛出自己处理</li>
-<li>通过 throws 在方法声明抛出异常类型 —— 谁调用谁处理 —— 调用者可以自己处理，也可以继续上抛。此时可以抛出与 throw 对象相同类型或者其父类</li>
-<li><strong>当子类重写父类抛出异常方法时，声明的异常必须是父类方法所声明异常的同类或子类。</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><ol>
-<li>基本概念<ul>
-<li>使用 Java 内置的异常类可以描述在编程时出现的大部分异常情况。</li>
-<li>也可以通过自定义异常描述特定业务产生的异常类型。</li>
-<li>所谓自定义异常，就是定义一个类，去继承 Throwable 类或者它的子类<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestException</span> <span class="keyword">extends</span> <span class="title class_">Exception</span>&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="title function_">TestException</span><span class="params">()</span>&#123;</span><br><span class="line">         <span class="built_in">super</span>(<span class="string">&quot;向父类抛的异常消息&quot;</span>);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> <span class="keyword">throw</span> TestException&#123;</span><br><span class="line">       &lt;代码块&gt;</span><br><span class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TestException</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<h2 id="异常链"><a href="#异常链" class="headerlink" title="异常链"></a>异常链</h2><ol>
-<li>基本概念<ul>
-<li>有时候我们会捕获一个异常后在抛出另一个异常</li>
-<li>顾名思义就是：将异常发生的原因一个传一个串起来，即把底层的异常信息传个上层，这样逐层抛出。</li>
-</ul>
-</li>
-<li>Exception e1 &#x3D; new Exception(“异常消息”); e1.initCause(e);</li>
-</ol>
-<h2 id="如何处理异常"><a href="#如何处理异常" class="headerlink" title="如何处理异常"></a>如何处理异常</h2><ol>
-<li>在 Java 应用程序中，异常处理机制为<ul>
-<li>抛出异常（先抛出，才能被捕获）</li>
-<li>捕获异常</li>
-</ul>
-</li>
-<li>对于运行时异常，错误或可检查异常，Java 技术所要求的异常处理方式有所不同。<ul>
-<li>1、对于可查异常必须捕捉、或者声明抛出</li>
-<li>2、允许忽略不可查的 RuntimeException（含子类）和 Error（含子类）</li>
-</ul>
-</li>
-<li>通过 5 个关键字来实现<ul>
-<li>捕获异常<ul>
-<li>try（执行可能产生异常的代码）</li>
-<li>catch（捕获异常）</li>
-<li>finally（无论是否发生异常 代码总能执行）</li>
-</ul>
-</li>
-<li>声明异常<ul>
-<li>throws（声明可能要抛出的异常）</li>
-</ul>
-</li>
-<li>抛出异常<ul>
-<li>throw （手动抛出异常）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>规则说明<ul>
-<li>try-catch-finally <ul>
-<li>try 块后可接零个或多个catch块，如果没有 catch 块，则必须跟一个finally块。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>自定义异常</li>
-<li>异常链</li>
-</ol>
-<h2 id="实际应用总结"><a href="#实际应用总结" class="headerlink" title="实际应用总结"></a>实际应用总结</h2><ol>
-<li>处理运行异常时，采用逻辑去合理规避同时辅助 try-catch 处理</li>
-<li>在多重 catch 块后面，可以加一个 catch（Exception） 来处理可能被遗漏的异常</li>
-<li>对于不确定的代码，也可以加上 try-catch，处理潜在的异常</li>
-<li>尽量去处理异常，切忌知识简单的调用 printStackTrace() 去打印输出</li>
-<li>具体如何处理异常，要根据不同的业务需求和异常类型去决定</li>
-<li>尽量添加 finally 语句块去释放占用的资源（关闭文件、关闭 sql 链接）等</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MongoDB 入门</title>
-    <url>/2024/09/26/MongoDB-%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h3 id="1-安装-Homebrew"><a href="#1-安装-Homebrew" class="headerlink" title="1. 安装 Homebrew"></a>1. 安装 Homebrew</h3><p>如果还没有安装 Homebrew，可以使用以下命令安装 Homebrew：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>你可以访问 Homebrew 的 <a href="https://brew.sh/">官方网站</a> 了解更多信息。</p>
-<h3 id="2-使用-Homebrew-安装-MongoDB"><a href="#2-使用-Homebrew-安装-MongoDB" class="headerlink" title="2. 使用 Homebrew 安装 MongoDB"></a>2. 使用 Homebrew 安装 MongoDB</h3><h4 id="a-添加-MongoDB-官方-Homebrew-Tap"><a href="#a-添加-MongoDB-官方-Homebrew-Tap" class="headerlink" title="a. 添加 MongoDB 官方 Homebrew Tap"></a>a. 添加 MongoDB 官方 Homebrew Tap</h4><p>首先，运行以下命令来添加 MongoDB 官方的 Homebrew Tap（软件源）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br></pre></td></tr></table></figure>
-
-<h4 id="b-安装-MongoDB-社区版"><a href="#b-安装-MongoDB-社区版" class="headerlink" title="b. 安装 MongoDB 社区版"></a>b. 安装 MongoDB 社区版</h4><p>接下来，使用 Homebrew 来安装 MongoDB 社区版：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install mongodb-community@6.0</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里的 <code>@6.0</code> 是 MongoDB 的版本号，你可以根据需要替换为其他版本。</p>
-</blockquote>
-<h3 id="3-启动-MongoDB-服务"><a href="#3-启动-MongoDB-服务" class="headerlink" title="3. 启动 MongoDB 服务"></a>3. 启动 MongoDB 服务</h3><p>安装完成后，可以通过 Homebrew 启动 MongoDB：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services start mongodb/brew/mongodb-community</span><br></pre></td></tr></table></figure>
-
-<p>这会将 MongoDB 作为 macOS 服务启动，并且会在每次系统启动时自动启动。</p>
-<p>如果你只想手动启动 MongoDB 而不让它自动运行，可以使用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongod --config /usr/local/etc/mongod.conf</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-检查-MongoDB-是否运行"><a href="#4-检查-MongoDB-是否运行" class="headerlink" title="4. 检查 MongoDB 是否运行"></a>4. 检查 MongoDB 是否运行</h3><p>你可以运行以下命令，查看 MongoDB 服务是否已经成功启动：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services list</span><br></pre></td></tr></table></figure>
-
-<p>MongoDB 的状态应该显示为 “started”。</p>
-<h3 id="5-连接-MongoDB"><a href="#5-连接-MongoDB" class="headerlink" title="5. 连接 MongoDB"></a>5. 连接 MongoDB</h3><p>MongoDB 服务器启动后，你可以通过 <code>mongo</code> 命令连接到 MongoDB 的命令行工具：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
-
-<p>如果一切正常，你现在应该已经连接到 MongoDB 的 shell，可以开始使用数据库了。</p>
-<h3 id="6-停止-MongoDB-服务"><a href="#6-停止-MongoDB-服务" class="headerlink" title="6. 停止 MongoDB 服务"></a>6. 停止 MongoDB 服务</h3><p>如果你需要停止 MongoDB 服务，可以运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services stop mongodb/brew/mongodb-community</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>这样，你就可以在 Mac 上成功安装和运行 MongoDB。如果遇到任何问题，请确保 Homebrew 和 MongoDB 的安装路径正确，并查看 Homebrew 提供的安装日志。</p>
-]]></content>
-      <tags>
-        <tag>MongoDB</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Next.js 路由系统</title>
-    <url>/2025/07/28/NextJs-%E8%B7%AF%E7%94%B1/</url>
-    <content><![CDATA[<h1 id="Next-js-路由系统（约定式路由）"><a href="#Next-js-路由系统（约定式路由）" class="headerlink" title="Next.js 路由系统（约定式路由）"></a>Next.js 路由系统（约定式路由）</h1><p>Next.js 的路由系统基于 <strong>约定大于配置</strong> 原则，开发者只需要将页面组件放在特定目录下，即可自动生成对应的路由，无需手动配置路由表。</p>
-<hr>
-<h2 id="路由基本约定"><a href="#路由基本约定" class="headerlink" title="路由基本约定"></a>路由基本约定</h2><ol>
-<li>所有路由文件必须放在 <code>app/</code> 目录下（App Router 模式）。</li>
-<li>每个<strong>文件夹</strong>表示一个 URL 路径段。</li>
-<li>路由页面文件必须命名为 <code>page.tsx</code> 或 <code>page.js</code>。</li>
-<li>每个页面组件将自动作为一个路由。</li>
-</ol>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>├── page.tsx             → 路由路径 &#x2F;<br>├── about&#x2F;<br>│   └── page.tsx         → 路由路径 &#x2F;about<br>└── contact&#x2F;<br>└── page.tsx         → 路由路径 &#x2F;contact</p>
-<hr>
-<h2 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h2><p>使用 <code>[]</code> 包裹文件夹名来创建动态路由参数。</p>
-<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>└── products&#x2F;<br>└── [productId]&#x2F;<br>└── page.tsx     → 路由路径 &#x2F;products&#x2F;:productId</p>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// products/[productId]/page.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">ProductPage</span>(<span class="params">&#123; params &#125;: &#123; params: &#123; productId: <span class="built_in">string</span> &#125; &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Product ID: &#123;params.productId&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="嵌套动态路由"><a href="#嵌套动态路由" class="headerlink" title="嵌套动态路由"></a>嵌套动态路由</h2><p>支持多级动态参数结构。<br>app&#x2F;<br>└── products&#x2F;<br>    └── [productId]&#x2F;<br>        ├── page.tsx         → <code>/products/:productId</code><br>        └── [reviewId]&#x2F;<br>            └── page.tsx     → <code>/products/:productId/:reviewId</code></p>
-<h3 id="捕获所有路由段（Catch-All-Routes）"><a href="#捕获所有路由段（Catch-All-Routes）" class="headerlink" title="捕获所有路由段（Catch-All Routes）"></a>捕获所有路由段（Catch-All Routes）</h3><p>使用 […slug] 语法捕获任意数量的路径段。</p>
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>└── blog&#x2F;<br>    └── […slug]&#x2F;<br>        └── page.tsx         → <code>/blog/*</code> 动态匹配所有子路径</p>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// blog/12</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">CatchAllPage</span>(<span class="params">&#123; params &#125;: &#123; params: &#123; slug: <span class="built_in">string</span>[] &#125; &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>路径段: &#123;params.slug.join(&#x27; / &#x27;)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="404-页面（Not-Found）"><a href="#404-页面（Not-Found）" class="headerlink" title="404 页面（Not Found）"></a>404 页面（Not Found）</h2><p>全局 404 页面<br>app&#x2F;not-found.tsx</p>
-<p>你也可以为每个路由子目录创建局部 404 页面：<br>app&#x2F;<br>└── about&#x2F;<br>    ├── not-found.tsx<br>    └── page.tsx</p>
-<p>在 not-found.tsx 中定义页面不存在时的 UI：</p>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">NotFound</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>此页面不存在<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>主动触发 404</strong><br>你可以通过 notFound() 方法主动触发 404：</p>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; notFound &#125; <span class="keyword">from</span> <span class="string">&#x27;next/navigation&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Page</span>(<span class="params">&#123; params &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!data) <span class="keyword">return</span> <span class="title function_">notFound</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>正常页面内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="私有文件夹（下划线命名）"><a href="#私有文件夹（下划线命名）" class="headerlink" title="私有文件夹（下划线命名）"></a>私有文件夹（下划线命名）</h2><p>使用下划线 _ 开头的文件夹（如 _components&#x2F;）不会被视为路由路径。</p>
-<ul>
-<li>通常用于存放共享组件、工具函数、布局模板等。</li>
-<li>如果确实需要使用下划线路径（不推荐），需通过 %5f URL 编码。</li>
-</ul>
-<h2 id="路由分组（Route-Groups）"><a href="#路由分组（Route-Groups）" class="headerlink" title="路由分组（Route Groups）"></a>路由分组（Route Groups）</h2><p>使用 括号 () 包裹文件夹名 创建逻辑上的路由分组，不影响实际 URL 路径结构。</p>
-<p>app&#x2F;<br>└── (auth)&#x2F;<br>    └── login&#x2F;<br>        └── page.tsx     → <code>/login</code></p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><table>
-<thead>
-<tr>
-<th>功能</th>
-<th>语法&#x2F;文件名</th>
-<th>示例路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>静态路由</td>
-<td>page.tsx</td>
-<td>&#x2F;about</td>
-</tr>
-<tr>
-<td>动态路由</td>
-<td>[id]&#x2F;page.tsx</td>
-<td>&#x2F;products&#x2F;123</td>
-</tr>
-<tr>
-<td>嵌套路由</td>
-<td>子目录结构</td>
-<td>&#x2F;products&#x2F;123&#x2F;reviews&#x2F;1</td>
-</tr>
-<tr>
-<td>捕获全部路由</td>
-<td>[…slug]</td>
-<td>&#x2F;blog&#x2F;a&#x2F;b&#x2F;c</td>
-</tr>
-<tr>
-<td>404 页面</td>
-<td>not-found.tsx</td>
-<td>&#x2F;about&#x2F;not-found.tsx</td>
-</tr>
-<tr>
-<td>路由分组</td>
-<td>(group)&#x2F;</td>
-<td>&#x2F;login from (auth)&#x2F;login</td>
-</tr>
-<tr>
-<td>私有目录</td>
-<td>_components&#x2F;</td>
-<td>不作为路由路径</td>
-</tr>
-</tbody></table>
-]]></content>
-      <tags>
-        <tag>Next.js</tag>
-        <tag>路由</tag>
-        <tag>前端</tag>
-        <tag>React</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 添加 Disqus 评论系统</title>
-    <url>/2024/04/14/hexo-%E6%B7%BB%E5%8A%A0-Disqus-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h3 id="登录-Disqus"><a href="#登录-Disqus" class="headerlink" title="登录 Disqus"></a>登录 Disqus</h3><p><img src="https://raw.githubusercontent.com/zhihuzeye/zhihuzeye.github.io/main/images/20240414002939.png" alt="图片" title="disqus登录"></p>
-<h3 id="选择-在我的网站上安装-Disqus"><a href="#选择-在我的网站上安装-Disqus" class="headerlink" title="选择 在我的网站上安装 Disqus"></a>选择 在我的网站上安装 Disqus</h3><p><img src="/images/20240414003055.png" alt="图片" title="disqus登录"></p>
-<h3 id="创建一个新站点"><a href="#创建一个新站点" class="headerlink" title="创建一个新站点"></a>创建一个新站点</h3><p>注意：Website Name 这个字段非常重要，后续需要在 _config.yml 中用到<br>点击 Create Site 按钮即可</p>
-<p><img src="/images/20240414003325.png" alt="图片" title="disqus登录"></p>
-<span id="more"></span>
-
-<h3 id="配置主题-config-yml-文件"><a href="#配置主题-config-yml-文件" class="headerlink" title="配置主题 _config.yml 文件"></a>配置主题 _config.yml 文件</h3><p>网上有很多教程 直接配置，这样是不对的，配置会报错</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">disqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname:your Website Name</span><br><span class="line">  count: true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>踩坑：disqus  shortname 报错 YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key</p>
-<p>shortname 需要换行</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">disqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname:</span><br><span class="line">          your Website Name</span><br><span class="line">  count: true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Disqus</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【踩坑】uni.navigateTo 微信小程序 跳转无效问题</title>
-    <url>/2024/04/17/%E3%80%90%E8%B8%A9%E5%9D%91%E3%80%91uni-navigateTo-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%B7%B3%E8%BD%AC%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>最近接手了一个项目，该项目在用户体验上极度不友好，如：每次请求就显示 loading ，自定义 tabbar 可点击区域太小，组件间切换白屏等等问题。本着 “要改革、就不要怕” 的原则，便大刀阔斧的对项目代码进行一系列优化。</p>
-</blockquote>
-<p>结果改着改着就出现了问题：</p>
-<ul>
-<li>分包 packageB 的路径能点击</li>
-<li>packageA、packageC 里的路径不能点击</li>
-<li>手机能点击、模拟器不能点击</li>
-<li>模拟器能点击，手机不能点击</li>
-</ul>
-<p><img src="/images/emoji/tieba/035.png" alt="图片"></p>
-<span id="more"></span>
-
-<h1 id="代码不报错，是最难解决的-bug-！！！"><a href="#代码不报错，是最难解决的-bug-！！！" class="headerlink" title="代码不报错，是最难解决的 bug ！！！"></a>代码不报错，是最难解决的 bug ！！！</h1><p>这让我一度怀疑是 小程序开发者工具问题、小程序基础库版本问题，nodejs 版本问题 、vue-cli 版本问题，<br>然后就 nvm 切换版本、开发者工具卸载删除、基础库版本修改一系列骚操作。。。</p>
-<p><strong>马后炮：</strong> 如果代码能跑起来，肯定是没有问题的，微信小程序开发者工具 navigateTo 、redirectTo 、switchTab 、reLaunch 这些基础的 API 无论是哪个基础库都能很好的支持。</p>
-<p>大概率不用去想 nodejs 版本问题， 删除掉 node_modules 再重装挺浪费时间的。 所以很多时候都是代码中的问题。</p>
-<p>比如我这个 bug 有些链接能跳转 有些不能跳转，就复制能跳转的 链接，<strong>全局检索</strong>。<strong>查找它们其中的差异</strong></p>
-<p>问题出现的地方：<br>程序初始化 拦截了 navigateTo、redirectTo、switchTab、reLaunch 这些操作，执行 checkVisitPage 方法，如果链接在白名单列表中且已登录就能跳转，否则唤起登录的弹窗。</p>
-<p>”好巧不巧，我把登录弹窗组件删除掉了，因为它在每个页面都写了一遍“，所以点击没有反应。。。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// App.vue</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;</span><br><span class="line">	addInterceptor,</span><br><span class="line">	checkVisitPage</span><br><span class="line">&#125; from &quot;./utils/index.js&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">	globalData: &#123;</span><br><span class="line">		systemInfo: null</span><br><span class="line">	&#125;,</span><br><span class="line">	onLaunch: function () &#123;</span><br><span class="line">		this.initApp();</span><br><span class="line">	&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		initApp() &#123;</span><br><span class="line">			addInterceptor.call(this);</span><br><span class="line">			checkVisitPage.call(this);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// utils/index.js</span><br><span class="line">const openPages = [</span><br><span class="line">	&#x27;/pages/home/index&#x27;,</span><br><span class="line">	&#x27;/pages/webView/index&#x27;,</span><br><span class="line">	...</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export function checkVisitPage(url) &#123;</span><br><span class="line">	if (!url) &#123;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">	if (url.indexOf(&quot;?&quot;) &gt; -1) &#123;</span><br><span class="line">		url = url.split(&quot;?&quot;)[0];</span><br><span class="line">	&#125;</span><br><span class="line">	if (!openPages.includes(url)) &#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			const userInfo = uni.getStorageSync(&#x27;userInfo&#x27;);</span><br><span class="line">			if (!userInfo.accessToken || userInfo?.userType == 7) &#123;</span><br><span class="line">				this.$store.commit(&#x27;common/setPurviewWarningMethod&#x27;, true)</span><br><span class="line">				return false;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				this.$store.commit(&#x27;common/setPurviewWarningMethod&#x27;, false)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (e) &#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function addInterceptor() &#123;</span><br><span class="line">	uni.addInterceptor(&#x27;navigateTo&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;redirectTo&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;switchTab&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;reLaunch&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>其它：如果无法跳转，请检查 是否 &#x2F; 斜杆开头</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">uni.navigateTo(&#123;</span><br><span class="line">	url: &#x27;/pages/index/index&#x27;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<blockquote>
-<p>因为这两天给环境整崩溃了，某些老项目没有 yarn.lock 或 package-lock 文件 ，代码 dev 能启动起来，但是 build 失败！，怀疑是 nodejs 版本问题，typescript 版本不兼容问题等等，最后向原来的开发人员，重新套了个壳， 才知道 package.json 少了 esbuild-loader 依赖！ 为啥源码里 package.json  没有 esbuild-loader …</p>
-</blockquote>
-<p>但是错误提示可不友好，让你根本搜索不到错误发生的原因</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[tsl] ERROR in \node_modules\@types\node\util.d.ts(1656,1)</span><br><span class="line">      TS1128: Declaration or statement expected.</span><br><span class="line">ERROR in \node_modules\@types\node\util.d.ts</span><br><span class="line"></span><br><span class="line">[tsl] ERROR in \node_modules\@types\node\util.d.ts(1654,26)</span><br><span class="line">      TS1005: &#x27;;&#x27; expected.</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h1 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h1><ol>
-<li>能自己解决的尽量不麻烦别人，遇到问题首先 谷歌，GPT 查询（此操作最好不要超过 1小时）</li>
-<li>仔细阅读源码，全局检索 查找它们其中的差异</li>
-<li>善于交流、勇于交流。（在不得已要麻烦别人的时候，也不要害怕。 出门靠朋友~ 态度好点虚心求教，很多人愿意帮你的）</li>
-<li>站起来喝杯咖啡吧！有时候把事情缓一缓。解决问题的思绪就来了</li>
-</ol>
-]]></content>
-      <categories>
-        <category>小程序</category>
-      </categories>
-      <tags>
-        <tag>uni-app</tag>
-        <tag>微信小程序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Javascript 基本数据类型</title>
     <url>/2024/06/14/Javascript-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<h2 id="数据类型简介和检测"><a href="#数据类型简介和检测" class="headerlink" title="数据类型简介和检测"></a>数据类型简介和检测</h2><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ol>
@@ -3093,6 +2599,626 @@ default void defaultMethod() &#123;
       </categories>
       <tags>
         <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MongoDB 入门</title>
+    <url>/2024/09/26/MongoDB-%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h3 id="1-安装-Homebrew"><a href="#1-安装-Homebrew" class="headerlink" title="1. 安装 Homebrew"></a>1. 安装 Homebrew</h3><p>如果还没有安装 Homebrew，可以使用以下命令安装 Homebrew：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>你可以访问 Homebrew 的 <a href="https://brew.sh/">官方网站</a> 了解更多信息。</p>
+<h3 id="2-使用-Homebrew-安装-MongoDB"><a href="#2-使用-Homebrew-安装-MongoDB" class="headerlink" title="2. 使用 Homebrew 安装 MongoDB"></a>2. 使用 Homebrew 安装 MongoDB</h3><h4 id="a-添加-MongoDB-官方-Homebrew-Tap"><a href="#a-添加-MongoDB-官方-Homebrew-Tap" class="headerlink" title="a. 添加 MongoDB 官方 Homebrew Tap"></a>a. 添加 MongoDB 官方 Homebrew Tap</h4><p>首先，运行以下命令来添加 MongoDB 官方的 Homebrew Tap（软件源）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br></pre></td></tr></table></figure>
+
+<h4 id="b-安装-MongoDB-社区版"><a href="#b-安装-MongoDB-社区版" class="headerlink" title="b. 安装 MongoDB 社区版"></a>b. 安装 MongoDB 社区版</h4><p>接下来，使用 Homebrew 来安装 MongoDB 社区版：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install mongodb-community@6.0</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的 <code>@6.0</code> 是 MongoDB 的版本号，你可以根据需要替换为其他版本。</p>
+</blockquote>
+<h3 id="3-启动-MongoDB-服务"><a href="#3-启动-MongoDB-服务" class="headerlink" title="3. 启动 MongoDB 服务"></a>3. 启动 MongoDB 服务</h3><p>安装完成后，可以通过 Homebrew 启动 MongoDB：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services start mongodb/brew/mongodb-community</span><br></pre></td></tr></table></figure>
+
+<p>这会将 MongoDB 作为 macOS 服务启动，并且会在每次系统启动时自动启动。</p>
+<p>如果你只想手动启动 MongoDB 而不让它自动运行，可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongod --config /usr/local/etc/mongod.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-检查-MongoDB-是否运行"><a href="#4-检查-MongoDB-是否运行" class="headerlink" title="4. 检查 MongoDB 是否运行"></a>4. 检查 MongoDB 是否运行</h3><p>你可以运行以下命令，查看 MongoDB 服务是否已经成功启动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services list</span><br></pre></td></tr></table></figure>
+
+<p>MongoDB 的状态应该显示为 “started”。</p>
+<h3 id="5-连接-MongoDB"><a href="#5-连接-MongoDB" class="headerlink" title="5. 连接 MongoDB"></a>5. 连接 MongoDB</h3><p>MongoDB 服务器启动后，你可以通过 <code>mongo</code> 命令连接到 MongoDB 的命令行工具：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+
+<p>如果一切正常，你现在应该已经连接到 MongoDB 的 shell，可以开始使用数据库了。</p>
+<h3 id="6-停止-MongoDB-服务"><a href="#6-停止-MongoDB-服务" class="headerlink" title="6. 停止 MongoDB 服务"></a>6. 停止 MongoDB 服务</h3><p>如果你需要停止 MongoDB 服务，可以运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew services stop mongodb/brew/mongodb-community</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>这样，你就可以在 Mac 上成功安装和运行 MongoDB。如果遇到任何问题，请确保 Homebrew 和 MongoDB 的安装路径正确，并查看 Homebrew 提供的安装日志。</p>
+]]></content>
+      <tags>
+        <tag>MongoDB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next.js 路由系统</title>
+    <url>/2025/07/28/NextJs-%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<h1 id="Next-js-路由系统（约定式路由）"><a href="#Next-js-路由系统（约定式路由）" class="headerlink" title="Next.js 路由系统（约定式路由）"></a>Next.js 路由系统（约定式路由）</h1><p>Next.js 的路由系统基于 <strong>约定大于配置</strong> 原则，开发者只需要将页面组件放在特定目录下，即可自动生成对应的路由，无需手动配置路由表。</p>
+<hr>
+<h2 id="路由基本约定"><a href="#路由基本约定" class="headerlink" title="路由基本约定"></a>路由基本约定</h2><ol>
+<li>所有路由文件必须放在 <code>app/</code> 目录下（App Router 模式）。</li>
+<li>每个<strong>文件夹</strong>表示一个 URL 路径段。</li>
+<li>路由页面文件必须命名为 <code>page.tsx</code> 或 <code>page.js</code>。</li>
+<li>每个页面组件将自动作为一个路由。</li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>├── page.tsx             → 路由路径 &#x2F;<br>├── about&#x2F;<br>│   └── page.tsx         → 路由路径 &#x2F;about<br>└── contact&#x2F;<br>└── page.tsx         → 路由路径 &#x2F;contact</p>
+<hr>
+<h2 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h2><p>使用 <code>[]</code> 包裹文件夹名来创建动态路由参数。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>└── products&#x2F;<br>└── [productId]&#x2F;<br>└── page.tsx     → 路由路径 &#x2F;products&#x2F;:productId</p>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// products/[productId]/page.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">ProductPage</span>(<span class="params">&#123; params &#125;: &#123; params: &#123; productId: <span class="built_in">string</span> &#125; &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Product ID: &#123;params.productId&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="嵌套动态路由"><a href="#嵌套动态路由" class="headerlink" title="嵌套动态路由"></a>嵌套动态路由</h2><p>支持多级动态参数结构。<br>app&#x2F;<br>└── products&#x2F;<br>    └── [productId]&#x2F;<br>        ├── page.tsx         → <code>/products/:productId</code><br>        └── [reviewId]&#x2F;<br>            └── page.tsx     → <code>/products/:productId/:reviewId</code></p>
+<h3 id="捕获所有路由段（Catch-All-Routes）"><a href="#捕获所有路由段（Catch-All-Routes）" class="headerlink" title="捕获所有路由段（Catch-All Routes）"></a>捕获所有路由段（Catch-All Routes）</h3><p>使用 […slug] 语法捕获任意数量的路径段。</p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><p>app&#x2F;<br>└── blog&#x2F;<br>    └── […slug]&#x2F;<br>        └── page.tsx         → <code>/blog/*</code> 动态匹配所有子路径</p>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// blog/12</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">CatchAllPage</span>(<span class="params">&#123; params &#125;: &#123; params: &#123; slug: <span class="built_in">string</span>[] &#125; &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>路径段: &#123;params.slug.join(&#x27; / &#x27;)&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="404-页面（Not-Found）"><a href="#404-页面（Not-Found）" class="headerlink" title="404 页面（Not Found）"></a>404 页面（Not Found）</h2><p>全局 404 页面<br>app&#x2F;not-found.tsx</p>
+<p>你也可以为每个路由子目录创建局部 404 页面：<br>app&#x2F;<br>└── about&#x2F;<br>    ├── not-found.tsx<br>    └── page.tsx</p>
+<p>在 not-found.tsx 中定义页面不存在时的 UI：</p>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">NotFound</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>此页面不存在<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>主动触发 404</strong><br>你可以通过 notFound() 方法主动触发 404：</p>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; notFound &#125; <span class="keyword">from</span> <span class="string">&#x27;next/navigation&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Page</span>(<span class="params">&#123; params &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!data) <span class="keyword">return</span> <span class="title function_">notFound</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>正常页面内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="私有文件夹（下划线命名）"><a href="#私有文件夹（下划线命名）" class="headerlink" title="私有文件夹（下划线命名）"></a>私有文件夹（下划线命名）</h2><p>使用下划线 _ 开头的文件夹（如 _components&#x2F;）不会被视为路由路径。</p>
+<ul>
+<li>通常用于存放共享组件、工具函数、布局模板等。</li>
+<li>如果确实需要使用下划线路径（不推荐），需通过 %5f URL 编码。</li>
+</ul>
+<h2 id="路由分组（Route-Groups）"><a href="#路由分组（Route-Groups）" class="headerlink" title="路由分组（Route Groups）"></a>路由分组（Route Groups）</h2><p>使用 括号 () 包裹文件夹名 创建逻辑上的路由分组，不影响实际 URL 路径结构。</p>
+<p>app&#x2F;<br>└── (auth)&#x2F;<br>    └── login&#x2F;<br>        └── page.tsx     → <code>/login</code></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>语法&#x2F;文件名</th>
+<th>示例路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态路由</td>
+<td>page.tsx</td>
+<td>&#x2F;about</td>
+</tr>
+<tr>
+<td>动态路由</td>
+<td>[id]&#x2F;page.tsx</td>
+<td>&#x2F;products&#x2F;123</td>
+</tr>
+<tr>
+<td>嵌套路由</td>
+<td>子目录结构</td>
+<td>&#x2F;products&#x2F;123&#x2F;reviews&#x2F;1</td>
+</tr>
+<tr>
+<td>捕获全部路由</td>
+<td>[…slug]</td>
+<td>&#x2F;blog&#x2F;a&#x2F;b&#x2F;c</td>
+</tr>
+<tr>
+<td>404 页面</td>
+<td>not-found.tsx</td>
+<td>&#x2F;about&#x2F;not-found.tsx</td>
+</tr>
+<tr>
+<td>路由分组</td>
+<td>(group)&#x2F;</td>
+<td>&#x2F;login from (auth)&#x2F;login</td>
+</tr>
+<tr>
+<td>私有目录</td>
+<td>_components&#x2F;</td>
+<td>不作为路由路径</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>Next.js</tag>
+        <tag>路由</tag>
+        <tag>前端</tag>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 方法</title>
+    <url>/2024/06/02/Java-%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="什么是方法？"><a href="#什么是方法？" class="headerlink" title="什么是方法？"></a>什么是方法？</h2><p>所谓方法，就是用来解决一类问题的代码的有序组合，是一个功能模块。</p>
+<h2 id="方法的声明和调用"><a href="#方法的声明和调用" class="headerlink" title="方法的声明和调用"></a>方法的声明和调用</h2><ol>
+<li>方法声明<ul>
+<li>语法格式<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">访问修饰符 返回类型 方法名(参数列表)&#123;</span><br><span class="line">  方法体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>访问修饰符<ul>
+<li>public</li>
+<li>privete</li>
+<li>protected</li>
+<li>默认</li>
+</ul>
+</li>
+<li><strong>方法是在类的内部中定义</strong></li>
+</ul>
+</li>
+<li>方法调用<ul>
+<li>语法格式 <ul>
+<li>类名 实例名 &#x3D; new 类名(); 实例名.方法名();</li>
+<li>对于静态方法 static , 直接调用 方法名();</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>方法分类<ul>
+<li>根据方法是否带参数、是否返回值，可以分为四类：</li>
+<li>无参无返回值方法</li>
+<li>无参带返回值方法</li>
+<li>带参带返回值方法</li>
+<li>带参无返回值方法</li>
+</ul>
+</li>
+</ol>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><ol>
+<li>同一个类中</li>
+<li><strong>方法名相同，参数列表不同</strong></li>
+<li>方法返回值、访问修饰符任意</li>
+<li>与方法参数名无关</li>
+</ol>
+<h2 id="可变参数列表"><a href="#可变参数列表" class="headerlink" title="可变参数列表"></a>可变参数列表</h2><ol>
+<li>public void sum(int… n) { &lt;语句块&gt; }<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span>... n)</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span><span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i:n) </span><br><span class="line">		sum+=i;</span><br><span class="line">	</span><br><span class="line">	System.out.println(<span class="string">&quot;sum=&quot;</span>+sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><em><strong>参数列表中如果有两个以上的参数，可变参数一定是在最后的！</strong></em></li>
+<li><em><strong>可以将数组传递给可变参数列表，反之不行</strong></em></li>
+<li>数组作为参数时，是不能将多个值传递给数组的！</li>
+<li><strong>一个方法中，只能有一个可变参数</strong></li>
+<li>可变参数列表所在的方法是最后被访问的。</li>
+</ol>
+<h2 id="方法的传值问题"><a href="#方法的传值问题" class="headerlink" title="方法的传值问题"></a>方法的传值问题</h2><ol>
+<li>基本数据类型传值<ul>
+<li>方法中对参数的修改，不会对主方法传来的变量值产生影响</li>
+</ul>
+</li>
+<li>引用数据类型传值<ul>
+<li>方法中对数组的改变，会印象主方法中传来的数组</li>
+</ul>
+</li>
+</ol>
+<h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><table>
+<thead>
+<tr>
+<th>访问修饰符</th>
+<th>本类</th>
+<th>同包</th>
+<th>子类</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>默认（不写）</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td>private</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 添加 Disqus 评论系统</title>
+    <url>/2024/04/14/hexo-%E6%B7%BB%E5%8A%A0-Disqus-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h3 id="登录-Disqus"><a href="#登录-Disqus" class="headerlink" title="登录 Disqus"></a>登录 Disqus</h3><p><img src="https://raw.githubusercontent.com/zhihuzeye/zhihuzeye.github.io/main/images/20240414002939.png" alt="图片" title="disqus登录"></p>
+<h3 id="选择-在我的网站上安装-Disqus"><a href="#选择-在我的网站上安装-Disqus" class="headerlink" title="选择 在我的网站上安装 Disqus"></a>选择 在我的网站上安装 Disqus</h3><p><img src="/images/20240414003055.png" alt="图片" title="disqus登录"></p>
+<h3 id="创建一个新站点"><a href="#创建一个新站点" class="headerlink" title="创建一个新站点"></a>创建一个新站点</h3><p>注意：Website Name 这个字段非常重要，后续需要在 _config.yml 中用到<br>点击 Create Site 按钮即可</p>
+<p><img src="/images/20240414003325.png" alt="图片" title="disqus登录"></p>
+<span id="more"></span>
+
+<h3 id="配置主题-config-yml-文件"><a href="#配置主题-config-yml-文件" class="headerlink" title="配置主题 _config.yml 文件"></a>配置主题 _config.yml 文件</h3><p>网上有很多教程 直接配置，这样是不对的，配置会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">disqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname:your Website Name</span><br><span class="line">  count: true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>踩坑：disqus  shortname 报错 YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key</p>
+<p>shortname 需要换行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">disqus:</span><br><span class="line">  enable: true</span><br><span class="line">  shortname:</span><br><span class="line">          your Website Name</span><br><span class="line">  count: true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Disqus</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 运算符</title>
+    <url>/2024/05/31/Java-%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+    <content><![CDATA[<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><ol>
+<li>表达式由运算符和操作数组成</li>
+<li>如：5、num1、num1 + num2</li>
+</ol>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ol>
+<li>算数运算符<ul>
+<li>算数运算符主要用于进行基本的算数运算，如加法、减法、乘法和除法等。</li>
+<li>加法 +</li>
+<li>减法 - </li>
+<li>乘法 * </li>
+<li>除法 &#x2F;  <strong>在除法运算中，如果除数和被除数都是整数，则做整除运算</strong></li>
+<li>求余数 %</li>
+<li>自增1 ++</li>
+<li>自减1 –</li>
+</ul>
+</li>
+<li>赋值运算符<ul>
+<li>格式：变量 &#x3D; 表达式;</li>
+<li><strong>注意：赋值运算符是从右往左运算！</strong> </li>
+<li><strong>赋值运算符的左边不能是常量，必须是常量</strong></li>
+<li>复合赋值运算符<ul>
+<li>+&#x3D; 代码示例：x+&#x3D;5 , x &#x3D; x + 5</li>
+<li>-&#x3D;</li>
+<li>*&#x3D;</li>
+<li>&#x2F;&#x3D;</li>
+<li>%&#x3D;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>关系运算符<ul>
+<li>比较运算符用于判断两个数据的大小，如大于</li>
+<li>比较的结果是一个 布尔值</li>
+<li>大于 &gt;<ul>
+<li>‘A’ &gt; ‘’B  结果为 false , 比较的是两个字符的 ASCll 值</li>
+</ul>
+</li>
+<li>小于 &lt;</li>
+<li>大于等于 &gt;&#x3D;</li>
+<li>小于等于 &lt;&#x3D;</li>
+<li>等于 &#x3D;&#x3D;<ul>
+<li>float  f &#x3D; 5.0f; long l &#x3D;5; f&#x3D;&#x3D;l;  结果为true，浮点数与整数进行比较，只要值相等就返回true</li>
+</ul>
+</li>
+<li>不等于 !&#x3D;</li>
+<li>作用与功能<ul>
+<li>数据比较<ul>
+<li>关系运算符主要用于条件和循环语句中的判断条件</li>
+<li>条件结构就是根据不同的条件去执行不同的操作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>逻辑运算符<ul>
+<li>逻辑运算符是用来连接一个或多个条件，判断这些条件是否成立 </li>
+<li>逻辑运算符的结果是布尔类型</li>
+<li>与<ul>
+<li>&amp;&amp; 或 &amp;<ul>
+<li>&amp;&amp; 运算符又叫短路运算符，如果第一个表达式的值就能决定表达式最后的结果，运算符右边的表达式就不再运算了</li>
+<li>&amp; 不论第一个表达式 true 还是 false，都要执行右边的表达式</li>
+</ul>
+</li>
+<li>operator1 &amp;&amp; operator2</li>
+</ul>
+</li>
+<li>或<ul>
+<li>|| 或 |<ul>
+<li>|| 和  &amp;&amp; 运算符一样</li>
+<li>| 和 &amp; 一样</li>
+</ul>
+</li>
+<li>operator1 || operator2</li>
+</ul>
+</li>
+<li>非<ul>
+<li>!<ul>
+<li>对原条件进行取反</li>
+</ul>
+</li>
+<li>!operator1</li>
+</ul>
+</li>
+<li>注意：<strong>逻辑运算符的操作数都是布尔类型的</strong></li>
+</ul>
+</li>
+<li>条件运算符<ul>
+<li>三元运算符 ? :</li>
+</ul>
+</li>
+<li>Java 中的条件运算符是三目运算符<ul>
+<li>++ 单目运算符</li>
+<li>双目运算符，需要对两个数进行操作 + - * &#x2F; </li>
+<li><strong>语法：布尔表达式 ? 表达式1 : 表达式2</strong></li>
+<li>当布尔表达式的值为 true , 则返回表达式 1 的值，否则 返回表达式 2 的值</li>
+</ul>
+</li>
+<li>位运算符<ul>
+<li>按位与（&amp;）：逐位进行与操作，只有当对应位都为 1 时，结果位才为 1。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">// 二进制为 0011</span></span><br><span class="line"><span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> a &amp; b; <span class="comment">// 结果为 1 (二进制为 0001)</span></span><br></pre></td></tr></table></figure></li>
+<li>按位或（|）：逐位进行或操作，只要有一个对应位为 1，结果位就为 1。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">// 二进制为 0011</span></span><br><span class="line"><span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> a | b; <span class="comment">// 结果为 7 (二进制为 0111)</span></span><br></pre></td></tr></table></figure></li>
+<li>按位异或（^）：逐位进行异或操作，当对应位不同时，结果位为 1。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">// 二进制为 0011</span></span><br><span class="line"><span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> a ^ b; <span class="comment">// 结果为 6 (二进制为 0110)</span></span><br></pre></td></tr></table></figure></li>
+<li>按位取反（~）：逐位进行取反操作，0 变 1，1 变 0。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> ~a; <span class="comment">// 结果为 -6 (二进制为 1010)</span></span><br></pre></td></tr></table></figure></li>
+<li>左移（&lt;&lt;）：将二进制位向左移动指定的位数，相当于乘以 2 的指定次方。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> a &lt;&lt; <span class="number">1</span>; <span class="comment">// 结果为 10 (二进制为 1010)</span></span><br></pre></td></tr></table></figure></li>
+<li>右移（&gt;&gt;）：将二进制位向右移动指定的位数，相当于除以 2 的指定次方。 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">5</span>; <span class="comment">// 二进制为 0101</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> a &gt;&gt; <span class="number">1</span>; <span class="comment">// 结果为 2 (二进制为 0010)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>运算符优先级<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>()</td>
+<td>圆括号</td>
+<td>0</td>
+</tr>
+<tr>
+<td>!，++，–</td>
+<td>逻辑非，自增，自减</td>
+<td>1</td>
+</tr>
+<tr>
+<td>*，&#x2F;，%</td>
+<td>乘法，除法，取余</td>
+<td>2</td>
+</tr>
+<tr>
+<td>+，-</td>
+<td>加法，减法</td>
+<td>3</td>
+</tr>
+<tr>
+<td>&lt;，&lt;&#x3D;，&gt;，&gt;&#x3D;</td>
+<td>小于，小于等于，大于，大于等于</td>
+<td>4</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;，!&#x3D;</td>
+<td>等于，不等于</td>
+<td>5</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+<td>6</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑或</td>
+<td>7</td>
+</tr>
+<tr>
+<td>&#x3D;，+&#x3D;，*&#x3D;，&#x2F;&#x3D;，%&#x3D;，-&#x3D;</td>
+<td>赋值运算符，复合赋值运算符</td>
+<td>8</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【踩坑】uni.navigateTo 微信小程序 跳转无效问题</title>
+    <url>/2024/04/17/%E3%80%90%E8%B8%A9%E5%9D%91%E3%80%91uni-navigateTo-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E8%B7%B3%E8%BD%AC%E6%97%A0%E6%95%88%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>最近接手了一个项目，该项目在用户体验上极度不友好，如：每次请求就显示 loading ，自定义 tabbar 可点击区域太小，组件间切换白屏等等问题。本着 “要改革、就不要怕” 的原则，便大刀阔斧的对项目代码进行一系列优化。</p>
+</blockquote>
+<p>结果改着改着就出现了问题：</p>
+<ul>
+<li>分包 packageB 的路径能点击</li>
+<li>packageA、packageC 里的路径不能点击</li>
+<li>手机能点击、模拟器不能点击</li>
+<li>模拟器能点击，手机不能点击</li>
+</ul>
+<p><img src="/images/emoji/tieba/035.png" alt="图片"></p>
+<span id="more"></span>
+
+<h1 id="代码不报错，是最难解决的-bug-！！！"><a href="#代码不报错，是最难解决的-bug-！！！" class="headerlink" title="代码不报错，是最难解决的 bug ！！！"></a>代码不报错，是最难解决的 bug ！！！</h1><p>这让我一度怀疑是 小程序开发者工具问题、小程序基础库版本问题，nodejs 版本问题 、vue-cli 版本问题，<br>然后就 nvm 切换版本、开发者工具卸载删除、基础库版本修改一系列骚操作。。。</p>
+<p><strong>马后炮：</strong> 如果代码能跑起来，肯定是没有问题的，微信小程序开发者工具 navigateTo 、redirectTo 、switchTab 、reLaunch 这些基础的 API 无论是哪个基础库都能很好的支持。</p>
+<p>大概率不用去想 nodejs 版本问题， 删除掉 node_modules 再重装挺浪费时间的。 所以很多时候都是代码中的问题。</p>
+<p>比如我这个 bug 有些链接能跳转 有些不能跳转，就复制能跳转的 链接，<strong>全局检索</strong>。<strong>查找它们其中的差异</strong></p>
+<p>问题出现的地方：<br>程序初始化 拦截了 navigateTo、redirectTo、switchTab、reLaunch 这些操作，执行 checkVisitPage 方法，如果链接在白名单列表中且已登录就能跳转，否则唤起登录的弹窗。</p>
+<p>”好巧不巧，我把登录弹窗组件删除掉了，因为它在每个页面都写了一遍“，所以点击没有反应。。。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// App.vue</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;</span><br><span class="line">	addInterceptor,</span><br><span class="line">	checkVisitPage</span><br><span class="line">&#125; from &quot;./utils/index.js&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">	globalData: &#123;</span><br><span class="line">		systemInfo: null</span><br><span class="line">	&#125;,</span><br><span class="line">	onLaunch: function () &#123;</span><br><span class="line">		this.initApp();</span><br><span class="line">	&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		initApp() &#123;</span><br><span class="line">			addInterceptor.call(this);</span><br><span class="line">			checkVisitPage.call(this);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// utils/index.js</span><br><span class="line">const openPages = [</span><br><span class="line">	&#x27;/pages/home/index&#x27;,</span><br><span class="line">	&#x27;/pages/webView/index&#x27;,</span><br><span class="line">	...</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export function checkVisitPage(url) &#123;</span><br><span class="line">	if (!url) &#123;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">	if (url.indexOf(&quot;?&quot;) &gt; -1) &#123;</span><br><span class="line">		url = url.split(&quot;?&quot;)[0];</span><br><span class="line">	&#125;</span><br><span class="line">	if (!openPages.includes(url)) &#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			const userInfo = uni.getStorageSync(&#x27;userInfo&#x27;);</span><br><span class="line">			if (!userInfo.accessToken || userInfo?.userType == 7) &#123;</span><br><span class="line">				this.$store.commit(&#x27;common/setPurviewWarningMethod&#x27;, true)</span><br><span class="line">				return false;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				this.$store.commit(&#x27;common/setPurviewWarningMethod&#x27;, false)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (e) &#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function addInterceptor() &#123;</span><br><span class="line">	uni.addInterceptor(&#x27;navigateTo&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;redirectTo&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;switchTab&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">	uni.addInterceptor(&#x27;reLaunch&#x27;, &#123;</span><br><span class="line">		invoke: (e) =&gt; checkVisitPage.call(this, e.url),</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>其它：如果无法跳转，请检查 是否 &#x2F; 斜杆开头</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">uni.navigateTo(&#123;</span><br><span class="line">	url: &#x27;/pages/index/index&#x27;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>因为这两天给环境整崩溃了，某些老项目没有 yarn.lock 或 package-lock 文件 ，代码 dev 能启动起来，但是 build 失败！，怀疑是 nodejs 版本问题，typescript 版本不兼容问题等等，最后向原来的开发人员，重新套了个壳， 才知道 package.json 少了 esbuild-loader 依赖！ 为啥源码里 package.json  没有 esbuild-loader …</p>
+</blockquote>
+<p>但是错误提示可不友好，让你根本搜索不到错误发生的原因</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[tsl] ERROR in \node_modules\@types\node\util.d.ts(1656,1)</span><br><span class="line">      TS1128: Declaration or statement expected.</span><br><span class="line">ERROR in \node_modules\@types\node\util.d.ts</span><br><span class="line"></span><br><span class="line">[tsl] ERROR in \node_modules\@types\node\util.d.ts(1654,26)</span><br><span class="line">      TS1005: &#x27;;&#x27; expected.</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h1><ol>
+<li>能自己解决的尽量不麻烦别人，遇到问题首先 谷歌，GPT 查询（此操作最好不要超过 1小时）</li>
+<li>仔细阅读源码，全局检索 查找它们其中的差异</li>
+<li>善于交流、勇于交流。（在不得已要麻烦别人的时候，也不要害怕。 出门靠朋友~ 态度好点虚心求教，很多人愿意帮你的）</li>
+<li>站起来喝杯咖啡吧！有时候把事情缓一缓。解决问题的思绪就来了</li>
+</ol>
+]]></content>
+      <categories>
+        <category>小程序</category>
+      </categories>
+      <tags>
+        <tag>uni-app</tag>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>定时器和延时器</title>
+    <url>/2024/06/15/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%BB%B6%E6%97%B6%E5%99%A8/</url>
+    <content><![CDATA[<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><ol>
+<li>setInterval()  函数可以重复调用一个函数，在每次调用之间具有固定的时间间隔<ul>
+<li>第一个参数是函数</li>
+<li>第二个参数是间隔时间，以毫秒为单位，1000毫秒是1秒</li>
+<li>函数可以接受3，4….个参数，它们将按照顺序传入函数</li>
+<li>具名函数也可以传入serInterval （有名称的函数），但是不能加上括号，不加括号说明传入是 函数，加括号说明是传入执行体（会立即执行，起不到定时执行的效果）</li>
+</ul>
+</li>
+</ol>
+<h2 id="清除定时器"><a href="#清除定时器" class="headerlink" title="清除定时器"></a>清除定时器</h2><ol>
+<li>clearInterval() 函数可以清除定时器，入参传入定时器名称</li>
+</ol>
+<h2 id="延时器"><a href="#延时器" class="headerlink" title="延时器"></a>延时器</h2><ol>
+<li>setTimeout() 函数可以设置一个延时器，当指定时间到了之后，会执行函数一次，不会重复执行</li>
+<li>clearTimeout() 函数可以清除延时器</li>
+</ol>
+<h2 id="初步认识异步语句"><a href="#初步认识异步语句" class="headerlink" title="初步认识异步语句"></a>初步认识异步语句</h2><ol>
+<li>setInterval 和 setTimeout 是两个异步语句</li>
+<li>异步（asynchronous）: 不会阻塞CPU继续执行其它语句，当异步完成时，会执行“回调函数”（callback）</li>
+</ol>
+<h2 id="使用定时器实现动画"><a href="#使用定时器实现动画" class="headerlink" title="使用定时器实现动画"></a>使用定时器实现动画</h2><ol>
+<li>使用定时器实现动画较为不便：<ul>
+<li>1、不方便根据动画总时间计算步长</li>
+<li>2、运动方向要设置正负</li>
+<li>3、多种运动进行叠加较为困难（比如一个放下一边移动一边变为圆形）</li>
+</ul>
+</li>
+</ol>
+<h2 id="JS和CSS3结合实现动画"><a href="#JS和CSS3结合实现动画" class="headerlink" title="JS和CSS3结合实现动画"></a>JS和CSS3结合实现动画</h2><ol>
+<li>CSS3的transition过渡属性可以实现动画</li>
+<li>JavaScript可以使用css3的transtion属性轻松实现元素动画</li>
+<li>JS和CSS3结合实现动画规避了定时器制作动画的缺点</li>
+</ol>
+<h2 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h2><ol>
+<li>一个函数执行一次后，只有大于设定的执行周期后才允许执行第二次</li>
+<li>函数节流非常容易实现，只需要借助setTimeout()延时器</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多媒体与语义化标签</title>
+    <url>/2024/06/12/%E5%A4%9A%E5%AA%92%E4%BD%93%E4%B8%8E%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/</url>
+    <content><![CDATA[<h2 id="audio标签（兼容到IE9）"><a href="#audio标签（兼容到IE9）" class="headerlink" title="audio标签（兼容到IE9）"></a>audio标签（兼容到IE9）</h2><ol>
+<li>属性<ul>
+<li>autoplay（某些浏览器不支持自动播放、本地自动播放是可以的）</li>
+<li>loop （重复播放）</li>
+</ul>
+</li>
+</ol>
+<h2 id="video-标签（兼容到IE9）"><a href="#video-标签（兼容到IE9）" class="headerlink" title="video 标签（兼容到IE9）"></a>video 标签（兼容到IE9）</h2><ol>
+<li>属性<ul>
+<li>同 audio 标签</li>
+<li>width 视频播放器宽度</li>
+</ul>
+</li>
+</ol>
+<h2 id="大纲标签（区块标签）"><a href="#大纲标签（区块标签）" class="headerlink" title="大纲标签（区块标签）"></a>大纲标签（区块标签）</h2><ol>
+<li>section 文档的区域，语义比div大</li>
+<li>article 文档的核心文章内容，会被搜索引擎主要抓取</li>
+<li>nav 导航条</li>
+<li>footer 页脚</li>
+<li>aside 文档的非必要相关内容，比如广告等</li>
+<li>main 网页核心部分</li>
+<li>header 页头</li>
+</ol>
+<h2 id="语义化标签"><a href="#语义化标签" class="headerlink" title="语义化标签"></a>语义化标签</h2><ol>
+<li>span 文本中的区块标签</li>
+<li>b 加粗标签</li>
+<li>i 斜体标签</li>
+<li>u 下划线标签</li>
+<li>strong 加粗标签</li>
+<li>em 斜体标签</li>
+<li>mark 标记标签</li>
+<li>figure-figcaption 用于表示图片和图片的标题</li>
+</ol>
+<h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><ol>
+<li>a 标签<ul>
+<li>1、a 标签 anchor 锚 的首字母<br>2、hypertext reference 超文本引用<br>3、title 用于设置鼠标的悬停文本</li>
+<li>属性<ul>
+<li>href 超文本引用</li>
+<li>target<ul>
+<li>_blank 在新窗口或新标签页中打开链接。</li>
+<li>_self 在父级框架中打开链接。</li>
+<li>_top 在当前窗口中打开链接（默认值）。</li>
+<li>_parent 在顶级框架中打开链接。</li>
+</ul>
+</li>
+<li>title 用于设置鼠标的悬停文本</li>
+</ul>
+</li>
+<li>说明<ul>
+<li>mailto:me.test.com 邮件</li>
+<li>tel:135555555555 拨打电话</li>
+<li>#top 回到顶部</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>img 标签<ul>
+<li>src</li>
+<li>width、height</li>
+<li>alt  alternate 替代品的缩写，它是图像的描述，不是强制性的(有利于搜索引擎优化)</li>
+<li>title 鼠标悬停时候显示</li>
+<li>class、style 设置样式用</li>
+<li>loading  指定图像加载方式，可选值有”eager”（立即加载）和”lazy”（延迟加载）。</li>
+<li>decoding  指定图像解码方式，可选值有”async”（异步解码）和”sync”（同步解码）。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -3255,147 +3381,6 @@ default void defaultMethod() &#123;
       </tags>
   </entry>
   <entry>
-    <title>安装 vscode SCSS IntelliSense 插件后，$$符号问题</title>
-    <url>/2025/06/17/%E5%AE%89%E8%A3%85%20vscode%20SCSS%20IntelliSense%20%E6%8F%92%E4%BB%B6%E5%90%8E%EF%BC%8C$$%E7%AC%A6%E5%8F%B7%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><ul>
-<li>安装了SCSS IntelliSense ，输入 $,再选择，会多一个 $符号，如：   font-size:$$font-size-xs。有没有办法解决？</li>
-</ul>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><ol>
-<li>终端输入命令，打开services文件夹 open &#x2F;Users&#x2F;apple&#x2F;.vscode&#x2F;extensions&#x2F;mrmlnc.vscode-scss-0.10.0&#x2F;out&#x2F;unsafe&#x2F;services</li>
-<li>修改 parser.js 文件中的 findDocumentSymbols 方法</li>
-</ol>
-   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   async function findDocumentSymbols(document, ast) &#123;</span><br><span class="line">    const symbols = ls.findDocumentSymbols(document, ast);</span><br><span class="line">    const links = await findDocumentLinks(document, ast);</span><br><span class="line">    const result = &#123;</span><br><span class="line">        functions: [],</span><br><span class="line">        imports: convertLinksToImports(links),</span><br><span class="line">        mixins: [],</span><br><span class="line">        variables: []</span><br><span class="line">    &#125;;</span><br><span class="line">    for (const symbol of symbols) &#123;</span><br><span class="line">        const position = symbol.location.range.start;</span><br><span class="line">        const offset = document.offsetAt(symbol.location.range.start);</span><br><span class="line">        if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Variable) &#123;</span><br><span class="line">            result.variables.push(&#123;</span><br><span class="line">                name: symbol.name.replace(&quot;$&quot;, &quot;&quot;), // 关键点</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                value: getVariableValue(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Method) &#123;</span><br><span class="line">            result.mixins.push(&#123;</span><br><span class="line">                name: symbol.name,</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                parameters: getMethodParameters(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Function) &#123;</span><br><span class="line">            result.functions.push(&#123;</span><br><span class="line">                name: symbol.name,</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                parameters: getMethodParameters(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>常见问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>定时器和延时器</title>
-    <url>/2024/06/15/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%BB%B6%E6%97%B6%E5%99%A8/</url>
-    <content><![CDATA[<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><ol>
-<li>setInterval()  函数可以重复调用一个函数，在每次调用之间具有固定的时间间隔<ul>
-<li>第一个参数是函数</li>
-<li>第二个参数是间隔时间，以毫秒为单位，1000毫秒是1秒</li>
-<li>函数可以接受3，4….个参数，它们将按照顺序传入函数</li>
-<li>具名函数也可以传入serInterval （有名称的函数），但是不能加上括号，不加括号说明传入是 函数，加括号说明是传入执行体（会立即执行，起不到定时执行的效果）</li>
-</ul>
-</li>
-</ol>
-<h2 id="清除定时器"><a href="#清除定时器" class="headerlink" title="清除定时器"></a>清除定时器</h2><ol>
-<li>clearInterval() 函数可以清除定时器，入参传入定时器名称</li>
-</ol>
-<h2 id="延时器"><a href="#延时器" class="headerlink" title="延时器"></a>延时器</h2><ol>
-<li>setTimeout() 函数可以设置一个延时器，当指定时间到了之后，会执行函数一次，不会重复执行</li>
-<li>clearTimeout() 函数可以清除延时器</li>
-</ol>
-<h2 id="初步认识异步语句"><a href="#初步认识异步语句" class="headerlink" title="初步认识异步语句"></a>初步认识异步语句</h2><ol>
-<li>setInterval 和 setTimeout 是两个异步语句</li>
-<li>异步（asynchronous）: 不会阻塞CPU继续执行其它语句，当异步完成时，会执行“回调函数”（callback）</li>
-</ol>
-<h2 id="使用定时器实现动画"><a href="#使用定时器实现动画" class="headerlink" title="使用定时器实现动画"></a>使用定时器实现动画</h2><ol>
-<li>使用定时器实现动画较为不便：<ul>
-<li>1、不方便根据动画总时间计算步长</li>
-<li>2、运动方向要设置正负</li>
-<li>3、多种运动进行叠加较为困难（比如一个放下一边移动一边变为圆形）</li>
-</ul>
-</li>
-</ol>
-<h2 id="JS和CSS3结合实现动画"><a href="#JS和CSS3结合实现动画" class="headerlink" title="JS和CSS3结合实现动画"></a>JS和CSS3结合实现动画</h2><ol>
-<li>CSS3的transition过渡属性可以实现动画</li>
-<li>JavaScript可以使用css3的transtion属性轻松实现元素动画</li>
-<li>JS和CSS3结合实现动画规避了定时器制作动画的缺点</li>
-</ol>
-<h2 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h2><ol>
-<li>一个函数执行一次后，只有大于设定的执行周期后才允许执行第二次</li>
-<li>函数节流非常容易实现，只需要借助setTimeout()延时器</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>多媒体与语义化标签</title>
-    <url>/2024/06/12/%E5%A4%9A%E5%AA%92%E4%BD%93%E4%B8%8E%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/</url>
-    <content><![CDATA[<h2 id="audio标签（兼容到IE9）"><a href="#audio标签（兼容到IE9）" class="headerlink" title="audio标签（兼容到IE9）"></a>audio标签（兼容到IE9）</h2><ol>
-<li>属性<ul>
-<li>autoplay（某些浏览器不支持自动播放、本地自动播放是可以的）</li>
-<li>loop （重复播放）</li>
-</ul>
-</li>
-</ol>
-<h2 id="video-标签（兼容到IE9）"><a href="#video-标签（兼容到IE9）" class="headerlink" title="video 标签（兼容到IE9）"></a>video 标签（兼容到IE9）</h2><ol>
-<li>属性<ul>
-<li>同 audio 标签</li>
-<li>width 视频播放器宽度</li>
-</ul>
-</li>
-</ol>
-<h2 id="大纲标签（区块标签）"><a href="#大纲标签（区块标签）" class="headerlink" title="大纲标签（区块标签）"></a>大纲标签（区块标签）</h2><ol>
-<li>section 文档的区域，语义比div大</li>
-<li>article 文档的核心文章内容，会被搜索引擎主要抓取</li>
-<li>nav 导航条</li>
-<li>footer 页脚</li>
-<li>aside 文档的非必要相关内容，比如广告等</li>
-<li>main 网页核心部分</li>
-<li>header 页头</li>
-</ol>
-<h2 id="语义化标签"><a href="#语义化标签" class="headerlink" title="语义化标签"></a>语义化标签</h2><ol>
-<li>span 文本中的区块标签</li>
-<li>b 加粗标签</li>
-<li>i 斜体标签</li>
-<li>u 下划线标签</li>
-<li>strong 加粗标签</li>
-<li>em 斜体标签</li>
-<li>mark 标记标签</li>
-<li>figure-figcaption 用于表示图片和图片的标题</li>
-</ol>
-<h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><ol>
-<li>a 标签<ul>
-<li>1、a 标签 anchor 锚 的首字母<br>2、hypertext reference 超文本引用<br>3、title 用于设置鼠标的悬停文本</li>
-<li>属性<ul>
-<li>href 超文本引用</li>
-<li>target<ul>
-<li>_blank 在新窗口或新标签页中打开链接。</li>
-<li>_self 在父级框架中打开链接。</li>
-<li>_top 在当前窗口中打开链接（默认值）。</li>
-<li>_parent 在顶级框架中打开链接。</li>
-</ul>
-</li>
-<li>title 用于设置鼠标的悬停文本</li>
-</ul>
-</li>
-<li>说明<ul>
-<li>mailto:me.test.com 邮件</li>
-<li>tel:135555555555 拨打电话</li>
-<li>#top 回到顶部</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>img 标签<ul>
-<li>src</li>
-<li>width、height</li>
-<li>alt  alternate 替代品的缩写，它是图像的描述，不是强制性的(有利于搜索引擎优化)</li>
-<li>title 鼠标悬停时候显示</li>
-<li>class、style 设置样式用</li>
-<li>loading  指定图像加载方式，可选值有”eager”（立即加载）和”lazy”（延迟加载）。</li>
-<li>decoding  指定图像解码方式，可选值有”async”（异步解码）和”sync”（同步解码）。</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>微信小程序关联服务号发送模板消息</title>
     <url>/2025/07/09/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%85%B3%E8%81%94%E6%9C%8D%E5%8A%A1%E5%8F%B7%E5%8F%91%E9%80%81%E6%A8%A1%E6%9D%BF%E6%B6%88%E6%81%AF/</url>
     <content><![CDATA[<h1 id="微信小程序关联服务号发送模板消息全流程"><a href="#微信小程序关联服务号发送模板消息全流程" class="headerlink" title="微信小程序关联服务号发送模板消息全流程"></a>微信小程序关联服务号发送模板消息全流程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于微信小程序模板消息有行业限制，且长期模板申请门槛较高，因此在某些业务场景下，使用小程序自身模板消息并不灵活。</p>
@@ -3427,6 +3412,21 @@ default void defaultMethod() &#123;
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过微信开放平台绑定小程序与服务号，并结合 UnionID 机制，可以灵活实现小程序与服务号间的消息互通。<br>这种方式适合对消息通知有较高需求的应用场景，是微信官方推荐的解决方案之一。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>安装 vscode SCSS IntelliSense 插件后，$$符号问题</title>
+    <url>/2025/06/17/%E5%AE%89%E8%A3%85%20vscode%20SCSS%20IntelliSense%20%E6%8F%92%E4%BB%B6%E5%90%8E%EF%BC%8C$$%E7%AC%A6%E5%8F%B7%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><ul>
+<li>安装了SCSS IntelliSense ，输入 $,再选择，会多一个 $符号，如：   font-size:$$font-size-xs。有没有办法解决？</li>
+</ul>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><ol>
+<li>终端输入命令，打开services文件夹 open &#x2F;Users&#x2F;apple&#x2F;.vscode&#x2F;extensions&#x2F;mrmlnc.vscode-scss-0.10.0&#x2F;out&#x2F;unsafe&#x2F;services</li>
+<li>修改 parser.js 文件中的 findDocumentSymbols 方法</li>
+</ol>
+   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   async function findDocumentSymbols(document, ast) &#123;</span><br><span class="line">    const symbols = ls.findDocumentSymbols(document, ast);</span><br><span class="line">    const links = await findDocumentLinks(document, ast);</span><br><span class="line">    const result = &#123;</span><br><span class="line">        functions: [],</span><br><span class="line">        imports: convertLinksToImports(links),</span><br><span class="line">        mixins: [],</span><br><span class="line">        variables: []</span><br><span class="line">    &#125;;</span><br><span class="line">    for (const symbol of symbols) &#123;</span><br><span class="line">        const position = symbol.location.range.start;</span><br><span class="line">        const offset = document.offsetAt(symbol.location.range.start);</span><br><span class="line">        if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Variable) &#123;</span><br><span class="line">            result.variables.push(&#123;</span><br><span class="line">                name: symbol.name.replace(&quot;$&quot;, &quot;&quot;), // 关键点</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                value: getVariableValue(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Method) &#123;</span><br><span class="line">            result.mixins.push(&#123;</span><br><span class="line">                name: symbol.name,</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                parameters: getMethodParameters(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (symbol.kind === vscode_css_languageservice_1.SymbolKind.Function) &#123;</span><br><span class="line">            result.functions.push(&#123;</span><br><span class="line">                name: symbol.name,</span><br><span class="line">                offset,</span><br><span class="line">                position,</span><br><span class="line">                parameters: getMethodParameters(ast, offset)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>常见问题</tag>
+      </tags>
   </entry>
   <entry>
     <title>微信消息推送的几种方式</title>
@@ -3577,6 +3577,31 @@ default void defaultMethod() &#123;
 ]]></content>
   </entry>
   <entry>
+    <title>微搭 h5 跳转小程序</title>
+    <url>/2024/04/28/%E5%BE%AE%E6%90%AD-h5-%E8%B7%B3%E8%BD%AC%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
+    <content><![CDATA[<blockquote>
+<p>场景：小程序内嵌 微搭 H5 页面， 点击 H5 某块区域，跳转到小程序详情页</p>
+</blockquote>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export default function (&#123; event, data &#125;) &#123;</span><br><span class="line">  const value = data?.target</span><br><span class="line">  try &#123;</span><br><span class="line">    wx.miniProgram.navigateTo(&#123;</span><br><span class="line">      url: `/packageC/houseDetails/index?id=$&#123;value&#125;`,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; catch (err) &#123;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url: `/packageC/houseDetails/index?id=$&#123;value&#125;`,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>报错：事件响应失败:组件container8[tap事件 响应Id wwvcp1rff5h]:wx is not defined</p>
+<p><img src="/images/20240428154808.png" alt="图片"></p>
+<p>自建的 H5 判断 navigator.userAgent 是微信环境后可以 直接使用  wx.miniProgram.navigateTo Api , 微搭并不支持。</p>
+<p>解决方法：<br><a href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html">https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html</a></p>
+<ol>
+<li>微搭应用编辑-&gt;应用设置-&gt;开发设置-&gt;加载外部资源(JS&#x2F;CSS)</li>
+<li>将 <a href="https://res.wx.qq.com/open/js/jweixin-1.3.2.js">https://res.wx.qq.com/open/js/jweixin-1.3.2.js</a> 资源下载本地，放到公司 OSS 上</li>
+</ol>
+<p><img src="/images/20240428160058.png" alt="图片"></p>
+]]></content>
+      <categories>
+        <category>微搭</category>
+      </categories>
+      <tags>
+        <tag>微搭低代码</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>找不到插件依赖 @tarojs/plugin-platform-h5，请先在项目中安装</title>
     <url>/2024/05/04/%E6%89%BE%E4%B8%8D%E5%88%B0%E6%8F%92%E4%BB%B6%E4%BE%9D%E8%B5%96-tarojs-plugin-platform-h5%EF%BC%8C%E8%AF%B7%E5%85%88%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<blockquote>
@@ -3594,7 +3619,7 @@ default void defaultMethod() &#123;
 
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
 <li>npm uninstall -g @tarojs&#x2F;cli  # 卸载 Trao</li>
-<li>npm install -g @tarojs&#x2F;<a href="mailto:&#x63;&#x6c;&#x69;&#x40;&#51;&#x2e;&#48;&#46;&#50;&#x39;">&#x63;&#x6c;&#x69;&#x40;&#51;&#x2e;&#48;&#46;&#50;&#x39;</a>  # 安装指定版本 Trao</li>
+<li>npm install -g @tarojs&#x2F;<a href="mailto:&#x63;&#108;&#105;&#64;&#x33;&#46;&#48;&#46;&#50;&#x39;">&#x63;&#108;&#105;&#64;&#x33;&#46;&#48;&#46;&#50;&#x39;</a>  # 安装指定版本 Trao</li>
 <li>也有可能 nodejs 版本过低和 taro&#x2F;cli 不兼容，nvm 切换 16.x 以上版本试试</li>
 </ol>
 ]]></content>
@@ -3697,130 +3722,6 @@ default void defaultMethod() &#123;
       </categories>
       <tags>
         <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>流程控制语句</title>
-    <url>/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><ol>
-<li>if 语句的基本使用 <ul>
-<li>如果…..就…..否则</li>
-</ul>
-</li>
-<li>if elseif 多条件分支<ul>
-<li>else if() 条件分支“暗含”不符合之前的所有条件，要深刻理解什么叫“否则如果”</li>
-</ul>
-</li>
-<li>if 语句算法题</li>
-<li>switch 语句<ul>
-<li>用途：当一个变量被分类讨论的情形</li>
-</ul>
-</li>
-<li>三元运算符<ul>
-<li>条件表达式 ? 表达式1 : 表达式2</li>
-<li>三元运算的用途：根据某个条件是否成立，在两个不同值中选择变量的值</li>
-</ul>
-</li>
-</ol>
-<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><ol>
-<li>for 循环语句<ul>
-<li>循环通常需要三个参数：起始值、结束值和步长。这些参数可以用for循环来指定。</li>
-</ul>
-</li>
-<li>for 循环算法题<ul>
-<li><em><strong>for循环有明确的范围，while循环没有明确的范围</strong></em></li>
-</ul>
-</li>
-<li>while 循环语句<ul>
-<li>while 语句 也是一种循环结构，是一种“不定范围”循环，和for循环各有不同的勇武之地</li>
-<li>几乎所有编程语言，都提供了for和while语句</li>
-<li><em><strong>while 语句事先不指定循环开始、结束范围，只要测试条件满足，就一直执行循环体</strong></em></li>
-<li>while 循环没有显式定义循环变量，必须自己在while循环外先定义好循环变量，有时甚至可以没有循环变量</li>
-<li>循环体内的语句，必须使循环测试条件趋向不成立，否侧会死循环。</li>
-<li>while 循环，while 是 “当”的意思。</li>
-<li>更适合while循环的场景<ul>
-<li>寻找最小满足n²&gt;456789的整数n</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>break 和 continue <ul>
-<li>break 表示立即终止循环，它只能用在循环语句中，在for循环和while循环中都可以使用</li>
-<li>continue 用于 跳过循环中的一个迭代，并继续执行循环中的下一个迭代。for循环更经常使用continue</li>
-</ul>
-</li>
-<li>do while 语句<ul>
-<li>是一种“后测试循环语句”，它不同于for循环和while循环每次都是“先测试条件是否满足，然后执行循环体”，do-while循环是“先执行循环体，再测试条件是否满足”</li>
-<li>do { 循环体 } while (循环执行条件)</li>
-</ul>
-</li>
-<li>while 语句算法题</li>
-</ol>
-<h2 id="初识算法"><a href="#初识算法" class="headerlink" title="初识算法"></a>初识算法</h2><ol>
-<li>什么是算法<ul>
-<li>指的是解题方案的准确而完整的描述。是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制，也就是说，能够对一定规范的输入，在有限的实际内获得所要求的的输出。</li>
-<li>算法就是把一个问题，拆解成计算机能够一步一步执行的步骤。</li>
-<li>计算机的流程控制语句：顺序执行，选择语句，循环语句。</li>
-<li>优秀算法的要求<ul>
-<li>正确性</li>
-<li>健壮性</li>
-<li>可读性</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>累加器和累乘器</li>
-<li>穷举法</li>
-<li>综合算法题目</li>
-<li>随机数函数<ul>
-<li>得到[a,b]区间的整数，公式：</li>
-<li><code>parseInt(Math.random()* (b-a + 1)) + a</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="如何拆位"><a href="#如何拆位" class="headerlink" title="如何拆位"></a>如何拆位</h2><ol>
-<li>数学方法<ul>
-<li><code>百位是原数字除以100取整  Math.floor(n/100)</code></li>
-<li><code>十位是原数字除以10取整，再与10求模  Math.floor(n/10) % 10</code></li>
-<li><code>个位是原数字与10求模  n % 10</code></li>
-</ul>
-</li>
-<li>字符串方法<ul>
-<li>直接将原数字 变为字符串，然后再用charAt()方法得到每个数位的值</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微搭 h5 跳转小程序</title>
-    <url>/2024/04/28/%E5%BE%AE%E6%90%AD-h5-%E8%B7%B3%E8%BD%AC%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
-    <content><![CDATA[<blockquote>
-<p>场景：小程序内嵌 微搭 H5 页面， 点击 H5 某块区域，跳转到小程序详情页</p>
-</blockquote>
-<p>代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export default function (&#123; event, data &#125;) &#123;</span><br><span class="line">  const value = data?.target</span><br><span class="line">  try &#123;</span><br><span class="line">    wx.miniProgram.navigateTo(&#123;</span><br><span class="line">      url: `/packageC/houseDetails/index?id=$&#123;value&#125;`,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; catch (err) &#123;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url: `/packageC/houseDetails/index?id=$&#123;value&#125;`,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>报错：事件响应失败:组件container8[tap事件 响应Id wwvcp1rff5h]:wx is not defined</p>
-<p><img src="/images/20240428154808.png" alt="图片"></p>
-<p>自建的 H5 判断 navigator.userAgent 是微信环境后可以 直接使用  wx.miniProgram.navigateTo Api , 微搭并不支持。</p>
-<p>解决方法：<br><a href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html">https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html</a></p>
-<ol>
-<li>微搭应用编辑-&gt;应用设置-&gt;开发设置-&gt;加载外部资源(JS&#x2F;CSS)</li>
-<li>将 <a href="https://res.wx.qq.com/open/js/jweixin-1.3.2.js">https://res.wx.qq.com/open/js/jweixin-1.3.2.js</a> 资源下载本地，放到公司 OSS 上</li>
-</ol>
-<p><img src="/images/20240428160058.png" alt="图片"></p>
-]]></content>
-      <categories>
-        <category>微搭</category>
-      </categories>
-      <tags>
-        <tag>微搭低代码</tag>
       </tags>
   </entry>
   <entry>
@@ -3970,6 +3871,105 @@ default void defaultMethod() &#123;
       </categories>
       <tags>
         <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>流程控制语句</title>
+    <url>/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><ol>
+<li>if 语句的基本使用 <ul>
+<li>如果…..就…..否则</li>
+</ul>
+</li>
+<li>if elseif 多条件分支<ul>
+<li>else if() 条件分支“暗含”不符合之前的所有条件，要深刻理解什么叫“否则如果”</li>
+</ul>
+</li>
+<li>if 语句算法题</li>
+<li>switch 语句<ul>
+<li>用途：当一个变量被分类讨论的情形</li>
+</ul>
+</li>
+<li>三元运算符<ul>
+<li>条件表达式 ? 表达式1 : 表达式2</li>
+<li>三元运算的用途：根据某个条件是否成立，在两个不同值中选择变量的值</li>
+</ul>
+</li>
+</ol>
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><ol>
+<li>for 循环语句<ul>
+<li>循环通常需要三个参数：起始值、结束值和步长。这些参数可以用for循环来指定。</li>
+</ul>
+</li>
+<li>for 循环算法题<ul>
+<li><em><strong>for循环有明确的范围，while循环没有明确的范围</strong></em></li>
+</ul>
+</li>
+<li>while 循环语句<ul>
+<li>while 语句 也是一种循环结构，是一种“不定范围”循环，和for循环各有不同的勇武之地</li>
+<li>几乎所有编程语言，都提供了for和while语句</li>
+<li><em><strong>while 语句事先不指定循环开始、结束范围，只要测试条件满足，就一直执行循环体</strong></em></li>
+<li>while 循环没有显式定义循环变量，必须自己在while循环外先定义好循环变量，有时甚至可以没有循环变量</li>
+<li>循环体内的语句，必须使循环测试条件趋向不成立，否侧会死循环。</li>
+<li>while 循环，while 是 “当”的意思。</li>
+<li>更适合while循环的场景<ul>
+<li>寻找最小满足n²&gt;456789的整数n</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>break 和 continue <ul>
+<li>break 表示立即终止循环，它只能用在循环语句中，在for循环和while循环中都可以使用</li>
+<li>continue 用于 跳过循环中的一个迭代，并继续执行循环中的下一个迭代。for循环更经常使用continue</li>
+</ul>
+</li>
+<li>do while 语句<ul>
+<li>是一种“后测试循环语句”，它不同于for循环和while循环每次都是“先测试条件是否满足，然后执行循环体”，do-while循环是“先执行循环体，再测试条件是否满足”</li>
+<li>do { 循环体 } while (循环执行条件)</li>
+</ul>
+</li>
+<li>while 语句算法题</li>
+</ol>
+<h2 id="初识算法"><a href="#初识算法" class="headerlink" title="初识算法"></a>初识算法</h2><ol>
+<li>什么是算法<ul>
+<li>指的是解题方案的准确而完整的描述。是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制，也就是说，能够对一定规范的输入，在有限的实际内获得所要求的的输出。</li>
+<li>算法就是把一个问题，拆解成计算机能够一步一步执行的步骤。</li>
+<li>计算机的流程控制语句：顺序执行，选择语句，循环语句。</li>
+<li>优秀算法的要求<ul>
+<li>正确性</li>
+<li>健壮性</li>
+<li>可读性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>累加器和累乘器</li>
+<li>穷举法</li>
+<li>综合算法题目</li>
+<li>随机数函数<ul>
+<li>得到[a,b]区间的整数，公式：</li>
+<li><code>parseInt(Math.random()* (b-a + 1)) + a</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="如何拆位"><a href="#如何拆位" class="headerlink" title="如何拆位"></a>如何拆位</h2><ol>
+<li>数学方法<ul>
+<li><code>百位是原数字除以100取整  Math.floor(n/100)</code></li>
+<li><code>十位是原数字除以10取整，再与10求模  Math.floor(n/10) % 10</code></li>
+<li><code>个位是原数字与10求模  n % 10</code></li>
+</ul>
+</li>
+<li>字符串方法<ul>
+<li>直接将原数字 变为字符串，然后再用charAt()方法得到每个数位的值</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -4184,70 +4184,6 @@ default void defaultMethod() &#123;
       </tags>
   </entry>
   <entry>
-    <title>记录一次精度丢失问题</title>
-    <url>/2024/05/14/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>在使用 Antd Select 组件的时候，请求详情回显 显示了一个错误的 value 值，不显示 label。</p>
-</blockquote>
-<p><img src="/images/20240514153755.png" alt="图片"></p>
-<h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2><ul>
-<li>后端给前端传了一个 1293435817355730946（19位） 大数值类型，前端通过 ‘’ + 、toString() 等方式进行类型转换，得到 1293435817355731000（精度丢失），Select 列表没有对应上 [类型和数值]，所以绑定不上。</li>
-</ul>
-<p>因为 JavaScript 中的数字类型 (Number) 有一定的精度限制。在JavaScript中,数字类型使用 IEEE 754 标准,采用 64位 浮点数表示。这种表示方式存在一些局限性:</p>
-<ol>
-<li>整数的精确表示范围为-2^53 + 1 到 2^53 - 1,即 -9007199254740991 到 9007199254740991（16位） 。超出这个范围的整数将丢失精度。</li>
-<li>浮点数的表示也有误差,无法精确表示某些十进制小数，比如0.1。</li>
-</ol>
-<h2 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h2><ol>
-<li>与后端开发沟通，通过字符串传递</li>
-<li>使用 ES2020 BigInt 类型 </li>
-<li>使用 bignumber.js、decimal.js 等第三方库解决</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>边框与圆角</title>
-    <url>/2024/06/06/%E8%BE%B9%E6%A1%86%E4%B8%8E%E5%9C%86%E8%A7%92/</url>
-    <content><![CDATA[<h2 id="盒子阴影"><a href="#盒子阴影" class="headerlink" title="盒子阴影"></a>盒子阴影</h2><ol>
-<li><code>box-shadow: 10px 20px 30px rgba(0, 0, 0, .4);</code></li>
-<li>inset（内阴影，可选），x偏移，y偏移，模糊量，阴影延展（可选），颜色</li>
-<li>可以用逗号隔开多个阴影<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">       <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">       <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">       <span class="attribute">box-shadow</span>: inset <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">4</span>),<span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">#ff0000</span>;</span><br><span class="line">       <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><ol>
-<li><code>border-top</code></li>
-<li><code>border-bottom</code></li>
-<li><code>border-left</code></li>
-<li><code>border-right</code></li>
-<li><code>border-方向-style 边框线形</code></li>
-<li><code>border-方向-width 边框宽度</code></li>
-<li><code>border-方向-color 边框颜色</code></li>
-<li><code>border-方向:none 去掉边框</code></li>
-<li><code>利用border制作三角形</code><ul>
-<li><code>width: 0; height: 0; border: 20px solid transparent; margin-top: 50px; border-top-color: #ff0000;</code></li>
-</ul>
-</li>
-<li><code>边框的三要素</code><ul>
-<li><em><strong>线宽度、线型、线颜色</strong></em><ul>
-<li>solid 实线</li>
-<li>dotted 虚线（圆）</li>
-<li>double 双边</li>
-<li>dashed 虚线（矩形）</li>
-</ul>
-</li>
-<li><code>border:1px solid #ff0</code></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
-        <tag>CSS3</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>表达式与操作符</title>
     <url>/2024/06/15/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%AC%A6/</url>
     <content><![CDATA[<h2 id="JS-基本表达式"><a href="#JS-基本表达式" class="headerlink" title="JS 基本表达式"></a>JS 基本表达式</h2><ol>
@@ -4371,6 +4307,144 @@ default void defaultMethod() &#123;
       </categories>
       <tags>
         <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记录一次精度丢失问题</title>
+    <url>/2024/05/14/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>在使用 Antd Select 组件的时候，请求详情回显 显示了一个错误的 value 值，不显示 label。</p>
+</blockquote>
+<p><img src="/images/20240514153755.png" alt="图片"></p>
+<h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2><ul>
+<li>后端给前端传了一个 1293435817355730946（19位） 大数值类型，前端通过 ‘’ + 、toString() 等方式进行类型转换，得到 1293435817355731000（精度丢失），Select 列表没有对应上 [类型和数值]，所以绑定不上。</li>
+</ul>
+<p>因为 JavaScript 中的数字类型 (Number) 有一定的精度限制。在JavaScript中,数字类型使用 IEEE 754 标准,采用 64位 浮点数表示。这种表示方式存在一些局限性:</p>
+<ol>
+<li>整数的精确表示范围为-2^53 + 1 到 2^53 - 1,即 -9007199254740991 到 9007199254740991（16位） 。超出这个范围的整数将丢失精度。</li>
+<li>浮点数的表示也有误差,无法精确表示某些十进制小数，比如0.1。</li>
+</ol>
+<h2 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h2><ol>
+<li>与后端开发沟通，通过字符串传递</li>
+<li>使用 ES2020 BigInt 类型 </li>
+<li>使用 bignumber.js、decimal.js 等第三方库解决</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>边框与圆角</title>
+    <url>/2024/06/06/%E8%BE%B9%E6%A1%86%E4%B8%8E%E5%9C%86%E8%A7%92/</url>
+    <content><![CDATA[<h2 id="盒子阴影"><a href="#盒子阴影" class="headerlink" title="盒子阴影"></a>盒子阴影</h2><ol>
+<li><code>box-shadow: 10px 20px 30px rgba(0, 0, 0, .4);</code></li>
+<li>inset（内阴影，可选），x偏移，y偏移，模糊量，阴影延展（可选），颜色</li>
+<li>可以用逗号隔开多个阴影<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">       <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">       <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">       <span class="attribute">box-shadow</span>: inset <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">4</span>),<span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">#ff0000</span>;</span><br><span class="line">       <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><ol>
+<li><code>border-top</code></li>
+<li><code>border-bottom</code></li>
+<li><code>border-left</code></li>
+<li><code>border-right</code></li>
+<li><code>border-方向-style 边框线形</code></li>
+<li><code>border-方向-width 边框宽度</code></li>
+<li><code>border-方向-color 边框颜色</code></li>
+<li><code>border-方向:none 去掉边框</code></li>
+<li><code>利用border制作三角形</code><ul>
+<li><code>width: 0; height: 0; border: 20px solid transparent; margin-top: 50px; border-top-color: #ff0000;</code></li>
+</ul>
+</li>
+<li><code>边框的三要素</code><ul>
+<li><em><strong>线宽度、线型、线颜色</strong></em><ul>
+<li>solid 实线</li>
+<li>dotted 虚线（圆）</li>
+<li>double 双边</li>
+<li>dashed 虚线（矩形）</li>
+</ul>
+</li>
+<li><code>border:1px solid #ff0</code></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+        <tag>CSS3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>过渡与动画</title>
+    <url>/2024/06/12/%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/</url>
+    <content><![CDATA[<h2 id="过渡（最低支持-IE10）"><a href="#过渡（最低支持-IE10）" class="headerlink" title="过渡（最低支持 IE10）"></a>过渡（最低支持 IE10）</h2><ol>
+<li>过渡的基本使用<ul>
+<li>transition 过渡属性是CSS3浓墨重彩的特性，过渡可以为一个元素在不同的样式之间变化自动添加“补间动画”</li>
+<li>优点：动画更细腻，内存开销小</li>
+<li>transition: width 1s linear 0s;<ul>
+<li>如果所有属性要参与过渡，可以写 all</li>
+</ul>
+</li>
+<li><em><strong>参数说明：什么属性需要过渡，动画时长，变化速度曲线，延迟时间</strong></em><br>  过渡的四个小属性<ul>
+<li>transition-duration 动画时间</li>
+<li>transition-property 哪些属性要过渡</li>
+<li>transition-timing-function 动画变化曲线（缓动效果）<ul>
+<li>ease</li>
+<li>linear</li>
+<li>ease-in</li>
+<li>ease-out</li>
+<li>ease-in-out</li>
+<li>贝塞尔曲线<ul>
+<li>可以通过 <a href="https://cubic-bezier.com/">https://cubic-bezier.com/</a> 这个网址自定义动画缓动参数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>transition-delay 延迟时间</li>
+</ul>
+</li>
+<li>哪些属性可以参与过渡？<ul>
+<li>所有数值属性都可以参与过渡，比如<ul>
+<li>width</li>
+<li>height</li>
+<li>left</li>
+<li>top</li>
+<li>border-radius</li>
+</ul>
+</li>
+<li>背景颜色和文字颜色都可以被过渡</li>
+<li>所有变形（包括2D和3D）都能被过渡</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>过渡的缓动效果（参考 transition-timing-function 属性）</li>
+</ol>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><ol>
+<li>动画的定义和调用<ul>
+<li><p>可以使用 @keyframes 来定义动画，keyframes 表示“关键帧”，在项目上线前，要补上@-webkit-这样的私有前缀</p>
+</li>
+<li><p>定义动画后，就可以用 animation 属性调用动画</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>动画的定义<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="keyword">@keyframes</span> r&#123;</span></span><br><span class="line"><span class="language-css">          <span class="selector-tag">from</span> &#123;</span></span><br><span class="line"><span class="language-css">              <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0</span>);</span></span><br><span class="line"><span class="language-css">          &#125;</span></span><br><span class="line"><span class="language-css">          <span class="selector-tag">to</span> &#123;</span></span><br><span class="line"><span class="language-css">              <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">          &#125;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.box1</span> &#123;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">animation</span>: r <span class="number">1s</span> linear <span class="number">0s</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>animation: r 1s ease 3s 3; </code></p>
+<ul>
+<li>动画的参数：动画的名称，执行的时间，动画效果，延迟时间，执行次数</li>
+<li>如果想永远设置执行就是 infinite 属性</li>
+<li>如果想让动画的第2、4、6…..（偶数次）自动逆向执行，那么要加上 alternate 参数即可</li>
+<li>如果想让动画停止在最后结束状态，那么要加上 forwards</li>
+</ul>
+</li>
+<li><p>多关键帧动画</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> changeColor &#123;</span><br><span class="line">     <span class="number">0%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: red;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="number">50%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: yellow;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="number">100%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: aqua;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -4792,80 +4866,6 @@ default void defaultMethod() &#123;
       </categories>
       <tags>
         <tag>Javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>过渡与动画</title>
-    <url>/2024/06/12/%E8%BF%87%E6%B8%A1%E4%B8%8E%E5%8A%A8%E7%94%BB/</url>
-    <content><![CDATA[<h2 id="过渡（最低支持-IE10）"><a href="#过渡（最低支持-IE10）" class="headerlink" title="过渡（最低支持 IE10）"></a>过渡（最低支持 IE10）</h2><ol>
-<li>过渡的基本使用<ul>
-<li>transition 过渡属性是CSS3浓墨重彩的特性，过渡可以为一个元素在不同的样式之间变化自动添加“补间动画”</li>
-<li>优点：动画更细腻，内存开销小</li>
-<li>transition: width 1s linear 0s;<ul>
-<li>如果所有属性要参与过渡，可以写 all</li>
-</ul>
-</li>
-<li><em><strong>参数说明：什么属性需要过渡，动画时长，变化速度曲线，延迟时间</strong></em><br>  过渡的四个小属性<ul>
-<li>transition-duration 动画时间</li>
-<li>transition-property 哪些属性要过渡</li>
-<li>transition-timing-function 动画变化曲线（缓动效果）<ul>
-<li>ease</li>
-<li>linear</li>
-<li>ease-in</li>
-<li>ease-out</li>
-<li>ease-in-out</li>
-<li>贝塞尔曲线<ul>
-<li>可以通过 <a href="https://cubic-bezier.com/">https://cubic-bezier.com/</a> 这个网址自定义动画缓动参数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>transition-delay 延迟时间</li>
-</ul>
-</li>
-<li>哪些属性可以参与过渡？<ul>
-<li>所有数值属性都可以参与过渡，比如<ul>
-<li>width</li>
-<li>height</li>
-<li>left</li>
-<li>top</li>
-<li>border-radius</li>
-</ul>
-</li>
-<li>背景颜色和文字颜色都可以被过渡</li>
-<li>所有变形（包括2D和3D）都能被过渡</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>过渡的缓动效果（参考 transition-timing-function 属性）</li>
-</ol>
-<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><ol>
-<li>动画的定义和调用<ul>
-<li><p>可以使用 @keyframes 来定义动画，keyframes 表示“关键帧”，在项目上线前，要补上@-webkit-这样的私有前缀</p>
-</li>
-<li><p>定义动画后，就可以用 animation 属性调用动画</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>动画的定义<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="keyword">@keyframes</span> r&#123;</span></span><br><span class="line"><span class="language-css">          <span class="selector-tag">from</span> &#123;</span></span><br><span class="line"><span class="language-css">              <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0</span>);</span></span><br><span class="line"><span class="language-css">          &#125;</span></span><br><span class="line"><span class="language-css">          <span class="selector-tag">to</span> &#123;</span></span><br><span class="line"><span class="language-css">              <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">          &#125;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.box1</span> &#123;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">animation</span>: r <span class="number">1s</span> linear <span class="number">0s</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>animation: r 1s ease 3s 3; </code></p>
-<ul>
-<li>动画的参数：动画的名称，执行的时间，动画效果，延迟时间，执行次数</li>
-<li>如果想永远设置执行就是 infinite 属性</li>
-<li>如果想让动画的第2、4、6…..（偶数次）自动逆向执行，那么要加上 alternate 参数即可</li>
-<li>如果想让动画停止在最后结束状态，那么要加上 forwards</li>
-</ul>
-</li>
-<li><p>多关键帧动画</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> changeColor &#123;</span><br><span class="line">     <span class="number">0%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: red;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="number">50%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: yellow;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="number">100%</span> &#123;</span><br><span class="line">         <span class="attribute">background-color</span>: aqua;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
       </tags>
   </entry>
 </search>
