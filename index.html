@@ -151,7 +151,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -162,7 +162,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -187,6 +187,496 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2025/08/11/Next-js-%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/11/Next-js-%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Next.js App Router 特殊文件全解（Next.js 15 最新）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-11 14:20:00 / 修改时间：18:20:07" itemprop="dateCreated datePublished" datetime="2025-08-11T14:20:00+08:00">2025-08-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Next-js-App-Router-特殊文件大全（Next-js-15-最新）"><a href="#Next-js-App-Router-特殊文件大全（Next-js-15-最新）" class="headerlink" title="Next.js App Router 特殊文件大全（Next.js 15 最新）"></a>Next.js App Router 特殊文件大全（Next.js 15 最新）</h1><p>在 <strong>Next.js App Router</strong> 中，有一些文件名具有特殊含义，只要放在 <code>app</code> 目录的特定位置，Next.js 就会自动识别并应用对应功能。<br>本文将系统整理这些特殊文件的<strong>作用</strong>、<strong>使用方式</strong>和<strong>注意事项</strong>。</p>
+<hr>
+<h2 id="1-page-tsx-page-jsx"><a href="#1-page-tsx-page-jsx" class="headerlink" title="1. page.tsx &#x2F; page.jsx"></a>1. <code>page.tsx</code> &#x2F; <code>page.jsx</code></h2><p><strong>作用</strong>：定义当前路由的页面内容。</p>
+<p><strong>使用方法</strong>：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Page</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项：-每个目录只能有一个-page-tsx。-必须是默认导出（default-export）。-与-layout-tsx-搭配可实现共享布局。"><a href="#注意事项：-每个目录只能有一个-page-tsx。-必须是默认导出（default-export）。-与-layout-tsx-搭配可实现共享布局。" class="headerlink" title="注意事项：- 每个目录只能有一个 page.tsx。- 必须是默认导出（default export）。- 与 layout.tsx 搭配可实现共享布局。"></a>注意事项：<br>- 每个目录只能有一个 page.tsx。<br>- 必须是默认导出（default export）。<br>- 与 layout.tsx 搭配可实现共享布局。</h2><h2 id="2-layout-tsx"><a href="#2-layout-tsx" class="headerlink" title="2. layout.tsx"></a>2. layout.tsx</h2><p><strong>作用</strong>： 定义当前路由及其子路由的共享布局。</p>
+<h2 id="使用方法：注意事项：-接收-children-属性。-可嵌套，形成分层布局。-元数据可在-layout-tsx-中配置，作用于所有子页面。"><a href="#使用方法：注意事项：-接收-children-属性。-可嵌套，形成分层布局。-元数据可在-layout-tsx-中配置，作用于所有子页面。" class="headerlink" title="使用方法：注意事项：- 接收 children 属性。- 可嵌套，形成分层布局。- 元数据可在 layout.tsx 中配置，作用于所有子页面。"></a><strong>使用方法：</strong><br><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">RootLayout</span>(<span class="params">&#123; children &#125;: &#123; children: React.ReactNode &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">header</span>&gt;</span>公共头部<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;children&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">footer</span>&gt;</span>公共底部<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>注意事项：<br>- 接收 children 属性。<br>- 可嵌套，形成分层布局。<br>- 元数据可在 layout.tsx 中配置，作用于所有子页面。</h2><h2 id="3-template-tsx"><a href="#3-template-tsx" class="headerlink" title="3. template.tsx"></a>3. template.tsx</h2><p><strong>作用</strong>： 类似布局，但不会缓存，每次导航都会重新渲染。</p>
+<p>使用场景：</p>
+<ul>
+<li>需要强制刷新 UI 状态的布局，如动画过渡页面。</li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Template</span>(<span class="params">&#123; children &#125;: &#123; children: React.ReactNode &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;fade&quot;</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意事项：</p>
+<ul>
+<li>与 layout.tsx 不同，template.tsx 不会在客户端保留状态。</li>
+<li>适合做页面切换动画或临时状态隔离。</li>
+</ul>
+<hr>
+<h2 id="4-not-found-tsx"><a href="#4-not-found-tsx" class="headerlink" title="4. not-found.tsx"></a>4. not-found.tsx</h2><h2 id="作用：-定义当前路由下的-404-页面。注意事项：-只影响所在目录及子路由。-可在代码中调用-notFound-来触发。"><a href="#作用：-定义当前路由下的-404-页面。注意事项：-只影响所在目录及子路由。-可在代码中调用-notFound-来触发。" class="headerlink" title="作用： 定义当前路由下的 404 页面。注意事项：- 只影响所在目录及子路由。- 可在代码中调用 notFound() 来触发。"></a><strong>作用</strong>： 定义当前路由下的 404 页面。<br><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">NotFound</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>页面不存在<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>注意事项：<br>- 只影响所在目录及子路由。<br>- 可在代码中调用 notFound() 来触发。</h2><h2 id="5-error-tsx"><a href="#5-error-tsx" class="headerlink" title="5. error.tsx"></a>5. error.tsx</h2><h2 id="作用：-捕获并渲染当前路由的运行时错误。注意事项：-必须是客户端组件（”use-client”）-reset-可重新渲染页面"><a href="#作用：-捕获并渲染当前路由的运行时错误。注意事项：-必须是客户端组件（”use-client”）-reset-可重新渲染页面" class="headerlink" title="作用： 捕获并渲染当前路由的运行时错误。注意事项：- 必须是客户端组件（”use client”）- reset() 可重新渲染页面"></a><strong>作用</strong>： 捕获并渲染当前路由的运行时错误。<br><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;use client&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Error</span>(<span class="params">&#123; error, reset &#125;: &#123; error: <span class="built_in">Error</span>; reset: () =&gt; <span class="built_in">void</span> &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>出错了<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> reset()&#125;&gt;重试<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>注意事项：<br>- 必须是客户端组件（”use client”）<br>- reset() 可重新渲染页面</h2><h3 id="6-loading-tsx"><a href="#6-loading-tsx" class="headerlink" title="6. loading.tsx"></a>6. loading.tsx</h3><h2 id="作用：-定义当前路由的加载状态-UI。注意事项：-会在页面加载或切换时自动显示。-适合与-流式渲染（Streaming）-搭配。"><a href="#作用：-定义当前路由的加载状态-UI。注意事项：-会在页面加载或切换时自动显示。-适合与-流式渲染（Streaming）-搭配。" class="headerlink" title="作用： 定义当前路由的加载状态 UI。注意事项：- 会在页面加载或切换时自动显示。- 适合与 流式渲染（Streaming） 搭配。"></a><strong>作用</strong>： 定义当前路由的加载状态 UI。<br><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Loading</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>加载中...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>注意事项：<br>- 会在页面加载或切换时自动显示。<br>- 适合与 流式渲染（Streaming） 搭配。</h2><h2 id="7-default-tsx"><a href="#7-default-tsx" class="headerlink" title="7. default.tsx"></a>7. default.tsx</h2><p><strong>作用</strong>： 用于并行路由中定义默认子路由。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Default</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这是默认视图<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意事项：</p>
+<ul>
+<li>仅用于并行路由 (folder) 机制。</li>
+</ul>
+<hr>
+<h2 id="8-route-ts-route-js"><a href="#8-route-ts-route-js" class="headerlink" title="8. route.ts &#x2F; route.js"></a>8. route.ts &#x2F; route.js</h2><p><strong>作用</strong>： 定义 API 路由（取代 pages&#x2F;api）。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">GET</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Response</span>.<span class="title function_">json</span>(&#123; <span class="attr">message</span>: <span class="string">&#x27;Hello API&#x27;</span> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意事项：</p>
+<ul>
+<li>可导出 GET, POST, PUT, DELETE 等方法。</li>
+<li>返回 Response 对象。</li>
+</ul>
+<hr>
+<h2 id="9-head-tsx"><a href="#9-head-tsx" class="headerlink" title="9. head.tsx"></a>9. head.tsx</h2><p><strong>作用</strong>： 自定义 HTML <head> 内容。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Head</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>我的网站<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;描述内容&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意事项：</p>
+<ul>
+<li>仅在当前路由及子路由生效。</li>
+<li>不推荐与 metadata API 混用。</li>
+</ul>
+<hr>
+<h2 id="10-metadata-API（非文件，但常用）"><a href="#10-metadata-API（非文件，但常用）" class="headerlink" title="10. metadata API（非文件，但常用）"></a>10. metadata API（非文件，但常用）</h2><h2 id="作用：-配置页面-SEO-信息。"><a href="#作用：-配置页面-SEO-信息。" class="headerlink" title="作用： 配置页面 SEO 信息。"></a><strong>作用</strong>： 配置页面 SEO 信息。<br><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> metadata = &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;产品详情&#x27;</span>,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&#x27;这是产品详情页&#x27;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></h2><h2 id="11-opengraph-image-tsx-twitter-image-tsx"><a href="#11-opengraph-image-tsx-twitter-image-tsx" class="headerlink" title="11. opengraph-image.tsx &#x2F; twitter-image.tsx"></a>11. opengraph-image.tsx &#x2F; twitter-image.tsx</h2><p><strong>作用</strong>： 动态生成社交分享图片。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ImageResponse</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next/og&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> size = &#123; <span class="attr">width</span>: <span class="number">1200</span>, <span class="attr">height</span>: <span class="number">630</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Image</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ImageResponse</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>分享图<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>, &#123; <span class="attr">width</span>: <span class="number">1200</span>, <span class="attr">height</span>: <span class="number">630</span> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="12-icon-tsx-apple-icon-tsx-favicon-ico"><a href="#12-icon-tsx-apple-icon-tsx-favicon-ico" class="headerlink" title="12.  icon.tsx &#x2F; apple-icon.tsx &#x2F; favicon.ico"></a>12.  icon.tsx &#x2F; apple-icon.tsx &#x2F; favicon.ico</h2><h2 id="作用：-定义网站图标。"><a href="#作用：-定义网站图标。" class="headerlink" title="作用： 定义网站图标。"></a><strong>作用</strong>： 定义网站图标。<br><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Icon</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">svg</span>&gt;</span>...<span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></h2><h2 id="13-manifest-webmanifest"><a href="#13-manifest-webmanifest" class="headerlink" title="13. manifest.webmanifest"></a>13. manifest.webmanifest</h2><p><strong>作用</strong>： PWA 应用清单。</p>
+<p>⸻</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>page.tsx</td>
+<td>页面内容</td>
+</tr>
+<tr>
+<td>layout.tsx</td>
+<td>共享布局</td>
+</tr>
+<tr>
+<td>template.tsx</td>
+<td>非缓存布局</td>
+</tr>
+<tr>
+<td>not-found.tsx</td>
+<td>404 页面</td>
+</tr>
+<tr>
+<td>error.tsx</td>
+<td>错误处理</td>
+</tr>
+<tr>
+<td>loading.tsx</td>
+<td>加载状态</td>
+</tr>
+<tr>
+<td>default.tsx</td>
+<td>并行路由默认页</td>
+</tr>
+<tr>
+<td>route.ts</td>
+<td>API 路由</td>
+</tr>
+<tr>
+<td>head.tsx</td>
+<td>自定义 head</td>
+</tr>
+<tr>
+<td>opengraph-image.tsx</td>
+<td>分享图片</td>
+</tr>
+<tr>
+<td>icon.tsx</td>
+<td>网站图标</td>
+</tr>
+<tr>
+<td>manifest.webmanifest</td>
+<td>PWA 配置</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2025/08/11/Next-js-%E9%93%BE%E6%8E%A5%E5%92%8C%E5%AF%BC%E8%88%AA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/11/Next-js-%E9%93%BE%E6%8E%A5%E5%92%8C%E5%AF%BC%E8%88%AA/" class="post-title-link" itemprop="url">Next.js 链接与导航详解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-11 11:33:20 / 修改时间：18:06:51" itemprop="dateCreated datePublished" datetime="2025-08-11T11:33:20+08:00">2025-08-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Next-js-链接与导航"><a href="#Next-js-链接与导航" class="headerlink" title="Next.js 链接与导航"></a>Next.js 链接与导航</h1><p>在 Next.js 中，导航分为两大类：</p>
+<ol>
+<li><strong>声明式导航</strong>（通过 <code>&lt;Link&gt;</code> 组件）</li>
+<li><strong>命令式导航</strong>（通过 <code>useRouter</code> API）</li>
+</ol>
+<hr>
+<h2 id="1-声明式导航"><a href="#1-声明式导航" class="headerlink" title="1. 声明式导航"></a>1. 声明式导航</h2><p>使用 <code>next/link</code> 实现页面跳转：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Link</span> <span class="keyword">from</span> <span class="string">&#x27;next/link&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 普通跳转</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">Link</span> <span class="attr">href</span>=<span class="string">&quot;/blog&quot;</span>&gt;</span>Blog<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换当前历史记录（不会新增 history 记录）</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">Link</span> <span class="attr">href</span>=<span class="string">&quot;/blog&quot;</span> <span class="attr">replace</span>&gt;</span>Blog<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="2-获取当前路径"><a href="#2-获取当前路径" class="headerlink" title="2. 获取当前路径"></a>2. 获取当前路径</h2><h2 id="在客户端组件中，可以用-usePathname-获取当前路由路径："><a href="#在客户端组件中，可以用-usePathname-获取当前路由路径：" class="headerlink" title="在客户端组件中，可以用 usePathname 获取当前路由路径："></a>在客户端组件中，可以用 usePathname 获取当前路由路径：<br><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;use client&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; usePathname &#125; <span class="keyword">from</span> <span class="string">&#x27;next/navigation&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">PathInfo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> pathname = <span class="title function_">usePathname</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前路径：&#123;pathname&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></h2><h2 id="3-参数（params）与搜索参数（searchParams）"><a href="#3-参数（params）与搜索参数（searchParams）" class="headerlink" title="3. 参数（params）与搜索参数（searchParams）"></a>3. 参数（params）与搜索参数（searchParams）</h2><p>在 Next.js 的 page.tsx 中，可以通过 props 获取路由参数和查询参数。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 服务端组件写法</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">Article</span>(<span class="params">&#123;</span></span><br><span class="line"><span class="params">  params,</span></span><br><span class="line"><span class="params">  searchParams,</span></span><br><span class="line"><span class="params">&#125;: &#123;</span></span><br><span class="line"><span class="params">  params: <span class="built_in">Promise</span>&lt;&#123; articleId: <span class="built_in">string</span> &#125;&gt;;</span></span><br><span class="line"><span class="params">  searchParams: <span class="built_in">Promise</span>&lt;&#123; lang?: <span class="string">&#x27;zh&#x27;</span> | <span class="string">&#x27;en&#x27;</span> &#125;&gt;;</span></span><br><span class="line"><span class="params">&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; articleId &#125; = <span class="keyword">await</span> params;</span><br><span class="line">  <span class="keyword">const</span> &#123; lang = <span class="string">&#x27;en&#x27;</span> &#125; = <span class="keyword">await</span> searchParams;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>文章 ID: &#123;articleId&#125;，语言: &#123;lang&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端组件写法</span></span><br><span class="line"><span class="string">&#x27;use client&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; use &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Article</span>(<span class="params">&#123;</span></span><br><span class="line"><span class="params">  params,</span></span><br><span class="line"><span class="params">  searchParams,</span></span><br><span class="line"><span class="params">&#125;: &#123;</span></span><br><span class="line"><span class="params">  params: <span class="built_in">Promise</span>&lt;&#123; articleId: <span class="built_in">string</span> &#125;&gt;;</span></span><br><span class="line"><span class="params">  searchParams: <span class="built_in">Promise</span>&lt;&#123; lang?: <span class="string">&#x27;zh&#x27;</span> | <span class="string">&#x27;en&#x27;</span> &#125;&gt;;</span></span><br><span class="line"><span class="params">&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; articleId &#125; = <span class="title function_">use</span>(params);</span><br><span class="line">  <span class="keyword">const</span> &#123; lang = <span class="string">&#x27;en&#x27;</span> &#125; = <span class="title function_">use</span>(searchParams);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>文章 ID: &#123;articleId&#125;，语言: &#123;lang&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h6 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h6><ul>
+<li>params<br>动态路由参数，如 &#x2F;articles&#x2F;123 中的 articleId&#x3D;123</li>
+<li>searchParams<br>查询参数，如 &#x2F;articles&#x2F;123?lang&#x3D;zh 中的 lang&#x3D;zh</li>
+<li><strong>注意</strong>：</li>
+<li>page.tsx 可以访问 params 和 searchParams</li>
+<li>layout.tsx 只能访问 params，无法访问 searchParams</li>
+</ul>
+<hr>
+<h2 id="4-命令式导航（程序化导航）"><a href="#4-命令式导航（程序化导航）" class="headerlink" title="4. 命令式导航（程序化导航）"></a>4. 命令式导航（程序化导航）</h2><p>在客户端组件中使用 useRouter 实现导航：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;use client&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; useRouter &#125; <span class="keyword">from</span> <span class="string">&#x27;next/navigation&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Navigator</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> router = <span class="title function_">useRouter</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> router.push(&#x27;/path&#x27;)&#125;&gt;跳转<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> router.replace(&#x27;/path&#x27;)&#125;&gt;替换跳转<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> router.back()&#125;&gt;返回<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> router.refresh()&#125;&gt;刷新<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>常用方法</strong></p>
+<ul>
+<li>router.push(path)：跳转到新路径</li>
+<li>router.replace(path)：替换当前路径（不新增历史记录）</li>
+<li>router.back()：返回上一页</li>
+<li>router.refresh()：刷新当前页面数据</li>
+</ul>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>静态跳转 用 <Link></li>
+<li>动态跳转 用 useRouter</li>
+<li>params 获取动态路由参数</li>
+<li>searchParams 获取查询参数（仅在页面可用）</li>
+<li>布局组件（layout）无法获取查询参数</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2025/08/11/Next-js-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/11/Next-js-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/" class="post-title-link" itemprop="url">Next.js 搜索引擎优化（SEO）——元数据配置详解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-11 10:51:24 / 修改时间：18:00:23" itemprop="dateCreated datePublished" datetime="2025-08-11T10:51:24+08:00">2025-08-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="路由元数据（Metadata-API）"><a href="#路由元数据（Metadata-API）" class="headerlink" title="路由元数据（Metadata API）"></a>路由元数据（Metadata API）</h1><p>Next.js 中的 <strong>元数据 API</strong> 是一个非常强大的功能，它允许我们为每个页面定义元数据，从而在被 <strong>搜索引擎索引</strong> 或 <strong>社交平台分享</strong> 时，有更好的展示效果。</p>
+<hr>
+<h2 id="在-Next-js-中使用元数据的两种方式"><a href="#在-Next-js-中使用元数据的两种方式" class="headerlink" title="在 Next.js 中使用元数据的两种方式"></a>在 Next.js 中使用元数据的两种方式</h2><p>你可以在 <code>layout.tsx</code> 或 <code>page.tsx</code> 中定义元数据，方式有两种：</p>
+<ol>
+<li><strong>静态元数据对象</strong></li>
+<li><strong>动态的 <code>generateMetadata</code> 函数</strong></li>
+</ol>
+<hr>
+<h2 id="元数据规则"><a href="#元数据规则" class="headerlink" title="元数据规则"></a>元数据规则</h2><ul>
+<li><code>layout.tsx</code> 和 <code>page.tsx</code> <strong>都可以</strong>导出元数据：<ul>
+<li>布局元数据（layout）会应用到该布局下的所有页面</li>
+<li>页面元数据（page）只应用于该页面</li>
+</ul>
+</li>
+<li>元数据遵循 <strong>自上而下</strong> 的顺序，从根布局开始</li>
+<li>当多个层级都定义了相同字段时，会 <strong>合并</strong> 元数据：<ul>
+<li><strong>页面元数据</strong> 的优先级高于 <strong>布局元数据</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="静态元数据对象示例"><a href="#静态元数据对象示例" class="headerlink" title="静态元数据对象示例"></a>静态元数据对象示例</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// page.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> metadata = &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;首页&#x27;</span>,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&#x27;这是网站的首页描述&#x27;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="动态生成元数据示例"><a href="#动态生成元数据示例" class="headerlink" title="动态生成元数据示例"></a>动态生成元数据示例</h6><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// page.tsx</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Metadata</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">generateMetadata</span>(<span class="params">&#123; params &#125;: Props</span>): <span class="title class_">Promise</span>&lt;<span class="title class_">Metadata</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> id = params.<span class="property">productId</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">`产品 <span class="subst">$&#123;id&#125;</span>`</span>,</span><br><span class="line">    <span class="attr">description</span>: <span class="string">`这是产品 <span class="subst">$&#123;id&#125;</span> 的详情页`</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ol>
+<li>同一路由 不能同时导出 metadata 对象和 generateMetadata 函数</li>
+<li>客户端组件（带 “use client”）无法使用元数据 API</li>
+</ol>
+<h3 id="元数据合并规则"><a href="#元数据合并规则" class="headerlink" title="元数据合并规则"></a>元数据合并规则</h3><p>假设：</p>
+<ul>
+<li>根布局 app&#x2F;layout.tsx：<ul>
+<li>export const metadata &#x3D; { title: ‘网站’ };</li>
+</ul>
+</li>
+<li>页面 app&#x2F;about&#x2F;page.tsx：<ul>
+<li>export const metadata &#x3D; { title: ‘关于我们’ };</li>
+</ul>
+</li>
+</ul>
+<p>最终页面标题为 “关于我们”，因为 页面元数据优先级更高。</p>
+<hr>
+<h3 id="元数据-title-字段的高级用法"><a href="#元数据-title-字段的高级用法" class="headerlink" title="元数据 title 字段的高级用法"></a>元数据 title 字段的高级用法</h3><p><strong>title 可以是 字符串 或 对象：</strong></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Metadata</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">metadata</span>: <span class="title class_">Metadata</span> = &#123;</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">default</span>: <span class="string">&#x27;默认标题&#x27;</span>,         <span class="comment">// 没有设置时使用</span></span><br><span class="line">    <span class="attr">template</span>: <span class="string">&#x27;%s | 安全生产&#x27;</span>,   <span class="comment">// 模板格式：页面标题 | 安全生产</span></span><br><span class="line">    <span class="attr">absolute</span>: <span class="string">&#x27;&#x27;</span>,               <span class="comment">// 绝对覆盖，优先级最高</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&#x27;页面描述内容&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>静态或动态二选一</li>
+<li>页面元数据优先级最高</li>
+<li>元数据从根到叶子合并</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2025/08/11/Next-js-%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/11/Next-js-%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">Next.js 布局</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-11 10:29:26 / 修改时间：17:52:48" itemprop="dateCreated datePublished" datetime="2025-08-11T10:29:26+08:00">2025-08-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="基础布局"><a href="#基础布局" class="headerlink" title="基础布局"></a>基础布局</h2><p>布局是在应用程序的多个页面之间共享的 UI。  <strong><code>layout.tsx</code></strong> 文件会用来包裹页面的内容，它接受一个 <code>children</code> 属性，并在布局中渲染。</p>
+<p><strong>根布局</strong>的示例代码：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/layout.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> metadata = &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;Next.js&#x27;</span>,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&#x27;Generated by Next.js&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">RootLayout</span>(<span class="params">&#123;</span></span><br><span class="line"><span class="params">  children,</span></span><br><span class="line"><span class="params">&#125;: &#123;</span></span><br><span class="line"><span class="params">  children: React.ReactNode;</span></span><br><span class="line"><span class="params">&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">body</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="文件结构示例："><a href="#文件结构示例：" class="headerlink" title="文件结构示例："></a>文件结构示例：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app</span><br><span class="line"> ├─ layout.<span class="property">tsx</span>       # 根布局</span><br><span class="line"> └─ about</span><br><span class="line">     └─ page.<span class="property">tsx</span>     # about 页面</span><br></pre></td></tr></table></figure>
+<p>渲染流程：<br>about&#x2F;page.tsx 内容 → app&#x2F;layout.tsx 布局中渲染</p>
+<h2 id="嵌套布局"><a href="#嵌套布局" class="headerlink" title="嵌套布局"></a>嵌套布局</h2><p>如果在某个子目录（如 about）中创建一个 layout.tsx，<br>则该布局会只作用于该目录及其子路由。</p>
+<p>显示层级：</p>
+<p><code>about/page.tsx → about/layout.tsx → app/layout.tsx</code></p>
+<p>这样可以为某些页面单独定制布局，而不影响全局。</p>
+<h2 id="多个根布局"><a href="#多个根布局" class="headerlink" title="多个根布局"></a>多个根布局</h2><p>Next.js 支持 路由分组 (Route Groups) 来实现多个根布局。<br>    1.	创建一个路由分组目录（名称用括号括起来，如 (admin)）<br>    2.	在分组目录下添加自己的 layout.tsx，该布局将只作用于分组内的页面。</p>
+<p>示例结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">app</span><br><span class="line"> ├─ (admin)</span><br><span class="line"> │   ├─ layout.tsx     # admin 专属布局</span><br><span class="line"> │   └─ dashboard</span><br><span class="line"> │       └─ page.tsx</span><br><span class="line"> └─ (shop)</span><br><span class="line">     ├─ layout.tsx     # shop 专属布局</span><br><span class="line">     └─ products</span><br><span class="line">         └─ page.tsx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这样 (admin) 和 (shop) 互不干扰，各自拥有不同的根布局。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>   layout.tsx 用于定义布局，接收 children。</li>
+<li>   根布局放在 app&#x2F;layout.tsx。</li>
+<li>   嵌套布局放在子目录中，只影响该目录。</li>
+<li>   使用路由分组可实现多个独立的根布局。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1297,712 +1787,6 @@
 <li>继承的实例、有哪些继承的方法？</li>
 <li>使用面向对象实现小案例</li>
 <li>熟练掌握 Math、Date等 JS 内置对象</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/face1.png">
-      <meta itemprop="name" content="之乎泽野">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽野之乡">
-      <meta itemprop="description" content="积跬步，至千里">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 泽野之乡">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/15/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/" class="post-title-link" itemprop="url">流程控制语句</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-15 22:44:38" itemprop="dateCreated datePublished" datetime="2024-06-15T22:44:38+08:00">2024-06-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><ol>
-<li>if 语句的基本使用 <ul>
-<li>如果…..就…..否则</li>
-</ul>
-</li>
-<li>if elseif 多条件分支<ul>
-<li>else if() 条件分支“暗含”不符合之前的所有条件，要深刻理解什么叫“否则如果”</li>
-</ul>
-</li>
-<li>if 语句算法题</li>
-<li>switch 语句<ul>
-<li>用途：当一个变量被分类讨论的情形</li>
-</ul>
-</li>
-<li>三元运算符<ul>
-<li>条件表达式 ? 表达式1 : 表达式2</li>
-<li>三元运算的用途：根据某个条件是否成立，在两个不同值中选择变量的值</li>
-</ul>
-</li>
-</ol>
-<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><ol>
-<li>for 循环语句<ul>
-<li>循环通常需要三个参数：起始值、结束值和步长。这些参数可以用for循环来指定。</li>
-</ul>
-</li>
-<li>for 循环算法题<ul>
-<li><em><strong>for循环有明确的范围，while循环没有明确的范围</strong></em></li>
-</ul>
-</li>
-<li>while 循环语句<ul>
-<li>while 语句 也是一种循环结构，是一种“不定范围”循环，和for循环各有不同的勇武之地</li>
-<li>几乎所有编程语言，都提供了for和while语句</li>
-<li><em><strong>while 语句事先不指定循环开始、结束范围，只要测试条件满足，就一直执行循环体</strong></em></li>
-<li>while 循环没有显式定义循环变量，必须自己在while循环外先定义好循环变量，有时甚至可以没有循环变量</li>
-<li>循环体内的语句，必须使循环测试条件趋向不成立，否侧会死循环。</li>
-<li>while 循环，while 是 “当”的意思。</li>
-<li>更适合while循环的场景<ul>
-<li>寻找最小满足n²&gt;456789的整数n</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>break 和 continue <ul>
-<li>break 表示立即终止循环，它只能用在循环语句中，在for循环和while循环中都可以使用</li>
-<li>continue 用于 跳过循环中的一个迭代，并继续执行循环中的下一个迭代。for循环更经常使用continue</li>
-</ul>
-</li>
-<li>do while 语句<ul>
-<li>是一种“后测试循环语句”，它不同于for循环和while循环每次都是“先测试条件是否满足，然后执行循环体”，do-while循环是“先执行循环体，再测试条件是否满足”</li>
-<li>do { 循环体 } while (循环执行条件)</li>
-</ul>
-</li>
-<li>while 语句算法题</li>
-</ol>
-<h2 id="初识算法"><a href="#初识算法" class="headerlink" title="初识算法"></a>初识算法</h2><ol>
-<li>什么是算法<ul>
-<li>指的是解题方案的准确而完整的描述。是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制，也就是说，能够对一定规范的输入，在有限的实际内获得所要求的的输出。</li>
-<li>算法就是把一个问题，拆解成计算机能够一步一步执行的步骤。</li>
-<li>计算机的流程控制语句：顺序执行，选择语句，循环语句。</li>
-<li>优秀算法的要求<ul>
-<li>正确性</li>
-<li>健壮性</li>
-<li>可读性</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>累加器和累乘器</li>
-<li>穷举法</li>
-<li>综合算法题目</li>
-<li>随机数函数<ul>
-<li>得到[a,b]区间的整数，公式：</li>
-<li><code>parseInt(Math.random()* (b-a + 1)) + a</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="如何拆位"><a href="#如何拆位" class="headerlink" title="如何拆位"></a>如何拆位</h2><ol>
-<li>数学方法<ul>
-<li><code>百位是原数字除以100取整  Math.floor(n/100)</code></li>
-<li><code>十位是原数字除以10取整，再与10求模  Math.floor(n/10) % 10</code></li>
-<li><code>个位是原数字与10求模  n % 10</code></li>
-</ul>
-</li>
-<li>字符串方法<ul>
-<li>直接将原数字 变为字符串，然后再用charAt()方法得到每个数位的值</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/15/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%BB%B6%E6%97%B6%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/face1.png">
-      <meta itemprop="name" content="之乎泽野">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽野之乡">
-      <meta itemprop="description" content="积跬步，至千里">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 泽野之乡">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/15/%E5%AE%9A%E6%97%B6%E5%99%A8%E5%92%8C%E5%BB%B6%E6%97%B6%E5%99%A8/" class="post-title-link" itemprop="url">定时器和延时器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-15 22:34:38" itemprop="dateCreated datePublished" datetime="2024-06-15T22:34:38+08:00">2024-06-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><ol>
-<li>setInterval()  函数可以重复调用一个函数，在每次调用之间具有固定的时间间隔<ul>
-<li>第一个参数是函数</li>
-<li>第二个参数是间隔时间，以毫秒为单位，1000毫秒是1秒</li>
-<li>函数可以接受3，4….个参数，它们将按照顺序传入函数</li>
-<li>具名函数也可以传入serInterval （有名称的函数），但是不能加上括号，不加括号说明传入是 函数，加括号说明是传入执行体（会立即执行，起不到定时执行的效果）</li>
-</ul>
-</li>
-</ol>
-<h2 id="清除定时器"><a href="#清除定时器" class="headerlink" title="清除定时器"></a>清除定时器</h2><ol>
-<li>clearInterval() 函数可以清除定时器，入参传入定时器名称</li>
-</ol>
-<h2 id="延时器"><a href="#延时器" class="headerlink" title="延时器"></a>延时器</h2><ol>
-<li>setTimeout() 函数可以设置一个延时器，当指定时间到了之后，会执行函数一次，不会重复执行</li>
-<li>clearTimeout() 函数可以清除延时器</li>
-</ol>
-<h2 id="初步认识异步语句"><a href="#初步认识异步语句" class="headerlink" title="初步认识异步语句"></a>初步认识异步语句</h2><ol>
-<li>setInterval 和 setTimeout 是两个异步语句</li>
-<li>异步（asynchronous）: 不会阻塞CPU继续执行其它语句，当异步完成时，会执行“回调函数”（callback）</li>
-</ol>
-<h2 id="使用定时器实现动画"><a href="#使用定时器实现动画" class="headerlink" title="使用定时器实现动画"></a>使用定时器实现动画</h2><ol>
-<li>使用定时器实现动画较为不便：<ul>
-<li>1、不方便根据动画总时间计算步长</li>
-<li>2、运动方向要设置正负</li>
-<li>3、多种运动进行叠加较为困难（比如一个放下一边移动一边变为圆形）</li>
-</ul>
-</li>
-</ol>
-<h2 id="JS和CSS3结合实现动画"><a href="#JS和CSS3结合实现动画" class="headerlink" title="JS和CSS3结合实现动画"></a>JS和CSS3结合实现动画</h2><ol>
-<li>CSS3的transition过渡属性可以实现动画</li>
-<li>JavaScript可以使用css3的transtion属性轻松实现元素动画</li>
-<li>JS和CSS3结合实现动画规避了定时器制作动画的缺点</li>
-</ol>
-<h2 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h2><ol>
-<li>一个函数执行一次后，只有大于设定的执行周期后才允许执行第二次</li>
-<li>函数节流非常容易实现，只需要借助setTimeout()延时器</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/15/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%AC%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/face1.png">
-      <meta itemprop="name" content="之乎泽野">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽野之乡">
-      <meta itemprop="description" content="积跬步，至千里">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 泽野之乡">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/15/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%AC%A6/" class="post-title-link" itemprop="url">表达式与操作符</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-15 21:21:13" itemprop="dateCreated datePublished" datetime="2024-06-15T21:21:13+08:00">2024-06-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="JS-基本表达式"><a href="#JS-基本表达式" class="headerlink" title="JS 基本表达式"></a>JS 基本表达式</h2><ol>
-<li>算数表达式<ul>
-<li><code>+ 加</code><ul>
-<li>加号有“加法”和“连字符”两种作用</li>
-<li>如果加号两边操作数都是数字，则为“加法”，否则为连字符</li>
-</ul>
-</li>
-<li><code>- 减</code></li>
-<li><code>* 乘</code></li>
-<li><code>/ 除</code></li>
-<li><code>% 取余</code><ul>
-<li>a % b 表示求 a 除以 b 的余数，它不关心整数部分，只关心余数</li>
-</ul>
-</li>
-<li>默认情况，乘除法的优先级要高于加法和减法；必要时可以使用<strong>圆括号</strong>来改变运算的顺序</li>
-<li>隐式类型转换<ul>
-<li>如果参与数学运算的某操作数不是数字型，那么Javascript会自动将此操作数转换为数字型（不包括 加号 运算符）</li>
-<li><code>例：3 * &quot;4&quot; //  12</code></li>
-<li>隐式转换的本质是内部调用 Number() 函数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>关系表达式<ul>
-<li>大于 &gt;</li>
-<li>小于 &lt;</li>
-<li>大于或等于 &gt;&#x3D;</li>
-<li>小于或等于 &lt;&#x3D;</li>
-<li>等于 &#x3D;&#x3D;</li>
-<li>不等于 !&#x3D;</li>
-<li>全等于 &#x3D;&#x3D;&#x3D;</li>
-<li>不全等于 !&#x3D;&#x3D;</li>
-<li>null 和 undefined 用 &#x3D;&#x3D; 进行比较涉及隐式强制类型转换，ES5规范中规定<ul>
-<li>如果 x 为null ，y为 undefined，则结果为true</li>
-<li>如果x为undefined,y为null，则结果为true</li>
-<li>null 和 undefined 用 &#x3D;&#x3D;&#x3D; 比较时结果为false，是因为类型不同</li>
-<li>typeof null -&gt; object</li>
-<li>typeof undefined -&gt; undefined</li>
-</ul>
-</li>
-<li>NaN 不自等<ul>
-<li>如何判断某个值为 NaN ，isNaN</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>逻辑表达式<ul>
-<li>或<ul>
-<li>|| 有真就真</li>
-</ul>
-</li>
-<li>与<ul>
-<li>&amp;&amp;  都真才真</li>
-</ul>
-</li>
-<li>非<ul>
-<li>! 表示 “非”，也可以称为“置反运算”</li>
-<li>! 是一个“单目运算符”，只需要一个操作数</li>
-<li>置反运算的结果一定是布尔值</li>
-<li><em><strong>!! 两个叹号是将这个值的相应布尔值展现出来</strong></em></li>
-</ul>
-</li>
-<li>短路计算（面试）<ul>
-<li><code>例：3 &amp;&amp; 6 ，结果为 6，  3 || 6 ，结果为 3</code></li>
-</ul>
-</li>
-<li><strong>逻辑运算顺序的优先级是： 非 -&gt;  与 -&gt; 或</strong></li>
-</ul>
-</li>
-<li>赋值表达式<ul>
-<li>赋值  &#x3D;</li>
-<li>快捷赋值<ul>
-<li>+&#x3D;</li>
-<li>-&#x3D;</li>
-<li>*&#x3D;</li>
-<li>&#x2F;&#x3D;</li>
-<li>%&#x3D;</li>
-</ul>
-</li>
-<li>自增运算<ul>
-<li>++</li>
-<li>a++ 先用再加，++a 先加再用</li>
-<li><strong>面试题：var a &#x3D; 3, b&#x3D;4; alert(a++ + b++ + ++a + ++b)</strong></li>
-</ul>
-</li>
-<li>自减运算 –</li>
-</ul>
-</li>
-<li>综合表达式<ul>
-<li><strong>运算顺序：非运算 -&gt; 数学运算 -&gt; 关系运算 -&gt; 逻辑运算</strong></li>
-<li>变量的范围表示<ul>
-<li>例如：验证变量 a 是否介于5到12之间。num1 &gt;&#x3D; 5 &amp;&amp; num1 &lt;&#x3D; 12</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="表达式和运算符"><a href="#表达式和运算符" class="headerlink" title="表达式和运算符"></a>表达式和运算符</h2><ol>
-<li>5  +  3<ul>
-<li>表达式 &#x3D; 操作数 运算符 操作数</li>
-</ul>
-</li>
-</ol>
-<h2 id="有关-IEEE754"><a href="#有关-IEEE754" class="headerlink" title="有关 IEEE754"></a>有关 IEEE754</h2><ol>
-<li>Javascript 使用了 IEEE754 二进制浮点数算数标准，这会使一些个别的小数计算产生“丢失精度”问题</li>
-<li>解决方法：在进行小数运算时候，要调用数字的toFixed()方法保留指定的小数位数</li>
-<li>幂和开根号<ul>
-<li>Javascript 没有提供幂计算、开根号的运算符。需要使用Math对象的相关方法进行计算。</li>
-<li>Math.pow(2,3) 幂计算，2的3次方</li>
-<li>Math.sqrt(81)  开根号运算符</li>
-<li>向上取整  Math.ceil()</li>
-<li>向下取整  Math.floor()</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2024/06/14/Javascript-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/face1.png">
-      <meta itemprop="name" content="之乎泽野">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="泽野之乡">
-      <meta itemprop="description" content="积跬步，至千里">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 泽野之乡">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/14/Javascript-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">Javascript 基本数据类型</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-14 19:41:46" itemprop="dateCreated datePublished" datetime="2024-06-14T19:41:46+08:00">2024-06-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-26 20:25:30" itemprop="dateModified" datetime="2024-09-26T20:25:30+08:00">2024-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="数据类型简介和检测"><a href="#数据类型简介和检测" class="headerlink" title="数据类型简介和检测"></a>数据类型简介和检测</h2><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ol>
-<li>null 类型<ul>
-<li>表示“空”，它是“空对象”</li>
-<li>当我们需要将对象销毁、数组销毁或者删除事件监听时，通常将它们设置为null<ul>
-<li><code>box.click = null</code></li>
-</ul>
-</li>
-<li><strong>使用 typeof 检测 null 值，结果是object，这点尤其要注意</strong></li>
-<li>类型和typeof 检测结果并不是一一对应的，比如数组用typeof检测出来的结果也是object</li>
-</ul>
-</li>
-<li>undefined 类型<ul>
-<li>一个没有被复制的变量的默认值是undefined，而undefine的类型也是undefined</li>
-<li>即：undefined又是值，又是一种类型，这种类型只有它自己一个值</li>
-</ul>
-</li>
-<li>布尔类型  （Boolean）<ul>
-<li>布尔型值只有两个：true 和 fasle，分别表示真和假</li>
-</ul>
-</li>
-<li>字符串类型（String）<ul>
-<li>字符串要用引号包裹，双引号或者单引号均可</li>
-<li>加号可以用来拼接多个字符串</li>
-<li>空字符串，直接写闭合的引号即可</li>
-<li>字符串的 length 属性表示字符串的长度</li>
-<li>字符串的常用方法<ul>
-<li>charAt()<ul>
-<li>得到指定位置字符</li>
-</ul>
-</li>
-<li>substring()<ul>
-<li>提取子串<ul>
-<li>substring(a,b) 方法得到从 a 开始到b结束（不包含b处）的子串</li>
-<li>如果省略第二个参数，返回字符串一直到字符串的结尾</li>
-<li>substring(a,b) 中，a 可以大于 b ，数字顺序将自动调整为小数在前</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>substr()<ul>
-<li>提取子串<ul>
-<li>substr(a,b) 方法得到从 a 开始的 长度为b的子串<ul>
-<li>子串的长度而不是编号</li>
-</ul>
-</li>
-<li>substr(a,b) 方法 b 参数可以省略，表示到文档的结尾</li>
-<li>substr(a,b) 方法中，a可以是负数，表示倒数位置</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>slice()<ul>
-<li>提取子串<ul>
-<li>slice(a,b) 方法得到从 a 开始到b结束（不包含b处）的子串</li>
-<li>slice(a,b) 方法 a 参数可以是负数</li>
-<li>slice(a,b) 方法 a 参数必须小于b</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>toUpperCase()<ul>
-<li>将字符串变为大写</li>
-</ul>
-</li>
-<li>toLowerCase()<ul>
-<li>将字符串变为小写</li>
-</ul>
-</li>
-<li>indexOf()<ul>
-<li>检索字符串<ul>
-<li>返回某个字符串值在首次出现的位置</li>
-<li>如果检测的字符串值没有出现，则返回-1</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>数字类型（Number）<ul>
-<li>所有数字不分大小、不分整浮、不分正负、都是数字类型</li>
-<li>小数中，零是可以省略的</li>
-<li>较大数或较小数（绝对值比较小），可以写成科学计数法<ul>
-<li>例：3e8、3e-4</li>
-</ul>
-</li>
-<li>不同进制的数字<ul>
-<li>二进制数值以0b开头  例：0b10</li>
-<li>八进制数值以0开头  例：017</li>
-<li>十六进制以0x开头  例如：0x156</li>
-</ul>
-</li>
-<li>一个特殊的数字型值NaN<ul>
-<li>NaN是英语 “not a number” 的 意思，即“不是一个数”，但它是一个数字类型的值</li>
-<li>typeof NaN    &#x2F;&#x2F; number</li>
-<li>0&#x2F;0 的结果就是NaN，事实上，在数学运算中，若结果不能得到数字，其结果往往都是NaN</li>
-<li>NaN有一个“奇怪”的性质，不自等。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="数据类型的转换"><a href="#数据类型的转换" class="headerlink" title="数据类型的转换"></a>数据类型的转换</h2><ol>
-<li>其它值 -&gt; 数值<ul>
-<li>Number() 系统内置的构造函数</li>
-<li>parseInt() 函数</li>
-<li>parseFloat() 函数</li>
-</ul>
-</li>
-<li>其它值 -&gt; 字符串<ul>
-<li>String() 函数 系统内置的构造函数</li>
-<li>toString() 方法，几乎所有的值都有该方法</li>
-<li><em>当数值直接调用 toString() 方法的时候，要加上括号 例：(5).toString()</em></li>
-</ul>
-</li>
-<li>其它值 -&gt; 布尔值<ul>
-<li>Boolean() 函数</li>
-</ul>
-</li>
-</ol>
-<h2 id="复杂数据类型简介"><a href="#复杂数据类型简介" class="headerlink" title="复杂数据类型简介"></a>复杂数据类型简介</h2><ol>
-<li>对象  Object</li>
-<li>方法 Function</li>
-<li>复杂数据类型都是“引用类型”</li>
-</ol>
-<h2 id="typeof-运算符可以检测值或者变量的类型"><a href="#typeof-运算符可以检测值或者变量的类型" class="headerlink" title="typeof 运算符可以检测值或者变量的类型"></a>typeof 运算符可以检测值或者变量的类型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="number">5</span>; </span><br><span class="line"><span class="keyword">typeof</span> <span class="string">&quot;shanmu&quot;</span>;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>typeof 不是内置函数 是操作符</li>
 </ol>
 
       

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhihuzeye.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="路由元数据（Metadata API）Next.js 中的 元数据 API 是一个非常强大的功能，它允许我们为每个页面定义元数据，从而在被 搜索引擎索引 或 社交平台分享 时，有更好的展示效果。  在 Next.js 中使用元数据的两种方式你可以在 layout.tsx 或 page.tsx 中定义元数据，方式有两种：  静态元数据对象 动态的 generateMetadata 函数   元数据规">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Next.js 搜索引擎优化（SEO）——元数据配置详解">
+<meta property="og:url" content="https://zhihuzeye.github.io/2025/08/11/Next-js-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="泽野之乡">
+<meta property="og:description" content="路由元数据（Metadata API）Next.js 中的 元数据 API 是一个非常强大的功能，它允许我们为每个页面定义元数据，从而在被 搜索引擎索引 或 社交平台分享 时，有更好的展示效果。  在 Next.js 中使用元数据的两种方式你可以在 layout.tsx 或 page.tsx 中定义元数据，方式有两种：  静态元数据对象 动态的 generateMetadata 函数   元数据规">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-11T02:51:24.000Z">
+<meta property="article:modified_time" content="2025-08-11T10:00:23.942Z">
+<meta property="article:author" content="之乎泽野">
+<meta property="article:tag" content="Next.js">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="SEO">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhihuzeye.github.io/2025/08/11/Next-js-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhihuzeye.github.io/2025/08/11/Next-js-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/","path":"2025/08/11/Next-js-搜索引擎优化/","title":"Next.js 搜索引擎优化（SEO）——元数据配置详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Next.js 搜索引擎优化（SEO）——元数据配置详解 | 泽野之乡</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="泽野之乡" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽野之乡</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%85%83%E6%95%B0%E6%8D%AE%EF%BC%88Metadata-API%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">路由元数据（Metadata API）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-Next-js-%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">在 Next.js 中使用元数据的两种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E8%A7%84%E5%88%99"><span class="nav-number">1.2.</span> <span class="nav-text">元数据规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%85%83%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">静态元数据对象示例</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90%E5%85%83%E6%95%B0%E6%8D%AE%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.0.0.0.1.</span> <span class="nav-text">动态生成元数据示例</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text">注意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6%E8%A7%84%E5%88%99"><span class="nav-number">1.3.2.</span> <span class="nav-text">元数据合并规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE-title-%E5%AD%97%E6%AE%B5%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="nav-number">1.3.3.</span> <span class="nav-text">元数据 title 字段的高级用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="之乎泽野"
+      src="/images/face1.png">
+  <p class="site-author-name" itemprop="name">之乎泽野</p>
+  <div class="site-description" itemprop="description">积跬步，至千里</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhihuzeye" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhihuzeye" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kydlyj@gmail.com" title="E-Mail → mailto:kydlyj@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhihuzeye.github.io/2025/08/11/Next-js-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/face1.png">
+      <meta itemprop="name" content="之乎泽野">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽野之乡">
+      <meta itemprop="description" content="积跬步，至千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Next.js 搜索引擎优化（SEO）——元数据配置详解 | 泽野之乡">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Next.js 搜索引擎优化（SEO）——元数据配置详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-11 10:51:24 / 修改时间：18:00:23" itemprop="dateCreated datePublished" datetime="2025-08-11T10:51:24+08:00">2025-08-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="路由元数据（Metadata-API）"><a href="#路由元数据（Metadata-API）" class="headerlink" title="路由元数据（Metadata API）"></a>路由元数据（Metadata API）</h1><p>Next.js 中的 <strong>元数据 API</strong> 是一个非常强大的功能，它允许我们为每个页面定义元数据，从而在被 <strong>搜索引擎索引</strong> 或 <strong>社交平台分享</strong> 时，有更好的展示效果。</p>
+<hr>
+<h2 id="在-Next-js-中使用元数据的两种方式"><a href="#在-Next-js-中使用元数据的两种方式" class="headerlink" title="在 Next.js 中使用元数据的两种方式"></a>在 Next.js 中使用元数据的两种方式</h2><p>你可以在 <code>layout.tsx</code> 或 <code>page.tsx</code> 中定义元数据，方式有两种：</p>
+<ol>
+<li><strong>静态元数据对象</strong></li>
+<li><strong>动态的 <code>generateMetadata</code> 函数</strong></li>
+</ol>
+<hr>
+<h2 id="元数据规则"><a href="#元数据规则" class="headerlink" title="元数据规则"></a>元数据规则</h2><ul>
+<li><code>layout.tsx</code> 和 <code>page.tsx</code> <strong>都可以</strong>导出元数据：<ul>
+<li>布局元数据（layout）会应用到该布局下的所有页面</li>
+<li>页面元数据（page）只应用于该页面</li>
+</ul>
+</li>
+<li>元数据遵循 <strong>自上而下</strong> 的顺序，从根布局开始</li>
+<li>当多个层级都定义了相同字段时，会 <strong>合并</strong> 元数据：<ul>
+<li><strong>页面元数据</strong> 的优先级高于 <strong>布局元数据</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="静态元数据对象示例"><a href="#静态元数据对象示例" class="headerlink" title="静态元数据对象示例"></a>静态元数据对象示例</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// page.tsx</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> metadata = &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;首页&#x27;</span>,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&#x27;这是网站的首页描述&#x27;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="动态生成元数据示例"><a href="#动态生成元数据示例" class="headerlink" title="动态生成元数据示例"></a>动态生成元数据示例</h6><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// page.tsx</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Metadata</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">generateMetadata</span>(<span class="params">&#123; params &#125;: Props</span>): <span class="title class_">Promise</span>&lt;<span class="title class_">Metadata</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> id = params.<span class="property">productId</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">`产品 <span class="subst">$&#123;id&#125;</span>`</span>,</span><br><span class="line">    <span class="attr">description</span>: <span class="string">`这是产品 <span class="subst">$&#123;id&#125;</span> 的详情页`</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ol>
+<li>同一路由 不能同时导出 metadata 对象和 generateMetadata 函数</li>
+<li>客户端组件（带 “use client”）无法使用元数据 API</li>
+</ol>
+<h3 id="元数据合并规则"><a href="#元数据合并规则" class="headerlink" title="元数据合并规则"></a>元数据合并规则</h3><p>假设：</p>
+<ul>
+<li>根布局 app&#x2F;layout.tsx：<ul>
+<li>export const metadata &#x3D; { title: ‘网站’ };</li>
+</ul>
+</li>
+<li>页面 app&#x2F;about&#x2F;page.tsx：<ul>
+<li>export const metadata &#x3D; { title: ‘关于我们’ };</li>
+</ul>
+</li>
+</ul>
+<p>最终页面标题为 “关于我们”，因为 页面元数据优先级更高。</p>
+<hr>
+<h3 id="元数据-title-字段的高级用法"><a href="#元数据-title-字段的高级用法" class="headerlink" title="元数据 title 字段的高级用法"></a>元数据 title 字段的高级用法</h3><p><strong>title 可以是 字符串 或 对象：</strong></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Metadata</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;next&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">metadata</span>: <span class="title class_">Metadata</span> = &#123;</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">default</span>: <span class="string">&#x27;默认标题&#x27;</span>,         <span class="comment">// 没有设置时使用</span></span><br><span class="line">    <span class="attr">template</span>: <span class="string">&#x27;%s | 安全生产&#x27;</span>,   <span class="comment">// 模板格式：页面标题 | 安全生产</span></span><br><span class="line">    <span class="attr">absolute</span>: <span class="string">&#x27;&#x27;</span>,               <span class="comment">// 绝对覆盖，优先级最高</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&#x27;页面描述内容&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>静态或动态二选一</li>
+<li>页面元数据优先级最高</li>
+<li>元数据从根到叶子合并</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>之乎泽野
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zhihuzeye.github.io/2025/08/11/Next-js-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/" title="Next.js 搜索引擎优化（SEO）——元数据配置详解">https://zhihuzeye.github.io/2025/08/11/Next-js-搜索引擎优化/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Next-js/" rel="tag"># Next.js</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/tags/SEO/" rel="tag"># SEO</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/08/11/Next-js-%E5%B8%83%E5%B1%80/" rel="prev" title="Next.js 布局">
+                  <i class="fa fa-angle-left"></i> Next.js 布局
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/08/11/Next-js-%E9%93%BE%E6%8E%A5%E5%92%8C%E5%AF%BC%E8%88%AA/" rel="next" title="Next.js 链接与导航详解">
+                  Next.js 链接与导航详解 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">之乎泽野</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zhihuzeye","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
